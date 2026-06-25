@@ -1080,13 +1080,66 @@ export default function AuthPage() {
       </Helmet>
       
       <div className="min-h-screen flex items-center justify-center py-8">
-        <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden shadow-2xl">
-          {/* Left Panel - Form */}
+        <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-2xl overflow-hidden shadow-2xl">
+          {/* Left Panel - Image */}
+          <section className="hidden lg:flex flex-col justify-center items-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-12 relative overflow-hidden">
+            <div className="absolute inset-0 opacity-40">
+              <img 
+                src="/auth-hero.png" 
+                alt="ServiceTones marketplace" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="relative z-10 max-w-md text-center text-white">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full mb-8 border border-white/20 backdrop-blur-sm">
+                <span className="w-2 h-2 rounded-full bg-amber-400" />
+                <span className="text-sm font-semibold" style={{ fontFamily: "'Lora', serif" }}>Join ServiceTones</span>
+              </div>
+              <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Connect & Grow Together
+              </h2>
+              <p className="text-white/80 text-lg leading-relaxed mb-12" style={{ fontFamily: "'Lora', serif" }}>
+                Join thousands of professionals and homeowners building trust, one project at a time.
+              </p>
+              
+              <div className="space-y-6 pt-8 border-t border-white/20">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-amber-400/20 text-amber-300 font-semibold">✓</div>
+                  </div>
+                  <div className="text-left">
+                    <p className="font-semibold mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>Verified Professionals</p>
+                    <p className="text-white/70 text-sm" style={{ fontFamily: "'Lora', serif" }}>All pros are background checked and rated</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-amber-400/20 text-amber-300 font-semibold">★</div>
+                  </div>
+                  <div className="text-left">
+                    <p className="font-semibold mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>Quality Assured</p>
+                    <p className="text-white/70 text-sm" style={{ fontFamily: "'Lora', serif" }}>4.8 rating from 25,000+ projects</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-amber-400/20 text-amber-300 font-semibold">◆</div>
+                  </div>
+                  <div className="text-left">
+                    <p className="font-semibold mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>Secure & Transparent</p>
+                    <p className="text-white/70 text-sm" style={{ fontFamily: "'Lora', serif" }}>All communication in one place</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Right Panel - Form */}
           <section className={cn(
-            "flex flex-col justify-center bg-white p-8 sm:p-12 lg:p-14",
+            "flex flex-col justify-center bg-white p-8 sm:p-12 lg:p-16",
             isPhone ? "px-5 py-8 sm:px-8" : ""
           )}>
-            <div className="w-full max-w-md mx-auto">
+            <div className="w-full max-w-sm mx-auto">
               <div className="mb-12 flex items-center justify-between gap-4">
                 <AuthBrandLink compact className="border-transparent bg-transparent px-0 py-0 shadow-none backdrop-blur-0 hover:translate-y-0 hover:border-transparent" />
               </div>
