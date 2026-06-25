@@ -223,13 +223,13 @@ function AuthDivider({ children }) {
 
 function AuthField({ id, label, icon: Icon, hint, className, inputClassName, ...props }) {
   return (
-    <div className={cn("space-y-2", className)}>
-      <Label htmlFor={id} className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{label}</Label>
+    <div className={cn("space-y-2.5", className)}>
+      <Label htmlFor={id} className="text-sm font-semibold text-slate-700 block" style={{ fontFamily: "'Lora', serif" }}>{label}</Label>
       <div className="relative">
-        {Icon ? <Icon className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground/60" /> : null}
-        <Input id={id} className={cn("h-11 rounded-lg border border-border/60 bg-white text-sm text-foreground placeholder:text-muted-foreground transition-colors focus:border-primary focus:bg-background focus:ring-2 focus:ring-primary/10 focus:outline-none", Icon ? "pl-10" : "", inputClassName)} {...props} />
+        {Icon ? <Icon className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" /> : null}
+        <Input id={id} className={cn("h-12 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 placeholder:text-slate-400 transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none", Icon ? "pl-12" : "pl-4", inputClassName)} {...props} />
       </div>
-      {hint ? <p className="text-[0.72rem] leading-5 text-muted-foreground">{hint}</p> : null}
+      {hint ? <p className="text-xs leading-5 text-slate-500">{hint}</p> : null}
     </div>
   );
 }
@@ -992,16 +992,75 @@ export default function AuthPage() {
                     </form>
                   </CardContent>
                 </Card>
+            </div>
+          </section>
+
+          {/* Right Panel - Benefits */}
+          <section className="hidden lg:flex flex-col justify-center bg-gradient-to-br from-slate-900 to-slate-800 p-12 text-white relative overflow-hidden">
+            {/* Decorative elements */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-amber-400/5 rounded-full blur-3xl" />
+            
+            <div className="relative z-10 max-w-md">
+              <div className="mb-12">
+                <div className="inline-block px-4 py-2 bg-primary/20 rounded-full mb-6">
+                  <span className="text-primary text-sm font-semibold" style={{ fontFamily: "'Lora', serif" }}>Why ServiceTones</span>
+                </div>
+                <h2 className="text-4xl font-bold mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  A Better Way to Connect
+                </h2>
+                <p className="text-white/80 text-lg" style={{ fontFamily: "'Lora', serif" }}>
+                  Join thousands of professionals and homeowners building trust, one project at a time.
+                </p>
               </div>
-            </section>
-          </div>
+
+              <div className="space-y-8">
+                {[
+                  { number: "01", title: "Verified Professionals", desc: "Every pro is background checked and rated by real customers" },
+                  { number: "02", title: "Secure Transactions", desc: "Complete quotes and contracts with organized communication" },
+                  { number: "03", title: "Quality Assured", desc: "Average 4.8 rating with 25,000+ completed projects" },
+                  { number: "04", title: "Transparent Pricing", desc: "Compare quotes side-by-side and make informed decisions" }
+                ].map((item) => (
+                  <div key={item.number} className="flex gap-4">
+                    <div className="flex-shrink-0">
+                      <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-primary/20 text-primary font-semibold text-lg" style={{ fontFamily: "'Playfair Display', serif" }}>
+                        {item.number}
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>{item.title}</h3>
+                      <p className="text-white/70 text-sm" style={{ fontFamily: "'Lora', serif" }}>{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-12 pt-8 border-t border-white/10">
+                <div className="grid grid-cols-3 gap-4">
+                  <div>
+                    <div className="text-3xl font-bold text-primary mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>15K+</div>
+                    <p className="text-white/70 text-xs" style={{ fontFamily: "'Lora', serif" }}>Verified Pros</p>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold text-primary mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>25K+</div>
+                    <p className="text-white/70 text-xs" style={{ fontFamily: "'Lora', serif" }}>Projects Done</p>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold text-primary mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>4.8★</div>
+                    <p className="text-white/70 text-xs" style={{ fontFamily: "'Lora', serif" }}>Avg Rating</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
-      </main>
+      </div>
+    </main>
     );
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-white to-muted/30">
+    <main className="min-h-screen bg-gradient-to-b from-amber-50 via-white to-slate-50" style={{ fontFamily: "'Georgia', 'Garamond', serif" }}>
       <Helmet>
         <title>{authPageTitle}</title>
         <meta name="description" content={authPageDescription} />
@@ -1016,28 +1075,19 @@ export default function AuthPage() {
         <meta name="twitter:image" content={AUTH_OG_IMAGE} />
         <link rel="canonical" href={AUTH_PAGE_URL} />
         <script type="application/ld+json">{JSON.stringify(authSchema)}</script>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lora:wght@400;500;600&display=swap" rel="stylesheet" />
       </Helmet>
-      <div className="page-shell safe-top-shell safe-bottom-shell py-6 sm:py-8 lg:py-12">
-        <div className={cn(
-          "mx-auto grid w-full max-w-5xl overflow-hidden rounded-2xl border border-border/40 bg-white shadow-sm",
-          isNativeTablet ? "lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]" : "lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]"
-        )}>
+      
+      <div className="min-h-screen flex items-center justify-center py-8">
+        <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden shadow-2xl">
+          {/* Left Panel - Form */}
           <section className={cn(
-            "order-2 flex bg-white",
-            isPhone ? "px-5 py-6 sm:px-8" : "px-6 py-8 sm:px-8 lg:order-1 lg:px-10 xl:px-12"
+            "flex flex-col justify-center bg-white p-8 sm:p-12",
+            isPhone ? "px-5 py-8 sm:px-8" : ""
           )}>
-            <div className="mx-auto flex w-full max-w-[25rem] flex-col justify-center">
-              <div className="mb-8 flex items-center justify-between gap-4">
+            <div className="w-full max-w-sm mx-auto">
+              <div className="mb-12 flex items-center justify-between gap-4">
                 <AuthBrandLink compact className="border-transparent bg-transparent px-0 py-0 shadow-none backdrop-blur-0 hover:translate-y-0 hover:border-transparent" />
-                {activeTab === "register" ? (
-                  <button
-                    type="button"
-                    onClick={() => handleTabChange("login")}
-                    className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    Back to login
-                  </button>
-                ) : null}
               </div>
 
               {oauthError === "not_registered" && (
@@ -1075,25 +1125,24 @@ export default function AuthPage() {
                 ) : null}
 
                 <TabsContent value="login" className="mt-0">
-                  <div className="space-y-6">
-                    <div className="space-y-2">
-                      <h1 className="font-heading text-3xl font-bold tracking-[-0.04em] text-foreground">
-                        Sign in
-                      </h1>
-                      <p className="text-sm text-muted-foreground">
-                        Access your account and manage your projects
-                      </p>
+                  <div className="space-y-3 mb-8">
+                    <h1 className="text-5xl font-bold text-slate-900" style={{ fontFamily: "'Playfair Display', serif" }}>
+                      Welcome Back
+                    </h1>
+                    <p className="text-lg text-slate-600" style={{ fontFamily: "'Lora', serif" }}>
+                      Sign in to continue your journey
+                    </p>
                     </div>
 
-                    <Card className="border-border/40 bg-white shadow-sm">
-                      <CardContent className="p-5 sm:p-6">
+                    <Card className="border border-slate-200 bg-white shadow-lg rounded-2xl">
+                      <CardContent className="p-6 sm:p-8">
                         {isNative ? (
                           <Suspense fallback={null}>
                             <LazyBiometricLogin onLogin={handleLogin} className="mb-4" />
                           </Suspense>
                         ) : null}
 
-                        <div className="space-y-4">
+                        <div className="space-y-5">
                           {pageError ? (
                             <div className="rounded-lg border border-destructive/20 bg-destructive/8 px-4 py-3 text-sm text-destructive">
                               {pageError}
@@ -1157,14 +1206,15 @@ export default function AuthPage() {
                               </div>
                             ) : null}
 
-                            <Button
-                              type="submit"
-                              className="w-full rounded-[1rem] bg-primary/90 py-3 text-sm font-semibold hover:bg-primary"
-                              disabled={loading}
-                              data-testid="login-submit-btn"
-                            >
-                              {loading ? "Signing in..." : "Continue"}
-                            </Button>
+                        <Button
+                          type="submit"
+                          className="w-full rounded-xl py-3 bg-gradient-to-r from-slate-900 to-slate-800 text-white font-semibold hover:from-slate-800 hover:to-slate-700 transition-all shadow-md hover:shadow-lg mt-6"
+                          disabled={loading}
+                          data-testid="login-submit-btn"
+                          style={{ fontFamily: "'Lora', serif" }}
+                        >
+                          {loading ? "Signing in..." : "Sign in"}
+                        </Button>
                           </form>
 
                           <SocialLoginButtons />
@@ -1182,21 +1232,19 @@ export default function AuthPage() {
                     <p className="text-xs leading-6 text-muted-foreground">
                       By continuing, you agree to our <Link to="/terms" className="underline hover:text-foreground">Terms</Link> and <Link to="/privacy" className="underline hover:text-foreground">Privacy Policy</Link>.
                     </p>
-                  </div>
                 </TabsContent>
 
                 <TabsContent value="register" className="mt-0">
-                  <div className="space-y-6">
-                    <div className="space-y-2">
-                      <h1 className="font-heading text-3xl font-bold tracking-[-0.04em] text-foreground">
-                        Create account
-                      </h1>
-                      <p className="text-sm text-muted-foreground">
-                        {isAdmin
-                          ? "Set up your admin account"
-                          : "Join to post projects or find work"}
-                      </p>
-                    </div>
+                  <div className="space-y-3 mb-8">
+                    <h1 className="text-5xl font-bold text-slate-900" style={{ fontFamily: "'Playfair Display', serif" }}>
+                      Join Us
+                    </h1>
+                    <p className="text-lg text-slate-600" style={{ fontFamily: "'Lora', serif" }}>
+                      {isAdmin
+                        ? "Create your admin account"
+                        : "Start your journey with ServiceTones"}
+                    </p>
+                  </div>
 
                     <Card className="border-border/40 bg-white shadow-sm">
                       <CardContent className="p-5 sm:p-6">
@@ -1291,9 +1339,10 @@ export default function AuthPage() {
 
                           <Button
                             type="submit"
-                            className="w-full rounded-[1rem] bg-primary/90 py-3 text-sm font-semibold hover:bg-primary mt-6"
+                            className="w-full rounded-xl py-3 bg-gradient-to-r from-slate-900 to-slate-800 text-white font-semibold hover:from-slate-800 hover:to-slate-700 transition-all shadow-md hover:shadow-lg mt-6"
                             disabled={loading}
                             data-testid="register-submit-btn"
+                            style={{ fontFamily: "'Lora', serif" }}
                           >
                             {loading ? "Creating account..." : "Create Account"}
                           </Button>
@@ -1308,7 +1357,6 @@ export default function AuthPage() {
                         Sign in
                       </button>
                     </p>
-                  </div>
                 </TabsContent>
               </Tabs>
             </div>
