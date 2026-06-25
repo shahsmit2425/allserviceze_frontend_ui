@@ -224,12 +224,12 @@ function AuthDivider({ children }) {
 function AuthField({ id, label, icon: Icon, hint, className, inputClassName, ...props }) {
   return (
     <div className={cn("space-y-2", className)}>
-      <Label htmlFor={id} className="text-xs font-semibold uppercase tracking-wide text-white/70">{label}</Label>
+      <Label htmlFor={id} className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{label}</Label>
       <div className="relative">
-        {Icon ? <Icon className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-white/50" /> : null}
-        <Input id={id} className={cn("h-11 rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm text-sm text-white placeholder:text-white/40 transition-colors focus:border-white/40 focus:bg-white/15", Icon ? "pl-10" : "", inputClassName)} {...props} />
+        {Icon ? <Icon className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground/60" /> : null}
+        <Input id={id} className={cn("h-11 rounded-lg border border-border/60 bg-white text-sm text-foreground placeholder:text-muted-foreground transition-colors focus:border-primary focus:bg-background focus:ring-2 focus:ring-primary/10 focus:outline-none", Icon ? "pl-10" : "", inputClassName)} {...props} />
       </div>
-      {hint ? <p className="text-[0.72rem] leading-5 text-white/60">{hint}</p> : null}
+      {hint ? <p className="text-[0.72rem] leading-5 text-muted-foreground">{hint}</p> : null}
     </div>
   );
 }
@@ -1001,7 +1001,7 @@ export default function AuthPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <main className="min-h-screen bg-gradient-to-b from-white to-muted/30">
       <Helmet>
         <title>{authPageTitle}</title>
         <meta name="description" content={authPageDescription} />
@@ -1017,26 +1017,23 @@ export default function AuthPage() {
         <link rel="canonical" href={AUTH_PAGE_URL} />
         <script type="application/ld+json">{JSON.stringify(authSchema)}</script>
       </Helmet>
-      <div className="page-shell safe-top-shell safe-bottom-shell py-4 sm:py-6 lg:py-8">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl opacity-20" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl opacity-20" />
-        
+      <div className="page-shell safe-top-shell safe-bottom-shell py-6 sm:py-8 lg:py-12">
         <div className={cn(
-          "mx-auto grid min-h-[calc(100vh-2rem)] w-full max-w-[96rem] overflow-hidden rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl shadow-2xl relative z-10",
-          isNativeTablet ? "xl:grid-cols-[minmax(0,29rem)_minmax(0,1fr)]" : "lg:grid-cols-[minmax(0,29rem)_minmax(0,1fr)]"
+          "mx-auto grid w-full max-w-5xl overflow-hidden rounded-2xl border border-border/40 bg-white shadow-sm",
+          isNativeTablet ? "lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]" : "lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]"
         )}>
           <section className={cn(
-            "order-2 flex bg-white/5 backdrop-blur-sm border-r border-white/10",
+            "order-2 flex bg-white",
             isPhone ? "px-5 py-6 sm:px-8" : "px-6 py-8 sm:px-8 lg:order-1 lg:px-10 xl:px-12"
           )}>
             <div className="mx-auto flex w-full max-w-[25rem] flex-col justify-center">
               <div className="mb-8 flex items-center justify-between gap-4">
-                <AuthBrandLink compact className="border-transparent bg-transparent px-0 py-0 shadow-none backdrop-blur-0 hover:translate-y-0 hover:border-transparent dark text-white" />
+                <AuthBrandLink compact className="border-transparent bg-transparent px-0 py-0 shadow-none backdrop-blur-0 hover:translate-y-0 hover:border-transparent" />
                 {activeTab === "register" ? (
                   <button
                     type="button"
                     onClick={() => handleTabChange("login")}
-                    className="text-sm font-medium text-white/70 transition-colors hover:text-white"
+                    className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                   >
                     Back to login
                   </button>
@@ -1079,27 +1076,16 @@ export default function AuthPage() {
 
                 <TabsContent value="login" className="mt-0">
                   <div className="space-y-6">
-                    <div className="space-y-3">
-                      <p className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-primary">Welcome back</p>
-                      <h1 className="font-heading text-[2.35rem] font-extrabold leading-[0.96] tracking-[-0.06em] text-white">
-                        Sign In
+                    <div className="space-y-2">
+                      <h1 className="font-heading text-3xl font-bold tracking-[-0.04em] text-foreground">
+                        Sign in
                       </h1>
-                      <p className="text-sm leading-7 text-white/70">
-                        Access your account to manage quotes and connect with professionals.
+                      <p className="text-sm text-muted-foreground">
+                        Access your account and manage your projects
                       </p>
                     </div>
 
-                    <div className="grid gap-3 sm:grid-cols-3" aria-label="Marketplace trust stats">
-                      {authTrustStats.map((item) => (
-                        <div key={item.label} className="rounded-xl border border-border/75 bg-slate-50/75 px-3.5 py-3.5 shadow-[0_14px_30px_-28px_rgba(15,23,42,0.14)]">
-                          <item.icon className="h-4 w-4 text-primary" />
-                          <p className="mt-3 text-lg font-bold tracking-[-0.05em] text-foreground">{item.value}</p>
-                          <p className="mt-1 text-[0.78rem] leading-5 text-muted-foreground">{item.label}</p>
-                        </div>
-                      ))}
-                    </div>
-
-                    <Card className="border-white/20 bg-white/10 backdrop-blur-md shadow-2xl">
+                    <Card className="border-border/40 bg-white shadow-sm">
                       <CardContent className="p-5 sm:p-6">
                         {isNative ? (
                           <Suspense fallback={null}>
@@ -1201,15 +1187,14 @@ export default function AuthPage() {
 
                 <TabsContent value="register" className="mt-0">
                   <div className="space-y-6">
-                    <div className="space-y-3">
-                      <p className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-primary">Getting started</p>
-                      <h1 className="font-heading text-[2.35rem] font-extrabold leading-[0.96] tracking-[-0.06em] text-white">
-                        Create Account
+                    <div className="space-y-2">
+                      <h1 className="font-heading text-3xl font-bold tracking-[-0.04em] text-foreground">
+                        Create account
                       </h1>
-                      <p className="text-sm leading-7 text-white/70">
+                      <p className="text-sm text-muted-foreground">
                         {isAdmin
-                          ? "Create an admin account to manage the marketplace."
-                          : "Join thousands of professionals and homeowners. Start managing projects today."}
+                          ? "Set up your admin account"
+                          : "Join to post projects or find work"}
                       </p>
                     </div>
 
@@ -1367,50 +1352,34 @@ export default function AuthPage() {
           </section>
 
           {!isPhone ? (
-            <section className="order-1 relative min-h-[24rem] overflow-hidden border-b border-white/10 bg-gradient-to-br from-slate-800/50 to-slate-900/50 lg:order-2 lg:min-h-full lg:border-b-0 lg:border-l lg:border-white/10">
-              <img
-                src="/hero-home.jpg"
-                alt="Real home-service professionals working with homeowners on renovation and repair projects"
-                loading="lazy"
-                decoding="async"
-                fetchPriority="low"
-                className="absolute inset-0 h-full w-full object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.18),rgba(15,23,42,0.74))]" />
-              <div className="relative flex h-full flex-col justify-between p-8 text-white lg:p-10 xl:p-12">
-                <div className="max-w-xl space-y-5">
-                  <p className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-white/68">High-trust conversion flow</p>
-                  <h2 className="font-heading text-[2.6rem] font-extrabold leading-[0.95] tracking-[-0.06em]">
-                    Built for homeowners hiring confidently and providers managing better leads.
-                  </h2>
-                  <p className="max-w-lg text-sm leading-7 text-white/78">
-                    A cleaner sign-in experience for a marketplace where real people compare quotes, review provider credentials, and move projects forward.
-                  </p>
-                </div>
-
-                <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_18rem] xl:items-end">
-                  <div className="rounded-xl border border-white/14 bg-black/28 p-5 shadow-[0_24px_50px_-32px_rgba(15,23,42,0.55)] backdrop-blur-sm">
-                    <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-white/62">What people need to see</p>
-                    <ul className="mt-4 space-y-3 text-sm leading-6 text-white/84">
-                      {authRightRailMoments.map((item) => (
-                        <li key={item} className="flex gap-3">
-                          <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-300" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
+            <section className="order-1 relative hidden min-h-[24rem] overflow-hidden border-b border-border/40 bg-muted/20 lg:order-2 lg:flex lg:min-h-full lg:border-b-0 lg:border-l">
+              <div className="flex h-full flex-col justify-center p-8 lg:p-10 xl:p-12">
+                <div className="space-y-8">
+                  <div>
+                    <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-3">
+                      Why join us?
+                    </h2>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Connect with trusted professionals and find the right expertise for your projects.
+                    </p>
                   </div>
 
-                  <div className="rounded-xl border border-white/14 bg-white/10 p-5 shadow-[0_24px_50px_-32px_rgba(15,23,42,0.55)] backdrop-blur-sm">
-                    <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-white/62">Why this converts</p>
-                    <div className="mt-4 space-y-4">
-                      {authAudienceSignals.map((item) => (
-                        <div key={item} className="border-t border-white/12 pt-4 first:border-t-0 first:pt-0">
-                          <p className="text-sm leading-6 text-white/84">{item}</p>
+                  <ul className="space-y-4">
+                    {[
+                      { icon: "✓", label: "Verified professionals", desc: "All pros are background checked" },
+                      { icon: "⭐", label: "Real reviews", desc: "Authentic feedback from real customers" },
+                      { icon: "💬", label: "Direct messaging", desc: "Communicate securely with pros" },
+                      { icon: "📋", label: "Compare quotes", desc: "Get multiple quotes side by side" }
+                    ].map((item) => (
+                      <li key={item.label} className="flex gap-4">
+                        <div className="text-xl mt-1 flex-shrink-0">{item.icon}</div>
+                        <div>
+                          <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                          <p className="text-xs text-muted-foreground mt-1">{item.desc}</p>
                         </div>
-                      ))}
-                    </div>
-                  </div>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </section>
