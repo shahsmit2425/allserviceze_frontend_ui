@@ -621,7 +621,7 @@ export default function BrowseProjects() {
                   ) : null}
                 </div>
 
-                <Accordion type="multiple" defaultValue={["category", "budget", "timeline", "urgency", "verification", "projectType", "status"]} className="w-full">
+                <Accordion type="multiple" defaultValue={["category", "budget", "timeline"]} className="w-full">
                   <AccordionItem value="category" className="px-5">
                     <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Category</AccordionTrigger>
                     <AccordionContent className="space-y-3">
@@ -641,7 +641,7 @@ export default function BrowseProjects() {
                   <AccordionItem value="budget" className="px-5">
                     <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Budget</AccordionTrigger>
                     <AccordionContent className="space-y-3">
-                      {BUDGET_OPTIONS.filter((option) => option.value !== "all").map((option) => (
+                      {BUDGET_OPTIONS.filter((option) => option.value !== "all").slice(0, 4).map((option) => (
                         <label key={option.value} className="flex cursor-pointer items-center gap-3 text-sm text-foreground/88">
                           <Checkbox
                             checked={draftFilters.budget === option.value}
@@ -653,7 +653,7 @@ export default function BrowseProjects() {
                     </AccordionContent>
                   </AccordionItem>
 
-                  <AccordionItem value="timeline" className="px-5">
+                  <AccordionItem value="timeline" className="border-b-0 px-5">
                     <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Timeline</AccordionTrigger>
                     <AccordionContent className="space-y-3">
                       {TIMELINE_OPTIONS.filter((option) => option.value !== "all").map((option) => (
@@ -667,67 +667,6 @@ export default function BrowseProjects() {
                       ))}
                     </AccordionContent>
                   </AccordionItem>
-
-                  <AccordionItem value="urgency" className="px-5">
-                    <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Urgency</AccordionTrigger>
-                    <AccordionContent className="space-y-3">
-                      {URGENCY_FILTER_OPTIONS.map((option) => (
-                        <label key={option.value} className="flex cursor-pointer items-center gap-3 text-sm text-foreground/88">
-                          <Checkbox
-                            checked={draftFilters.urgency === option.value}
-                            onCheckedChange={(checked) => setDraftFilters((prev) => ({ ...prev, urgency: checked ? option.value : "all" }))}
-                          />
-                          <span>{option.label}</span>
-                        </label>
-                      ))}
-                    </AccordionContent>
-                  </AccordionItem>
-
-                  <AccordionItem value="verification" className="px-5">
-                    <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Verification</AccordionTrigger>
-                    <AccordionContent className="space-y-3">
-                      <label className="flex cursor-pointer items-center gap-3 text-sm text-foreground/88">
-                        <Checkbox
-                          checked={draftFilters.verifiedCustomer === "verified"}
-                          onCheckedChange={(checked) => setDraftFilters((prev) => ({ ...prev, verifiedCustomer: checked ? "verified" : "all" }))}
-                        />
-                        <span className="flex-1">Verified customers only</span>
-                        <span className="text-xs font-medium text-muted-foreground">{verifiedCustomerCountTotal}</span>
-                      </label>
-                    </AccordionContent>
-                  </AccordionItem>
-
-                  <AccordionItem value="projectType" className="px-5">
-                    <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Project Type</AccordionTrigger>
-                    <AccordionContent className="space-y-3">
-                      {PROJECT_TYPE_OPTIONS.filter((option) => option.value !== "all").map((option) => (
-                        <label key={option.value} className="flex cursor-pointer items-center gap-3 text-sm text-foreground/88">
-                          <Checkbox
-                            checked={draftFilters.projectType === option.value}
-                            onCheckedChange={(checked) => setDraftFilters((prev) => ({ ...prev, projectType: checked ? option.value : "all" }))}
-                          />
-                          <span>{option.label}</span>
-                        </label>
-                      ))}
-                    </AccordionContent>
-                  </AccordionItem>
-
-                  {user?.role === "provider" ? (
-                    <AccordionItem value="status" className="border-b-0 px-5">
-                      <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Project Status</AccordionTrigger>
-                      <AccordionContent className="space-y-3">
-                        {PROJECT_STATUS_OPTIONS.map((option) => (
-                          <label key={option.value} className="flex cursor-pointer items-center gap-3 text-sm text-foreground/88">
-                            <Checkbox
-                              checked={draftFilters.status === option.value}
-                              onCheckedChange={(checked) => setDraftFilters((prev) => ({ ...prev, status: checked ? option.value : "all" }))}
-                            />
-                            <span>{option.label}</span>
-                          </label>
-                        ))}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ) : null}
                 </Accordion>
 
                 <div className="border-t border-border/60 px-5 py-4">

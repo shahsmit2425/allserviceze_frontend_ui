@@ -631,11 +631,11 @@ export default function BrowseProviders() {
                   ) : null}
                 </div>
 
-                <Accordion type="multiple" defaultValue={["rating", "rate", "availability", "verification", "skills"]} className="w-full">
+                <Accordion type="multiple" defaultValue={["rating"]} className="w-full">
                   <AccordionItem value="rating" className="px-5">
-                    <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Rating & Reviews</AccordionTrigger>
+                    <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Rating</AccordionTrigger>
                     <AccordionContent className="space-y-3">
-                      {RATING_OPTIONS.filter((option) => option.value !== "All").map((option) => (
+                      {RATING_OPTIONS.filter((option) => option.value !== "All").slice(0, 3).map((option) => (
                         <label key={option.value} className="flex cursor-pointer items-center gap-3 text-sm text-foreground/88">
                           <Checkbox
                             checked={draftFilters.rating === option.value}
@@ -648,9 +648,9 @@ export default function BrowseProviders() {
                   </AccordionItem>
 
                   <AccordionItem value="rate" className="px-5">
-                    <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Hourly Rate</AccordionTrigger>
+                    <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Budget</AccordionTrigger>
                     <AccordionContent className="space-y-4">
-                      <div className="rounded-xl border border-border/60 bg-muted/20 p-4">
+                      <div className="rounded-lg border border-border/60 bg-muted/20 p-4">
                         <Slider
                           value={[draftFilters.maxRate]}
                           min={75}
@@ -658,58 +658,21 @@ export default function BrowseProviders() {
                           step={25}
                           onValueChange={([value]) => setDraftFilters((prev) => ({ ...prev, maxRate: value }))}
                         />
-                        <div className="mt-4 flex items-center justify-between text-sm text-muted-foreground">
-                          <span>$75</span>
-                          <span className="font-semibold text-foreground">{formatRateCapLabel(draftFilters.maxRate)}</span>
-                        </div>
+                        <div className="mt-3 text-sm font-medium text-foreground text-center">{formatRateCapLabel(draftFilters.maxRate)}</div>
                       </div>
-                      <button type="button" className="text-xs font-semibold uppercase tracking-[0.14em] text-primary" onClick={() => setDraftFilters((prev) => ({ ...prev, maxRate: DEFAULT_PROVIDER_RATE_CAP }))}>
-                        Any hourly rate
-                      </button>
                     </AccordionContent>
                   </AccordionItem>
 
-                  <AccordionItem value="availability" className="px-5">
-                    <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Availability</AccordionTrigger>
-                    <AccordionContent className="space-y-3">
-                      <label className="flex cursor-pointer items-center gap-3 text-sm text-foreground/88">
-                        <Checkbox
-                          checked={draftFilters.availability === "available"}
-                          onCheckedChange={(checked) => setDraftFilters((prev) => ({ ...prev, availability: checked ? "available" : "all" }))}
-                        />
-                        <span className="flex-1">Available now</span>
-                        <span className="text-xs font-medium text-muted-foreground">{availableNowCount}</span>
-                      </label>
-                    </AccordionContent>
-                  </AccordionItem>
-
-                  <AccordionItem value="verification" className="px-5">
-                    <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Verification</AccordionTrigger>
+                  <AccordionItem value="verification" className="border-b-0 px-5">
+                    <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Verified Only</AccordionTrigger>
                     <AccordionContent className="space-y-3">
                       <label className="flex cursor-pointer items-center gap-3 text-sm text-foreground/88">
                         <Checkbox
                           checked={draftFilters.verifiedOnly === "true"}
                           onCheckedChange={(checked) => setDraftFilters((prev) => ({ ...prev, verifiedOnly: checked ? "true" : "false" }))}
                         />
-                        <span className="flex-1">Verified providers only</span>
-                        <span className="text-xs font-medium text-muted-foreground">{totalVerifiedProviderCount}</span>
+                        <span className="flex-1">Show only verified</span>
                       </label>
-                    </AccordionContent>
-                  </AccordionItem>
-
-                  <AccordionItem value="skills" className="border-b-0 px-5">
-                    <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Skills</AccordionTrigger>
-                    <AccordionContent className="space-y-3">
-                      {providerCategoryCounts.map(([categoryName, count]) => (
-                        <label key={categoryName} className="flex cursor-pointer items-center gap-3 text-sm text-foreground/88">
-                          <Checkbox
-                            checked={draftFilters.category === categoryName}
-                            onCheckedChange={(checked) => setDraftFilters((prev) => ({ ...prev, category: checked ? categoryName : "All" }))}
-                          />
-                          <span className="flex-1">{categoryName}</span>
-                          <span className="text-xs font-medium text-muted-foreground">{count}</span>
-                        </label>
-                      ))}
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>
@@ -734,72 +697,34 @@ export default function BrowseProviders() {
                 {hasActiveFilters ? <span className="info-chip">{activeFilterCount} active</span> : null}
               </div>
 
-              <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                <Select value={draftFilters.category} onValueChange={(value) => setDraftFilters((prev) => ({ ...prev, category: value }))}>
-                  <SelectTrigger className="h-11 rounded-lg border-border/60 bg-background">
-                    <SelectValue placeholder="Category" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {CATEGORIES.map((cat) => (
-                      <SelectItem key={cat} value={cat}>{cat}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-
+              <div className="mt-4 space-y-3">
                 <Select value={draftFilters.rating} onValueChange={(value) => setDraftFilters((prev) => ({ ...prev, rating: value }))}>
                   <SelectTrigger className="h-11 rounded-lg border-border/60 bg-background">
                     <SelectValue placeholder="Minimum rating" />
                   </SelectTrigger>
                   <SelectContent>
-                    {RATING_OPTIONS.map((option) => (
+                    {RATING_OPTIONS.slice(0, 3).map((option) => (
                       <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
 
-                <Select value={draftFilters.experience} onValueChange={(value) => setDraftFilters((prev) => ({ ...prev, experience: value }))}>
-                  <SelectTrigger className="h-11 rounded-lg border-border/60 bg-background">
-                    <SelectValue placeholder="Experience level" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {EXPERIENCE_OPTIONS.map((option) => (
-                      <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-
-                <Select value={draftFilters.radius} onValueChange={(value) => setDraftFilters((prev) => ({ ...prev, radius: value }))} disabled={!draftFilters.zipcode}>
-                  <SelectTrigger className="h-11 rounded-lg border-border/60 bg-background">
-                    <SelectValue placeholder="Distance" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {DISTANCE_OPTIONS.map((opt) => (
-                      <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="mt-4 space-y-2">
-                <div className="flex items-center justify-between text-sm">
-                  <span className="font-medium text-foreground">Hourly rate</span>
-                  <span className="text-muted-foreground">{formatRateCapLabel(draftFilters.maxRate)}</span>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="font-medium text-foreground">Budget</span>
+                    <span className="text-muted-foreground">{formatRateCapLabel(draftFilters.maxRate)}</span>
+                  </div>
+                  <Slider
+                    value={[draftFilters.maxRate]}
+                    min={75}
+                    max={DEFAULT_PROVIDER_RATE_CAP}
+                    step={25}
+                    onValueChange={([value]) => setDraftFilters((prev) => ({ ...prev, maxRate: value }))}
+                  />
                 </div>
-                <Slider
-                  value={[draftFilters.maxRate]}
-                  min={75}
-                  max={DEFAULT_PROVIDER_RATE_CAP}
-                  step={25}
-                  onValueChange={([value]) => setDraftFilters((prev) => ({ ...prev, maxRate: value }))}
-                />
-              </div>
 
-              <div className="mt-4 flex flex-wrap gap-2">
-                <Button type="button" variant={draftFilters.verifiedOnly === "true" ? "default" : "outline"} className="rounded-lg" onClick={() => setDraftFilters((prev) => ({ ...prev, verifiedOnly: prev.verifiedOnly === "true" ? "false" : "true" }))}>
-                  Verified only
-                </Button>
-                <Button type="button" variant={draftFilters.availability === "available" ? "default" : "outline"} className="rounded-lg" onClick={() => setDraftFilters((prev) => ({ ...prev, availability: prev.availability === "available" ? "all" : "available" }))}>
-                  Available now
+                <Button type="button" variant={draftFilters.verifiedOnly === "true" ? "default" : "outline"} className="w-full rounded-lg" onClick={() => setDraftFilters((prev) => ({ ...prev, verifiedOnly: prev.verifiedOnly === "true" ? "false" : "true" }))}>
+                  {draftFilters.verifiedOnly === "true" ? "✓ " : ""}Verified only
                 </Button>
               </div>
 
@@ -823,9 +748,8 @@ export default function BrowseProviders() {
               <div className="browse-summary-card">
                 <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                   <div>
-                    <h2 className="text-[1.8rem] font-semibold tracking-[-0.05em] text-foreground">All Providers</h2>
+                    <h2 className="text-2xl font-semibold tracking-[-0.05em] text-foreground">Browse Providers</h2>
                     <p className="mt-1 text-sm text-muted-foreground">{sortedProviders.length} providers found</p>
-                    <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">Compare response time, hourly rate, recent reviews, and verification without losing your filter context.</p>
                   </div>
 
                   <div className="flex items-center gap-2">

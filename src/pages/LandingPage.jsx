@@ -9,11 +9,7 @@ import { Badge } from "../components/ui/badge";
 import { Card, CardContent } from "../components/ui/card";
 import axios from "axios";
 import {
-  ArrowRight,
-  Briefcase,
-  Calendar,
   CheckCircle,
-  Clock3,
   Fan,
   Hammer,
   House,
@@ -21,7 +17,6 @@ import {
   Search,
   ShieldCheck,
   Sparkles,
-  Star,
   Trees,
   Users,
   Wrench,
@@ -481,242 +476,84 @@ export default function LandingPage() {
       <section className="py-12 sm:py-14" id="popular-categories">
         <div className={sectionShell}>
           <div className="text-center">
-            <p className="page-kicker">Popular categories</p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-foreground sm:text-4xl">
-              Pros for every project in <span className="text-primary">New Jersey.</span>
+            <h2 className="text-3xl font-semibold tracking-[-0.05em] text-foreground sm:text-4xl">
+              Popular services
             </h2>
           </div>
 
-          <div className="mt-6 flex gap-3 overflow-x-auto pb-2">
-            {MARKETPLACE_CATEGORIES.map((category) => (
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {MARKETPLACE_CATEGORIES.slice(0, 6).map((category) => (
               <button
                 key={category.name}
                 type="button"
                 onClick={() => navigate(`/providers?category=${encodeURIComponent(category.name)}`)}
-                className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border/60 bg-white px-4 py-2.5 text-sm font-medium text-foreground shadow-sm transition hover:border-primary/20 hover:text-primary"
+                className="flex items-center gap-3 rounded-lg border border-border/60 bg-white p-4 transition hover:border-primary/30 hover:bg-primary/5"
               >
-                <span className={`inline-flex h-8 w-8 items-center justify-center rounded-full ${category.accent}`}>
-                  <category.icon className="h-4 w-4" />
+                <span className={`inline-flex h-10 w-10 items-center justify-center rounded-lg ${category.accent}`}>
+                  <category.icon className="h-5 w-5" />
                 </span>
-                {category.name}
-              </button>
-            ))}
-          </div>
-
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {(loading ? Array.from({ length: 4 }) : featuredCategoryCards).map((category, index) => (
-              <button
-                key={category?.name || `category-card-${index}`}
-                type="button"
-                onClick={() => category?.name && navigate(`/providers?category=${encodeURIComponent(category.name)}`)}
-                className="group overflow-hidden rounded-[1.35rem] border border-border/60 bg-white text-left shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/18 hover:shadow-[0_24px_50px_-34px_rgba(15,23,42,0.16)]"
-              >
-                {category ? (
-                  <>
-                    <div className="aspect-[1.25/1] overflow-hidden border-b border-border/60 bg-[linear-gradient(180deg,#ffffff_0%,#f5f8fb_100%)]">
-                      {category.previewImage ? (
-                        <img src={category.previewImage} alt={category.name} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
-                      ) : (
-                        <div className="flex h-full items-center justify-center">
-                          <span className={`inline-flex h-14 w-14 items-center justify-center rounded-[1.3rem] ${category.accent}`}>
-                            <category.icon className="h-6 w-6" />
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                    <div className="p-4">
-                      <p className="text-lg font-semibold tracking-[-0.03em] text-foreground">{category.name}</p>
-                      <p className="mt-2 text-sm leading-6 text-muted-foreground">{category.description}</p>
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        <span className="market-card-chip">{category.providerCount > 0 ? `${category.providerCount} featured pros` : "Verified pros available"}</span>
-                        <span className="market-card-chip market-card-chip-accent">{category.averageRating ? `${category.averageRating} rating` : "Quote ready"}</span>
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <div className="space-y-4 p-4">
-                    <div className="aspect-[1.25/1] animate-pulse rounded-[1.2rem] bg-slate-100" />
-                    <div className="h-5 w-1/2 animate-pulse rounded-lg bg-slate-100" />
-                    <div className="h-12 animate-pulse rounded-lg bg-slate-100" />
-                  </div>
-                )}
+                <span className="text-left">
+                  <p className="font-medium text-foreground">{category.name}</p>
+                  <p className="text-xs text-muted-foreground">Verified pros</p>
+                </span>
               </button>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-y border-border/60 bg-muted/35 py-12 sm:py-14" id="explore">
-        <div className={sectionShell}>
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="page-kicker">Explore more projects</p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-foreground sm:text-4xl">Projects and providers, without the clutter.</h2>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {featuredCategoryCards.slice(0, 4).map((category) => (
-                <button
-                  key={category.name}
-                  type="button"
-                  onClick={() => navigate(`/projects?category=${encodeURIComponent(category.name)}`)}
-                  className="rounded-full border border-border/60 bg-white px-4 py-2 text-sm font-medium text-foreground shadow-sm transition hover:border-primary/20 hover:text-primary"
-                >
-                  {category.name}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-8 grid gap-4 xl:grid-cols-[minmax(0,1.12fr)_minmax(0,0.88fr)]">
-            <Card className="overflow-hidden border-0 shadow-[0_26px_54px_-36px_rgba(15,23,42,0.18)]">
-              <div className="relative min-h-[22rem] overflow-hidden rounded-[1.45rem] bg-slate-950">
-                <img src={leadProjectImage} alt={leadProject?.title || "Featured New Jersey project"} className="absolute inset-0 h-full w-full object-cover" />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.1)_0%,rgba(15,23,42,0.82)_100%)]" />
-                <div className="relative flex h-full flex-col justify-end p-6 text-white sm:p-7">
-                  <div className="flex flex-wrap gap-2">
-                    <Badge className="market-card-chip market-card-chip-accent">{leadProject?.category || "Home project"}</Badge>
-                    <Badge className="market-card-chip">{leadProject ? formatBudget(leadProject) : "Budget visible on live requests"}</Badge>
-                  </div>
-                  <h3 className="mt-4 max-w-2xl text-2xl font-semibold tracking-[-0.04em] text-white sm:text-3xl">
-                    {leadProject?.title || "Fresh local projects appear here as homeowners post in New Jersey."}
-                  </h3>
-                  <p className="mt-3 max-w-2xl text-sm leading-7 text-white/76">
-                    {leadProject?.description || "Browse live homeowner requests, compare budgets, and respond with more context from the start."}
-                  </p>
-                  <div className="mt-5 flex flex-wrap gap-3 text-sm text-white/76">
-                    <span className="inline-flex items-center gap-2"><MapPin className="h-4 w-4" />{leadProject?.location || "New Jersey"}</span>
-                    <span className="inline-flex items-center gap-2"><Calendar className="h-4 w-4" />{leadProject ? formatTimeline(leadProject) : "Flexible timeline"}</span>
-                  </div>
-                  <div className="mt-6 flex flex-wrap gap-3">
-                    <Button className="rounded-lg bg-white text-slate-950 hover:bg-white/92" onClick={() => navigate(leadProject ? `/projects/${leadProject.id}` : "/projects") }>
-                      {leadProject ? "View project" : "Browse live projects"}
-                    </Button>
-                    <Button variant="outline" className="rounded-lg border-white/20 bg-transparent text-white hover:bg-white/10" onClick={() => navigate("/projects/post")}>
-                      Post your project
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </Card>
-
-            <div className="grid gap-4">
-              {(loading ? Array.from({ length: 3 }) : spotlightProviders).map((provider, index) => (
-                <Card key={provider?.id || `spotlight-provider-${index}`} className="result-card-surface border border-border/60 shadow-none">
-                  <CardContent className="p-5">
-                    {provider ? (
-                      <div className="flex gap-4">
-                        <Avatar className="h-16 w-16 rounded-[1rem] border border-border/60">
-                          <AvatarImage src={provider.profile_image} />
-                          <AvatarFallback className="bg-primary/10 text-primary text-lg font-semibold">
-                            {getProviderDisplayName(provider).charAt(0)}
-                          </AvatarFallback>
-                        </Avatar>
-                        <div className="min-w-0 flex-1">
-                          <div className="flex items-start justify-between gap-3">
-                            <div className="min-w-0">
-                              <p className="truncate text-lg font-semibold tracking-[-0.03em] text-foreground">{getProviderDisplayName(provider)}</p>
-                              <p className="mt-1 text-sm text-muted-foreground">{getProviderLocation(provider)}</p>
-                            </div>
-                            {provider.provider_profile?.is_verified ? (
-                              <Badge className="rounded-lg border-0 bg-emerald-100 px-3 py-1 text-emerald-700">Verified</Badge>
-                            ) : null}
-                          </div>
-
-                          <div className="mt-3 flex flex-wrap gap-2">
-                            <Badge className="market-card-chip market-card-chip-accent">{getProviderPrimaryCategory(provider)}</Badge>
-                            <Badge className="market-card-chip">
-                              <Star className="h-3.5 w-3.5 fill-yellow-400 text-yellow-400" />
-                              {Number(provider.avg_rating) > 0 ? Number(provider.avg_rating).toFixed(1) : "New"}
-                            </Badge>
-                            <Badge className="market-card-chip">
-                              <Clock3 className="h-3.5 w-3.5" />
-                              {formatResponseTime(provider)}
-                            </Badge>
-                          </div>
-
-                          <div className="mt-4 flex items-center justify-between gap-3">
-                            <p className="text-sm text-muted-foreground">{Number(provider.completed_projects) || 0} jobs completed</p>
-                            <Button size="sm" variant="outline" className="rounded-lg" onClick={() => navigate(`/providers/${provider.id}`)}>
-                              View profile
-                              <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
-                          </div>
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="space-y-4">
-                        <div className="h-6 w-1/2 animate-pulse rounded-lg bg-slate-100" />
-                        <div className="h-16 animate-pulse rounded-lg bg-slate-100" />
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-12 sm:py-14" id="resources">
+      <section className="py-12 sm:py-14 bg-muted/35" id="how-it-works">
         <div className={sectionShell}>
           <div className="text-center">
-            <p className="page-kicker">Resources for your home</p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-foreground sm:text-4xl">Helpful planning tools before you request quotes.</h2>
+            <h2 className="text-3xl font-semibold tracking-[-0.05em] text-foreground sm:text-4xl">
+              How it works
+            </h2>
           </div>
 
-          <div className="mt-8 grid gap-4 lg:grid-cols-3">
-            {resourceCards.map((card) => (
-              <div key={card.title} className="group relative min-h-[18rem] overflow-hidden rounded-[1.45rem] border border-border/60 bg-slate-950 shadow-sm">
-                <img src={card.image} alt={card.title} className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.1)_0%,rgba(15,23,42,0.84)_100%)]" />
-                <div className="relative flex h-full flex-col justify-end p-5 text-white sm:p-6">
-                  <p className="text-xl font-semibold tracking-[-0.03em] text-white">{card.title}</p>
-                  <p className="mt-2 text-sm leading-6 text-white/74">{card.copy}</p>
+          <div className="mt-10 grid gap-8 sm:grid-cols-3">
+            {[
+              {
+                step: "1",
+                title: "Post your job",
+                description: "Tell us what you need in just a few details."
+              },
+              {
+                step: "2", 
+                title: "Get matched",
+                description: "Local professionals respond with quotes within hours."
+              },
+              {
+                step: "3",
+                title: "Hire with confidence",
+                description: "Review ratings and hire verified pros. Enjoy secure messaging."
+              }
+            ].map((item) => (
+              <div key={item.step} className="text-center">
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white font-semibold">
+                  {item.step}
                 </div>
+                <h3 className="mt-4 font-semibold text-foreground">{item.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{item.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-t border-border/60 bg-muted/35 py-10 sm:py-12" id="coverage">
-        <div className={sectionShell}>
-          <div className="rounded-[1.45rem] border border-border/60 bg-white p-6 text-center shadow-sm sm:p-7">
-            <p className="page-kicker">County coverage</p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-foreground sm:text-4xl">Trusted pros across every New Jersey county.</h2>
-            <div className="mt-6 flex flex-wrap justify-center gap-2.5">
-              {FEATURED_COUNTIES.map((county) => (
-                <span key={county} className="market-card-chip rounded-full px-3 py-1.5 text-xs">
-                  {county}
-                </span>
-              ))}
-            </div>
-            <div className="mt-6">
-              <Button variant="outline" className="rounded-lg" onClick={() => navigate("/providers")}>
-                Browse providers near you
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       <section className="py-12 sm:py-14" id="final-cta">
         <div className={sectionShell}>
-          <div className="rounded-[1.7rem] border border-slate-900 bg-slate-950 px-6 py-8 text-white shadow-[0_36px_82px_-54px_rgba(15,23,42,0.4)] sm:px-8 sm:py-10">
-            <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
-              <div className="max-w-3xl">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/60">Ready to start</p>
-                <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-white sm:text-4xl">Get quotes from verified local professionals without the usual marketplace mess.</h2>
-                <p className="mt-4 text-base leading-7 text-white/72">Post your project, compare trusted pros, and move forward with more confidence.</p>
-              </div>
-              <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-                <Button size="lg" className="rounded-lg bg-white px-7 text-slate-950 hover:bg-white/92" onClick={() => navigate("/projects/post")}>
-                  Post a project
-                </Button>
-                <Button size="lg" variant="outline" className="rounded-lg border-white/20 bg-transparent px-7 text-white hover:bg-white/10" onClick={() => navigate("/providers")}>
-                  Browse providers
-                </Button>
-              </div>
+          <div className="rounded-lg border border-primary bg-primary/5 px-6 py-8 text-center sm:px-8 sm:py-10">
+            <h2 className="text-2xl font-semibold tracking-[-0.05em] text-foreground sm:text-3xl">Ready to get started?</h2>
+            <p className="mt-3 text-base text-muted-foreground">Post your project or browse verified professionals today.</p>
+            <div className="mt-6 flex flex-col gap-3 justify-center sm:flex-row">
+              <Button size="lg" className="rounded-lg" onClick={() => navigate("/projects/post")}>
+                Post a project
+              </Button>
+              <Button size="lg" variant="outline" className="rounded-lg" onClick={() => navigate("/providers")}>
+                Browse providers
+              </Button>
             </div>
           </div>
         </div>
