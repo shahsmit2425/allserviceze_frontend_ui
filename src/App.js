@@ -21,6 +21,7 @@ const PushNotificationsInit = lazy(() => import("./mobile/components/PushNotific
 const ForgotPasswordPage = lazy(() => import("./pages/ForgotPasswordPage"));
 const ServicesPage = lazy(() => import("./pages/ServicesPage"));
 const PricingPage = lazy(() => import("./pages/PricingPage"));
+const HelpCenterPage = lazy(() => import("./pages/HelpCenterPage"));
 const ProviderProfile = lazy(() => import("./pages/ProviderProfile"));
 const CustomerDashboard = lazy(() => import("./pages/CustomerDashboard"));
 const ProviderDashboard = lazy(() => import("./pages/ProviderDashboard"));
@@ -235,6 +236,7 @@ function AppRoutes() {
       <Route path="/auth" element={user ? <Navigate to={getDefaultRedirect()} replace /> : <AuthPage />} />
       <Route path="/services" element={<ServicesPage />} />
       <Route path="/pricing" element={<PricingPage />} />
+      <Route path="/help" element={<HelpCenterPage />} />
       
       {/* Search Route - Public */}
       <Route path="/search" element={<SearchResults />} />
