@@ -224,12 +224,12 @@ function AuthDivider({ children }) {
 function AuthField({ id, label, icon: Icon, hint, className, inputClassName, ...props }) {
   return (
     <div className={cn("space-y-2", className)}>
-      <Label htmlFor={id} className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{label}</Label>
+      <Label htmlFor={id} className="text-xs font-semibold uppercase tracking-wide text-white/70">{label}</Label>
       <div className="relative">
-        {Icon ? <Icon className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground/60" /> : null}
-        <Input id={id} className={cn("h-11 rounded-xl border-border/60 bg-muted/30 text-sm transition-colors focus:border-primary focus:bg-background", Icon ? "pl-10" : "", inputClassName)} {...props} />
+        {Icon ? <Icon className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-white/50" /> : null}
+        <Input id={id} className={cn("h-11 rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm text-sm text-white placeholder:text-white/40 transition-colors focus:border-white/40 focus:bg-white/15", Icon ? "pl-10" : "", inputClassName)} {...props} />
       </div>
-      {hint ? <p className="text-[0.72rem] leading-5 text-muted-foreground">{hint}</p> : null}
+      {hint ? <p className="text-[0.72rem] leading-5 text-white/60">{hint}</p> : null}
     </div>
   );
 }
@@ -1001,7 +1001,7 @@ export default function AuthPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[linear-gradient(180deg,#f8fbff_0%,#ffffff_38%,#f5f8f7_100%)]">
+    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       <Helmet>
         <title>{authPageTitle}</title>
         <meta name="description" content={authPageDescription} />
@@ -1018,22 +1018,25 @@ export default function AuthPage() {
         <script type="application/ld+json">{JSON.stringify(authSchema)}</script>
       </Helmet>
       <div className="page-shell safe-top-shell safe-bottom-shell py-4 sm:py-6 lg:py-8">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl opacity-20" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl opacity-20" />
+        
         <div className={cn(
-          "mx-auto grid min-h-[calc(100vh-2rem)] w-full max-w-[96rem] overflow-hidden rounded-2xl border border-border/75 bg-white shadow-[0_34px_90px_-56px_rgba(15,23,42,0.24)]",
+          "mx-auto grid min-h-[calc(100vh-2rem)] w-full max-w-[96rem] overflow-hidden rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl shadow-2xl relative z-10",
           isNativeTablet ? "xl:grid-cols-[minmax(0,29rem)_minmax(0,1fr)]" : "lg:grid-cols-[minmax(0,29rem)_minmax(0,1fr)]"
         )}>
           <section className={cn(
-            "order-2 flex bg-white",
+            "order-2 flex bg-white/5 backdrop-blur-sm border-r border-white/10",
             isPhone ? "px-5 py-6 sm:px-8" : "px-6 py-8 sm:px-8 lg:order-1 lg:px-10 xl:px-12"
           )}>
             <div className="mx-auto flex w-full max-w-[25rem] flex-col justify-center">
               <div className="mb-8 flex items-center justify-between gap-4">
-                <AuthBrandLink compact className="border-transparent bg-transparent px-0 py-0 shadow-none backdrop-blur-0 hover:translate-y-0 hover:border-transparent" />
+                <AuthBrandLink compact className="border-transparent bg-transparent px-0 py-0 shadow-none backdrop-blur-0 hover:translate-y-0 hover:border-transparent dark text-white" />
                 {activeTab === "register" ? (
                   <button
                     type="button"
                     onClick={() => handleTabChange("login")}
-                    className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                    className="text-sm font-medium text-white/70 transition-colors hover:text-white"
                   >
                     Back to login
                   </button>
@@ -1078,11 +1081,11 @@ export default function AuthPage() {
                   <div className="space-y-6">
                     <div className="space-y-3">
                       <p className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-primary">Welcome back</p>
-                      <h1 className="font-heading text-[2.35rem] font-extrabold leading-[0.96] tracking-[-0.06em] text-foreground">
-                        Welcome Back
+                      <h1 className="font-heading text-[2.35rem] font-extrabold leading-[0.96] tracking-[-0.06em] text-white">
+                        Sign In
                       </h1>
-                      <p className="text-sm leading-7 text-muted-foreground">
-                        Sign in to review quotes, message providers, and keep every home-service project organized in one place.
+                      <p className="text-sm leading-7 text-white/70">
+                        Access your account to manage quotes and connect with professionals.
                       </p>
                     </div>
 
@@ -1096,7 +1099,7 @@ export default function AuthPage() {
                       ))}
                     </div>
 
-                    <Card className="border-border/75 bg-white shadow-[0_24px_54px_-40px_rgba(15,23,42,0.18)]">
+                    <Card className="border-white/20 bg-white/10 backdrop-blur-md shadow-2xl">
                       <CardContent className="p-5 sm:p-6">
                         {isNative ? (
                           <Suspense fallback={null}>
@@ -1199,12 +1202,14 @@ export default function AuthPage() {
                 <TabsContent value="register" className="mt-0">
                   <div className="space-y-6">
                     <div className="space-y-3">
-                      <p className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-primary">Create account</p>
-                      <h1 className="font-heading text-[2.1rem] font-extrabold leading-[0.98] tracking-[-0.06em] text-foreground">
-                        Join the marketplace
+                      <p className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-primary">Getting started</p>
+                      <h1 className="font-heading text-[2.35rem] font-extrabold leading-[0.96] tracking-[-0.06em] text-white">
+                        Create Account
                       </h1>
-                      <p className="text-sm leading-7 text-muted-foreground">
-                        Create an account to post projects as a homeowner or manage leads as a provider.
+                      <p className="text-sm leading-7 text-white/70">
+                        {isAdmin
+                          ? "Create an admin account to manage the marketplace."
+                          : "Join thousands of professionals and homeowners. Start managing projects today."}
                       </p>
                     </div>
 
@@ -1362,7 +1367,7 @@ export default function AuthPage() {
           </section>
 
           {!isPhone ? (
-            <section className="order-1 relative min-h-[24rem] overflow-hidden border-b border-border/70 bg-slate-950 lg:order-2 lg:min-h-full lg:border-b-0 lg:border-l">
+            <section className="order-1 relative min-h-[24rem] overflow-hidden border-b border-white/10 bg-gradient-to-br from-slate-800/50 to-slate-900/50 lg:order-2 lg:min-h-full lg:border-b-0 lg:border-l lg:border-white/10">
               <img
                 src="/hero-home.jpg"
                 alt="Real home-service professionals working with homeowners on renovation and repair projects"

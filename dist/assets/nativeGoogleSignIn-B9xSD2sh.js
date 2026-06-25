@@ -1,0 +1,1 @@
+import{r as n}from"./vendor-native-Dogns-CX.js";const o=n("NativeGoogleSignIn",{web:()=>({signIn:async()=>{throw new Error("NativeGoogleSignIn is only available on native mobile builds")},signOut:async()=>{}})});export{o as NativeGoogleSignIn};

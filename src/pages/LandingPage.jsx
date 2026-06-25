@@ -383,50 +383,48 @@ export default function LandingPage() {
         <link rel="canonical" href="https://servicetones.com/" />
       </Helmet>
 
-      <section className="relative overflow-hidden bg-slate-950 text-white">
-        <img
-          src={heroMediaItems[0]?.src || "/hero-home.jpg"}
-          alt={heroMediaItems[0]?.alt || "Local home service work in New Jersey"}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(15,23,42,0.88)_0%,rgba(15,23,42,0.66)_46%,rgba(15,23,42,0.24)_100%)]" />
-
+      <section className="relative overflow-hidden py-16 sm:py-20 lg:py-28 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+        <div className="absolute -top-96 -left-96 w-96 h-96 rounded-full bg-primary/20 blur-3xl opacity-30" />
+        <div className="absolute -bottom-96 -right-96 w-96 h-96 rounded-full bg-blue-500/20 blur-3xl opacity-30" />
+        
         <div className="relative">
-          <div className={`${sectionShell} grid gap-8 py-10 sm:py-12 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-end lg:py-16`}>
-            <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/14 bg-white/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/88 backdrop-blur-sm">
-                <ShieldCheck className="h-3.5 w-3.5" />
-                Verified New Jersey marketplace
+          <div className={`${sectionShell} grid gap-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center`}>
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-2 text-sm font-semibold text-primary backdrop-blur-sm mb-6">
+                <span className="h-2 w-2 rounded-full bg-primary" />
+                Trusted by 15,000+ professionals
               </div>
-              <h1 className="mt-5 font-heading text-[clamp(2.8rem,5.4vw,4.9rem)] font-extrabold leading-[0.92] tracking-[-0.06em] text-white">
-                Find Verified New Jersey Pros In Minutes.
+              
+              <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-[-0.06em] text-white mb-6">
+                Find verified <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">local professionals</span> instantly
               </h1>
-              <p className="mt-4 max-w-2xl text-lg leading-8 text-white/76 sm:text-xl">
-                Compare trusted local professionals, review pricing and ratings, and request quotes without the usual phone-tag.
+              
+              <p className="text-lg sm:text-xl leading-8 text-white/80 mb-8 max-w-2xl">
+                Post your project, get matched with trusted providers, and compare quotes in one place. No phone calls needed.
               </p>
 
-              <form onSubmit={handleHeroSearch} className="mt-8 grid gap-3 rounded-[1.3rem] bg-white p-3 shadow-[0_28px_64px_-38px_rgba(15,23,42,0.42)] lg:grid-cols-[minmax(0,1fr)_10rem_14rem]">
-                <div className="flex items-center gap-3 rounded-xl border border-border/60 bg-background px-4 py-3.5">
-                  <Search className="h-4 w-4 text-muted-foreground" />
+              <form onSubmit={handleHeroSearch} className="mb-10 grid gap-3 rounded-2xl bg-white/10 p-3 backdrop-blur-xl border border-white/20 lg:grid-cols-[minmax(0,1fr)_14rem]">
+                <div className="flex items-center gap-3 rounded-xl bg-white px-5 py-4">
+                  <Search className="h-5 w-5 text-slate-700" />
                   <Input
                     list="landing-service-options"
                     value={serviceNeeded}
                     onChange={(event) => setServiceNeeded(event.target.value)}
                     placeholder="What service do you need?"
-                    className="h-auto border-0 bg-transparent px-0 py-0 text-base text-foreground shadow-none focus-visible:ring-0"
+                    className="h-auto border-0 bg-transparent px-0 py-0 text-base text-slate-900 shadow-none placeholder:text-slate-500 focus-visible:ring-0"
                   />
                 </div>
-                <div className="flex items-center gap-3 rounded-xl border border-border/60 bg-background px-4 py-3.5">
-                  <MapPin className="h-4 w-4 text-muted-foreground" />
+                <div className="flex items-center gap-3 rounded-xl bg-white px-5 py-4">
+                  <MapPin className="h-5 w-5 text-slate-700" />
                   <Input
                     value={locationQuery}
                     onChange={(event) => setLocationQuery(event.target.value)}
                     placeholder="ZIP code"
-                    className="h-auto border-0 bg-transparent px-0 py-0 text-base text-foreground shadow-none focus-visible:ring-0"
+                    className="h-auto border-0 bg-transparent px-0 py-0 text-base text-slate-900 shadow-none placeholder:text-slate-500 focus-visible:ring-0"
                   />
                 </div>
-                <Button type="submit" size="lg" className="min-h-14 rounded-xl bg-[linear-gradient(90deg,#ff5a1f_0%,#ff8a00_100%)] text-base font-semibold text-white shadow-[0_20px_40px_-24px_rgba(255,120,31,0.54)] hover:opacity-95">
-                  Get Free Quotes
+                <Button type="submit" size="lg" className="min-h-14 rounded-xl bg-gradient-to-r from-primary to-primary/80 text-base font-semibold text-white shadow-xl hover:shadow-2xl transition-all">
+                  Search
                 </Button>
                 <datalist id="landing-service-options">
                   {MARKETPLACE_CATEGORIES.map((category) => (
@@ -435,38 +433,28 @@ export default function LandingPage() {
                 </datalist>
               </form>
 
-              <div className="mt-4 flex flex-wrap gap-2.5 text-sm text-white/72">
-                {TRUST_POINTS.map((point) => (
-                  <span key={point} className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/10 px-3.5 py-2 backdrop-blur-sm">
-                    <CheckCircle className="h-4 w-4 text-white" />
-                    {point}
-                  </span>
-                ))}
-              </div>
-
-              <div className="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {TRUST_STATS.map((stat) => (
-                  <div key={stat.label} className="rounded-[1.1rem] border border-white/12 bg-white/10 px-4 py-4 backdrop-blur-sm">
-                    <div className="flex items-center justify-between gap-3">
-                      <div>
-                        <p className="text-2xl font-bold tracking-[-0.05em] text-white">{stat.value}</p>
-                        <p className="mt-1 text-sm text-white/72">{stat.label}</p>
-                      </div>
-                      <stat.icon className="h-5 w-5 text-white/86" />
-                    </div>
+                  <div key={stat.label} className="text-center">
+                    <stat.icon className="h-6 w-6 text-primary mx-auto mb-3" />
+                    <p className="text-2xl sm:text-3xl font-bold text-white">{stat.value}</p>
+                    <p className="text-xs sm:text-sm text-white/70 mt-2">{stat.label}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="hidden lg:block">
-              <div className="rounded-[1.7rem] border border-white/12 bg-white/10 p-5 backdrop-blur-md">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/62">How ServiceTones works</p>
-                <div className="mt-4 space-y-3 rounded-[1.3rem] bg-white/96 p-4 text-slate-900">
-                  {WHY_HOMEOWNERS.map((item) => (
-                    <div key={item.title} className="rounded-xl border border-border/60 px-4 py-3">
-                      <p className="text-sm font-semibold">{item.title}</p>
-                      <p className="mt-1 text-sm text-muted-foreground">{item.copy}</p>
+            <div className="hidden lg:flex lg:items-center lg:justify-center">
+              <div className="rounded-3xl border border-white/20 bg-white/10 p-8 backdrop-blur-xl max-w-sm">
+                <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-6">How it works</p>
+                <div className="space-y-4">
+                  {WHY_HOMEOWNERS.map((item, idx) => (
+                    <div key={item.title} className="flex gap-4">
+                      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary font-bold text-sm">{idx + 1}</div>
+                      <div>
+                        <p className="font-semibold text-white text-sm">{item.title}</p>
+                        <p className="mt-1 text-sm text-white/70">{item.copy}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -476,67 +464,78 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="py-12 sm:py-14" id="popular-categories">
+      <section className="py-16 sm:py-20 lg:py-24" id="popular-categories">
         <div className={sectionShell}>
-          <div className="text-center">
-            <h2 className="text-3xl font-semibold tracking-[-0.05em] text-foreground sm:text-4xl">
-              Popular services
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.05em] text-foreground mb-4">
+              Services in demand
             </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Browse trending categories and find the right professional for your needs
+            </p>
           </div>
 
-          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {MARKETPLACE_CATEGORIES.slice(0, 6).map((category) => (
               <button
                 key={category.name}
                 type="button"
                 onClick={() => navigate(`/providers?category=${encodeURIComponent(category.name)}`)}
-                className="flex items-center gap-3 rounded-lg border border-border/60 bg-white p-4 transition hover:border-primary/30 hover:bg-primary/5"
+                className="group relative overflow-hidden rounded-2xl border border-border/40 bg-gradient-to-br from-white to-muted/20 p-6 transition-all hover:border-primary/60 hover:shadow-lg hover:shadow-primary/10"
               >
-                <span className={`inline-flex h-10 w-10 items-center justify-center rounded-lg ${category.accent}`}>
-                  <category.icon className="h-5 w-5" />
-                </span>
-                <span className="text-left">
-                  <p className="font-medium text-foreground">{category.name}</p>
-                  <p className="text-xs text-muted-foreground">Verified pros</p>
-                </span>
+                <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-gradient-to-br from-primary/20 to-transparent blur-2xl opacity-0 transition-opacity group-hover:opacity-100" />
+                <div className="relative">
+                  <div className={`inline-flex h-14 w-14 items-center justify-center rounded-xl ${category.accent} mb-4 group-hover:scale-110 transition-transform`}>
+                    <category.icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-foreground text-left">{category.name}</h3>
+                  <p className="text-sm text-muted-foreground text-left mt-2">Verified professionals ready</p>
+                </div>
               </button>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-12 sm:py-14 bg-muted/35" id="how-it-works">
+      <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-muted/50 to-background" id="how-it-works">
         <div className={sectionShell}>
-          <div className="text-center">
-            <h2 className="text-3xl font-semibold tracking-[-0.05em] text-foreground sm:text-4xl">
-              How it works
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.05em] text-foreground mb-4">
+              Simple three-step process
             </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Get matched with verified professionals and hire with confidence
+            </p>
           </div>
 
-          <div className="mt-10 grid gap-8 sm:grid-cols-3">
+          <div className="grid gap-8 sm:grid-cols-3 relative">
+            <div className="absolute top-12 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent hidden sm:block" />
+            
             {[
               {
                 step: "1",
-                title: "Post your job",
-                description: "Tell us what you need in just a few details."
+                title: "Post your project",
+                description: "Tell us what you need and when you need it done. It takes just a few minutes."
               },
               {
                 step: "2", 
-                title: "Get matched",
-                description: "Local professionals respond with quotes within hours."
+                title: "Get instant quotes",
+                description: "Verified pros respond with detailed quotes and their availability within hours."
               },
               {
                 step: "3",
-                title: "Hire with confidence",
-                description: "Review ratings and hire verified pros. Enjoy secure messaging."
+                title: "Hire & collaborate",
+                description: "Review profiles, compare pricing, and hire the best fit. Message securely."
               }
             ].map((item) => (
-              <div key={item.step} className="text-center">
-                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white font-semibold">
-                  {item.step}
+              <div key={item.step} className="relative">
+                <div className="flex flex-col items-center text-center">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary/70 text-white font-bold text-xl shadow-lg shadow-primary/30 mb-6 relative z-10">
+                    {item.step}
+                  </div>
+                  <h3 className="text-xl font-semibold text-foreground mb-3">{item.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{item.description}</p>
                 </div>
-                <h3 className="mt-4 font-semibold text-foreground">{item.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{item.description}</p>
               </div>
             ))}
           </div>
@@ -545,18 +544,24 @@ export default function LandingPage() {
 
 
 
-      <section className="py-12 sm:py-14" id="final-cta">
+      <section className="py-16 sm:py-20 lg:py-24" id="final-cta">
         <div className={sectionShell}>
-          <div className="rounded-lg border border-primary bg-primary/5 px-6 py-8 text-center sm:px-8 sm:py-10">
-            <h2 className="text-2xl font-semibold tracking-[-0.05em] text-foreground sm:text-3xl">Ready to get started?</h2>
-            <p className="mt-3 text-base text-muted-foreground">Post your project or browse verified professionals today.</p>
-            <div className="mt-6 flex flex-col gap-3 justify-center sm:flex-row">
-              <Button size="lg" className="rounded-lg" onClick={() => navigate("/projects/post")}>
-                Post a project
-              </Button>
-              <Button size="lg" variant="outline" className="rounded-lg" onClick={() => navigate("/providers")}>
-                Browse providers
-              </Button>
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 to-slate-800 px-8 py-16 text-center sm:px-12 sm:py-20 border border-primary/20">
+            <div className="absolute -top-20 -right-20 h-40 w-40 rounded-full bg-primary/10 blur-3xl" />
+            <div className="absolute -bottom-20 -left-20 h-40 w-40 rounded-full bg-blue-500/10 blur-3xl" />
+            
+            <div className="relative z-10">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.05em] text-white mb-4">Ready to get started?</h2>
+              <p className="text-lg text-white/80 max-w-2xl mx-auto mb-10">Join thousands of homeowners who've found the perfect professional for their project.</p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="rounded-xl px-8 bg-gradient-to-r from-primary to-primary/80 text-white shadow-lg hover:shadow-xl transition-all" onClick={() => navigate("/projects/post")}>
+                  Post a project
+                </Button>
+                <Button size="lg" variant="outline" className="rounded-xl px-8 border-white/30 text-white hover:bg-white/10" onClick={() => navigate("/providers")}>
+                  Browse professionals
+                </Button>
+              </div>
             </div>
           </div>
         </div>

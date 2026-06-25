@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+Allow: /projects
+Allow: /projects/
+Allow: /providers
+Allow: /providers/
+Allow: /search
+
+Disallow: /dashboard
+Disallow: /messages
+Disallow: /settings
+Disallow: /post-project
+Disallow: /admin
+Disallow: /auth
+Disallow: /profile
+Disallow: /notifications
+Disallow: /billing
+Disallow: /api/
+
+Sitemap: https://servicetones.com/api/sitemap.xml
