@@ -9,14 +9,17 @@ import { Badge } from "../components/ui/badge";
 import { Card, CardContent } from "../components/ui/card";
 import axios from "axios";
 import {
+  Briefcase,
   CheckCircle,
   Fan,
   Hammer,
   House,
   MapPin,
+  Paintbrush,
   Search,
   ShieldCheck,
   Sparkles,
+  Star,
   Trees,
   Users,
   Wrench,
@@ -47,7 +50,7 @@ const MARKETPLACE_CATEGORIES = [
   },
   {
     name: "Painting",
-    icon: BrushIcon,
+    icon: Paintbrush,
     accent: "bg-rose-100 text-rose-700",
     description: "Interior repainting, trim work, and touch-ups.",
   },
