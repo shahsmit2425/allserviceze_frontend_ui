@@ -996,58 +996,59 @@ export default function AuthPage() {
           </section>
 
           {/* Right Panel - Benefits */}
-          <section className="hidden lg:flex flex-col justify-center bg-gradient-to-br from-slate-900 to-slate-800 p-12 text-white relative overflow-hidden">
-            {/* Decorative elements */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-80 h-80 bg-amber-400/5 rounded-full blur-3xl" />
+          <section className="hidden lg:flex flex-col justify-center bg-gradient-to-br from-slate-50 via-amber-50/30 to-white p-14 relative overflow-hidden border-l border-slate-200">
+            {/* Subtle decorative elements */}
+            <div className="absolute top-0 right-0 w-80 h-80 bg-amber-200/8 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-72 h-72 bg-slate-200/5 rounded-full blur-3xl" />
             
-            <div className="relative z-10 max-w-md">
-              <div className="mb-12">
-                <div className="inline-block px-4 py-2 bg-primary/20 rounded-full mb-6">
-                  <span className="text-primary text-sm font-semibold" style={{ fontFamily: "'Lora', serif" }}>Why ServiceTones</span>
+            <div className="relative z-10 max-w-lg">
+              <div className="mb-14">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full mb-6 border border-slate-200">
+                  <span className="w-2 h-2 rounded-full bg-slate-900" />
+                  <span className="text-slate-700 text-sm font-semibold" style={{ fontFamily: "'Lora', serif" }}>Why ServiceTones</span>
                 </div>
-                <h2 className="text-4xl font-bold mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
-                  A Better Way to Connect
+                <h2 className="text-4xl font-bold mb-4 text-slate-900" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  Build Trust, Together
                 </h2>
-                <p className="text-white/80 text-lg" style={{ fontFamily: "'Lora', serif" }}>
-                  Join thousands of professionals and homeowners building trust, one project at a time.
+                <p className="text-slate-600 text-lg leading-relaxed" style={{ fontFamily: "'Lora', serif" }}>
+                  Connect with verified professionals and manage your entire project in one organized place.
                 </p>
               </div>
 
-              <div className="space-y-8">
+              <div className="space-y-6">
                 {[
-                  { number: "01", title: "Verified Professionals", desc: "Every pro is background checked and rated by real customers" },
-                  { number: "02", title: "Secure Transactions", desc: "Complete quotes and contracts with organized communication" },
-                  { number: "03", title: "Quality Assured", desc: "Average 4.8 rating with 25,000+ completed projects" },
-                  { number: "04", title: "Transparent Pricing", desc: "Compare quotes side-by-side and make informed decisions" }
-                ].map((item) => (
-                  <div key={item.number} className="flex gap-4">
-                    <div className="flex-shrink-0">
-                      <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-primary/20 text-primary font-semibold text-lg" style={{ fontFamily: "'Playfair Display', serif" }}>
-                        {item.number}
+                  { icon: "✓", title: "Verified Professionals", desc: "Background checked and rated by real customers" },
+                  { icon: "★", title: "Quality Assured", desc: "4.8 rating from 25,000+ completed projects" },
+                  { icon: "✓", title: "Transparent Pricing", desc: "Compare quotes side-by-side, no hidden fees" },
+                  { icon: "◆", title: "Secure & Organized", desc: "All communication and contracts in one place" }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex gap-4 group">
+                    <div className="flex-shrink-0 mt-1">
+                      <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-slate-200 text-slate-700 font-bold text-sm group-hover:bg-slate-300 transition-colors">
+                        {item.icon}
                       </div>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-lg mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>{item.title}</h3>
-                      <p className="text-white/70 text-sm" style={{ fontFamily: "'Lora', serif" }}>{item.desc}</p>
+                      <h3 className="font-semibold text-slate-900 mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>{item.title}</h3>
+                      <p className="text-slate-600 text-sm" style={{ fontFamily: "'Lora', serif" }}>{item.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-12 pt-8 border-t border-white/10">
-                <div className="grid grid-cols-3 gap-4">
+              <div className="mt-14 pt-8 border-t border-slate-200">
+                <div className="grid grid-cols-3 gap-6">
                   <div>
-                    <div className="text-3xl font-bold text-primary mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>15K+</div>
-                    <p className="text-white/70 text-xs" style={{ fontFamily: "'Lora', serif" }}>Verified Pros</p>
+                    <div className="text-3xl font-bold text-slate-900 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>15K+</div>
+                    <p className="text-slate-600 text-sm" style={{ fontFamily: "'Lora', serif" }}>Verified Professionals</p>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-primary mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>25K+</div>
-                    <p className="text-white/70 text-xs" style={{ fontFamily: "'Lora', serif" }}>Projects Done</p>
+                    <div className="text-3xl font-bold text-slate-900 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>25K+</div>
+                    <p className="text-slate-600 text-sm" style={{ fontFamily: "'Lora', serif" }}>Projects Completed</p>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-primary mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>4.8★</div>
-                    <p className="text-white/70 text-xs" style={{ fontFamily: "'Lora', serif" }}>Avg Rating</p>
+                    <div className="text-3xl font-bold text-slate-900 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>4.8★</div>
+                    <p className="text-slate-600 text-sm" style={{ fontFamily: "'Lora', serif" }}>Average Rating</p>
                   </div>
                 </div>
               </div>
@@ -1082,10 +1083,10 @@ export default function AuthPage() {
         <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden shadow-2xl">
           {/* Left Panel - Form */}
           <section className={cn(
-            "flex flex-col justify-center bg-white p-8 sm:p-12",
+            "flex flex-col justify-center bg-white p-8 sm:p-12 lg:p-14",
             isPhone ? "px-5 py-8 sm:px-8" : ""
           )}>
-            <div className="w-full max-w-sm mx-auto">
+            <div className="w-full max-w-md mx-auto">
               <div className="mb-12 flex items-center justify-between gap-4">
                 <AuthBrandLink compact className="border-transparent bg-transparent px-0 py-0 shadow-none backdrop-blur-0 hover:translate-y-0 hover:border-transparent" />
               </div>
