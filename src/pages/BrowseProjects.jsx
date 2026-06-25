@@ -837,7 +837,7 @@ export default function BrowseProjects() {
                   return (
                     <Card
                       key={project.id}
-                      className="result-card-surface border border-border/60 shadow-sm"
+                      className="result-card-surface border border-slate-300 bg-white rounded-2xl hover:shadow-lg hover:border-slate-400 transition-all"
                       data-testid={`project-card-${project.id}`}
                       style={{ contentVisibility: 'auto', containIntrinsicSize: '360px' }}
                     >
@@ -888,16 +888,16 @@ export default function BrowseProjects() {
                           </div>
 
                           <div className="flex flex-wrap items-center gap-2">
-                            <Badge className={urgencyColors[project.urgency]}>{project.urgency}</Badge>
-                            <Badge variant="outline" className="rounded-lg px-3 py-1 text-xs font-semibold">{project.category}</Badge>
+                            <Badge className="bg-amber-50 text-amber-700 border border-amber-200 rounded-full px-3 py-1 text-xs font-semibold">{project.urgency}</Badge>
+                            <Badge className="bg-slate-100 text-slate-700 border border-slate-200 rounded-full px-3 py-1 text-xs font-semibold">{project.category}</Badge>
                             {project.customerVerified ? (
-                              <Badge className="rounded-lg border-0 bg-emerald-100 px-3 py-1 text-emerald-700">
+                              <Badge className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-emerald-700">
                                 <CheckCircle className="mr-1 h-3 w-3" />
                                 Verified customer
                               </Badge>
                             ) : null}
                             {project.derivedProjectType ? (
-                              <Badge variant="outline" className="rounded-lg px-3 py-1 text-xs font-semibold">{project.derivedProjectType}</Badge>
+                              <Badge className="bg-slate-100 text-slate-700 border border-slate-200 rounded-full px-3 py-1 text-xs font-semibold">{project.derivedProjectType}</Badge>
                             ) : null}
                           </div>
 
@@ -947,12 +947,12 @@ export default function BrowseProjects() {
                               <span className="font-medium text-foreground">{opportunityLabel}</span>
                             </div>
                             <div className="flex flex-col gap-2 sm:flex-row">
-                              <Button asChild size="sm" variant="outline" className="min-w-[9.5rem] justify-center rounded-lg border-border/60">
+                              <Button asChild size="sm" className="min-w-[9.5rem] justify-center rounded-xl border border-slate-300 text-slate-900 hover:bg-slate-50 font-semibold">
                                 <Link to={projectUrl} aria-label={`View details for ${project.title}`}>
                                   View Project
                                 </Link>
                               </Button>
-                              <Button asChild size="sm" className="min-w-[9.5rem] justify-center rounded-lg">
+                              <Button asChild size="sm" className="min-w-[9.5rem] justify-center rounded-xl bg-gradient-to-r from-slate-900 to-slate-800 text-white hover:from-slate-800 hover:to-slate-700 font-semibold">
                                 <Link to={projectUrl} aria-label={`Submit bid for ${project.title}`}>
                                   {getPrimaryActionLabel(project)}
                                   <ArrowRight className="ml-2 h-4 w-4" />

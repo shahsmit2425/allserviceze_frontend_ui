@@ -818,7 +818,7 @@ export default function BrowseProviders() {
                 {sortedProviders.map((provider) => (
                   <Card 
                     key={provider.id} 
-                    className="result-card-surface cursor-pointer group overflow-hidden border border-border/60 shadow-[0_24px_60px_-48px_rgba(15,23,42,0.24)] transition-all duration-200 hover:-translate-y-0.5"
+                    className="result-card-surface cursor-pointer group overflow-hidden border border-slate-300 bg-white rounded-2xl transition-all duration-200 hover:shadow-lg hover:border-slate-400"
                     onClick={() => navigate(`/providers/${provider.id}`)}
                   >
                     <CardContent className="p-4 sm:p-5 lg:p-6">
@@ -870,32 +870,32 @@ export default function BrowseProviders() {
                           </div>
 
                           <div className="flex flex-wrap gap-2">
-                            <Badge className="market-card-chip market-card-chip-accent">
-                              <Star className="h-3.5 w-3.5 fill-yellow-400 text-yellow-400" />
+                            <Badge className="bg-slate-100 text-slate-700 border border-slate-200 rounded-full px-3 py-1 text-sm font-medium">
+                              <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400 mr-1" />
                               {provider.avg_rating > 0 ? provider.avg_rating.toFixed(1) : "New"}
-                              <span className="text-muted-foreground">{formatReviewCount(provider.total_reviews)}</span>
+                              <span className="text-slate-500 ml-1">{formatReviewCount(provider.total_reviews)}</span>
                             </Badge>
                             {(provider.provider_profile?.is_verified || provider.document_verified) && (
-                              <Badge className="market-card-chip">
-                                <ShieldCheck className="h-3.5 w-3.5 text-primary" />
+                              <Badge className="bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full px-3 py-1 text-sm font-medium">
+                                <ShieldCheck className="h-3.5 w-3.5 text-emerald-600 mr-1" />
                                 Verified
                               </Badge>
                             )}
                             {provider.document_verified && (
-                              <Badge className="market-card-chip">
-                                <CheckCircle className="h-3.5 w-3.5 text-emerald-600" />
+                              <Badge className="bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-3 py-1 text-sm font-medium">
+                                <CheckCircle className="h-3.5 w-3.5 text-blue-600 mr-1" />
                                 ID checked
                               </Badge>
                             )}
                             {(provider.provider_profile?.licenses || []).length > 0 && (
-                              <Badge className="market-card-chip">
-                                <FileText className="h-3.5 w-3.5 text-primary" />
+                              <Badge className="bg-slate-100 text-slate-700 border border-slate-200 rounded-full px-3 py-1 text-sm font-medium">
+                                <FileText className="h-3.5 w-3.5 text-slate-600 mr-1" />
                                 Licensed
                               </Badge>
                             )}
-                            <Badge className="market-card-chip">
-                              <Clock3 className="h-3.5 w-3.5 text-primary" />
-                              {provider.provider_profile?.available ? "Available now" : "Schedule check needed"}
+                            <Badge className="bg-amber-50 text-amber-700 border border-amber-200 rounded-full px-3 py-1 text-sm font-medium">
+                              <Clock3 className="h-3.5 w-3.5 text-amber-600 mr-1" />
+                              {provider.provider_profile?.available ? "Available now" : "Check availability"}
                             </Badge>
                           </div>
 
@@ -1005,14 +1005,13 @@ export default function BrowseProviders() {
                             </div>
 
                             <div className="mt-4 grid gap-2 sm:grid-cols-3">
-                              <Button size="sm" className="rounded-lg" onClick={(e) => { e.stopPropagation(); navigate(`/providers/${provider.id}`); }}>
+                              <Button size="sm" className="rounded-xl bg-gradient-to-r from-slate-900 to-slate-800 text-white hover:from-slate-800 hover:to-slate-700 font-semibold" onClick={(e) => { e.stopPropagation(); navigate(`/providers/${provider.id}`); }}>
                                 View Profile
                                 <ArrowRight className="ml-2 h-4 w-4" />
                               </Button>
                               <Button
                                 size="sm"
-                                variant="outline"
-                                className="rounded-lg"
+                                className="rounded-xl border border-slate-300 text-slate-900 hover:bg-slate-50 font-semibold"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   navigate(`/providers/${provider.id}`);
