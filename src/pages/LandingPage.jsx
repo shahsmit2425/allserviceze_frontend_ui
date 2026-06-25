@@ -2,11 +2,13 @@ import { useEffect, useMemo, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
 import { AppShell } from "../components/AppShell";
+import { PremiumHero } from "../components/premium/PremiumHero";
+import { PremiumFeatures } from "../components/premium/PremiumFeatures";
+import { PremiumTestimonials } from "../components/premium/PremiumTestimonials";
+import { PremiumCTA } from "../components/premium/PremiumCTA";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
-import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
-import { Badge } from "../components/ui/badge";
-import { Card, CardContent } from "../components/ui/card";
+import { Card } from "../components/ui/card";
 import axios from "axios";
 import {
   Briefcase,
@@ -16,7 +18,7 @@ import {
   House,
   MapPin,
   Paintbrush,
-  Search,
+  Shield,
   ShieldCheck,
   Sparkles,
   Star,
@@ -372,6 +374,53 @@ export default function LandingPage() {
     navigate(`/projects/post${params.toString() ? `?${params.toString()}` : ""}`);
   };
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const params = new URLSearchParams();
+    if (serviceNeeded.trim()) params.set("category", serviceNeeded.trim());
+    if (locationQuery.trim()) params.set("zipcode", locationQuery.trim());
+    navigate(`/projects/post${params.toString() ? `?${params.toString()}` : ""}`);
+  };
+
+  const features = [
+    {
+      title: "Verified Professionals",
+      description: "All providers are background checked with verified ratings from real customers.",
+      icon: ShieldCheck,
+    },
+    {
+      title: "Compare Quotes",
+      description: "Get multiple quotes side-by-side to compare pricing, availability, and credentials.",
+      icon: Briefcase,
+    },
+    {
+      title: "Secure Messaging",
+      description: "Communicate directly with pros in a secure, organized messaging system.",
+      icon: Shield,
+    },
+  ];
+
+  const testimonials = [
+    {
+      quote: "Found a reliable electrician within hours. The platform makes everything transparent and easy.",
+      author: "Sarah M.",
+      role: "Homeowner, Bergen County",
+      rating: 5,
+    },
+    {
+      quote: "As a contractor, this platform lets me focus on growing my business instead of hunting for leads.",
+      author: "John D.",
+      role: "Plumbing Professional, Essex County",
+      rating: 5,
+    },
+    {
+      quote: "The quote comparison saved me hundreds. Highly recommend ServiceTones to anyone.",
+      author: "Michelle R.",
+      role: "Homeowner, Hudson County",
+      rating: 5,
+    },
+  ];
+
   return (
     <AppShell theme="customer" navbarVariant="landing" contentClassName="pb-0">
       <Helmet>
@@ -381,237 +430,125 @@ export default function LandingPage() {
         <meta property="og:description" content="Browse local pros, compare quotes, and keep your home project in one clear marketplace flow." />
         <meta property="og:url" content="https://servicetones.com/" />
         <link rel="canonical" href="https://servicetones.com/" />
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lora:wght@400;500;600&display=swap" rel="stylesheet" />
       </Helmet>
 
-      <section className="relative overflow-hidden py-16 sm:py-20 lg:py-28 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
-        <div className="absolute -top-96 -left-96 w-96 h-96 rounded-full bg-primary/20 blur-3xl opacity-30" />
-        <div className="absolute -bottom-96 -right-96 w-96 h-96 rounded-full bg-blue-500/20 blur-3xl opacity-30" />
-        
-        <div className="relative">
-          <div className={`${sectionShell} grid gap-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center`}>
-            <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-2 text-sm font-semibold text-primary backdrop-blur-sm mb-6">
-                <span className="h-2 w-2 rounded-full bg-primary" />
-                Trusted by 15,000+ professionals
-              </div>
-              
-              <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-[-0.06em] text-white mb-6">
-                Find verified <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">local professionals</span> instantly
-              </h1>
-              
-              <p className="text-lg sm:text-xl leading-8 text-white/80 mb-8 max-w-2xl">
-                Post your project, get matched with trusted providers, and compare quotes in one place. No phone calls needed.
-              </p>
+      {/* Hero Section */}
+      <PremiumHero
+        heading="Find Verified Local Professionals Instantly"
+        subheading="Post your project, get matched with trusted providers, and compare quotes in one place. No endless phone calls needed."
+        searchPlaceholder="What service do you need? (e.g., Plumbing, Electrical)"
+        ctaText="Search"
+        onSearch={handleSearch}
+      />
 
-              <form onSubmit={handleHeroSearch} className="mb-10 grid gap-3 rounded-2xl bg-white/10 p-3 backdrop-blur-xl border border-white/20 lg:grid-cols-[minmax(0,1fr)_14rem]">
-                <div className="flex items-center gap-3 rounded-xl bg-white px-5 py-4">
-                  <Search className="h-5 w-5 text-slate-700" />
-                  <Input
-                    list="landing-service-options"
-                    value={serviceNeeded}
-                    onChange={(event) => setServiceNeeded(event.target.value)}
-                    placeholder="What service do you need?"
-                    className="h-auto border-0 bg-transparent px-0 py-0 text-base text-slate-900 shadow-none placeholder:text-slate-500 focus-visible:ring-0"
-                  />
-                </div>
-                <div className="flex items-center gap-3 rounded-xl bg-white px-5 py-4">
-                  <MapPin className="h-5 w-5 text-slate-700" />
-                  <Input
-                    value={locationQuery}
-                    onChange={(event) => setLocationQuery(event.target.value)}
-                    placeholder="ZIP code"
-                    className="h-auto border-0 bg-transparent px-0 py-0 text-base text-slate-900 shadow-none placeholder:text-slate-500 focus-visible:ring-0"
-                  />
-                </div>
-                <Button type="submit" size="lg" className="min-h-14 rounded-xl bg-gradient-to-r from-primary to-primary/80 text-base font-semibold text-white shadow-xl hover:shadow-2xl transition-all">
-                  Search
-                </Button>
-                <datalist id="landing-service-options">
-                  {MARKETPLACE_CATEGORIES.map((category) => (
-                    <option key={category.name} value={category.name} />
-                  ))}
-                </datalist>
-              </form>
+      {/* Features Section */}
+      <PremiumFeatures
+        features={features}
+        title="Why Choose ServiceTones"
+        description="A marketplace built for trust, transparency, and convenience"
+      />
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                {TRUST_STATS.map((stat) => (
-                  <div key={stat.label} className="text-center">
-                    <stat.icon className="h-6 w-6 text-primary mx-auto mb-3" />
-                    <p className="text-2xl sm:text-3xl font-bold text-white">{stat.value}</p>
-                    <p className="text-xs sm:text-sm text-white/70 mt-2">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="hidden lg:flex lg:items-center lg:justify-center">
-              <div className="rounded-3xl border border-white/20 bg-white/10 p-8 backdrop-blur-xl max-w-sm">
-                <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-6">How it works</p>
-                <div className="space-y-4">
-                  {WHY_HOMEOWNERS.map((item, idx) => (
-                    <div key={item.title} className="flex gap-4">
-                      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary font-bold text-sm">{idx + 1}</div>
-                      <div>
-                        <p className="font-semibold text-white text-sm">{item.title}</p>
-                        <p className="mt-1 text-sm text-white/70">{item.copy}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 sm:py-20 lg:py-24" id="popular-categories">
-        <div className={sectionShell}>
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.05em] text-foreground mb-4">
-              Services in demand
+      {/* How It Works Section */}
+      <section className="py-20 md:py-28 bg-gradient-to-b from-white to-slate-50">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+              Three Simple Steps
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Browse trending categories and find the right professional for your needs
+            <p className="text-lg text-slate-600" style={{ fontFamily: "'Lora', serif" }}>
+              Get matched with the right professional in minutes
             </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {MARKETPLACE_CATEGORIES.slice(0, 6).map((category) => (
-              <button
-                key={category.name}
-                type="button"
-                onClick={() => navigate(`/providers?category=${encodeURIComponent(category.name)}`)}
-                className="group relative overflow-hidden rounded-2xl border border-border/40 bg-gradient-to-br from-white to-muted/20 p-6 transition-all hover:border-primary/60 hover:shadow-lg hover:shadow-primary/10"
-              >
-                <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-gradient-to-br from-primary/20 to-transparent blur-2xl opacity-0 transition-opacity group-hover:opacity-100" />
-                <div className="relative">
-                  <div className={`inline-flex h-14 w-14 items-center justify-center rounded-xl ${category.accent} mb-4 group-hover:scale-110 transition-transform`}>
-                    <category.icon className="h-6 w-6" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-foreground text-left">{category.name}</h3>
-                  <p className="text-sm text-muted-foreground text-left mt-2">Verified professionals ready</p>
-                </div>
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-muted/50 to-background" id="how-it-works">
-        <div className={sectionShell}>
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.05em] text-foreground mb-4">
-              Simple three-step process
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Get matched with verified professionals and hire with confidence
-            </p>
-          </div>
-
-          <div className="grid gap-8 sm:grid-cols-3 relative">
-            <div className="absolute top-12 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent hidden sm:block" />
-            
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              {
-                step: "1",
-                title: "Post your project",
-                description: "Tell us what you need and when you need it done. It takes just a few minutes."
-              },
-              {
-                step: "2", 
-                title: "Get instant quotes",
-                description: "Verified pros respond with detailed quotes and their availability within hours."
-              },
-              {
-                step: "3",
-                title: "Hire & collaborate",
-                description: "Review profiles, compare pricing, and hire the best fit. Message securely."
-              }
-            ].map((item) => (
-              <div key={item.step} className="relative">
-                <div className="flex flex-col items-center text-center">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary/70 text-white font-bold text-xl shadow-lg shadow-primary/30 mb-6 relative z-10">
-                    {item.step}
-                  </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-3">{item.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+              { num: "1", title: "Post Your Project", desc: "Tell us what you need and when. Just a few minutes." },
+              { num: "2", title: "Get Instant Quotes", desc: "Verified pros respond with pricing within hours." },
+              { num: "3", title: "Hire & Collaborate", desc: "Review profiles, compare quotes, and hire with confidence." },
+            ].map((step) => (
+              <div key={step.num} className="text-center">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-slate-900 to-slate-800 text-white font-bold text-xl flex items-center justify-center mx-auto mb-6">
+                  {step.num}
                 </div>
+                <h3 className="text-2xl font-bold text-slate-900 mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  {step.title}
+                </h3>
+                <p className="text-slate-600" style={{ fontFamily: "'Lora', serif" }}>
+                  {step.desc}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-
-
-      <section className="py-16 sm:py-20 lg:py-24" id="final-cta">
-        <div className={sectionShell}>
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 to-slate-800 px-8 py-16 text-center sm:px-12 sm:py-20 border border-primary/20">
-            <div className="absolute -top-20 -right-20 h-40 w-40 rounded-full bg-primary/10 blur-3xl" />
-            <div className="absolute -bottom-20 -left-20 h-40 w-40 rounded-full bg-blue-500/10 blur-3xl" />
-            
-            <div className="relative z-10">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.05em] text-white mb-4">Ready to get started?</h2>
-              <p className="text-lg text-white/80 max-w-2xl mx-auto mb-10">Join thousands of homeowners who've found the perfect professional for their project.</p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="rounded-xl px-8 bg-gradient-to-r from-primary to-primary/80 text-white shadow-lg hover:shadow-xl transition-all" onClick={() => navigate("/projects/post")}>
-                  Post a project
-                </Button>
-                <Button size="lg" variant="outline" className="rounded-xl px-8 border-white/30 text-white hover:bg-white/10" onClick={() => navigate("/providers")}>
-                  Browse professionals
-                </Button>
+      {/* Stats Section */}
+      <section className="py-20 md:py-28 bg-slate-900 text-white">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {TRUST_STATS.map((stat) => (
+              <div key={stat.label}>
+                <div className="text-4xl font-bold text-primary mb-2">{stat.value}</div>
+                <p className="text-slate-300" style={{ fontFamily: "'Lora', serif" }}>{stat.label}</p>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <footer className="border-t border-border/60 bg-white py-12 text-foreground/70">
-        <div className={sectionShell}>
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,1.3fr)_repeat(3,minmax(0,1fr))]">
-            <div>
-              <div className="mb-4 flex items-center gap-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white shadow-[0_16px_30px_-20px_hsl(var(--primary)/0.72)]">
-                  <span className="text-sm font-bold">S</span>
-                </div>
-                <span className="font-heading font-bold text-foreground">ServiceTones</span>
-              </div>
-              <p className="max-w-md text-sm leading-6">A New Jersey marketplace for posting home projects, comparing quotes, and hiring verified local professionals.</p>
-            </div>
+      {/* Testimonials Section */}
+      <PremiumTestimonials
+        testimonials={testimonials}
+        title="Trusted by Our Community"
+      />
 
+      {/* Final CTA */}
+      <PremiumCTA
+        heading="Ready to get started?"
+        description="Join thousands of homeowners and professionals building trust on ServiceTones"
+        ctaText="Post a Project"
+        secondaryText="Browse Professionals"
+        onCta={() => navigate("/projects/post")}
+        onSecondary={() => navigate("/providers")}
+      />
+
+      {/* Footer */}
+      <footer className="bg-slate-900 text-white py-16">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div>
-              <h4 className="mb-4 font-semibold text-foreground">Homeowners</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link to="/projects/post" className="transition-colors hover:text-foreground">Post a project</Link></li>
-                <li><Link to="/providers" className="transition-colors hover:text-foreground">Browse providers</Link></li>
-                <li><a href="/#popular-categories" className="transition-colors hover:text-foreground">Categories</a></li>
-                <li><a href="/#resources" className="transition-colors hover:text-foreground">Resources</a></li>
+              <h3 className="font-bold text-lg mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>ServiceTones</h3>
+              <p className="text-slate-400 text-sm" style={{ fontFamily: "'Lora', serif" }}>
+                Connecting New Jersey homeowners with verified local professionals.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">For Homeowners</h4>
+              <ul className="space-y-2 text-sm text-slate-400">
+                <li><Link to="/projects/post" className="hover:text-white transition">Post a Project</Link></li>
+                <li><Link to="/providers" className="hover:text-white transition">Browse Pros</Link></li>
+                <li><a href="#" className="hover:text-white transition">How It Works</a></li>
               </ul>
             </div>
-
             <div>
-              <h4 className="mb-4 font-semibold text-foreground">Professionals</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link to="/projects" className="transition-colors hover:text-foreground">Find projects</Link></li>
-                <li><Link to="/auth?mode=register" className="transition-colors hover:text-foreground">Become a pro</Link></li>
-                <li><Link to="/subscription" className="transition-colors hover:text-foreground">Pricing</Link></li>
-                <li><a href="/#coverage" className="transition-colors hover:text-foreground">County coverage</a></li>
+              <h4 className="font-semibold mb-4">For Professionals</h4>
+              <ul className="space-y-2 text-sm text-slate-400">
+                <li><Link to="/auth?mode=register" className="hover:text-white transition">Become a Pro</Link></li>
+                <li><Link to="/subscription" className="hover:text-white transition">Pricing</Link></li>
+                <li><a href="#" className="hover:text-white transition">Resources</a></li>
               </ul>
             </div>
-
             <div>
-              <h4 className="mb-4 font-semibold text-foreground">Support</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link to="/terms" className="transition-colors hover:text-foreground">Terms of Service</Link></li>
-                <li><Link to="/privacy" className="transition-colors hover:text-foreground">Privacy Policy</Link></li>
-                <li><a href="mailto:support@servicetones.com" className="transition-colors hover:text-foreground">Contact us</a></li>
-                <li><a href="/#explore" className="transition-colors hover:text-foreground">Explore projects</a></li>
+              <h4 className="font-semibold mb-4">Support</h4>
+              <ul className="space-y-2 text-sm text-slate-400">
+                <li><Link to="/privacy" className="hover:text-white transition">Privacy</Link></li>
+                <li><Link to="/terms" className="hover:text-white transition">Terms</Link></li>
+                <li><a href="mailto:support@servicetones.com" className="hover:text-white transition">Contact</a></li>
               </ul>
             </div>
           </div>
-
-          <div className="mt-12 border-t border-border/60 pt-4 text-center text-sm text-muted-foreground">
+          <div className="border-t border-slate-700 pt-8 text-center text-sm text-slate-400">
             <p>&copy; 2024 ServiceTones. All rights reserved.</p>
           </div>
         </div>
