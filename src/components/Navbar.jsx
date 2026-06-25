@@ -39,8 +39,8 @@ const desktopLinkClasses = (active, variant = "default") => cn(
   "group flex items-center gap-2 text-sm font-medium transition-all duration-200",
   variant === "landing"
     ? active
-      ? "px-0 py-2 text-foreground"
-      : "px-0 py-2 text-muted-foreground hover:text-foreground"
+      ? "px-0 py-2 text-slate-900"
+      : "px-0 py-2 text-slate-600 hover:text-slate-900"
     : active
       ? "rounded-[0.95rem] border border-primary/12 bg-primary/6 px-3.5 py-2.5 text-primary"
       : "rounded-lg px-3.5 py-2.5 text-muted-foreground hover:bg-muted hover:text-foreground"
@@ -99,7 +99,7 @@ export const Navbar = ({ variant = "default" }) => {
     <nav
       className={cn(
         "fixed inset-x-0 top-0 z-50 overflow-visible",
-        isLandingNav && "border-b border-border/60 bg-background/95 backdrop-blur-xl"
+        isLandingNav && "border-b border-slate-200 bg-white/80 backdrop-blur-md"
       )}
       style={{ paddingTop: "env(safe-area-inset-top)" }}
     >
@@ -123,9 +123,9 @@ export const Navbar = ({ variant = "default" }) => {
                 className="h-9 w-9 rounded-[0.9rem] object-cover ring-1 ring-border"
               />
               <div className="flex flex-col">
-                <span className="font-heading text-base font-extrabold tracking-[-0.03em] text-foreground sm:text-[1.04rem]">ServiceTones</span>
-                <span className="hidden text-[9px] font-semibold uppercase tracking-[0.26em] text-muted-foreground lg:block">
-                  Structured local services
+                <span className="font-bold tracking-[-0.03em] text-slate-900 sm:text-[1.04rem]" style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.2rem', fontWeight: 700 }}>ServiceTones</span>
+                <span className="hidden text-[9px] font-semibold uppercase tracking-[0.26em] text-slate-600 lg:block">
+                  Marketplace
                 </span>
               </div>
               {!isLandingNav && <div className="hidden lg:flex">{brandBadge}</div>}
@@ -161,10 +161,10 @@ export const Navbar = ({ variant = "default" }) => {
 
                 <div className="ml-4 flex items-center gap-3 lg:ml-auto">
                   <Link to="/auth">
-                    <Button variant="ghost" className="rounded-lg px-4.5 text-foreground/80 hover:text-foreground">Log In</Button>
+                    <Button variant="ghost" className="rounded-xl px-5 text-slate-700 hover:text-slate-900 hover:bg-slate-100 font-semibold">Log In</Button>
                   </Link>
                   <Link to="/auth?mode=register">
-                    <Button className="rounded-lg px-5.5 shadow-[0_18px_40px_-26px_hsl(var(--primary)/0.48)]">Get Started</Button>
+                    <Button className="rounded-xl px-6 bg-gradient-to-r from-slate-900 to-slate-800 text-white hover:from-slate-800 hover:to-slate-700 font-semibold shadow-md hover:shadow-lg transition-all">Get Started</Button>
                   </Link>
                 </div>
               </>
