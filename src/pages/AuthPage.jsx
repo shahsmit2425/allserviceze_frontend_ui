@@ -1198,29 +1198,7 @@ export default function AuthPage() {
                       </p>
                     </div>
 
-                    <div className="grid gap-3 sm:grid-cols-3">
-                      {authTrustStats.map((item) => (
-                        <div key={`register-${item.label}`} className="rounded-xl border border-border/75 bg-slate-50/75 px-3.5 py-3 shadow-[0_14px_30px_-28px_rgba(15,23,42,0.14)]">
-                          <item.icon className="h-4 w-4 text-primary" />
-                          <p className="mt-2.5 text-base font-bold tracking-[-0.04em] text-foreground">{item.value}</p>
-                          <p className="mt-1 text-[0.75rem] leading-5 text-muted-foreground">{item.label}</p>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="rounded-xl border border-border/75 bg-slate-50/75 p-4">
-                      <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-primary">What your account unlocks</p>
-                      <div className="mt-4 space-y-3">
-                        {authAudienceSignals.map((item) => (
-                          <div key={item} className="flex gap-3 text-sm leading-6 text-muted-foreground">
-                            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary" />
-                            <span>{item}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <Card className="border-border/75 bg-white shadow-[0_24px_54px_-40px_rgba(15,23,42,0.18)]">
+                    <Card className="border-border/40 bg-white shadow-sm">
                       <CardContent className="p-5 sm:p-6">
                         <div className="space-y-5">
                           <div className="space-y-3">
@@ -1228,8 +1206,7 @@ export default function AuthPage() {
                             <SocialLoginButtons />
                           </div>
 
-                          <form onSubmit={handleRegister} className="space-y-5">
-                          <div className="grid gap-4 sm:grid-cols-2">
+                          <form onSubmit={handleRegister} className="space-y-4">
                             <AuthField
                               id="register-name"
                               label="Full Name *"
@@ -1239,17 +1216,6 @@ export default function AuthPage() {
                               onChange={(e) => updateRegisterField('full_name', e.target.value)}
                               data-testid="register-name-input"
                             />
-                            <AuthField
-                              id="register-phone"
-                              type="tel"
-                              label="Phone"
-                              icon={Phone}
-                              placeholder="+1 (555) 000-0000"
-                              value={registerData.phone}
-                              onChange={(e) => updateRegisterField('phone', e.target.value)}
-                              data-testid="register-phone-input"
-                            />
-                          </div>
 
                           <AuthField
                             id="register-email"
@@ -1262,7 +1228,6 @@ export default function AuthPage() {
                             data-testid="register-email-input"
                           />
 
-                          <div className="grid gap-4 sm:grid-cols-2">
                             <div className="space-y-2.5">
                               <Label htmlFor="register-password">Password *</Label>
                               <div className="relative">
@@ -1286,7 +1251,6 @@ export default function AuthPage() {
                                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                                 </button>
                               </div>
-                              <p className="text-xs leading-5 text-muted-foreground">Use at least 8 characters, one uppercase letter, and a number or symbol.</p>
                             </div>
 
                             <AuthField
@@ -1299,15 +1263,14 @@ export default function AuthPage() {
                               onChange={(e) => updateRegisterField('confirmPassword', e.target.value)}
                               data-testid="register-confirm-input"
                             />
-                          </div>
 
-                          <div className="space-y-4 rounded-xl border border-border/75 bg-slate-50/75 p-4">
-                            <Label>I am joining as</Label>
+                          <div className="space-y-3">
+                            <Label className="font-semibold text-foreground">I am joining as</Label>
 
                             <RadioGroup
                               value={registerData.role}
                               onValueChange={(value) => updateRegisterField('role', value)}
-                              className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4"
+                              className="grid grid-cols-1 gap-3"
                             >
                               {authRoleOptions.map((roleOption) => (
                                 <div
@@ -1328,7 +1291,7 @@ export default function AuthPage() {
 
                           <Button
                             type="submit"
-                            className="mt-2 w-full rounded-lg py-3"
+                            className="w-full rounded-[1rem] bg-primary/90 py-3 text-sm font-semibold hover:bg-primary mt-6"
                             disabled={loading}
                             data-testid="register-submit-btn"
                           >
@@ -1351,39 +1314,7 @@ export default function AuthPage() {
             </div>
           </section>
 
-          {!isPhone ? (
-            <section className="order-1 relative hidden min-h-[24rem] overflow-hidden border-b border-border/40 bg-muted/20 lg:order-2 lg:flex lg:min-h-full lg:border-b-0 lg:border-l">
-              <div className="flex h-full flex-col justify-center p-8 lg:p-10 xl:p-12">
-                <div className="space-y-8">
-                  <div>
-                    <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-3">
-                      Why join us?
-                    </h2>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Connect with trusted professionals and find the right expertise for your projects.
-                    </p>
-                  </div>
 
-                  <ul className="space-y-4">
-                    {[
-                      { icon: "✓", label: "Verified professionals", desc: "All pros are background checked" },
-                      { icon: "⭐", label: "Real reviews", desc: "Authentic feedback from real customers" },
-                      { icon: "💬", label: "Direct messaging", desc: "Communicate securely with pros" },
-                      { icon: "📋", label: "Compare quotes", desc: "Get multiple quotes side by side" }
-                    ].map((item) => (
-                      <li key={item.label} className="flex gap-4">
-                        <div className="text-xl mt-1 flex-shrink-0">{item.icon}</div>
-                        <div>
-                          <p className="font-semibold text-foreground text-sm">{item.label}</p>
-                          <p className="text-xs text-muted-foreground mt-1">{item.desc}</p>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </section>
-          ) : null}
         </div>
       </div>
     </main>
