@@ -541,19 +541,19 @@ export default function BrowseProjects() {
         <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
-      <div className="page-shell space-y-6 py-7 sm:space-y-7 sm:py-8">
-        <section className="overflow-hidden rounded-[2rem] border border-border/60 bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_62%,#f7faf8_100%)] shadow-[0_28px_80px_-48px_rgba(15,23,42,0.22)]">
-          <div className="px-5 py-8 sm:px-7 sm:py-10">
+      <div className="page-shell space-y-6 py-20 sm:py-32 bg-gradient-to-b from-amber-50 via-white to-slate-50 sm:space-y-7">
+        <section className="overflow-hidden">
+          <div className="px-5 py-0 sm:px-7">
             <div className="mx-auto max-w-4xl text-center">
-              <div className="inline-flex items-center gap-2 rounded-lg border border-primary/10 bg-white px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-primary shadow-sm">
-                <Briefcase className="h-3.5 w-3.5" />
-                Project marketplace
+              <div className="inline-flex items-center gap-2 rounded-full border border-slate-300/40 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm mb-6">
+                <Briefcase className="h-4 w-4" />
+                <span>Browse Projects</span>
               </div>
-              <h1 className="mt-5 font-heading text-[clamp(2.6rem,5vw,4.5rem)] font-extrabold leading-[0.94] tracking-[-0.06em] text-foreground">
+              <h1 className="text-5xl sm:text-6xl font-bold text-slate-900 leading-tight mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
                 Find Projects Worth Bidding On
               </h1>
-              <p className="mt-3 text-base leading-7 text-muted-foreground sm:text-xl">
-                Keep filters visible, scan urgency and budget faster, and move from search to proposal without losing context.
+              <p className="text-lg text-slate-600 max-w-2xl mx-auto" style={{ fontFamily: "'Lora', serif" }}>
+                Browse active projects, filter by budget and timeline, and submit competitive quotes to grow your business.
               </p>
             </div>
 
@@ -562,7 +562,7 @@ export default function BrowseProjects() {
                 event.preventDefault();
                 applyFilters();
               }}
-              className="mx-auto mt-8 grid max-w-5xl gap-3 rounded-2xl border border-white/70 bg-white/92 p-3 shadow-[0_28px_50px_-38px_rgba(15,23,42,0.18)] lg:grid-cols-[minmax(0,1fr)_minmax(0,0.78fr)_12rem]"
+              className="mx-auto mt-8 grid max-w-5xl gap-3 rounded-2xl border border-slate-300 bg-white p-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.78fr)_12rem]"
             >
               <div className="relative">
                 <Briefcase className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
