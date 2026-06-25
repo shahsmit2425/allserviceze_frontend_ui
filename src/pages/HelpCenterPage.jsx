@@ -105,7 +105,7 @@ export default function HelpCenterPage() {
       />
 
       {/* Search Section */}
-      <section className="py-16 md:py-20 bg-white border-b border-slate-200">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-white to-amber-50 border-b border-slate-200">
         <div className="max-w-3xl mx-auto px-6 sm:px-10 lg:px-12">
           <div className="relative">
             <Search className="absolute left-4 top-4 h-5 w-5 text-slate-400" />
@@ -120,7 +120,7 @@ export default function HelpCenterPage() {
       </section>
 
       {/* FAQs */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-20 md:py-32 bg-gradient-to-b from-amber-50 via-white to-slate-50">
         <div className="max-w-3xl mx-auto px-6 sm:px-10 lg:px-12">
           {Object.entries(filteredFaqs).map(([category, faqs]) => (
             <div key={category} className="mb-12">
@@ -156,10 +156,10 @@ export default function HelpCenterPage() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-slate-50 to-white">
+      <section className="py-20 md:py-32 bg-gradient-to-b from-slate-50 via-white to-amber-50">
         <div className="max-w-4xl mx-auto px-6 sm:px-10 lg:px-12">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <div className="text-center mb-16 max-w-2xl mx-auto">
+            <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
               Still need help?
             </h2>
             <p className="text-lg text-slate-600" style={{ fontFamily: "'Lora', serif" }}>

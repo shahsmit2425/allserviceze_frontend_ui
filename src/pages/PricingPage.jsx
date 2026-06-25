@@ -120,10 +120,10 @@ export default function PricingPage() {
       />
 
       {/* Homeowner Plans */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-20 md:py-32 bg-gradient-to-b from-amber-50 via-white to-slate-50">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 mb-20">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
               For Homeowners
             </h2>
             <p className="text-lg text-slate-600" style={{ fontFamily: "'Lora', serif" }}>
@@ -191,8 +191,8 @@ export default function PricingPage() {
 
         {/* Provider Plans */}
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 border-t pt-20">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
               For Professionals
             </h2>
             <p className="text-lg text-slate-600" style={{ fontFamily: "'Lora', serif" }}>
@@ -260,10 +260,10 @@ export default function PricingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 md:py-28 bg-slate-50">
+      <section className="py-20 md:py-32 bg-gradient-to-b from-amber-50 via-white to-slate-50">
         <div className="max-w-3xl mx-auto px-6 sm:px-10 lg:px-12">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
               Frequently Asked Questions
             </h2>
           </div>

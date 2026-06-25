@@ -104,14 +104,14 @@ export default function ServicesPage() {
       />
 
       {/* Services Grid */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-20 md:py-32 bg-gradient-to-b from-amber-50 via-white to-slate-50">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
               Services We Offer
             </h2>
             <p className="text-lg text-slate-600" style={{ fontFamily: "'Lora', serif" }}>
-              Explore our most popular service categories
+              Explore our most popular service categories with verified professionals
             </p>
           </div>
 
@@ -149,20 +149,20 @@ export default function ServicesPage() {
       />
 
       {/* Stats */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-slate-50 to-white">
+      <section className="py-20 md:py-28 bg-gradient-to-b from-white to-slate-900">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
             <div>
-              <div className="text-5xl font-bold text-primary mb-2">15K+</div>
-              <p className="text-slate-600" style={{ fontFamily: "'Lora', serif" }}>Verified Professionals</p>
+              <div className="text-5xl font-bold text-amber-400 mb-2">15K+</div>
+              <p className="text-white" style={{ fontFamily: "'Lora', serif" }}>Verified Professionals</p>
             </div>
             <div>
-              <div className="text-5xl font-bold text-primary mb-2">8</div>
-              <p className="text-slate-600" style={{ fontFamily: "'Lora', serif" }}>Major Service Categories</p>
+              <div className="text-5xl font-bold text-amber-400 mb-2">8</div>
+              <p className="text-white" style={{ fontFamily: "'Lora', serif" }}>Major Service Categories</p>
             </div>
             <div>
-              <div className="text-5xl font-bold text-primary mb-2">4.8★</div>
-              <p className="text-slate-600" style={{ fontFamily: "'Lora', serif" }}>Average Rating</p>
+              <div className="text-5xl font-bold text-amber-400 mb-2">4.8★</div>
+              <p className="text-white" style={{ fontFamily: "'Lora', serif" }}>Average Rating</p>
             </div>
           </div>
         </div>
