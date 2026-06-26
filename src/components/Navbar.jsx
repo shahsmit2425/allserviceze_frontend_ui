@@ -42,22 +42,22 @@ const desktopLinkClasses = (active, variant = "default") => cn(
       ? "px-0 py-2 text-slate-900"
       : "px-0 py-2 text-slate-600 hover:text-slate-900"
     : active
-      ? "rounded-[0.95rem] border border-primary/12 bg-primary/6 px-3.5 py-2.5 text-primary"
-      : "rounded-lg px-3.5 py-2.5 text-muted-foreground hover:bg-muted hover:text-foreground"
+      ? "rounded-xl border border-slate-300 bg-slate-100 px-3.5 py-2.5 text-slate-900 font-semibold"
+      : "rounded-lg px-3.5 py-2.5 text-slate-600 hover:bg-slate-100 hover:text-slate-900"
 );
 
 const mobileLinkClasses = (active) => cn(
-  "flex items-center gap-3 rounded-lg border px-4 py-3 text-sm font-medium transition-all duration-200",
+  "flex items-center gap-3 rounded-xl border px-4 py-3 text-sm font-medium transition-all duration-200",
   active
-    ? "border-primary/16 bg-primary/6 text-primary"
-    : "border-border bg-background text-foreground/80 hover:bg-muted hover:text-foreground"
+    ? "border-slate-300 bg-slate-100 text-slate-900 font-semibold"
+    : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900"
 );
 
 const tabletLinkClasses = (active) => cn(
-  "inline-flex min-w-max items-center gap-2.5 rounded-lg border px-4 py-2.5 text-sm font-medium transition-all duration-200",
+  "inline-flex min-w-max items-center gap-2.5 rounded-xl border px-4 py-2.5 text-sm font-medium transition-all duration-200",
   active
-    ? "border-primary/16 bg-primary/6 text-primary"
-    : "border-border/60 bg-background/92 text-foreground/80 hover:bg-muted hover:text-foreground"
+    ? "border-slate-300 bg-slate-100 text-slate-900 font-semibold"
+    : "border-slate-200 bg-white/50 text-slate-600 hover:bg-slate-50 hover:text-slate-900"
 );
 
 export const Navbar = ({ variant = "default" }) => {
@@ -104,7 +104,7 @@ export const Navbar = ({ variant = "default" }) => {
       style={{ paddingTop: "env(safe-area-inset-top)" }}
     >
       <div className={cn(isLandingNav ? "mx-auto w-full max-w-[96rem] px-4 sm:px-6 lg:px-10" : "page-shell pt-2.5")}>
-      <div className={cn("w-full overflow-visible", isLandingNav ? "bg-transparent shadow-none" : "rounded-lg border border-border/60 bg-background/96 shadow-[0_12px_28px_-24px_rgba(15,23,42,0.08)]")}>
+      <div className={cn("w-full overflow-visible", isLandingNav ? "bg-transparent shadow-none" : "rounded-none border-b border-slate-200 bg-white/95 shadow-none")}>
         <div className={cn("overflow-visible", isLandingNav ? "px-0" : "px-3.5 sm:px-5 lg:px-6")}>
           <div className={cn("flex items-center justify-between overflow-visible", isLandingNav ? "h-[4.85rem]" : "h-[4.1rem]")}>
           {/* Logo */}
@@ -241,10 +241,10 @@ export const Navbar = ({ variant = "default" }) => {
                       </Avatar>
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="w-64 rounded-lg border border-border bg-background p-2 shadow-[0_18px_42px_-28px_rgba(15,23,42,0.16)]">
-                    <div className="rounded-lg bg-muted px-3 py-3">
-                      <p className="font-semibold tracking-[-0.01em]">{user.full_name}</p>
-                      <p className="mt-1 text-sm text-muted-foreground">{user.email}</p>
+                  <DropdownMenuContent align="end" className="w-64 rounded-xl border border-slate-200 bg-white p-2 shadow-lg">
+                    <div className="rounded-xl bg-slate-100 px-3 py-3">
+                      <p className="font-semibold text-slate-900">{user.full_name}</p>
+                      <p className="mt-1 text-sm text-slate-600">{user.email}</p>
                       <div className="mt-3">
                         <RoleBadge role={user.role} isAdmin={user.is_admin} />
                       </div>
@@ -315,10 +315,10 @@ export const Navbar = ({ variant = "default" }) => {
             ) : (
               <>
                 <Link to="/auth">
-                  <Button variant="outline" className="rounded-[0.95rem] bg-card px-4.5 shadow-none">Log In</Button>
+                  <Button variant="outline" className="rounded-xl border-slate-300 text-slate-900 hover:bg-slate-100 font-semibold px-5">Log In</Button>
                 </Link>
                 <Link to="/auth?mode=register">
-                  <Button className="rounded-[0.95rem] px-4.5">Get Started</Button>
+                  <Button className="rounded-xl bg-gradient-to-r from-slate-900 to-slate-800 text-white hover:from-slate-800 hover:to-slate-700 font-semibold px-5 shadow-md hover:shadow-lg transition-all">Get Started</Button>
                 </Link>
               </>
             )}
@@ -334,7 +334,7 @@ export const Navbar = ({ variant = "default" }) => {
                 variant="ghost"
                 size="icon"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="rounded-[0.95rem] bg-muted shadow-sm hover:bg-accent md:hidden"
+                className="rounded-xl bg-slate-100 text-slate-900 hover:bg-slate-200 shadow-sm md:hidden font-semibold"
                 data-testid="mobile-menu-button"
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
