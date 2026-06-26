@@ -1273,9 +1273,9 @@ export default function AuthPage() {
 
                           <SocialLoginButtons />
 
-                          <p className="text-sm text-muted-foreground">
+                          <p className="text-sm text-slate-600">
                             New to ServiceTones?{" "}
-                            <button type="button" onClick={() => handleTabChange("register")} className="font-semibold text-primary hover:underline">
+                            <button type="button" onClick={() => handleTabChange("register")} className="font-semibold text-slate-900 hover:underline">
                               Register
                             </button>
                           </p>
@@ -1405,9 +1405,9 @@ export default function AuthPage() {
                       </CardContent>
                     </Card>
 
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-slate-600">
                       Already have an account?{" "}
-                      <button type="button" onClick={() => handleTabChange("login")} className="font-semibold text-primary hover:underline">
+                      <button type="button" onClick={() => handleTabChange("login")} className="font-semibold text-slate-900 hover:underline">
                         Sign in
                       </button>
                     </p>

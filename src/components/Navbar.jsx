@@ -232,10 +232,10 @@ export const Navbar = ({ variant = "default" }) => {
                 
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" className="relative h-10 w-10 rounded-[0.95rem] bg-muted p-0 shadow-sm hover:bg-accent" data-testid="user-menu-trigger">
-                      <Avatar className="h-9 w-9 border-2 border-primary/18">
+                    <Button variant="ghost" className="relative h-10 w-10 rounded-[0.95rem] bg-slate-100 p-0 shadow-sm hover:bg-slate-200" data-testid="user-menu-trigger">
+                      <Avatar className="h-9 w-9 border-2 border-slate-300">
                         <AvatarImage src={user.profile_image} />
-                        <AvatarFallback className="bg-primary text-primary-foreground font-semibold">
+                        <AvatarFallback className="bg-slate-900 text-white font-semibold">
                           {getInitials(user.full_name)}
                         </AvatarFallback>
                       </Avatar>
@@ -361,7 +361,7 @@ export const Navbar = ({ variant = "default" }) => {
                 {!user && (
                   <Link
                     to="/auth?mode=register"
-                    className="inline-flex min-w-max items-center rounded-full bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-[0_18px_36px_-24px_hsl(var(--primary)/0.48)]"
+                    className="inline-flex min-w-max items-center rounded-xl bg-gradient-to-r from-slate-900 to-slate-800 px-6 py-2.5 text-sm font-semibold text-white hover:from-slate-800 hover:to-slate-700 shadow-md hover:shadow-lg transition-all"
                   >
                     Get Started
                   </Link>
@@ -373,10 +373,10 @@ export const Navbar = ({ variant = "default" }) => {
                 {user ? (
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" className="relative h-10 w-10 rounded-[0.95rem] bg-muted p-0 shadow-sm hover:bg-accent" data-testid="tablet-user-menu-trigger">
-                        <Avatar className="h-9 w-9 border-2 border-primary/18">
+                      <Button variant="ghost" className="relative h-10 w-10 rounded-[0.95rem] bg-slate-100 p-0 shadow-sm hover:bg-slate-200" data-testid="tablet-user-menu-trigger">
+                        <Avatar className="h-9 w-9 border-2 border-slate-300">
                           <AvatarImage src={user.profile_image} />
-                          <AvatarFallback className="bg-primary text-primary-foreground font-semibold">
+                          <AvatarFallback className="bg-slate-900 text-white font-semibold">
                             {getInitials(user.full_name)}
                           </AvatarFallback>
                         </Avatar>
@@ -458,11 +458,11 @@ export const Navbar = ({ variant = "default" }) => {
             ) : (
               <>
                 {/* User Info */}
-                <div className="mb-2 rounded-lg bg-muted px-4 py-4 shadow-sm">
+                <div className="mb-2 rounded-lg bg-slate-100 px-4 py-4 shadow-sm">
                   <div className="flex items-center gap-3">
-                    <Avatar className="h-10 w-10 border-2 border-primary/18">
+                    <Avatar className="h-10 w-10 border-2 border-slate-300">
                       <AvatarImage src={user.profile_image} />
-                      <AvatarFallback className="bg-primary text-primary-foreground font-semibold">
+                      <AvatarFallback className="bg-slate-900 text-white font-semibold">
                         {getInitials(user.full_name)}
                       </AvatarFallback>
                     </Avatar>
