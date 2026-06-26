@@ -593,7 +593,7 @@ export default function BrowseProviders() {
                   maxLength={5}
                 />
               </div>
-              <Button type="submit" className="h-12 rounded-xl bg-[linear-gradient(90deg,#ff3b30_0%,#ff8a00_100%)] text-white shadow-[0_18px_40px_-22px_rgba(255,89,51,0.55)] hover:opacity-95">
+              <Button type="submit" className="h-12 rounded-xl bg-gradient-to-r from-slate-900 to-slate-800 text-white hover:from-slate-800 hover:to-slate-700 font-semibold shadow-md hover:shadow-lg transition-all">
                 Search
               </Button>
             </form>
@@ -678,7 +678,7 @@ export default function BrowseProviders() {
                 </Accordion>
 
                 <div className="border-t border-border/60 px-5 py-4">
-                  <Button className="w-full rounded-xl bg-[linear-gradient(90deg,#ff3b30_0%,#ff8a00_100%)] text-white hover:opacity-95" onClick={applyFilters} disabled={!hasDraftChanges}>
+                  <Button className="w-full rounded-xl bg-gradient-to-r from-slate-900 to-slate-800 text-white hover:from-slate-800 hover:to-slate-700 font-semibold shadow-md hover:shadow-lg transition-all disabled:opacity-50" onClick={applyFilters} disabled={!hasDraftChanges}>
                     Apply Filters
                   </Button>
                   <p className="mt-3 text-xs leading-5 text-muted-foreground">Filters stay draft-based until you apply them.</p>
