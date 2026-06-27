@@ -318,7 +318,7 @@ export const Navbar = ({ variant = "default" }) => {
                   <Button variant="outline" className="rounded-xl border-deep-navy-200 text-deep-navy-800 hover:bg-deep-navy-50 font-semibold px-5">Log In</Button>
                 </Link>
                 <Link to="/auth?mode=register">
-                  <Button className="rounded-xl bg-gradient-to-r from-deep-navy-800 to-deep-navy-700 text-white hover:from-deep-navy-700 hover:to-deep-navy-600 font-semibold px-5 shadow-md hover:shadow-lg transition-all">Get Started</Button>
+                  <Button className="rounded-xl bg-gradient-to-r from-copper-500 to-copper-600 text-white hover:from-copper-600 hover:to-copper-700 font-semibold px-5 shadow-md hover:shadow-lg transition-all">Get Started</Button>
                 </Link>
               </>
             )}
@@ -361,7 +361,7 @@ export const Navbar = ({ variant = "default" }) => {
                 {!user && (
                   <Link
                     to="/auth?mode=register"
-                    className="inline-flex min-w-max items-center rounded-xl bg-gradient-to-r from-deep-navy-800 to-deep-navy-700 px-6 py-2.5 text-sm font-semibold text-white hover:from-deep-navy-700 hover:to-deep-navy-600 shadow-md hover:shadow-lg transition-all"
+                    className="inline-flex min-w-max items-center rounded-xl bg-gradient-to-r from-copper-500 to-copper-600 px-6 py-2.5 text-sm font-semibold text-white hover:from-copper-600 hover:to-copper-700 shadow-md hover:shadow-lg transition-all"
                   >
                     Get Started
                   </Link>
