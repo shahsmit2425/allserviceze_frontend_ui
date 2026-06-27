@@ -99,33 +99,33 @@ export const Navbar = ({ variant = "default" }) => {
     <nav
       className={cn(
         "fixed inset-x-0 top-0 z-50 overflow-visible",
-        isLandingNav && "border-b border-deep-navy-100 bg-white/80 backdrop-blur-md"
+        isLandingNav && "border-b border-deep-navy-50 bg-white/90 backdrop-blur-xl shadow-sm"
       )}
       style={{ paddingTop: "env(safe-area-inset-top)" }}
     >
       <div className={cn(isLandingNav ? "mx-auto w-full max-w-[96rem] px-4 sm:px-6 lg:px-10" : "page-shell pt-2.5")}>
-      <div className={cn("w-full overflow-visible", isLandingNav ? "bg-transparent shadow-none" : "rounded-none border-b border-deep-navy-100 bg-white/95 shadow-none")}>
-        <div className={cn("overflow-visible", isLandingNav ? "px-0" : "px-3.5 sm:px-5 lg:px-6")}>
-          <div className={cn("flex items-center justify-between overflow-visible", isLandingNav ? "h-[4.85rem]" : "h-[4.1rem]")}>
+      <div className={cn("w-full overflow-visible", isLandingNav ? "bg-transparent shadow-none" : "rounded-none border-b border-deep-navy-50 bg-white/98 shadow-sm")}>
+        <div className={cn("overflow-visible", isLandingNav ? "px-0 py-2" : "px-3.5 sm:px-5 lg:px-6")}>
+          <div className={cn("flex items-center justify-between gap-8 overflow-visible", isLandingNav ? "h-20" : "h-16")}>
           {/* Logo */}
             <Link to="/" className={cn(
-              "group flex items-center gap-2.5 transition-colors duration-200",
+              "group flex items-center gap-3 transition-all duration-200 flex-shrink-0",
               isLandingNav
-                ? "py-2"
-                : "-ml-2 rounded-[0.95rem] px-2.5 py-2 hover:bg-muted"
+                ? "hover:opacity-80"
+                : "-ml-2 rounded-xl px-2.5 py-2 hover:bg-deep-navy-50"
             )} data-testid="logo-link">
               <img
                 src="/favicon.svg"
                 alt="ServiceTones"
-                width="36"
+                width="40"
                 height="36"
                 decoding="async"
                 className="h-9 w-9 rounded-[0.9rem] object-cover ring-1 ring-border"
               />
               <div className="flex flex-col">
-                <span className="font-bold tracking-[-0.03em] text-deep-navy-800 sm:text-[1.04rem]" style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.2rem', fontWeight: 700 }}>ServiceTones</span>
-                <span className="hidden text-[9px] font-semibold uppercase tracking-[0.26em] text-deep-navy-500 lg:block">
-                  Marketplace
+                <span className="font-bold tracking-[-0.03em] text-deep-navy-800 text-xl" style={{ fontFamily: "'Poppins', sans-serif", fontSize: '1.4rem', fontWeight: 800 }}>ServiceTones</span>
+                <span className="hidden text-[9px] font-bold uppercase tracking-[0.18em] text-copper-500 lg:block">
+                  MARKETPLACE
                 </span>
               </div>
               {!isLandingNav && <div className="hidden lg:flex">{brandBadge}</div>}
@@ -318,7 +318,7 @@ export const Navbar = ({ variant = "default" }) => {
                   <Button variant="outline" className="rounded-xl border-deep-navy-200 text-deep-navy-800 hover:bg-deep-navy-50 font-semibold px-5">Log In</Button>
                 </Link>
                 <Link to="/auth?mode=register">
-                  <Button className="rounded-xl bg-gradient-to-r from-copper-500 to-copper-600 text-white hover:from-copper-600 hover:to-copper-700 font-semibold px-5 shadow-md hover:shadow-lg transition-all">Get Started</Button>
+                  <Button className="rounded-xl bg-gradient-to-r from-copper-500 to-copper-600 text-white hover:from-copper-600 hover:to-copper-700 font-bold px-6 py-2.5 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105">Get Started</Button>
                 </Link>
               </>
             )}
@@ -361,7 +361,7 @@ export const Navbar = ({ variant = "default" }) => {
                 {!user && (
                   <Link
                     to="/auth?mode=register"
-                    className="inline-flex min-w-max items-center rounded-xl bg-gradient-to-r from-copper-500 to-copper-600 px-6 py-2.5 text-sm font-semibold text-white hover:from-copper-600 hover:to-copper-700 shadow-md hover:shadow-lg transition-all"
+                    className="inline-flex min-w-max items-center rounded-xl bg-gradient-to-r from-copper-500 to-copper-600 px-7 py-3 text-base font-bold text-white hover:from-copper-600 hover:to-copper-700 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
                   >
                     Get Started
                   </Link>
