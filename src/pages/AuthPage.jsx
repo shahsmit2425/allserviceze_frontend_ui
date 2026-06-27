@@ -1246,7 +1246,7 @@ export default function AuthPage() {
                             </div>
 
                             {isNative && biometricAvailable ? (
-                              <div className="rounded-lg border border-border/75 bg-slate-50/75 px-4 py-3.5">
+                              <div className="rounded-lg border border-border/75 bg-white/75 px-4 py-3.5">
                                 <div className="flex items-start gap-3">
                                   <Checkbox
                                     id="enable-biometric"

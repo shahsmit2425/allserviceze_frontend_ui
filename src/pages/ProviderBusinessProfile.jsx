@@ -813,11 +813,11 @@ export default function ProviderBusinessProfile() {
                           ))}
                         </div>
                       ) : (
-                        <div className="rounded-lg border border-dashed border-border/70 bg-slate-50/80 p-5 text-sm text-muted-foreground">
+                        <div className="rounded-lg border border-dashed border-border/70 bg-white/80 p-5 text-sm text-muted-foreground">
                           Portfolio photos are one of the strongest conversion drivers on a marketplace profile. Add completed work to increase trust.
                         </div>
                       )}
-                      <div className="flex items-center justify-between gap-3 rounded-lg border border-border/70 bg-slate-50/70 px-4 py-3 text-sm">
+                      <div className="flex items-center justify-between gap-3 rounded-lg border border-border/70 bg-white/70 px-4 py-3 text-sm">
                         <span className="text-muted-foreground">Portfolio projects</span>
                         <span className="font-semibold text-foreground">{portfolio.length}</span>
                       </div>
@@ -1041,7 +1041,7 @@ export default function ProviderBusinessProfile() {
                           <p className="mt-2 text-xl font-semibold text-foreground">{googleReviews.length}</p>
                         </div>
                       </div>
-                      <div className="rounded-lg border border-border/70 bg-slate-50/80 px-4 py-3 text-sm text-muted-foreground">
+                      <div className="rounded-lg border border-border/70 bg-white/80 px-4 py-3 text-sm text-muted-foreground">
                         Total review proof: <span className="font-semibold text-foreground">{reviewProofCount}</span>
                       </div>
                       <Button variant="outline" className="w-full rounded-lg bg-white/80" onClick={() => setActiveTab("google-reviews")}>
@@ -1053,7 +1053,7 @@ export default function ProviderBusinessProfile() {
                 </div>
               </div>
 
-              <div className="rounded-lg border border-border/70 bg-slate-50/70 px-4 py-3 text-sm text-muted-foreground">
+              <div className="rounded-lg border border-border/70 bg-white/70 px-4 py-3 text-sm text-muted-foreground">
                 Social links are optional supporting proof. For ServiceTones, trust, portfolio, reviews, and coverage do the heavier lifting.
               </div>
             </div>

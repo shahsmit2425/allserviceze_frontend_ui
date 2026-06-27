@@ -864,7 +864,7 @@ export default function ProviderDashboard() {
                     <div className="space-y-3">
                       {recentActivity.map((item) => (
                         <div key={item.id} className="flex items-start gap-3 rounded-xl border border-border/60 bg-white px-4 py-3 shadow-sm">
-                          <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-2xl bg-slate-50">
+                          <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-2xl bg-white">
                             {renderActivityIcon(item.type)}
                           </div>
                           <div className="min-w-0 flex-1">

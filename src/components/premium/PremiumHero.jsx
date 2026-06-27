@@ -11,7 +11,7 @@ export function PremiumHero({
   onSearch 
 }) {
   return (
-    <section className="relative overflow-hidden py-20 md:py-32 bg-gradient-to-b from-copper-50 via-white to-slate-50">
+    <section className="relative overflow-hidden py-20 md:py-32 bg-white">
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-copper-100/5 rounded-full blur-3xl" />
@@ -66,7 +66,7 @@ export function PremiumHero({
             {secondaryCtaText && (
               <Button 
                 variant="outline"
-                className="h-14 px-8 rounded-xl border-deep-navy-200 text-deep-navy-800 font-semibold hover:bg-slate-50"
+                className="h-14 px-8 rounded-xl border-deep-navy-200 text-deep-navy-800 font-semibold hover:bg-white"
               >
                 {secondaryCtaText}
               </Button>

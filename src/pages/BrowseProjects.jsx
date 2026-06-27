@@ -87,7 +87,7 @@ const PROJECT_STATUS_OPTIONS = [
 ];
 
 const urgencyColors = {
-  low: "border border-deep-navy-100 bg-slate-50 text-deep-navy-600",
+  low: "border border-deep-navy-100 bg-white text-deep-navy-600",
   normal: "border border-sky-200 bg-sky-50 text-sky-800",
   high: "border border-copper-100 bg-copper-50 text-amber-800",
   urgent: "border border-rose-200 bg-rose-50 text-rose-800"
@@ -947,7 +947,7 @@ export default function BrowseProjects() {
                               <span className="font-medium text-foreground">{opportunityLabel}</span>
                             </div>
                             <div className="flex flex-col gap-2 sm:flex-row">
-                              <Button asChild size="sm" className="min-w-[9.5rem] justify-center rounded-xl border border-deep-navy-200 text-deep-navy-800 hover:bg-slate-50 font-semibold">
+                              <Button asChild size="sm" className="min-w-[9.5rem] justify-center rounded-xl border border-deep-navy-200 text-deep-navy-800 hover:bg-white font-semibold">
                                 <Link to={projectUrl} aria-label={`View details for ${project.title}`}>
                                   View Project
                                 </Link>

@@ -50,14 +50,14 @@ const mobileLinkClasses = (active) => cn(
   "flex items-center gap-3 rounded-xl border px-4 py-3 text-sm font-medium transition-all duration-200",
   active
     ? "border-deep-navy-200 bg-deep-navy-50 text-deep-navy-800 font-semibold"
-    : "border-deep-navy-100 bg-white text-deep-navy-500 hover:bg-slate-50 hover:text-deep-navy-800"
+    : "border-deep-navy-100 bg-white text-deep-navy-500 hover:bg-white hover:text-deep-navy-800"
 );
 
 const tabletLinkClasses = (active) => cn(
   "inline-flex min-w-max items-center gap-2.5 rounded-xl border px-4 py-2.5 text-sm font-medium transition-all duration-200",
   active
     ? "border-deep-navy-200 bg-deep-navy-50 text-deep-navy-800 font-semibold"
-    : "border-deep-navy-100 bg-white/50 text-deep-navy-500 hover:bg-slate-50 hover:text-deep-navy-800"
+    : "border-deep-navy-100 bg-white/50 text-deep-navy-500 hover:bg-white hover:text-deep-navy-800"
 );
 
 export const Navbar = ({ variant = "default" }) => {

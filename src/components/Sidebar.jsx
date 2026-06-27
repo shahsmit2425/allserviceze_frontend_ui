@@ -19,7 +19,7 @@ const SidebarLink = ({ to, icon: Icon, label, isActive, onClick }) => (
       "group flex items-center gap-3.5 rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200 relative",
       isActive
         ? "bg-gradient-to-r from-copper-600/10 to-copper-600/5 text-deep-navy-800 shadow-sm border border-copper-600/30"
-        : "text-deep-navy-500 hover:text-deep-navy-800 hover:bg-slate-50"
+        : "text-deep-navy-500 hover:text-deep-navy-800 hover:bg-white"
     )}
   >
     <Icon className={cn("w-5 h-5 flex-shrink-0", isActive && "text-copper-500")} />

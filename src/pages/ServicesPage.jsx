@@ -122,7 +122,7 @@ export default function ServicesPage() {
                 <button
                   key={service.title}
                   onClick={() => navigate(`/providers?category=${encodeURIComponent(service.title)}`)}
-                  className="group p-6 rounded-2xl border border-deep-navy-100 hover:border-primary hover:shadow-lg transition-all text-left hover:bg-slate-50"
+                  className="group p-6 rounded-2xl border border-deep-navy-100 hover:border-primary hover:shadow-lg transition-all text-left hover:bg-white"
                 >
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                     <Icon className="h-6 w-6 text-primary" />

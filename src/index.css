@@ -163,11 +163,11 @@ select {
         --shadow-soft: 0 2px 8px rgba(26, 47, 74, 0.08);
         --shadow-strong: 0 4px 16px rgba(26, 47, 74, 0.12);
         --shell-border: rgba(26, 47, 74, 0.08);
-        --page-ambient: 215 25% 99%;
-        --page-ambient-deep: 215 25% 98%;
+        --page-ambient: 0 0% 100%;
+        --page-ambient-deep: 0 0% 100%;
         --surface-tint: 0 0% 100%;
-        --surface-muted: 215 20% 97%;
-        --surface-border: 215 20% 91%;
+        --surface-muted: 0 0% 99%;
+        --surface-border: 0 0% 95%;
     }
 
     [data-theme="provider"] {
@@ -201,11 +201,11 @@ select {
         --shadow-soft: 0 2px 8px rgba(26, 47, 74, 0.08);
         --shadow-strong: 0 4px 16px rgba(26, 47, 74, 0.12);
         --shell-border: rgba(26, 47, 74, 0.08);
-        --page-ambient: 215 25% 99%;
-        --page-ambient-deep: 215 25% 98%;
+        --page-ambient: 0 0% 100%;
+        --page-ambient-deep: 0 0% 100%;
         --surface-tint: 0 0% 100%;
-        --surface-muted: 215 20% 97%;
-        --surface-border: 215 20% 91%;
+        --surface-muted: 0 0% 99%;
+        --surface-border: 0 0% 95%;
     }
 
     [data-theme="admin"] {

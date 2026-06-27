@@ -276,7 +276,7 @@ export default function Subscription() {
             </div>
 
             <div className="mt-5 grid gap-4 lg:grid-cols-[1.3fr_0.8fr]">
-              <div className="rounded-lg border border-deep-navy-100/80 bg-slate-50/80 p-5">
+              <div className="rounded-lg border border-deep-navy-100/80 bg-white/80 p-5">
                 <div className="flex justify-between gap-3 text-sm">
                   <span className="text-muted-foreground">Bids this month</span>
                   <span className="font-medium text-foreground">
@@ -291,7 +291,7 @@ export default function Subscription() {
                 )}
               </div>
 
-              <div className="rounded-lg border border-deep-navy-100/80 bg-slate-50/80 p-5">
+              <div className="rounded-lg border border-deep-navy-100/80 bg-white/80 p-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Plan note</p>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">
                   Keep an eye on bid capacity before you hit the limit so upgrades happen on your schedule instead of under pressure.
@@ -449,7 +449,7 @@ export default function Subscription() {
             <h2 className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-foreground">Frequently asked questions</h2>
           </div>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
-            <Card className="rounded-lg border border-deep-navy-100/80 bg-slate-50/80 shadow-none">
+            <Card className="rounded-lg border border-deep-navy-100/80 bg-white/80 shadow-none">
               <CardContent className="p-5">
                 <h3 className="mb-2 font-semibold text-foreground">Can I cancel anytime?</h3>
                 <p className="text-sm leading-6 text-muted-foreground">
@@ -457,7 +457,7 @@ export default function Subscription() {
                 </p>
               </CardContent>
             </Card>
-            <Card className="rounded-lg border border-deep-navy-100/80 bg-slate-50/80 shadow-none">
+            <Card className="rounded-lg border border-deep-navy-100/80 bg-white/80 shadow-none">
               <CardContent className="p-5">
                 <h3 className="mb-2 font-semibold text-foreground">What happens when I hit my limit?</h3>
                 <p className="text-sm leading-6 text-muted-foreground">
@@ -465,7 +465,7 @@ export default function Subscription() {
                 </p>
               </CardContent>
             </Card>
-            <Card className="rounded-lg border border-deep-navy-100/80 bg-slate-50/80 shadow-none">
+            <Card className="rounded-lg border border-deep-navy-100/80 bg-white/80 shadow-none">
               <CardContent className="p-5">
                 <h3 className="mb-2 font-semibold text-foreground">Can I switch plans?</h3>
                 <p className="text-sm leading-6 text-muted-foreground">
@@ -473,7 +473,7 @@ export default function Subscription() {
                 </p>
               </CardContent>
             </Card>
-            <Card className="rounded-lg border border-deep-navy-100/80 bg-slate-50/80 shadow-none">
+            <Card className="rounded-lg border border-deep-navy-100/80 bg-white/80 shadow-none">
               <CardContent className="p-5">
                 <h3 className="mb-2 font-semibold text-foreground">Is there a free trial?</h3>
                 <p className="text-sm leading-6 text-muted-foreground">

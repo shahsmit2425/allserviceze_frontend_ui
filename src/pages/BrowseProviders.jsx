@@ -1011,7 +1011,7 @@ export default function BrowseProviders() {
                               </Button>
                               <Button
                                 size="sm"
-                                className="rounded-xl border border-deep-navy-200 text-deep-navy-800 hover:bg-slate-50 font-semibold"
+                                className="rounded-xl border border-deep-navy-200 text-deep-navy-800 hover:bg-white font-semibold"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   navigate(`/providers/${provider.id}`);
