@@ -21,7 +21,7 @@ html {
     min-height: 100%;
     scroll-behavior: smooth;
     color-scheme: light;
-    background: #FFFDF7;
+    background: #FFFFFF;
 }
 
 body {
@@ -44,7 +44,7 @@ body::before {
     inset: 0;
     z-index: -2;
     pointer-events: none;
-    background: #FFFDF7;
+    background: #FFFFFF;
 }
 
 body::after {
