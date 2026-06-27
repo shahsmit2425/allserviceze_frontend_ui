@@ -29,10 +29,10 @@ const ServiceCategoriesGrid = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-12 md:py-16 bg-white">
       <div className="mx-auto max-w-[96rem] px-4 sm:px-6 lg:px-10">
         {/* Section Header */}
-        <div className="mb-12 text-center">
+        <div className="mb-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-center text-balance mb-4" style={{ fontFamily: "'Poppins', sans-serif", color: '#1a1a1a' }}>
             Popular Services
           </h2>
@@ -42,7 +42,7 @@ const ServiceCategoriesGrid = () => {
         </div>
 
         {/* Categories Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {categories.map((category) => (
             <Link
               key={category.id}

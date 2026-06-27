@@ -36,28 +36,28 @@ const RoleBadge = ({ role, isAdmin }) => {
 };
 
 const desktopLinkClasses = (active, variant = "default") => cn(
-  "group flex items-center gap-2 text-sm font-medium transition-all duration-200",
+  "group flex items-center gap-2 text-base font-bold transition-all duration-200",
   variant === "landing"
     ? active
       ? "px-0 py-2 text-deep-navy-800"
-      : "px-0 py-2 text-deep-navy-500 hover:text-deep-navy-800"
+      : "px-0 py-2 text-deep-navy-600 hover:text-deep-navy-800"
     : active
-      ? "rounded-xl border border-deep-navy-200 bg-deep-navy-50 px-3.5 py-2.5 text-deep-navy-800 font-semibold"
-      : "rounded-lg px-3.5 py-2.5 text-deep-navy-500 hover:bg-deep-navy-50 hover:text-deep-navy-800"
+      ? "rounded-xl border border-deep-navy-200 bg-deep-navy-50 px-3.5 py-2.5 text-deep-navy-800 font-bold"
+      : "rounded-lg px-3.5 py-2.5 text-deep-navy-600 hover:bg-deep-navy-50 hover:text-deep-navy-800"
 );
 
 const mobileLinkClasses = (active) => cn(
-  "flex items-center gap-3 rounded-xl border px-4 py-3 text-sm font-medium transition-all duration-200",
+  "flex items-center gap-3 rounded-xl border px-4 py-3 text-base font-bold transition-all duration-200",
   active
-    ? "border-deep-navy-200 bg-deep-navy-50 text-deep-navy-800 font-semibold"
-    : "border-deep-navy-100 bg-white text-deep-navy-500 hover:bg-white hover:text-deep-navy-800"
+    ? "border-deep-navy-200 bg-deep-navy-50 text-deep-navy-800 font-bold"
+    : "border-deep-navy-100 bg-white text-deep-navy-600 hover:bg-white hover:text-deep-navy-800"
 );
 
 const tabletLinkClasses = (active) => cn(
-  "inline-flex min-w-max items-center gap-2.5 rounded-xl border px-4 py-2.5 text-sm font-medium transition-all duration-200",
+  "inline-flex min-w-max items-center gap-2.5 rounded-xl border px-4 py-2.5 text-base font-bold transition-all duration-200",
   active
-    ? "border-deep-navy-200 bg-deep-navy-50 text-deep-navy-800 font-semibold"
-    : "border-deep-navy-100 bg-white/50 text-deep-navy-500 hover:bg-white hover:text-deep-navy-800"
+    ? "border-deep-navy-200 bg-deep-navy-50 text-deep-navy-800 font-bold"
+    : "border-deep-navy-100 bg-white/50 text-deep-navy-600 hover:bg-white hover:text-deep-navy-800"
 );
 
 export const Navbar = ({ variant = "default" }) => {
@@ -146,7 +146,7 @@ export const Navbar = ({ variant = "default" }) => {
 
                 <div className="ml-4 flex items-center gap-3 lg:ml-auto">
                   <Link to="/auth">
-                    <Button variant="ghost" className="rounded-xl px-5 text-deep-navy-600 hover:text-deep-navy-800 hover:bg-deep-navy-50 font-semibold">Log In</Button>
+                    <Button variant="ghost" className="rounded-xl px-6 text-base text-deep-navy-700 hover:text-deep-navy-900 hover:bg-deep-navy-50 font-bold">Log In</Button>
                   </Link>
                   <Link to="/auth?mode=register">
                     <Button className="rounded-xl px-6 bg-gradient-to-r from-copper-500 to-copper-600 text-white hover:from-copper-600 hover:to-copper-700 font-semibold shadow-md hover:shadow-lg transition-all">Get Started</Button>

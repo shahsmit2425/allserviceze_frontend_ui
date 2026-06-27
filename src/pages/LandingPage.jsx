@@ -443,15 +443,15 @@ export default function LandingPage() {
         onSearch={handleSearch}
       />
 
+      {/* Service Categories Section */}
+      <ServiceCategoriesGrid />
+
       {/* Features Section */}
       <PremiumFeatures
         features={features}
         title="Why Choose ServiceTones"
         description="A marketplace built for trust, transparency, and convenience"
       />
-
-      {/* Service Categories Section */}
-      <ServiceCategoriesGrid />
 
       {/* How It Works Section */}
       <section className="py-20 md:py-28 bg-gradient-to-b from-white to-slate-50">
