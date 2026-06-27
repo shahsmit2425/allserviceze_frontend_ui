@@ -7,6 +7,11 @@ import { ChatProvider } from "./context/ChatContext";
 import { NotificationProvider, useNotifications } from "./context/NotificationContext";
 import { Loader2 } from "lucide-react";
 import ErrorBoundary from "./components/ErrorBoundary";
+import "@fontsource/poppins/400.css";
+import "@fontsource/poppins/500.css";
+import "@fontsource/poppins/600.css";
+import "@fontsource/poppins/700.css";
+import "@fontsource/poppins/800.css";
 
 // CRITICAL: Load API debugger FIRST to catch all network requests
 import "./utils/apiDebug";
