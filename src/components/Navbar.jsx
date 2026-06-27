@@ -97,23 +97,15 @@ export const Navbar = ({ variant = "default" }) => {
 
   return (
     <nav
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 overflow-visible",
-        isLandingNav && "border-b border-deep-navy-50 bg-white/90 backdrop-blur-xl shadow-sm"
-      )}
+      className="fixed inset-x-0 top-0 z-50 overflow-visible border-b border-deep-navy-50 bg-white shadow-sm"
       style={{ paddingTop: "env(safe-area-inset-top)" }}
     >
-      <div className={cn(isLandingNav ? "mx-auto w-full max-w-[96rem] px-4 sm:px-6 lg:px-10" : "page-shell pt-2.5")}>
-      <div className={cn("w-full overflow-visible", isLandingNav ? "bg-transparent shadow-none" : "rounded-none border-b border-deep-navy-50 bg-white/98 shadow-sm")}>
-        <div className={cn("overflow-visible", isLandingNav ? "px-0 py-2" : "px-3.5 sm:px-5 lg:px-6")}>
-          <div className={cn("flex items-center justify-between gap-8 overflow-visible", isLandingNav ? "h-20" : "h-16")}>
+      <div className={cn(isLandingNav ? "mx-auto w-full max-w-[96rem] px-4 sm:px-6 lg:px-10" : "mx-auto w-full max-w-[96rem] px-4 sm:px-6 lg:px-10")}>
+      <div className="w-full overflow-visible bg-transparent shadow-none">
+        <div className="overflow-visible px-0 py-2">
+          <div className="flex items-center justify-between gap-8 overflow-visible h-20">
           {/* Logo */}
-            <Link to="/" className={cn(
-              "group flex items-center gap-3 transition-all duration-200 flex-shrink-0",
-              isLandingNav
-                ? "hover:opacity-80"
-                : "-ml-2 rounded-xl px-2.5 py-2 hover:bg-deep-navy-50"
-            )} data-testid="logo-link">
+            <Link to="/" className="group flex items-center gap-3 transition-all duration-200 flex-shrink-0 hover:opacity-80" data-testid="logo-link">
               <img
                 src="/favicon.svg"
                 alt="ServiceTones"
@@ -128,7 +120,7 @@ export const Navbar = ({ variant = "default" }) => {
                   MARKETPLACE
                 </span>
               </div>
-              {!isLandingNav && <div className="hidden lg:flex">{brandBadge}</div>}
+              <div className="hidden lg:flex">{brandBadge}</div>
             </Link>
 
           {/* Desktop Navigation */}
