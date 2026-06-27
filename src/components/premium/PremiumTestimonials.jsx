@@ -2,7 +2,7 @@ import { Star } from "lucide-react";
 
 export function PremiumTestimonials({ testimonials, title }) {
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-b from-slate-50 to-white">
+    <section className="py-20 md:py-28 bg-white">
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
         {/* Section Header */}
         <div className="text-center mb-16 max-w-2xl mx-auto">

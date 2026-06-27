@@ -296,21 +296,21 @@ select {
     html [class~="bg-white/75"],
     html [class~="bg-white/70"],
     html [class~="bg-white/55"] {
-        background-color: hsl(var(--card) / 0.96);
-        background-image: linear-gradient(180deg, hsl(var(--background) / 0.82), hsl(var(--card) / 0.96));
+        background-color: rgba(255, 255, 255, 0.95);
+        background-image: none;
     }
     html div[class~="bg-white"],
     html section[class~="bg-white"],
     html article[class~="bg-white"],
     html aside[class~="bg-white"] {
-        background-color: hsl(var(--card));
-        background-image: linear-gradient(180deg, hsl(var(--background) / 0.78), hsl(var(--card)));
+        background-color: #FFFFFF;
+        background-image: none;
     }
     html input[class~="bg-white"],
     html a[class~="bg-white"],
     html button[class~="bg-white"][class*="border"] {
-        background-color: hsl(var(--card));
-        background-image: linear-gradient(180deg, hsl(var(--background) / 0.78), hsl(var(--card)));
+        background-color: #FFFFFF;
+        background-image: none;
     }
     html [class~="border-white/80"],
     html [class~="border-white/70"],
@@ -324,8 +324,15 @@ select {
     html [class~="bg-slate-100/80"],
     html [class~="bg-slate-100/70"],
     html [class~="bg-slate-50/90"] {
-        background-color: hsl(210 40% 97%);
-        background-image: none;
+        background-color: #FFFFFF;
+    }
+    html [class~="bg-gray-100"],
+    html [class~="bg-gray-50"] {
+        background-color: #FFFFFF;
+    }
+    html [class~="bg-blue-100"],
+    html [class~="bg-blue-50"] {
+        background-color: #FFFFFF;
     }
     html [class~="bg-gray-100"],
     html [class~="bg-gray-50"] {

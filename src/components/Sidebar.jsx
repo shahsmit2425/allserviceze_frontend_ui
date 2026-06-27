@@ -65,7 +65,7 @@ export const Sidebar = () => {
       {/* Sidebar */}
       <aside
         className={cn(
-          "fixed inset-y-0 left-0 z-40 flex flex-col border-r border-deep-navy-100 bg-gradient-to-b from-white to-slate-50/50 transition-all duration-300",
+          "fixed inset-y-0 left-0 z-40 flex flex-col border-r border-deep-navy-100 bg-white transition-all duration-300",
           sidebarOpen ? "w-64" : "w-20"
         )}
         style={{ paddingTop: "env(safe-area-inset-top)" }}
@@ -155,7 +155,7 @@ export const Sidebar = () => {
         {/* User Profile Section */}
         {user && (
           <div className={cn(
-            "border-t border-deep-navy-100 bg-gradient-to-t from-slate-50 to-white p-3 sm:p-4",
+            "border-t border-deep-navy-100 bg-white p-3 sm:p-4",
             sidebarOpen ? "" : "flex flex-col items-center"
           )}>
             <div
