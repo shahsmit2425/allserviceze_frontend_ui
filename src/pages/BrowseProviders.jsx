@@ -593,7 +593,7 @@ export default function BrowseProviders() {
                   maxLength={5}
                 />
               </div>
-              <Button type="submit" className="h-12 rounded-xl bg-gradient-to-r from-deep-navy-800 to-deep-navy-700 text-white hover:from-deep-navy-700 hover:to-deep-navy-600 font-semibold shadow-md hover:shadow-lg transition-all">
+              <Button type="submit" className="h-12 rounded-xl bg-gradient-to-r from-copper-500 to-copper-600 text-white hover:from-copper-600 hover:to-copper-700 font-semibold shadow-md hover:shadow-lg transition-all">
                 Search
               </Button>
             </form>
@@ -678,7 +678,7 @@ export default function BrowseProviders() {
                 </Accordion>
 
                 <div className="border-t border-border/60 px-5 py-4">
-                  <Button className="w-full rounded-xl bg-gradient-to-r from-deep-navy-800 to-deep-navy-700 text-white hover:from-deep-navy-700 hover:to-deep-navy-600 font-semibold shadow-md hover:shadow-lg transition-all disabled:opacity-50" onClick={applyFilters} disabled={!hasDraftChanges}>
+                  <Button className="w-full rounded-xl bg-gradient-to-r from-copper-500 to-copper-600 text-white hover:from-copper-600 hover:to-copper-700 font-semibold shadow-md hover:shadow-lg transition-all disabled:opacity-50" onClick={applyFilters} disabled={!hasDraftChanges}>
                     Apply Filters
                   </Button>
                   <p className="mt-3 text-xs leading-5 text-muted-foreground">Filters stay draft-based until you apply them.</p>
@@ -1005,7 +1005,7 @@ export default function BrowseProviders() {
                             </div>
 
                             <div className="mt-4 grid gap-2 sm:grid-cols-3">
-                              <Button size="sm" className="rounded-xl bg-gradient-to-r from-deep-navy-800 to-deep-navy-700 text-white hover:from-deep-navy-700 hover:to-deep-navy-600 font-semibold" onClick={(e) => { e.stopPropagation(); navigate(`/providers/${provider.id}`); }}>
+                              <Button size="sm" className="rounded-xl bg-gradient-to-r from-copper-500 to-copper-600 text-white hover:from-copper-600 hover:to-copper-700 font-semibold" onClick={(e) => { e.stopPropagation(); navigate(`/providers/${provider.id}`); }}>
                                 View Profile
                                 <ArrowRight className="ml-2 h-4 w-4" />
                               </Button>

@@ -468,7 +468,7 @@ export default function LandingPage() {
               { num: "3", title: "Hire & Collaborate", desc: "Review profiles, compare quotes, and hire with confidence." },
             ].map((step) => (
               <div key={step.num} className="text-center">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-deep-navy-800 to-deep-navy-700 text-white font-bold text-xl flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-copper-500 to-copper-600 text-white font-bold text-xl flex items-center justify-center mx-auto mb-6">
                   {step.num}
                 </div>
                 <h3 className="text-2xl font-bold text-deep-navy-800 mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>

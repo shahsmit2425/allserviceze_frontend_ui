@@ -1262,7 +1262,7 @@ export default function AuthPage() {
 
                         <Button
                           type="submit"
-                          className="w-full rounded-xl py-3 bg-gradient-to-r from-deep-navy-800 to-deep-navy-700 text-white font-semibold hover:from-deep-navy-700 hover:to-deep-navy-600 transition-all shadow-md hover:shadow-lg mt-6"
+                          className="w-full rounded-xl py-3 bg-gradient-to-r from-copper-500 to-copper-600 text-white font-semibold hover:from-copper-600 hover:to-copper-700 transition-all shadow-md hover:shadow-lg mt-6"
                           disabled={loading}
                           data-testid="login-submit-btn"
                           style={{ fontFamily: "'Lora', serif" }}
@@ -1393,7 +1393,7 @@ export default function AuthPage() {
 
                           <Button
                             type="submit"
-                            className="w-full rounded-xl py-3 bg-gradient-to-r from-deep-navy-800 to-deep-navy-700 text-white font-semibold hover:from-deep-navy-700 hover:to-deep-navy-600 transition-all shadow-md hover:shadow-lg mt-6"
+                            className="w-full rounded-xl py-3 bg-gradient-to-r from-copper-500 to-copper-600 text-white font-semibold hover:from-copper-600 hover:to-copper-700 transition-all shadow-md hover:shadow-lg mt-6"
                             disabled={loading}
                             data-testid="register-submit-btn"
                             style={{ fontFamily: "'Lora', serif" }}
