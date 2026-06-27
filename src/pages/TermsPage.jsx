@@ -6,7 +6,7 @@ export default function TermsPage() {
     <div className="min-h-screen bg-transparent" data-theme="customer">
       <header className="sticky top-0 z-10 border-b border-white/60 bg-white/80 backdrop-blur-xl">
         <div className="page-shell py-4">
-          <Link to="/" className="inline-flex items-center gap-2 rounded-lg border border-teal-200/80 bg-white px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+          <Link to="/" className="inline-flex items-center gap-2 rounded-lg border border-slate-200/80 bg-white px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
             <ArrowLeft className="w-4 h-4" /> Back to Home
           </Link>
         </div>
@@ -19,7 +19,7 @@ export default function TermsPage() {
           <p className="body-lg mt-3 text-muted-foreground">Last updated: April 26, 2026</p>
         </section>
 
-        <section className="rounded-xl border border-white/70 bg-white/88 p-6 shadow-xl shadow-teal-900/5 backdrop-blur-sm sm:p-8">
+        <section className="rounded-xl border border-white/70 bg-white/88 p-6 shadow-xl shadow-slate-900/5 backdrop-blur-sm sm:p-8">
         <div className="prose prose-slate max-w-none space-y-8">
 
           <section>

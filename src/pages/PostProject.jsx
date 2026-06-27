@@ -645,7 +645,7 @@ export default function PostProject() {
                                         ? current.filter((item) => item !== option)
                                         : [...current, option],
                                     })}
-                                    className={`rounded-lg px-3 py-2 text-sm transition ${isSelected ? "bg-primary text-primary-foreground" : "bg-teal-100 text-foreground hover:bg-teal-200"}`}
+                                    className={`rounded-lg px-3 py-2 text-sm transition ${isSelected ? "bg-primary text-primary-foreground" : "bg-slate-100 text-foreground hover:bg-slate-200"}`}
                                   >
                                     {option}
                                   </button>
@@ -664,7 +664,7 @@ export default function PostProject() {
                                     key={label}
                                     type="button"
                                     onClick={() => patchQuestionnaireAnswers({ [question.id]: value })}
-                                    className={`rounded-lg px-3 py-2 text-sm transition ${isSelected ? "bg-primary text-primary-foreground" : "bg-teal-100 text-foreground hover:bg-teal-200"}`}
+                                    className={`rounded-lg px-3 py-2 text-sm transition ${isSelected ? "bg-primary text-primary-foreground" : "bg-slate-100 text-foreground hover:bg-slate-200"}`}
                                   >
                                     {label}
                                   </button>
@@ -739,7 +739,7 @@ export default function PostProject() {
                         key={preset.label}
                         type="button"
                         onClick={() => patchFormData({ deadline: nextDate })}
-                        className={`rounded-xl border px-4 py-4 text-left transition ${isSelected ? "border-primary/20 bg-primary/8 text-primary" : "border-border/60 bg-muted/35 text-foreground hover:bg-teal-100"}`}
+                        className={`rounded-xl border px-4 py-4 text-left transition ${isSelected ? "border-primary/20 bg-primary/8 text-primary" : "border-border/60 bg-muted/35 text-foreground hover:bg-slate-100"}`}
                       >
                         <p className="text-sm font-semibold">{preset.label}</p>
                         <p className="mt-1 text-sm text-muted-foreground">{formatTimelineSummary(nextDate)}</p>
@@ -788,7 +788,7 @@ export default function PostProject() {
 
                 <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
                   {formData.images.map((image, index) => (
-                    <div key={image} className="group relative aspect-video overflow-hidden rounded-xl bg-teal-100">
+                    <div key={image} className="group relative aspect-video overflow-hidden rounded-xl bg-slate-100">
                       <img src={image} alt={`Project ${index + 1}`} className="h-full w-full object-cover" />
                       <button
                         type="button"
@@ -893,7 +893,7 @@ export default function PostProject() {
                             key={skill}
                             type="button"
                             onClick={() => handleSkillToggle(skill)}
-                            className={`rounded-lg px-3 py-2 text-sm transition ${isSelected ? "bg-primary text-primary-foreground" : "bg-teal-100 text-foreground hover:bg-teal-200"}`}
+                            className={`rounded-lg px-3 py-2 text-sm transition ${isSelected ? "bg-primary text-primary-foreground" : "bg-slate-100 text-foreground hover:bg-slate-200"}`}
                           >
                             {skill}
                           </button>
@@ -918,7 +918,7 @@ export default function PostProject() {
                 </div>
               </div>
 
-              <div className="mt-4 h-2 overflow-hidden rounded-full bg-teal-200/80">
+              <div className="mt-4 h-2 overflow-hidden rounded-full bg-slate-200/80">
                 <div className="h-full rounded-full bg-primary transition-all duration-300" style={{ width: `${validation.completion}%` }} />
               </div>
 

@@ -107,10 +107,10 @@ export default function ServicesPage() {
       <section className="py-20 md:py-32 bg-gradient-to-b from-amber-50 via-white to-slate-50">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
           <div className="text-center mb-16 max-w-3xl mx-auto">
-            <h2 className="text-5xl md:text-6xl font-bold text-teal-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
               Services We Offer
             </h2>
-            <p className="text-lg text-teal-600" style={{ fontFamily: "'Lora', serif" }}>
+            <p className="text-lg text-slate-600" style={{ fontFamily: "'Lora', serif" }}>
               Explore our most popular service categories with verified professionals
             </p>
           </div>
@@ -122,13 +122,13 @@ export default function ServicesPage() {
                 <button
                   key={service.title}
                   onClick={() => navigate(`/providers?category=${encodeURIComponent(service.title)}`)}
-                  className="group p-6 rounded-2xl border border-teal-200 hover:border-primary hover:shadow-lg transition-all text-left hover:bg-slate-50"
+                  className="group p-6 rounded-2xl border border-slate-200 hover:border-primary hover:shadow-lg transition-all text-left hover:bg-slate-50"
                 >
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                     <Icon className="h-6 w-6 text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold text-teal-900 mb-2">{service.title}</h3>
-                  <p className="text-sm text-teal-600 mb-4">{service.description}</p>
+                  <h3 className="text-lg font-semibold text-slate-900 mb-2">{service.title}</h3>
+                  <p className="text-sm text-slate-600 mb-4">{service.description}</p>
                   <div className="flex items-center gap-4 text-xs text-slate-500">
                     <span>{service.providers} pros</span>
                     <span>&bull;</span>
@@ -149,7 +149,7 @@ export default function ServicesPage() {
       />
 
       {/* Stats */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-white to-teal-900">
+      <section className="py-20 md:py-28 bg-gradient-to-b from-white to-slate-900">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
             <div>

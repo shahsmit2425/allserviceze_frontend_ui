@@ -7,12 +7,12 @@ export function PremiumTestimonials({ testimonials, title }) {
         {/* Section Header */}
         <div className="text-center mb-16 max-w-2xl mx-auto">
           <h2 
-            className="text-4xl md:text-5xl font-bold text-teal-900 mb-4"
+            className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             {title || "Loved by our community"}
           </h2>
-          <p className="text-lg text-teal-600" style={{ fontFamily: "'Lora', serif" }}>
+          <p className="text-lg text-slate-600" style={{ fontFamily: "'Lora', serif" }}>
             See what verified professionals and customers say about us
           </p>
         </div>
@@ -22,7 +22,7 @@ export function PremiumTestimonials({ testimonials, title }) {
           {testimonials.map((testimonial, idx) => (
             <div 
               key={idx} 
-              className="p-8 rounded-2xl border border-teal-200 bg-white hover:shadow-lg transition-all duration-300 hover:border-primary/50"
+              className="p-8 rounded-2xl border border-slate-200 bg-white hover:shadow-lg transition-all duration-300 hover:border-primary/50"
             >
               {/* Rating */}
               <div className="flex gap-1 mb-4">
@@ -33,7 +33,7 @@ export function PremiumTestimonials({ testimonials, title }) {
 
               {/* Quote */}
               <p 
-                className="text-teal-700 mb-6 leading-relaxed"
+                className="text-slate-700 mb-6 leading-relaxed"
                 style={{ fontFamily: "'Lora', serif" }}
               >
                 "{testimonial.quote}"
@@ -49,8 +49,8 @@ export function PremiumTestimonials({ testimonials, title }) {
                   />
                 )}
                 <div>
-                  <p className="font-semibold text-teal-900">{testimonial.author}</p>
-                  <p className="text-sm text-teal-600">{testimonial.role}</p>
+                  <p className="font-semibold text-slate-900">{testimonial.author}</p>
+                  <p className="text-sm text-slate-600">{testimonial.role}</p>
                 </div>
               </div>
             </div>

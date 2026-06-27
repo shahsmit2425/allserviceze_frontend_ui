@@ -435,17 +435,17 @@ export default function ProviderDashboard() {
             </div>
 
             <div className="mt-5 grid gap-3 sm:grid-cols-3">
-              <div className="rounded-xl border border-white/80 bg-white/85 px-4 py-4 shadow-sm shadow-teal-900/5">
+              <div className="rounded-xl border border-white/80 bg-white/85 px-4 py-4 shadow-sm shadow-slate-900/5">
                 <p className="caption">New matching projects</p>
                 <p className="mt-2 text-3xl font-semibold tracking-[-0.05em] text-foreground">{recommendedProjects.length}</p>
                 <p className="mt-2 text-sm text-muted-foreground">Fresh live jobs you have not bid on yet.</p>
               </div>
-              <div className="rounded-xl border border-white/80 bg-white/85 px-4 py-4 shadow-sm shadow-teal-900/5">
+              <div className="rounded-xl border border-white/80 bg-white/85 px-4 py-4 shadow-sm shadow-slate-900/5">
                 <p className="caption">Open bid pipeline</p>
                 <p className="mt-2 text-3xl font-semibold tracking-[-0.05em] text-foreground">{formatCurrency(openBidValue)}</p>
                 <p className="mt-2 text-sm text-muted-foreground">Current proposal value waiting on customer action.</p>
               </div>
-              <div className="rounded-xl border border-white/80 bg-white/85 px-4 py-4 shadow-sm shadow-teal-900/5">
+              <div className="rounded-xl border border-white/80 bg-white/85 px-4 py-4 shadow-sm shadow-slate-900/5">
                 <p className="caption">Won work</p>
                 <p className="mt-2 text-3xl font-semibold tracking-[-0.05em] text-foreground">{formatCurrency(wonValue)}</p>
                 <p className="mt-2 text-sm text-muted-foreground">Awarded pipeline already converted into revenue opportunities.</p>
@@ -529,15 +529,15 @@ export default function ProviderDashboard() {
                               <h3 className="mt-3 text-lg font-semibold tracking-[-0.03em] text-foreground">{project.title}</h3>
                               <p className="mt-2 line-clamp-2 text-sm leading-6 text-muted-foreground">{project.description}</p>
                               <div className="mt-4 flex flex-wrap gap-2.5 text-sm">
-                                <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-teal-900/5">
+                                <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-slate-900/5">
                                   <DollarSign className="h-4 w-4 text-primary" />
                                   <span className="font-medium">{formatBudgetRange(project)}</span>
                                 </span>
-                                <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-teal-900/5">
+                                <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-slate-900/5">
                                   <MapPin className="h-4 w-4 text-primary" />
                                   <span className="font-medium">{project.location || "Flexible location"}</span>
                                 </span>
-                                <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-teal-900/5">
+                                <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-slate-900/5">
                                   <Calendar className="h-4 w-4 text-primary" />
                                   <span className="font-medium">{formatActivityTime(project.created_at)}</span>
                                 </span>
@@ -674,25 +674,25 @@ export default function ProviderDashboard() {
                                 </div>
 
                                 <div className="mt-4 flex flex-wrap gap-2.5 text-sm">
-                                  <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-teal-900/5">
+                                  <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-slate-900/5">
                                     <DollarSign className="h-4 w-4 text-primary" />
                                     <span className="font-medium">Bid ${bid.amount}</span>
                                   </span>
-                                  <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-teal-900/5">
+                                  <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-slate-900/5">
                                     <Clock className="h-4 w-4 text-primary" />
                                     <span className="font-medium">{bid.estimated_days} days</span>
                                   </span>
-                                  <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-teal-900/5">
+                                  <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-slate-900/5">
                                     <Calendar className="h-4 w-4 text-primary" />
                                     <span className="font-medium">{formatDistanceToNow(new Date(bid.created_at), { addSuffix: true })}</span>
                                   </span>
                                   {project ? (
-                                    <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-teal-900/5">
+                                    <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-slate-900/5">
                                       <Briefcase className="h-4 w-4 text-primary" />
                                       <span className="font-medium">${project.budget_min} - ${project.budget_max}</span>
                                     </span>
                                   ) : (
-                                    <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-teal-900/5">
+                                    <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-slate-900/5">
                                       <FileText className="h-4 w-4 text-primary" />
                                       <span className="font-medium">{statusLabels[bid.status]}</span>
                                     </span>

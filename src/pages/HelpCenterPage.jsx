@@ -105,7 +105,7 @@ export default function HelpCenterPage() {
       />
 
       {/* Search Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-white to-amber-50 border-b border-teal-200">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-white to-amber-50 border-b border-slate-200">
         <div className="max-w-3xl mx-auto px-6 sm:px-10 lg:px-12">
           <div className="relative">
             <Search className="absolute left-4 top-4 h-5 w-5 text-slate-400" />
@@ -113,7 +113,7 @@ export default function HelpCenterPage() {
               placeholder="Search help topics..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-12 h-12 rounded-xl border-teal-300"
+              className="pl-12 h-12 rounded-xl border-slate-300"
             />
           </div>
         </div>
@@ -124,18 +124,18 @@ export default function HelpCenterPage() {
         <div className="max-w-3xl mx-auto px-6 sm:px-10 lg:px-12">
           {Object.entries(filteredFaqs).map(([category, faqs]) => (
             <div key={category} className="mb-12">
-              <h2 className="text-2xl font-bold text-teal-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+              <h2 className="text-2xl font-bold text-slate-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
                 {category}
               </h2>
               <div className="space-y-4">
                 {faqs.map((faq, idx) => (
                   <Card
                     key={idx}
-                    className="p-6 cursor-pointer border-teal-200 hover:border-primary/50 hover:shadow-md transition-all"
+                    className="p-6 cursor-pointer border-slate-200 hover:border-primary/50 hover:shadow-md transition-all"
                     onClick={() => setExpandedFaq(expandedFaq === `${category}-${idx}` ? null : `${category}-${idx}`)}
                   >
                     <div className="flex items-start justify-between gap-4">
-                      <h3 className="text-lg font-semibold text-teal-900 flex-1">
+                      <h3 className="text-lg font-semibold text-slate-900 flex-1">
                         {faq.q}
                       </h3>
                       <ChevronDown
@@ -145,7 +145,7 @@ export default function HelpCenterPage() {
                       />
                     </div>
                     {expandedFaq === `${category}-${idx}` && (
-                      <p className="text-teal-600 mt-4 leading-relaxed">{faq.a}</p>
+                      <p className="text-slate-600 mt-4 leading-relaxed">{faq.a}</p>
                     )}
                   </Card>
                 ))}
@@ -159,39 +159,39 @@ export default function HelpCenterPage() {
       <section className="py-20 md:py-32 bg-gradient-to-b from-slate-50 via-white to-amber-50">
         <div className="max-w-4xl mx-auto px-6 sm:px-10 lg:px-12">
           <div className="text-center mb-16 max-w-2xl mx-auto">
-            <h2 className="text-5xl md:text-6xl font-bold text-teal-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
               Still need help?
             </h2>
-            <p className="text-lg text-teal-600" style={{ fontFamily: "'Lora', serif" }}>
+            <p className="text-lg text-slate-600" style={{ fontFamily: "'Lora', serif" }}>
               Our support team is here for you
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="p-8 border-teal-200 hover:border-primary/50 hover:shadow-lg transition-all text-center">
+            <Card className="p-8 border-slate-200 hover:border-primary/50 hover:shadow-lg transition-all text-center">
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
                 <Mail className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-lg font-semibold text-teal-900 mb-2">Email Support</h3>
-              <p className="text-teal-600 mb-4">support@servicetones.com</p>
+              <h3 className="text-lg font-semibold text-slate-900 mb-2">Email Support</h3>
+              <p className="text-slate-600 mb-4">support@servicetones.com</p>
               <p className="text-sm text-slate-500">Average response time: 2 hours</p>
             </Card>
 
-            <Card className="p-8 border-teal-200 hover:border-primary/50 hover:shadow-lg transition-all text-center">
+            <Card className="p-8 border-slate-200 hover:border-primary/50 hover:shadow-lg transition-all text-center">
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
                 <MessageSquare className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-lg font-semibold text-teal-900 mb-2">In-App Chat</h3>
-              <p className="text-teal-600 mb-4">Chat with our team</p>
+              <h3 className="text-lg font-semibold text-slate-900 mb-2">In-App Chat</h3>
+              <p className="text-slate-600 mb-4">Chat with our team</p>
               <p className="text-sm text-slate-500">Available Mon-Fri, 9am-5pm EST</p>
             </Card>
 
-            <Card className="p-8 border-teal-200 hover:border-primary/50 hover:shadow-lg transition-all text-center">
+            <Card className="p-8 border-slate-200 hover:border-primary/50 hover:shadow-lg transition-all text-center">
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
                 <BookOpen className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-lg font-semibold text-teal-900 mb-2">Guides & Articles</h3>
-              <p className="text-teal-600 mb-4">Learn best practices</p>
+              <h3 className="text-lg font-semibold text-slate-900 mb-2">Guides & Articles</h3>
+              <p className="text-slate-600 mb-4">Learn best practices</p>
               <p className="text-sm text-slate-500">Video tutorials and step-by-step guides</p>
             </Card>
           </div>

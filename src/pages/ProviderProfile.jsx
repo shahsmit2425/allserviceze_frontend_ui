@@ -495,7 +495,7 @@ export default function ProviderProfile() {
           <Card className="result-card-surface border border-border/60 shadow-sm">
             <CardHeader className="border-b border-border/60 pb-5">
               <div className="flex items-start gap-3">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-border/60 bg-muted/35 shadow-sm shadow-teal-900/5">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-border/60 bg-muted/35 shadow-sm shadow-slate-900/5">
                   <Clock className="h-4 w-4 text-primary" />
                 </div>
                 <div>
@@ -531,7 +531,7 @@ export default function ProviderProfile() {
           <Card className="result-card-surface border border-border/60 shadow-sm">
               <CardHeader className="border-b border-border/60 pb-5">
                 <div className="flex items-start gap-3">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-border/60 bg-muted/35 shadow-sm shadow-teal-900/5">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-border/60 bg-muted/35 shadow-sm shadow-slate-900/5">
                     <MapPin className="h-4 w-4 text-primary" />
                   </div>
                   <div>
@@ -569,7 +569,7 @@ export default function ProviderProfile() {
 
         {/* Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className={isNativePhone ? "mobile-tabs-rail mb-6 flex h-auto w-full flex-nowrap gap-2 overflow-x-auto rounded-xl border border-border/60 bg-white/90 p-1.5 shadow-sm shadow-teal-900/5" : "mb-6 h-auto flex-wrap gap-2 rounded-xl border border-border/60 bg-white/90 p-1.5 shadow-sm shadow-teal-900/5"}>
+          <TabsList className={isNativePhone ? "mobile-tabs-rail mb-6 flex h-auto w-full flex-nowrap gap-2 overflow-x-auto rounded-xl border border-border/60 bg-white/90 p-1.5 shadow-sm shadow-slate-900/5" : "mb-6 h-auto flex-wrap gap-2 rounded-xl border border-border/60 bg-white/90 p-1.5 shadow-sm shadow-slate-900/5"}>
             {services.length > 0 && (
               <TabsTrigger value="services" data-testid="services-tab">
                 <Briefcase className="w-4 h-4 mr-2" />
@@ -922,7 +922,7 @@ export default function ProviderProfile() {
                           </div>
                           <p className="content-card-copy mt-4">{review.review_text}</p>
                           {review.screenshot_url && (
-                            <div className="mt-4 rounded-lg border border-border/60 bg-muted/35 p-3 shadow-sm shadow-teal-900/5">
+                            <div className="mt-4 rounded-lg border border-border/60 bg-muted/35 p-3 shadow-sm shadow-slate-900/5">
                               <img 
                                 src={review.screenshot_url} 
                                 alt="Review screenshot" 

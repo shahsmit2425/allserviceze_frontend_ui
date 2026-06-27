@@ -71,7 +71,7 @@ function FormCallout({ icon: Icon, title, tone = "default", className, children 
   const toneClasses = calloutToneClasses[tone] || calloutToneClasses.default;
 
   return (
-    <div className={cn("rounded-[1.2rem] border px-4 py-3.5 shadow-sm shadow-teal-900/5", toneClasses.shell, className)}>
+    <div className={cn("rounded-[1.2rem] border px-4 py-3.5 shadow-sm shadow-slate-900/5", toneClasses.shell, className)}>
       <div className="flex items-start gap-3">
         {Icon ? <Icon className={cn("mt-0.5 h-4 w-4 shrink-0", toneClasses.title)} /> : null}
         <div>
