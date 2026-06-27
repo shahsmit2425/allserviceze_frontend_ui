@@ -105,22 +105,15 @@ export const Navbar = ({ variant = "default" }) => {
         <div className="overflow-visible px-0 py-2">
           <div className="flex items-center justify-between gap-8 overflow-visible h-20">
           {/* Logo */}
-            <Link to="/" className="group flex items-center gap-3 transition-all duration-200 flex-shrink-0 hover:opacity-80" data-testid="logo-link">
+            <Link to="/" className="group flex items-center transition-all duration-200 flex-shrink-0 hover:opacity-80" data-testid="logo-link">
               <img
                 src="/favicon.svg"
                 alt="ServiceTones"
                 width="40"
                 height="36"
                 decoding="async"
-                className="h-9 w-9 rounded-[0.9rem] object-cover ring-1 ring-border"
+                className="h-10 w-10 rounded-[0.9rem] object-cover ring-1 ring-border"
               />
-              <div className="flex flex-col">
-                <span className="font-bold tracking-[-0.03em] text-deep-navy-800 text-xl" style={{ fontFamily: "'Poppins', sans-serif", fontSize: '1.4rem', fontWeight: 800 }}>ServiceTones</span>
-                <span className="hidden text-[9px] font-bold uppercase tracking-[0.18em] text-copper-500 lg:block">
-                  MARKETPLACE
-                </span>
-              </div>
-              <div className="hidden lg:flex">{brandBadge}</div>
             </Link>
 
           {/* Desktop Navigation */}
