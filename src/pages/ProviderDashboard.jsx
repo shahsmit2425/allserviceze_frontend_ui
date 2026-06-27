@@ -1152,7 +1152,7 @@ export default function ProviderDashboard() {
       {/* Image Lightbox */}
       {lightboxImage && (
         <div
-          className="fixed inset-0 z-[100] bg-black/80 flex items-center justify-center p-4 cursor-pointer"
+          className="fixed inset-0 z-[100] bg-copper-600/80 flex items-center justify-center p-4 cursor-pointer"
           onClick={() => setLightboxImage(null)}
         >
           <button className="absolute top-4 right-4 text-white text-3xl font-bold hover:text-gray-300 z-[101]" onClick={() => setLightboxImage(null)}>&times;</button>

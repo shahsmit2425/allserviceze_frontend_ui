@@ -687,7 +687,7 @@ export default function ProviderBusinessProfile() {
                             </div>
                           )}
                           {uploadingAvatar && (
-                            <div className="absolute inset-0 bg-black/50 rounded-lg flex items-center justify-center">
+                            <div className="absolute inset-0 bg-copper-600/50 rounded-lg flex items-center justify-center">
                               <Loader2 className="w-6 h-6 text-white animate-spin" />
                             </div>
                           )}

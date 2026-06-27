@@ -12,7 +12,7 @@ export function PremiumCTA({
   const isDark = variant === "dark";
 
   return (
-    <section className={`py-20 md:py-28 ${isDark ? "bg-gradient-to-r from-deep-navy-800 to-deep-navy-700 text-white" : "bg-gradient-to-r from-copper-50 to-slate-50"}`}>
+    <section className={`py-20 md:py-28 ${isDark ? "bg-gradient-to-r from-copper-500 to-copper-600 text-white" : "bg-gradient-to-r from-copper-50 to-slate-50"}`}>
       {/* Decorative elements */}
       {isDark && (
         <>

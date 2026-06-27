@@ -27,7 +27,7 @@ export function PremiumPricing({ plans, title, description }) {
               key={idx}
               className={`rounded-2xl p-8 border transition-all duration-300 ${
                 plan.featured
-                  ? "border-primary bg-gradient-to-br from-deep-navy-800 to-deep-navy-700 text-white shadow-2xl transform md:scale-105"
+                  ? "border-primary bg-gradient-to-br from-copper-500 to-copper-600 text-white shadow-2xl transform md:scale-105"
                   : "border-deep-navy-100 bg-white hover:border-primary/50"
               }`}
             >

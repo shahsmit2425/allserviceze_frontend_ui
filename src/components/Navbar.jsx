@@ -164,7 +164,7 @@ export const Navbar = ({ variant = "default" }) => {
                     <Button variant="ghost" className="rounded-xl px-5 text-deep-navy-600 hover:text-deep-navy-800 hover:bg-deep-navy-50 font-semibold">Log In</Button>
                   </Link>
                   <Link to="/auth?mode=register">
-                    <Button className="rounded-xl px-6 bg-gradient-to-r from-deep-navy-800 to-deep-navy-700 text-white hover:from-deep-navy-700 hover:to-deep-navy-600 font-semibold shadow-md hover:shadow-lg transition-all">Get Started</Button>
+                    <Button className="rounded-xl px-6 bg-gradient-to-r from-copper-500 to-copper-600 text-white hover:from-copper-600 hover:to-copper-700 font-semibold shadow-md hover:shadow-lg transition-all">Get Started</Button>
                   </Link>
                 </div>
               </>

@@ -964,7 +964,7 @@ export default function ProviderProfile() {
         {/* Image Lightbox Modal */}
         {selectedImage && (
           <div 
-            className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 bg-copper-600/90 flex items-center justify-center p-4"
             onClick={() => setSelectedImage(null)}
           >
             <div className="max-w-4xl w-full overflow-hidden rounded-xl border border-border/60 bg-white" onClick={(e) => e.stopPropagation()}>
@@ -975,7 +975,7 @@ export default function ProviderProfile() {
                   width="1280"
                   height="720"
                   decoding="async"
-                  className="w-full max-h-[60vh] object-contain bg-black"
+                  className="w-full max-h-[60vh] object-contain bg-copper-600"
                 />
               )}
               <div className="p-6">

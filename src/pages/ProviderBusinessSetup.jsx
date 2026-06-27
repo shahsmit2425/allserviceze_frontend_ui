@@ -297,7 +297,7 @@ export default function ProviderBusinessSetup() {
                               </div>
                             )}
                             {uploadingAvatar && (
-                              <div className="absolute inset-0 flex items-center justify-center rounded-full bg-black/50">
+                              <div className="absolute inset-0 flex items-center justify-center rounded-full bg-copper-600/50">
                                 <Loader2 className="w-6 h-6 animate-spin text-white" />
                               </div>
                             )}

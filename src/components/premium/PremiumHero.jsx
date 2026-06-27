@@ -50,7 +50,7 @@ export function PremiumHero({
             />
             <Button 
               type="submit"
-              className="h-14 px-8 rounded-xl bg-gradient-to-r from-deep-navy-800 to-deep-navy-700 hover:from-deep-navy-700 hover:to-deep-navy-600 text-white font-semibold"
+              className="h-14 px-8 rounded-xl bg-gradient-to-r from-copper-500 to-copper-600 hover:from-copper-600 hover:to-copper-700 text-white font-semibold"
             >
               {ctaText || "Search"}
             </Button>
@@ -59,7 +59,7 @@ export function PremiumHero({
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <Button 
               onClick={cta}
-              className="h-14 px-8 rounded-xl bg-gradient-to-r from-deep-navy-800 to-deep-navy-700 hover:from-deep-navy-700 hover:to-deep-navy-600 text-white font-semibold"
+              className="h-14 px-8 rounded-xl bg-gradient-to-r from-copper-500 to-copper-600 hover:from-copper-600 hover:to-copper-700 text-white font-semibold"
             >
               {ctaText || "Get Started"}
             </Button>

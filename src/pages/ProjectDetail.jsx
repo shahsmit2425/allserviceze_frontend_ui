@@ -671,7 +671,7 @@ export default function ProjectDetail() {
                               prev === 0 ? project.images.length - 1 : prev - 1
                             );
                           }}
-                          className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-lg bg-black/50 text-white flex items-center justify-center hover:bg-black/70 transition-colors"
+                          className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-lg bg-copper-600/50 text-white flex items-center justify-center hover:bg-copper-600/70 transition-colors"
                         >
                           <ChevronLeft className="w-6 h-6" />
                         </button>
@@ -682,7 +682,7 @@ export default function ProjectDetail() {
                               prev === project.images.length - 1 ? 0 : prev + 1
                             );
                           }}
-                          className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-lg bg-black/50 text-white flex items-center justify-center hover:bg-black/70 transition-colors"
+                          className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-lg bg-copper-600/50 text-white flex items-center justify-center hover:bg-copper-600/70 transition-colors"
                         >
                           <ChevronRight className="w-6 h-6" />
                         </button>
@@ -690,7 +690,7 @@ export default function ProjectDetail() {
                     )}
                     
                     {/* Image Counter */}
-                    <div className="absolute bottom-2 right-2 rounded-lg bg-black/60 px-3 py-1 text-sm text-white">
+                    <div className="absolute bottom-2 right-2 rounded-lg bg-copper-600/60 px-3 py-1 text-sm text-white">
                       {currentImageIndex + 1} / {project.images.length}
                     </div>
                   </div>
@@ -724,7 +724,7 @@ export default function ProjectDetail() {
             {/* Lightbox Modal */}
             {lightboxOpen && project.images && project.images.length > 0 && (
               <div 
-                className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
+                className="fixed inset-0 z-50 bg-copper-600/90 flex items-center justify-center"
                 onClick={() => setLightboxOpen(false)}
               >
                 <button
