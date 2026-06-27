@@ -551,18 +551,18 @@ export default function BrowseProviders() {
         <link rel="canonical" href="https://servicetones.com/providers" />
       </Helmet>
 
-      <div className="page-shell space-y-6 py-20 sm:py-32 bg-gradient-to-b from-amber-50 via-white to-slate-50 sm:space-y-7">
+      <div className="page-shell space-y-6 py-20 sm:py-32 bg-gradient-to-b from-copper-50 via-white to-slate-50 sm:space-y-7">
         <section className="overflow-hidden">
           <div className="px-5 py-0 sm:px-7">
             <div className="mx-auto max-w-4xl text-center">
-              <div className="inline-flex items-center gap-2 rounded-full border border-slate-300/40 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm mb-6">
+              <div className="inline-flex items-center gap-2 rounded-full border border-deep-navy-200/40 bg-white px-4 py-2 text-sm font-semibold text-deep-navy-600 shadow-sm mb-6">
                 <ShieldCheck className="h-4 w-4" />
                 <span>Verified Professionals</span>
               </div>
-              <h1 className="text-5xl sm:text-6xl font-bold text-slate-900 leading-tight mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+              <h1 className="text-5xl sm:text-6xl font-bold text-deep-navy-800 leading-tight mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
                 Find Your Perfect Provider
               </h1>
-              <p className="text-lg text-slate-600 max-w-2xl mx-auto" style={{ fontFamily: "'Lora', serif" }}>
+              <p className="text-lg text-deep-navy-500 max-w-2xl mx-auto" style={{ fontFamily: "'Lora', serif" }}>
                 Connect with verified service professionals in your area. Compare ratings, experience, and pricing to find your ideal match.
               </p>
             </div>
@@ -572,7 +572,7 @@ export default function BrowseProviders() {
                 event.preventDefault();
                 applyFilters();
               }}
-              className="mx-auto mt-8 grid max-w-5xl gap-3 rounded-2xl border border-slate-300 bg-white p-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.78fr)_12rem]"
+              className="mx-auto mt-8 grid max-w-5xl gap-3 rounded-2xl border border-deep-navy-200 bg-white p-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.78fr)_12rem]"
             >
               <div className="relative">
                 <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -593,7 +593,7 @@ export default function BrowseProviders() {
                   maxLength={5}
                 />
               </div>
-              <Button type="submit" className="h-12 rounded-xl bg-gradient-to-r from-slate-900 to-slate-800 text-white hover:from-slate-800 hover:to-slate-700 font-semibold shadow-md hover:shadow-lg transition-all">
+              <Button type="submit" className="h-12 rounded-xl bg-gradient-to-r from-deep-navy-800 to-deep-navy-700 text-white hover:from-deep-navy-700 hover:to-deep-navy-600 font-semibold shadow-md hover:shadow-lg transition-all">
                 Search
               </Button>
             </form>
@@ -678,7 +678,7 @@ export default function BrowseProviders() {
                 </Accordion>
 
                 <div className="border-t border-border/60 px-5 py-4">
-                  <Button className="w-full rounded-xl bg-gradient-to-r from-slate-900 to-slate-800 text-white hover:from-slate-800 hover:to-slate-700 font-semibold shadow-md hover:shadow-lg transition-all disabled:opacity-50" onClick={applyFilters} disabled={!hasDraftChanges}>
+                  <Button className="w-full rounded-xl bg-gradient-to-r from-deep-navy-800 to-deep-navy-700 text-white hover:from-deep-navy-700 hover:to-deep-navy-600 font-semibold shadow-md hover:shadow-lg transition-all disabled:opacity-50" onClick={applyFilters} disabled={!hasDraftChanges}>
                     Apply Filters
                   </Button>
                   <p className="mt-3 text-xs leading-5 text-muted-foreground">Filters stay draft-based until you apply them.</p>
@@ -818,7 +818,7 @@ export default function BrowseProviders() {
                 {sortedProviders.map((provider) => (
                   <Card 
                     key={provider.id} 
-                    className="result-card-surface cursor-pointer group overflow-hidden border border-slate-300 bg-white rounded-2xl transition-all duration-200 hover:shadow-lg hover:border-slate-400"
+                    className="result-card-surface cursor-pointer group overflow-hidden border border-deep-navy-200 bg-white rounded-2xl transition-all duration-200 hover:shadow-lg hover:border-slate-400"
                     onClick={() => navigate(`/providers/${provider.id}`)}
                   >
                     <CardContent className="p-4 sm:p-5 lg:p-6">
@@ -870,8 +870,8 @@ export default function BrowseProviders() {
                           </div>
 
                           <div className="flex flex-wrap gap-2">
-                            <Badge className="bg-slate-100 text-slate-700 border border-slate-200 rounded-full px-3 py-1 text-sm font-medium">
-                              <Star className="h-3.5 w-3.5 fill-amber-600 text-amber-600 mr-1" />
+                            <Badge className="bg-deep-navy-50 text-deep-navy-600 border border-deep-navy-100 rounded-full px-3 py-1 text-sm font-medium">
+                              <Star className="h-3.5 w-3.5 fill-copper-600 text-copper-600 mr-1" />
                               {provider.avg_rating > 0 ? provider.avg_rating.toFixed(1) : "New"}
                               <span className="text-slate-500 ml-1">{formatReviewCount(provider.total_reviews)}</span>
                             </Badge>
@@ -888,13 +888,13 @@ export default function BrowseProviders() {
                               </Badge>
                             )}
                             {(provider.provider_profile?.licenses || []).length > 0 && (
-                              <Badge className="bg-slate-100 text-slate-700 border border-slate-200 rounded-full px-3 py-1 text-sm font-medium">
-                                <FileText className="h-3.5 w-3.5 text-slate-600 mr-1" />
+                              <Badge className="bg-deep-navy-50 text-deep-navy-600 border border-deep-navy-100 rounded-full px-3 py-1 text-sm font-medium">
+                                <FileText className="h-3.5 w-3.5 text-deep-navy-500 mr-1" />
                                 Licensed
                               </Badge>
                             )}
-                            <Badge className="bg-amber-50 text-amber-700 border border-amber-100 rounded-full px-3 py-1 text-sm font-medium">
-                              <Clock3 className="h-3.5 w-3.5 text-amber-600 mr-1" />
+                            <Badge className="bg-copper-50 text-amber-700 border border-copper-100 rounded-full px-3 py-1 text-sm font-medium">
+                              <Clock3 className="h-3.5 w-3.5 text-copper-600 mr-1" />
                               {provider.provider_profile?.available ? "Available now" : "Check availability"}
                             </Badge>
                           </div>
@@ -968,11 +968,11 @@ export default function BrowseProviders() {
                             </div>
                             <div className="mt-3 grid grid-cols-3 gap-2">
                               {(provider.portfolioPreview || []).slice(0, 6).map((item) => (
-                                <div key={item.id} className="overflow-hidden rounded-xl border border-border/60 bg-slate-100">
+                                <div key={item.id} className="overflow-hidden rounded-xl border border-border/60 bg-deep-navy-50">
                                   {item.images?.[0] ? (
                                     <img src={item.images[0]} alt={item.title} className="h-20 w-full object-cover sm:h-24" />
                                   ) : (
-                                    <div className="flex h-20 items-center justify-center bg-slate-100 px-2 text-center text-[11px] font-semibold text-muted-foreground sm:h-24">
+                                    <div className="flex h-20 items-center justify-center bg-deep-navy-50 px-2 text-center text-[11px] font-semibold text-muted-foreground sm:h-24">
                                       {item.title}
                                     </div>
                                   )}
@@ -1005,13 +1005,13 @@ export default function BrowseProviders() {
                             </div>
 
                             <div className="mt-4 grid gap-2 sm:grid-cols-3">
-                              <Button size="sm" className="rounded-xl bg-gradient-to-r from-slate-900 to-slate-800 text-white hover:from-slate-800 hover:to-slate-700 font-semibold" onClick={(e) => { e.stopPropagation(); navigate(`/providers/${provider.id}`); }}>
+                              <Button size="sm" className="rounded-xl bg-gradient-to-r from-deep-navy-800 to-deep-navy-700 text-white hover:from-deep-navy-700 hover:to-deep-navy-600 font-semibold" onClick={(e) => { e.stopPropagation(); navigate(`/providers/${provider.id}`); }}>
                                 View Profile
                                 <ArrowRight className="ml-2 h-4 w-4" />
                               </Button>
                               <Button
                                 size="sm"
-                                className="rounded-xl border border-slate-300 text-slate-900 hover:bg-slate-50 font-semibold"
+                                className="rounded-xl border border-deep-navy-200 text-deep-navy-800 hover:bg-slate-50 font-semibold"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   navigate(`/providers/${provider.id}`);

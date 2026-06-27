@@ -171,7 +171,7 @@ export default function Favorites() {
                     {activeFavoriteProjects} active opportunities
                   </span>
                   <span className="info-chip">
-                    <FileText className="h-4 w-4 text-amber-600" />
+                    <FileText className="h-4 w-4 text-copper-600" />
                     {favoriteProjectBidCount} total bids tracked
                   </span>
                 </div>

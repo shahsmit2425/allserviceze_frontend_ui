@@ -195,7 +195,7 @@ export default function MyBids() {
                   {counts.all} submitted bids
                 </span>
                 <span className="info-chip">
-                  <Star className="h-4 w-4 text-amber-600" />
+                  <Star className="h-4 w-4 text-copper-600" />
                   {shortlistedCount} shortlisted
                 </span>
                 <span className="info-chip">

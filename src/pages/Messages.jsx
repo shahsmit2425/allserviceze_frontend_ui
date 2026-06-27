@@ -608,7 +608,7 @@ export default function Messages() {
             {participant?.avatar ? (
               <img src={participant.avatar} alt={participant?.name || "Participant"} className="h-11 w-11 rounded-full object-cover" />
             ) : (
-              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-slate-100 text-sm font-semibold text-foreground">
+              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-deep-navy-50 text-sm font-semibold text-foreground">
                 {(participant?.name || "U").charAt(0).toUpperCase()}
               </div>
             )}
@@ -711,7 +711,7 @@ export default function Messages() {
                   {selectedParticipant.avatar ? (
                     <img src={selectedParticipant.avatar} alt={selectedParticipant.name} className="h-10 w-10 rounded-full object-cover" />
                   ) : (
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 text-sm font-semibold text-foreground">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-deep-navy-50 text-sm font-semibold text-foreground">
                       {(selectedParticipant.name || "U").charAt(0).toUpperCase()}
                     </div>
                   )}
@@ -829,7 +829,7 @@ export default function Messages() {
                   {selectedAttachmentFiles.length > 0 ? (
                     <div className="mb-3 flex flex-wrap gap-2">
                       {selectedAttachmentFiles.map((file) => (
-                        <span key={`${file.name}-${file.size}`} className="inline-flex items-center gap-2 rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-foreground">
+                        <span key={`${file.name}-${file.size}`} className="inline-flex items-center gap-2 rounded-lg bg-deep-navy-50 px-3 py-1.5 text-xs font-medium text-foreground">
                           <Paperclip className="h-3.5 w-3.5" />
                           {file.name}
                         </span>
@@ -953,7 +953,7 @@ export default function Messages() {
                           <p className="text-sm font-semibold text-foreground">Recent reviews</p>
                           {providerReviews.slice(0, 2).map((review) => (
                             <div key={review.id} className="rounded-[1rem] bg-slate-50/85 px-4 py-3 text-sm">
-                              <div className="flex items-center gap-2 text-amber-500">
+                              <div className="flex items-center gap-2 text-copper-500">
                                 {Array.from({ length: review.rating }).map((_, index) => <Star key={`${review.id}-${index}`} className="h-3.5 w-3.5 fill-current" />)}
                               </div>
                               <p className="mt-2 leading-6 text-foreground/88">{review.comment}</p>

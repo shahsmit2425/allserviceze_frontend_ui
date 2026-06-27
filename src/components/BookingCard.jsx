@@ -19,7 +19,7 @@ import { useAuth } from "../context/AuthContext";
 const API_URL = `${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}/api`;
 
 const STATUS_CONFIG = {
-  pending:   { label: "Pending",   color: "border-amber-600/30 bg-amber-500/14 text-amber-100" },
+  pending:   { label: "Pending",   color: "border-copper-600/30 bg-copper-500/14 text-copper-100" },
   confirmed: { label: "Confirmed", color: "border-blue-500/28 bg-blue-500/14 text-blue-100" },
   completed: { label: "Completed", color: "border-emerald-500/28 bg-emerald-500/14 text-emerald-100" },
   cancelled: { label: "Cancelled", color: "border-rose-500/28 bg-rose-500/14 text-rose-100" },
@@ -136,7 +136,7 @@ export default function BookingCard({ booking, viewAs, subscriptionTier = "free"
           </div>
 
           {booking.notes && (
-            <div className="info-tile border-amber-100 bg-amber-50/90">
+            <div className="info-tile border-copper-100 bg-copper-50/90">
               <p className="detail-kicker text-amber-800">Notes</p>
               <p className="mt-2 text-sm italic leading-6 text-amber-900">"{booking.notes}"</p>
             </div>
@@ -172,7 +172,7 @@ export default function BookingCard({ booking, viewAs, subscriptionTier = "free"
                       <Video className="w-3.5 h-3.5 text-sky-300" />
                       Allow Video Call
                       {!canOfferVideo && (
-                        <span className="ml-1 text-xs font-normal text-amber-400">(Pro plan)</span>
+                        <span className="ml-1 text-xs font-normal text-copper-400">(Pro plan)</span>
                       )}
                     </Label>
                     <p className="text-xs text-muted-foreground mt-1">Customer can video call during appointment</p>

@@ -224,10 +224,10 @@ function AuthDivider({ children }) {
 function AuthField({ id, label, icon: Icon, hint, className, inputClassName, ...props }) {
   return (
     <div className={cn("space-y-2.5", className)}>
-      <Label htmlFor={id} className="text-sm font-semibold text-slate-700 block" style={{ fontFamily: "'Lora', serif" }}>{label}</Label>
+      <Label htmlFor={id} className="text-sm font-semibold text-deep-navy-600 block" style={{ fontFamily: "'Lora', serif" }}>{label}</Label>
       <div className="relative">
         {Icon ? <Icon className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" /> : null}
-        <Input id={id} className={cn("h-12 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 placeholder:text-slate-400 transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none", Icon ? "pl-12" : "pl-4", inputClassName)} {...props} />
+        <Input id={id} className={cn("h-12 rounded-xl border border-deep-navy-200 bg-white text-sm text-deep-navy-800 placeholder:text-slate-400 transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none", Icon ? "pl-12" : "pl-4", inputClassName)} {...props} />
       </div>
       {hint ? <p className="text-xs leading-5 text-slate-500">{hint}</p> : null}
     </div>
@@ -996,21 +996,21 @@ export default function AuthPage() {
           </section>
 
           {/* Right Panel - Benefits */}
-          <section className="hidden lg:flex flex-col justify-center bg-gradient-to-br from-slate-50 via-amber-50/30 to-white p-14 relative overflow-hidden border-l border-slate-200">
+          <section className="hidden lg:flex flex-col justify-center bg-gradient-to-br from-slate-50 via-copper-50/30 to-white p-14 relative overflow-hidden border-l border-deep-navy-100">
             {/* Subtle decorative elements */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-amber-100/8 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-72 h-72 bg-slate-200/5 rounded-full blur-3xl" />
+            <div className="absolute top-0 right-0 w-80 h-80 bg-copper-100/8 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-72 h-72 bg-deep-navy-100/5 rounded-full blur-3xl" />
             
             <div className="relative z-10 max-w-lg">
               <div className="mb-14">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full mb-6 border border-slate-200">
-                  <span className="w-2 h-2 rounded-full bg-slate-900" />
-                  <span className="text-slate-700 text-sm font-semibold" style={{ fontFamily: "'Lora', serif" }}>Why ServiceTones</span>
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-deep-navy-50 rounded-full mb-6 border border-deep-navy-100">
+                  <span className="w-2 h-2 rounded-full bg-deep-navy-800" />
+                  <span className="text-deep-navy-600 text-sm font-semibold" style={{ fontFamily: "'Lora', serif" }}>Why ServiceTones</span>
                 </div>
-                <h2 className="text-4xl font-bold mb-4 text-slate-900" style={{ fontFamily: "'Playfair Display', serif" }}>
+                <h2 className="text-4xl font-bold mb-4 text-deep-navy-800" style={{ fontFamily: "'Playfair Display', serif" }}>
                   Build Trust, Together
                 </h2>
-                <p className="text-slate-600 text-lg leading-relaxed" style={{ fontFamily: "'Lora', serif" }}>
+                <p className="text-deep-navy-500 text-lg leading-relaxed" style={{ fontFamily: "'Lora', serif" }}>
                   Connect with verified professionals and manage your entire project in one organized place.
                 </p>
               </div>
@@ -1024,31 +1024,31 @@ export default function AuthPage() {
                 ].map((item, idx) => (
                   <div key={idx} className="flex gap-4 group">
                     <div className="flex-shrink-0 mt-1">
-                      <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-slate-200 text-slate-700 font-bold text-sm group-hover:bg-slate-300 transition-colors">
+                      <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-deep-navy-100 text-deep-navy-600 font-bold text-sm group-hover:bg-deep-navy-200 transition-colors">
                         {item.icon}
                       </div>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-slate-900 mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>{item.title}</h3>
-                      <p className="text-slate-600 text-sm" style={{ fontFamily: "'Lora', serif" }}>{item.desc}</p>
+                      <h3 className="font-semibold text-deep-navy-800 mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>{item.title}</h3>
+                      <p className="text-deep-navy-500 text-sm" style={{ fontFamily: "'Lora', serif" }}>{item.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-14 pt-8 border-t border-slate-200">
+              <div className="mt-14 pt-8 border-t border-deep-navy-100">
                 <div className="grid grid-cols-3 gap-6">
                   <div>
-                    <div className="text-3xl font-bold text-slate-900 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>15K+</div>
-                    <p className="text-slate-600 text-sm" style={{ fontFamily: "'Lora', serif" }}>Verified Professionals</p>
+                    <div className="text-3xl font-bold text-deep-navy-800 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>15K+</div>
+                    <p className="text-deep-navy-500 text-sm" style={{ fontFamily: "'Lora', serif" }}>Verified Professionals</p>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-slate-900 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>25K+</div>
-                    <p className="text-slate-600 text-sm" style={{ fontFamily: "'Lora', serif" }}>Projects Completed</p>
+                    <div className="text-3xl font-bold text-deep-navy-800 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>25K+</div>
+                    <p className="text-deep-navy-500 text-sm" style={{ fontFamily: "'Lora', serif" }}>Projects Completed</p>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-slate-900 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>4.8★</div>
-                    <p className="text-slate-600 text-sm" style={{ fontFamily: "'Lora', serif" }}>Average Rating</p>
+                    <div className="text-3xl font-bold text-deep-navy-800 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>4.8★</div>
+                    <p className="text-deep-navy-500 text-sm" style={{ fontFamily: "'Lora', serif" }}>Average Rating</p>
                   </div>
                 </div>
               </div>
@@ -1061,7 +1061,7 @@ export default function AuthPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-amber-50 via-white to-slate-50" style={{ fontFamily: "'Georgia', 'Garamond', serif" }}>
+    <main className="min-h-screen bg-gradient-to-b from-copper-50 via-white to-slate-50" style={{ fontFamily: "'Georgia', 'Garamond', serif" }}>
       <Helmet>
         <title>{authPageTitle}</title>
         <meta name="description" content={authPageDescription} />
@@ -1082,7 +1082,7 @@ export default function AuthPage() {
       <div className="min-h-screen flex items-center justify-center py-8">
         <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-2xl overflow-hidden shadow-2xl">
           {/* Left Panel - Image */}
-          <section className="hidden lg:flex flex-col justify-center items-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-12 relative overflow-hidden">
+          <section className="hidden lg:flex flex-col justify-center items-center bg-gradient-to-br from-deep-navy-800 via-deep-navy-700 to-deep-navy-800 p-12 relative overflow-hidden">
             <div className="absolute inset-0 opacity-40">
               <img 
                 src="/auth-hero.png" 
@@ -1092,7 +1092,7 @@ export default function AuthPage() {
             </div>
             <div className="relative z-10 max-w-md text-center text-white">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full mb-8 border border-white/20 backdrop-blur-sm">
-                <span className="w-2 h-2 rounded-full bg-amber-600" />
+                <span className="w-2 h-2 rounded-full bg-copper-600" />
                 <span className="text-sm font-semibold" style={{ fontFamily: "'Lora', serif" }}>Join ServiceTones</span>
               </div>
               <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
@@ -1105,7 +1105,7 @@ export default function AuthPage() {
               <div className="space-y-6 pt-8 border-t border-white/20">
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-amber-600/20 text-amber-400 font-semibold">✓</div>
+                    <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-copper-600/20 text-copper-400 font-semibold">✓</div>
                   </div>
                   <div className="text-left">
                     <p className="font-semibold mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>Verified Professionals</p>
@@ -1114,7 +1114,7 @@ export default function AuthPage() {
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-amber-600/20 text-amber-400 font-semibold">★</div>
+                    <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-copper-600/20 text-copper-400 font-semibold">★</div>
                   </div>
                   <div className="text-left">
                     <p className="font-semibold mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>Quality Assured</p>
@@ -1123,7 +1123,7 @@ export default function AuthPage() {
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-amber-600/20 text-amber-400 font-semibold">◆</div>
+                    <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-copper-600/20 text-copper-400 font-semibold">◆</div>
                   </div>
                   <div className="text-left">
                     <p className="font-semibold mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>Secure & Transparent</p>
@@ -1180,15 +1180,15 @@ export default function AuthPage() {
 
                 <TabsContent value="login" className="mt-0">
                   <div className="space-y-3 mb-8">
-                    <h1 className="text-5xl font-bold text-slate-900" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    <h1 className="text-5xl font-bold text-deep-navy-800" style={{ fontFamily: "'Playfair Display', serif" }}>
                       Welcome Back
                     </h1>
-                    <p className="text-lg text-slate-600" style={{ fontFamily: "'Lora', serif" }}>
+                    <p className="text-lg text-deep-navy-500" style={{ fontFamily: "'Lora', serif" }}>
                       Sign in to continue your journey
                     </p>
                     </div>
 
-                    <Card className="border border-slate-200 bg-white shadow-lg rounded-2xl">
+                    <Card className="border border-deep-navy-100 bg-white shadow-lg rounded-2xl">
                       <CardContent className="p-6 sm:p-8">
                         {isNative ? (
                           <Suspense fallback={null}>
@@ -1262,7 +1262,7 @@ export default function AuthPage() {
 
                         <Button
                           type="submit"
-                          className="w-full rounded-xl py-3 bg-gradient-to-r from-slate-900 to-slate-800 text-white font-semibold hover:from-slate-800 hover:to-slate-700 transition-all shadow-md hover:shadow-lg mt-6"
+                          className="w-full rounded-xl py-3 bg-gradient-to-r from-deep-navy-800 to-deep-navy-700 text-white font-semibold hover:from-deep-navy-700 hover:to-deep-navy-600 transition-all shadow-md hover:shadow-lg mt-6"
                           disabled={loading}
                           data-testid="login-submit-btn"
                           style={{ fontFamily: "'Lora', serif" }}
@@ -1273,9 +1273,9 @@ export default function AuthPage() {
 
                           <SocialLoginButtons />
 
-                          <p className="text-sm text-slate-600">
+                          <p className="text-sm text-deep-navy-500">
                             New to ServiceTones?{" "}
-                            <button type="button" onClick={() => handleTabChange("register")} className="font-semibold text-slate-900 hover:underline">
+                            <button type="button" onClick={() => handleTabChange("register")} className="font-semibold text-deep-navy-800 hover:underline">
                               Register
                             </button>
                           </p>
@@ -1290,10 +1290,10 @@ export default function AuthPage() {
 
                 <TabsContent value="register" className="mt-0">
                   <div className="space-y-3 mb-8">
-                    <h1 className="text-5xl font-bold text-slate-900" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    <h1 className="text-5xl font-bold text-deep-navy-800" style={{ fontFamily: "'Playfair Display', serif" }}>
                       Join Us
                     </h1>
-                    <p className="text-lg text-slate-600" style={{ fontFamily: "'Lora', serif" }}>
+                    <p className="text-lg text-deep-navy-500" style={{ fontFamily: "'Lora', serif" }}>
                       {isAdmin
                         ? "Create your admin account"
                         : "Start your journey with ServiceTones"}
@@ -1393,7 +1393,7 @@ export default function AuthPage() {
 
                           <Button
                             type="submit"
-                            className="w-full rounded-xl py-3 bg-gradient-to-r from-slate-900 to-slate-800 text-white font-semibold hover:from-slate-800 hover:to-slate-700 transition-all shadow-md hover:shadow-lg mt-6"
+                            className="w-full rounded-xl py-3 bg-gradient-to-r from-deep-navy-800 to-deep-navy-700 text-white font-semibold hover:from-deep-navy-700 hover:to-deep-navy-600 transition-all shadow-md hover:shadow-lg mt-6"
                             disabled={loading}
                             data-testid="register-submit-btn"
                             style={{ fontFamily: "'Lora', serif" }}
@@ -1405,9 +1405,9 @@ export default function AuthPage() {
                       </CardContent>
                     </Card>
 
-                    <p className="text-sm text-slate-600">
+                    <p className="text-sm text-deep-navy-500">
                       Already have an account?{" "}
-                      <button type="button" onClick={() => handleTabChange("login")} className="font-semibold text-slate-900 hover:underline">
+                      <button type="button" onClick={() => handleTabChange("login")} className="font-semibold text-deep-navy-800 hover:underline">
                         Sign in
                       </button>
                     </p>

@@ -8,13 +8,13 @@ export function PremiumPricing({ plans, title, description }) {
         {/* Section Header */}
         <div className="text-center mb-16 max-w-2xl mx-auto">
           <h2 
-            className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
+            className="text-4xl md:text-5xl font-bold text-deep-navy-800 mb-4"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             {title || "Simple, transparent pricing"}
           </h2>
           {description && (
-            <p className="text-lg text-slate-600" style={{ fontFamily: "'Lora', serif" }}>
+            <p className="text-lg text-deep-navy-500" style={{ fontFamily: "'Lora', serif" }}>
               {description}
             </p>
           )}
@@ -27,8 +27,8 @@ export function PremiumPricing({ plans, title, description }) {
               key={idx}
               className={`rounded-2xl p-8 border transition-all duration-300 ${
                 plan.featured
-                  ? "border-primary bg-gradient-to-br from-slate-900 to-slate-800 text-white shadow-2xl transform md:scale-105"
-                  : "border-slate-200 bg-white hover:border-primary/50"
+                  ? "border-primary bg-gradient-to-br from-deep-navy-800 to-deep-navy-700 text-white shadow-2xl transform md:scale-105"
+                  : "border-deep-navy-100 bg-white hover:border-primary/50"
               }`}
             >
               {plan.featured && (
@@ -39,7 +39,7 @@ export function PremiumPricing({ plans, title, description }) {
 
               {/* Plan Name */}
               <h3 
-                className={`text-2xl font-semibold mb-2 ${plan.featured ? "text-white" : "text-slate-900"}`}
+                className={`text-2xl font-semibold mb-2 ${plan.featured ? "text-white" : "text-deep-navy-800"}`}
                 style={{ fontFamily: "'Playfair Display', serif" }}
               >
                 {plan.name}
@@ -47,14 +47,14 @@ export function PremiumPricing({ plans, title, description }) {
 
               {/* Price */}
               <div className="mb-6">
-                <div className={`text-4xl font-bold ${plan.featured ? "text-white" : "text-slate-900"}`}>
+                <div className={`text-4xl font-bold ${plan.featured ? "text-white" : "text-deep-navy-800"}`}>
                   {plan.price}
-                  <span className={`text-lg font-normal ${plan.featured ? "text-slate-300" : "text-slate-500"}`}>
+                  <span className={`text-lg font-normal ${plan.featured ? "text-deep-navy-200" : "text-slate-500"}`}>
                     {plan.period}
                   </span>
                 </div>
                 {plan.description && (
-                  <p className={`text-sm mt-2 ${plan.featured ? "text-slate-300" : "text-slate-600"}`}>
+                  <p className={`text-sm mt-2 ${plan.featured ? "text-deep-navy-200" : "text-deep-navy-500"}`}>
                     {plan.description}
                   </p>
                 )}
@@ -64,8 +64,8 @@ export function PremiumPricing({ plans, title, description }) {
               <Button 
                 className={`w-full h-12 rounded-xl mb-8 font-semibold transition-all ${
                   plan.featured
-                    ? "bg-white text-slate-900 hover:bg-slate-100"
-                    : "bg-slate-900 text-white hover:bg-slate-800"
+                    ? "bg-white text-deep-navy-800 hover:bg-deep-navy-50"
+                    : "bg-deep-navy-800 text-white hover:bg-deep-navy-700"
                 }`}
               >
                 {plan.cta || "Get started"}
@@ -75,8 +75,8 @@ export function PremiumPricing({ plans, title, description }) {
               <div className="space-y-4">
                 {plan.features.map((feature, fidx) => (
                   <div key={fidx} className="flex items-start gap-3">
-                    <Check className={`h-5 w-5 flex-shrink-0 mt-0.5 ${plan.featured ? "text-amber-400" : "text-primary"}`} />
-                    <span className={`text-sm ${plan.featured ? "text-slate-200" : "text-slate-600"}`}>
+                    <Check className={`h-5 w-5 flex-shrink-0 mt-0.5 ${plan.featured ? "text-copper-400" : "text-primary"}`} />
+                    <span className={`text-sm ${plan.featured ? "text-deep-navy-100" : "text-deep-navy-500"}`}>
                       {feature}
                     </span>
                   </div>

@@ -238,7 +238,7 @@ export default function MyProjects() {
                   {totalBidCount} total bids
                 </span>
                 <span className="info-chip">
-                  <Eye className="h-4 w-4 text-amber-600" />
+                  <Eye className="h-4 w-4 text-copper-600" />
                   {totalViewCount} total views
                 </span>
               </div>

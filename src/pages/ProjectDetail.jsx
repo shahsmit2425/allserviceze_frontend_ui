@@ -511,7 +511,7 @@ export default function ProjectDetail() {
                       Posted {formatDistanceToNow(new Date(project.created_at), { addSuffix: true })}
                     </span>
                     <span className="info-chip">
-                      <MessageSquare className="h-4 w-4 text-amber-600" />
+                      <MessageSquare className="h-4 w-4 text-copper-600" />
                       {project.bid_count} bids
                     </span>
                     <span className="info-chip">
@@ -1314,7 +1314,7 @@ export default function ProjectDetail() {
 
                     {project.status === "awarded" && (
                       <div className="alert-warning p-3 text-center">
-                        <ShoppingBag className="w-6 h-6 text-amber-600 mx-auto mb-1" />
+                        <ShoppingBag className="w-6 h-6 text-copper-600 mx-auto mb-1" />
                         <p className="text-sm text-amber-800 font-medium">Waiting for provider to start</p>
                       </div>
                     )}

@@ -6,14 +6,14 @@ export function PremiumFeatures({ features, title, description }) {
         {title && (
           <div className="text-center mb-16 max-w-3xl mx-auto">
             <h2 
-              className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
+              className="text-4xl md:text-5xl font-bold text-deep-navy-800 mb-4"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
               {title}
             </h2>
             {description && (
               <p 
-                className="text-lg text-slate-600"
+                className="text-lg text-deep-navy-500"
                 style={{ fontFamily: "'Lora', serif" }}
               >
                 {description}
@@ -27,17 +27,17 @@ export function PremiumFeatures({ features, title, description }) {
           {features.map((feature, idx) => {
             const Icon = feature.icon;
             return (
-              <div key={idx} className="group p-8 rounded-2xl border border-slate-200 hover:border-primary hover:shadow-lg transition-all duration-300 bg-white hover:bg-slate-50">
+              <div key={idx} className="group p-8 rounded-2xl border border-deep-navy-100 hover:border-primary hover:shadow-lg transition-all duration-300 bg-white hover:bg-slate-50">
                 <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                   <Icon className="h-6 w-6 text-primary" />
                 </div>
                 <h3 
-                  className="text-xl font-semibold text-slate-900 mb-3"
+                  className="text-xl font-semibold text-deep-navy-800 mb-3"
                   style={{ fontFamily: "'Playfair Display', serif" }}
                 >
                   {feature.title}
                 </h3>
-                <p className="text-slate-600" style={{ fontFamily: "'Lora', serif" }}>
+                <p className="text-deep-navy-500" style={{ fontFamily: "'Lora', serif" }}>
                   {feature.description}
                 </p>
               </div>

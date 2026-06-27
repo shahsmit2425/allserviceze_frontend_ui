@@ -21,7 +21,7 @@ html {
     min-height: 100%;
     scroll-behavior: smooth;
     color-scheme: light;
-    background: #F5F1E8;
+    background: #FFFDF7;
 }
 
 body {
@@ -43,7 +43,7 @@ body::before {
     inset: 0;
     z-index: -2;
     pointer-events: none;
-    background: #F5F1E8;
+    background: #FFFDF7;
 }
 
 body::after {
@@ -86,78 +86,78 @@ select {
 @layer base {
     :root, [data-theme="customer"] {
         --background: 0 0% 100%;
-        --foreground: 0 0% 15%;
+        --foreground: 215 25% 15%;
         --card: 0 0% 100%;
-        --card-foreground: 0 0% 15%;
+        --card-foreground: 215 25% 15%;
         --popover: 0 0% 100%;
-        --popover-foreground: 0 0% 15%;
-        --primary: 358 100% 56%;
+        --popover-foreground: 215 25% 15%;
+        --primary: 215 25% 20%;
         --primary-foreground: 0 0% 100%;
-        --secondary: 39 100% 55%;
+        --secondary: 38 75% 45%;
         --secondary-foreground: 0 0% 100%;
-        --muted: 0 0% 96%;
-        --muted-foreground: 0 0% 50%;
-        --accent: 350 100% 95%;
-        --accent-foreground: 358 100% 56%;
+        --muted: 215 20% 96%;
+        --muted-foreground: 215 20% 50%;
+        --accent: 38 60% 95%;
+        --accent-foreground: 38 75% 40%;
         --destructive: 0 78% 52%;
         --destructive-foreground: 0 0% 100%;
-        --border: 0 0% 90%;
+        --border: 215 20% 92%;
         --input: 0 0% 100%;
-        --ring: 358 100% 56%;
+        --ring: 38 75% 45%;
         --radius: 0.75rem;
-        --chart-1: 358 100% 56%;
-        --chart-2: 39 100% 55%;
+        --chart-1: 215 25% 20%;
+        --chart-2: 38 75% 45%;
         --chart-3: 22 100% 55%;
         --chart-4: 220 69% 58%;
         --chart-5: 172 66% 40%;
-        --role-indicator: 358 100% 56%;
-        --role-badge-bg: 350 100% 95%;
-        --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.08);
-        --shadow-strong: 0 4px 16px rgba(0, 0, 0, 0.12);
-        --shell-border: rgba(0, 0, 0, 0.08);
-        --page-ambient: 0 0% 99%;
-        --page-ambient-deep: 0 0% 98%;
+        --role-indicator: 38 75% 45%;
+        --role-badge-bg: 38 60% 95%;
+        --shadow-soft: 0 2px 8px rgba(26, 47, 74, 0.08);
+        --shadow-strong: 0 4px 16px rgba(26, 47, 74, 0.12);
+        --shell-border: rgba(26, 47, 74, 0.08);
+        --page-ambient: 215 25% 99%;
+        --page-ambient-deep: 215 25% 98%;
         --surface-tint: 0 0% 100%;
-        --surface-muted: 0 0% 97%;
-        --surface-border: 0 0% 91%;
+        --surface-muted: 215 20% 97%;
+        --surface-border: 215 20% 91%;
     }
 
     [data-theme="provider"] {
         --background: 0 0% 100%;
-        --foreground: 0 0% 15%;
+        --foreground: 215 25% 15%;
         --card: 0 0% 100%;
-        --card-foreground: 0 0% 15%;
+        --card-foreground: 215 25% 15%;
         --popover: 0 0% 100%;
-        --popover-foreground: 0 0% 15%;
-        --primary: 358 100% 56%;
+        --popover-foreground: 215 25% 15%;
+        --primary: 215 25% 20%;
         --primary-foreground: 0 0% 100%;
-        --secondary: 39 100% 55%;
+        --secondary: 38 75% 45%;
         --secondary-foreground: 0 0% 100%;
-        --muted: 0 0% 96%;
-        --muted-foreground: 0 0% 50%;
-        --accent: 350 100% 95%;
-        --accent-foreground: 358 100% 56%;
+        --muted: 215 20% 96%;
+        --muted-foreground: 215 20% 50%;
+        --accent: 38 60% 95%;
+        --accent-foreground: 38 75% 40%;
         --destructive: 0 78% 52%;
         --destructive-foreground: 0 0% 100%;
-        --border: 0 0% 90%;
+        --border: 215 20% 92%;
         --input: 0 0% 100%;
-        --ring: 358 100% 56%;
+        --ring: 38 75% 45%;
         --radius: 0.75rem;
-        --chart-1: 358 100% 56%;
-        --chart-2: 39 100% 55%;
+        --chart-1: 215 25% 20%;
+        --chart-2: 38 75% 45%;
         --chart-3: 22 100% 55%;
         --chart-4: 143 48% 58%;
         --chart-5: 197 74% 46%;
-        --role-indicator: 358 100% 56%;
-        --role-badge-bg: 350 100% 95%;
-        --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.08);
-        --shadow-strong: 0 4px 16px rgba(0, 0, 0, 0.12);
-        --shell-border: rgba(0, 0, 0, 0.08);
-        --page-ambient: 0 0% 99%;
-        --page-ambient-deep: 0 0% 98%;
+        --role-indicator: 38 75% 45%;
+        --role-badge-bg: 38 60% 95%;
+        --shadow-soft: 0 2px 8px rgba(26, 47, 74, 0.08);
+        --shadow-strong: 0 4px 16px rgba(26, 47, 74, 0.12);
+        --shell-border: rgba(26, 47, 74, 0.08);
+        --page-ambient: 215 25% 99%;
+        --page-ambient-deep: 215 25% 98%;
         --surface-tint: 0 0% 100%;
-        --surface-muted: 0 0% 97%;
-        --surface-border: 0 0% 91%;
+        --surface-muted: 215 20% 97%;
+        --surface-border: 215 20% 91%;
     }
 
     [data-theme="admin"] {

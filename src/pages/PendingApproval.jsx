@@ -73,8 +73,8 @@ export default function PendingApproval() {
 
                   <div className="rounded-lg border border-white/12 bg-white/8 p-4 backdrop-blur-sm">
                     <div className="flex items-center gap-3">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-amber-600/12">
-                        <Clock className="h-6 w-6 text-amber-100" />
+                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-copper-600/12">
+                        <Clock className="h-6 w-6 text-copper-100" />
                       </div>
                       <div>
                         <p className="text-sm font-semibold text-white">Status in progress</p>

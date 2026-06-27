@@ -607,7 +607,7 @@ export default function ProviderBusinessSetup() {
             <Card className="alert-warning shadow-sm">
               <CardContent className="p-5">
                 <div className="flex gap-3">
-                  <Shield className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <Shield className="w-5 h-5 text-copper-600 flex-shrink-0 mt-0.5" />
                   <div>
                     <h4 className="font-semibold text-amber-900 mb-1">Why do we need this?</h4>
                     <p className="text-sm text-amber-800">

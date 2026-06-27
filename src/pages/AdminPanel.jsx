@@ -264,7 +264,7 @@ export default function AdminPanel() {
                   {pendingProjects.length} pending approvals
                 </span>
                 <span className="info-chip">
-                  <TrendingUp className="h-4 w-4 text-amber-600" />
+                  <TrendingUp className="h-4 w-4 text-copper-600" />
                   ${totalRevenue} revenue tracked
                 </span>
               </div>

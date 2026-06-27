@@ -391,7 +391,7 @@ export default function SettingsPage() {
               <div className={panelClassName}>
                 <div className="flex justify-between gap-4">
                   <span>Account verified</span>
-                  <span className={user?.is_verified ? "font-medium text-emerald-600" : "font-medium text-amber-600"}>
+                  <span className={user?.is_verified ? "font-medium text-emerald-600" : "font-medium text-copper-600"}>
                     {user?.is_verified ? "Yes" : "Pending"}
                   </span>
                 </div>

@@ -32,9 +32,9 @@ const planIcons = {
 };
 
 const planColors = {
-  free: "border-slate-200/80",
+  free: "border-deep-navy-100/80",
   basic: "border-primary/40",
-  pro: "border-amber-400/80",
+  pro: "border-copper-400/80",
 };
 
 export default function Subscription() {
@@ -260,7 +260,7 @@ export default function Subscription() {
         </section>
 
         {user?.role === "provider" && usage && (
-          <section className="rounded-xl border border-white/70 bg-white/82 p-5 shadow-xl shadow-slate-900/5 backdrop-blur-xl sm:p-6">
+          <section className="rounded-xl border border-white/70 bg-white/82 p-5 shadow-xl shadow-deep-navy-800/5 backdrop-blur-xl sm:p-6">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Current usage</p>
@@ -276,7 +276,7 @@ export default function Subscription() {
             </div>
 
             <div className="mt-5 grid gap-4 lg:grid-cols-[1.3fr_0.8fr]">
-              <div className="rounded-lg border border-slate-200/80 bg-slate-50/80 p-5">
+              <div className="rounded-lg border border-deep-navy-100/80 bg-slate-50/80 p-5">
                 <div className="flex justify-between gap-3 text-sm">
                   <span className="text-muted-foreground">Bids this month</span>
                   <span className="font-medium text-foreground">
@@ -291,7 +291,7 @@ export default function Subscription() {
                 )}
               </div>
 
-              <div className="rounded-lg border border-slate-200/80 bg-slate-50/80 p-5">
+              <div className="rounded-lg border border-deep-navy-100/80 bg-slate-50/80 p-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Plan note</p>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">
                   Keep an eye on bid capacity before you hit the limit so upgrades happen on your schedule instead of under pressure.
@@ -321,7 +321,7 @@ export default function Subscription() {
             return (
               <Card
                 key={plan.id}
-                className={`relative overflow-hidden rounded-xl border-2 bg-white/88 shadow-xl shadow-slate-900/5 backdrop-blur-sm ${planColors[plan.id]} ${isPopular ? "lg:-translate-y-2" : ""}`}
+                className={`relative overflow-hidden rounded-xl border-2 bg-white/88 shadow-xl shadow-deep-navy-800/5 backdrop-blur-sm ${planColors[plan.id]} ${isPopular ? "lg:-translate-y-2" : ""}`}
               >
                 {isPopular && (
                   <div className="absolute left-1/2 top-4 -translate-x-1/2">
@@ -333,19 +333,19 @@ export default function Subscription() {
                   <div
                     className={`mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl ${
                       plan.id === "pro"
-                        ? "bg-amber-100"
+                        ? "bg-copper-100"
                         : plan.id === "basic"
                           ? "bg-primary/10"
-                          : "bg-slate-100"
+                          : "bg-deep-navy-50"
                     }`}
                   >
                     <Icon
                       className={`h-7 w-7 ${
                         plan.id === "pro"
-                          ? "text-amber-600"
+                          ? "text-copper-600"
                           : plan.id === "basic"
                             ? "text-primary"
-                            : "text-slate-600"
+                            : "text-deep-navy-500"
                       }`}
                     />
                   </div>
@@ -416,7 +416,7 @@ export default function Subscription() {
                     </div>
                   ) : (
                     <Button
-                      className={`w-full rounded-lg ${plan.id === "pro" ? "bg-amber-500 hover:bg-amber-600" : ""}`}
+                      className={`w-full rounded-lg ${plan.id === "pro" ? "bg-copper-500 hover:bg-copper-600" : ""}`}
                       onClick={() => handleSubscribe(plan.id)}
                       disabled={checkoutLoading === plan.id || plan.id === "free"}
                     >
@@ -443,13 +443,13 @@ export default function Subscription() {
           })}
         </section>
 
-        <section className="rounded-xl border border-white/70 bg-white/82 p-5 shadow-xl shadow-slate-900/5 backdrop-blur-xl sm:p-6">
+        <section className="rounded-xl border border-white/70 bg-white/82 p-5 shadow-xl shadow-deep-navy-800/5 backdrop-blur-xl sm:p-6">
           <div className="max-w-3xl">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">FAQ</p>
             <h2 className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-foreground">Frequently asked questions</h2>
           </div>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
-            <Card className="rounded-lg border border-slate-200/80 bg-slate-50/80 shadow-none">
+            <Card className="rounded-lg border border-deep-navy-100/80 bg-slate-50/80 shadow-none">
               <CardContent className="p-5">
                 <h3 className="mb-2 font-semibold text-foreground">Can I cancel anytime?</h3>
                 <p className="text-sm leading-6 text-muted-foreground">
@@ -457,7 +457,7 @@ export default function Subscription() {
                 </p>
               </CardContent>
             </Card>
-            <Card className="rounded-lg border border-slate-200/80 bg-slate-50/80 shadow-none">
+            <Card className="rounded-lg border border-deep-navy-100/80 bg-slate-50/80 shadow-none">
               <CardContent className="p-5">
                 <h3 className="mb-2 font-semibold text-foreground">What happens when I hit my limit?</h3>
                 <p className="text-sm leading-6 text-muted-foreground">
@@ -465,7 +465,7 @@ export default function Subscription() {
                 </p>
               </CardContent>
             </Card>
-            <Card className="rounded-lg border border-slate-200/80 bg-slate-50/80 shadow-none">
+            <Card className="rounded-lg border border-deep-navy-100/80 bg-slate-50/80 shadow-none">
               <CardContent className="p-5">
                 <h3 className="mb-2 font-semibold text-foreground">Can I switch plans?</h3>
                 <p className="text-sm leading-6 text-muted-foreground">
@@ -473,7 +473,7 @@ export default function Subscription() {
                 </p>
               </CardContent>
             </Card>
-            <Card className="rounded-lg border border-slate-200/80 bg-slate-50/80 shadow-none">
+            <Card className="rounded-lg border border-deep-navy-100/80 bg-slate-50/80 shadow-none">
               <CardContent className="p-5">
                 <h3 className="mb-2 font-semibold text-foreground">Is there a free trial?</h3>
                 <p className="text-sm leading-6 text-muted-foreground">

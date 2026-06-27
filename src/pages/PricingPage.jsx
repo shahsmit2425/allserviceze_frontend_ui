@@ -120,13 +120,13 @@ export default function PricingPage() {
       />
 
       {/* Homeowner Plans */}
-      <section className="py-20 md:py-32 bg-gradient-to-b from-amber-50 via-white to-slate-50">
+      <section className="py-20 md:py-32 bg-gradient-to-b from-copper-50 via-white to-slate-50">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 mb-20">
           <div className="text-center mb-16 max-w-3xl mx-auto">
-            <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <h2 className="text-5xl md:text-6xl font-bold text-deep-navy-800 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
               For Homeowners
             </h2>
-            <p className="text-lg text-slate-600" style={{ fontFamily: "'Lora', serif" }}>
+            <p className="text-lg text-deep-navy-500" style={{ fontFamily: "'Lora', serif" }}>
               Post projects, find professionals, compare quotes
             </p>
           </div>
@@ -137,8 +137,8 @@ export default function PricingPage() {
                 key={idx}
                 className={`rounded-2xl p-8 border transition-all duration-300 ${
                   plan.featured
-                    ? "border-primary bg-gradient-to-br from-slate-900 to-slate-800 text-white shadow-2xl transform md:scale-105"
-                    : "border-slate-200 bg-white hover:border-primary/50"
+                    ? "border-primary bg-gradient-to-br from-deep-navy-800 to-deep-navy-700 text-white shadow-2xl transform md:scale-105"
+                    : "border-deep-navy-100 bg-white hover:border-primary/50"
                 }`}
               >
                 {plan.featured && (
@@ -147,18 +147,18 @@ export default function PricingPage() {
                   </div>
                 )}
 
-                <h3 className={`text-2xl font-semibold mb-2 ${plan.featured ? "text-white" : "text-slate-900"}`} style={{ fontFamily: "'Playfair Display', serif" }}>
+                <h3 className={`text-2xl font-semibold mb-2 ${plan.featured ? "text-white" : "text-deep-navy-800"}`} style={{ fontFamily: "'Playfair Display', serif" }}>
                   {plan.name}
                 </h3>
 
                 <div className="mb-6">
-                  <div className={`text-4xl font-bold ${plan.featured ? "text-white" : "text-slate-900"}`}>
+                  <div className={`text-4xl font-bold ${plan.featured ? "text-white" : "text-deep-navy-800"}`}>
                     {plan.price}
-                    <span className={`text-lg font-normal ${plan.featured ? "text-slate-300" : "text-slate-500"}`}>
+                    <span className={`text-lg font-normal ${plan.featured ? "text-deep-navy-200" : "text-slate-500"}`}>
                       {plan.period}
                     </span>
                   </div>
-                  <p className={`text-sm mt-2 ${plan.featured ? "text-slate-300" : "text-slate-600"}`}>
+                  <p className={`text-sm mt-2 ${plan.featured ? "text-deep-navy-200" : "text-deep-navy-500"}`}>
                     {plan.description}
                   </p>
                 </div>
@@ -167,8 +167,8 @@ export default function PricingPage() {
                   onClick={() => navigate("/auth?mode=register&role=customer")}
                   className={`w-full h-12 rounded-xl mb-8 font-semibold transition-all ${
                     plan.featured
-                      ? "bg-white text-slate-900 hover:bg-slate-100"
-                      : "bg-slate-900 text-white hover:bg-slate-800"
+                      ? "bg-white text-deep-navy-800 hover:bg-deep-navy-50"
+                      : "bg-deep-navy-800 text-white hover:bg-deep-navy-700"
                   }`}
                 >
                   {plan.cta}
@@ -177,8 +177,8 @@ export default function PricingPage() {
                 <div className="space-y-4">
                   {plan.features.map((feature, fidx) => (
                     <div key={fidx} className="flex items-start gap-3">
-                      <Check className={`h-5 w-5 flex-shrink-0 mt-0.5 ${plan.featured ? "text-amber-400" : "text-primary"}`} />
-                      <span className={`text-sm ${plan.featured ? "text-slate-200" : "text-slate-600"}`}>
+                      <Check className={`h-5 w-5 flex-shrink-0 mt-0.5 ${plan.featured ? "text-copper-400" : "text-primary"}`} />
+                      <span className={`text-sm ${plan.featured ? "text-deep-navy-100" : "text-deep-navy-500"}`}>
                         {feature}
                       </span>
                     </div>
@@ -192,10 +192,10 @@ export default function PricingPage() {
         {/* Provider Plans */}
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 border-t pt-20">
           <div className="text-center mb-16 max-w-3xl mx-auto">
-            <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <h2 className="text-5xl md:text-6xl font-bold text-deep-navy-800 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
               For Professionals
             </h2>
-            <p className="text-lg text-slate-600" style={{ fontFamily: "'Lora', serif" }}>
+            <p className="text-lg text-deep-navy-500" style={{ fontFamily: "'Lora', serif" }}>
               Get leads, grow your business, manage operations
             </p>
           </div>
@@ -206,8 +206,8 @@ export default function PricingPage() {
                 key={idx}
                 className={`rounded-2xl p-8 border transition-all duration-300 ${
                   plan.featured
-                    ? "border-primary bg-gradient-to-br from-slate-900 to-slate-800 text-white shadow-2xl transform md:scale-105"
-                    : "border-slate-200 bg-white hover:border-primary/50"
+                    ? "border-primary bg-gradient-to-br from-deep-navy-800 to-deep-navy-700 text-white shadow-2xl transform md:scale-105"
+                    : "border-deep-navy-100 bg-white hover:border-primary/50"
                 }`}
               >
                 {plan.featured && (
@@ -216,18 +216,18 @@ export default function PricingPage() {
                   </div>
                 )}
 
-                <h3 className={`text-2xl font-semibold mb-2 ${plan.featured ? "text-white" : "text-slate-900"}`} style={{ fontFamily: "'Playfair Display', serif" }}>
+                <h3 className={`text-2xl font-semibold mb-2 ${plan.featured ? "text-white" : "text-deep-navy-800"}`} style={{ fontFamily: "'Playfair Display', serif" }}>
                   {plan.name}
                 </h3>
 
                 <div className="mb-6">
-                  <div className={`text-4xl font-bold ${plan.featured ? "text-white" : "text-slate-900"}`}>
+                  <div className={`text-4xl font-bold ${plan.featured ? "text-white" : "text-deep-navy-800"}`}>
                     {plan.price}
-                    <span className={`text-lg font-normal ${plan.featured ? "text-slate-300" : "text-slate-500"}`}>
+                    <span className={`text-lg font-normal ${plan.featured ? "text-deep-navy-200" : "text-slate-500"}`}>
                       {plan.period}
                     </span>
                   </div>
-                  <p className={`text-sm mt-2 ${plan.featured ? "text-slate-300" : "text-slate-600"}`}>
+                  <p className={`text-sm mt-2 ${plan.featured ? "text-deep-navy-200" : "text-deep-navy-500"}`}>
                     {plan.description}
                   </p>
                 </div>
@@ -236,8 +236,8 @@ export default function PricingPage() {
                   onClick={() => navigate("/auth?mode=register&role=provider")}
                   className={`w-full h-12 rounded-xl mb-8 font-semibold transition-all ${
                     plan.featured
-                      ? "bg-white text-slate-900 hover:bg-slate-100"
-                      : "bg-slate-900 text-white hover:bg-slate-800"
+                      ? "bg-white text-deep-navy-800 hover:bg-deep-navy-50"
+                      : "bg-deep-navy-800 text-white hover:bg-deep-navy-700"
                   }`}
                 >
                   {plan.cta}
@@ -246,8 +246,8 @@ export default function PricingPage() {
                 <div className="space-y-4">
                   {plan.features.map((feature, fidx) => (
                     <div key={fidx} className="flex items-start gap-3">
-                      <Check className={`h-5 w-5 flex-shrink-0 mt-0.5 ${plan.featured ? "text-amber-400" : "text-primary"}`} />
-                      <span className={`text-sm ${plan.featured ? "text-slate-200" : "text-slate-600"}`}>
+                      <Check className={`h-5 w-5 flex-shrink-0 mt-0.5 ${plan.featured ? "text-copper-400" : "text-primary"}`} />
+                      <span className={`text-sm ${plan.featured ? "text-deep-navy-100" : "text-deep-navy-500"}`}>
                         {feature}
                       </span>
                     </div>
@@ -260,10 +260,10 @@ export default function PricingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 md:py-32 bg-gradient-to-b from-amber-50 via-white to-slate-50">
+      <section className="py-20 md:py-32 bg-gradient-to-b from-copper-50 via-white to-slate-50">
         <div className="max-w-3xl mx-auto px-6 sm:px-10 lg:px-12">
           <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <h2 className="text-5xl md:text-6xl font-bold text-deep-navy-800 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
               Frequently Asked Questions
             </h2>
           </div>
@@ -287,9 +287,9 @@ export default function PricingPage() {
                 a: "Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately.",
               },
             ].map((item, idx) => (
-              <Card key={idx} className="p-6 border-slate-200 hover:border-primary/50 transition-all">
-                <h3 className="text-lg font-semibold text-slate-900 mb-2">{item.q}</h3>
-                <p className="text-slate-600">{item.a}</p>
+              <Card key={idx} className="p-6 border-deep-navy-100 hover:border-primary/50 transition-all">
+                <h3 className="text-lg font-semibold text-deep-navy-800 mb-2">{item.q}</h3>
+                <p className="text-deep-navy-500">{item.a}</p>
               </Card>
             ))}
           </div>

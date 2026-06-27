@@ -17,8 +17,8 @@ const stateStyles = {
     headingClassName: "text-primary",
   },
   warning: {
-    wrapperClassName: "bg-amber-100",
-    iconClassName: "text-amber-600",
+    wrapperClassName: "bg-copper-100",
+    iconClassName: "text-copper-600",
     headingClassName: "text-foreground",
   },
   error: {

@@ -45,7 +45,7 @@ const DAY_NAMES = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Satu
 const DAY_SHORT = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 const STATUS_STYLES = {
-  pending:   { bg: "border border-amber-600/30 bg-amber-500/14 text-amber-100", dot: "bg-amber-400" },
+  pending:   { bg: "border border-copper-600/30 bg-copper-500/14 text-copper-100", dot: "bg-copper-400" },
   confirmed: { bg: "border border-blue-500/28 bg-blue-500/14 text-blue-100",   dot: "bg-blue-300"   },
   completed: { bg: "border border-emerald-500/25 bg-emerald-500/12 text-emerald-100",   dot: "bg-emerald-300"   },
   cancelled: { bg: "border border-rose-500/28 bg-rose-500/14 text-rose-100",     dot: "bg-rose-300"    },
@@ -361,7 +361,7 @@ export default function ProviderCalendar({ providerId }) {
                             <span className="w-1.5 h-1.5 rounded-full bg-red-400" />
                           )}
                           {isPartialBlocked && (
-                            <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
+                            <span className="w-1.5 h-1.5 rounded-full bg-copper-600" />
                           )}
                           {dayBookings.slice(0, 2).map((_, i) => (
                             <span key={i} className="w-1.5 h-1.5 rounded-full bg-primary" />
@@ -396,7 +396,7 @@ export default function ProviderCalendar({ providerId }) {
                   <span className="w-2 h-2 rounded-full bg-red-400 inline-block" /> Full-day block
                 </span>
                 <span className="flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-amber-600 inline-block" /> Partial block
+                  <span className="w-2 h-2 rounded-full bg-copper-600 inline-block" /> Partial block
                 </span>
                 <span className="flex items-center gap-1 cursor-pointer text-primary" onClick={() => setBlockModal(true)}>
                   <Plus className="w-3 h-3" /> Block a date
@@ -427,12 +427,12 @@ export default function ProviderCalendar({ providerId }) {
                           className={`flex items-start justify-between rounded-lg p-3 border ${
                             blk.is_full_day !== false
                               ? "border-rose-500/28 bg-rose-500/12"
-                              : "border-amber-600/28 bg-amber-500/12"
+                              : "border-copper-600/28 bg-copper-500/12"
                           }`}
                         >
                           <div>
                             <p className={`font-medium text-sm flex items-center gap-1.5 ${
-                              blk.is_full_day !== false ? "text-rose-200" : "text-amber-100"
+                              blk.is_full_day !== false ? "text-rose-200" : "text-copper-100"
                             }`}>
                               <Ban className="w-4 h-4" />
                               {blk.is_full_day !== false
@@ -654,14 +654,14 @@ export default function ProviderCalendar({ providerId }) {
                       className={`flex items-center justify-between p-3 border rounded-lg ${
                         b.is_full_day !== false
                           ? "border-rose-500/28 bg-rose-500/12"
-                          : "border-amber-600/28 bg-amber-500/12"
+                          : "border-copper-600/28 bg-copper-500/12"
                       }`}
                     >
                       <div>
                         <p className="text-sm font-medium text-foreground">
                           {format(parseISO(b.date + "T12:00:00"), "EEEE, MMM d, yyyy")}
                           {b.is_full_day === false && b.start_time && b.end_time && (
-                            <span className="ml-2 text-xs font-normal text-amber-100">
+                            <span className="ml-2 text-xs font-normal text-copper-100">
                               {b.start_time}–{b.end_time}
                             </span>
                           )}
