@@ -541,7 +541,7 @@ export default function BrowseProjects() {
         <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
-      <div className="page-shell space-y-6 py-20 sm:py-32 bg-gradient-to-b from-copper-50 via-white to-slate-50 sm:space-y-7">
+      <div className="page-shell space-y-6 py-20 sm:py-32 bg-white sm:space-y-7">
         <section className="overflow-hidden">
           <div className="px-5 py-0 sm:px-7">
             <div className="mx-auto max-w-4xl text-center">

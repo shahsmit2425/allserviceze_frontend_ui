@@ -120,7 +120,7 @@ export default function HelpCenterPage() {
       </section>
 
       {/* FAQs */}
-      <section className="py-20 md:py-32 bg-gradient-to-b from-copper-50 via-white to-slate-50">
+      <section className="py-20 md:py-32 bg-white">
         <div className="max-w-3xl mx-auto px-6 sm:px-10 lg:px-12">
           {Object.entries(filteredFaqs).map(([category, faqs]) => (
             <div key={category} className="mb-12">
@@ -156,7 +156,7 @@ export default function HelpCenterPage() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 md:py-32 bg-gradient-to-b from-slate-50 via-white to-copper-50">
+      <section className="py-20 md:py-32 bg-white via-white to-copper-50">
         <div className="max-w-4xl mx-auto px-6 sm:px-10 lg:px-12">
           <div className="text-center mb-16 max-w-2xl mx-auto">
             <h2 className="text-5xl md:text-6xl font-bold text-deep-navy-800 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>

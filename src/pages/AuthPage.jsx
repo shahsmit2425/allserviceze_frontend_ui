@@ -1061,7 +1061,7 @@ export default function AuthPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-copper-50 via-white to-slate-50" style={{ fontFamily: "'Georgia', 'Garamond', serif" }}>
+    <main className="min-h-screen bg-white" style={{ fontFamily: "'Georgia', 'Garamond', serif" }}>
       <Helmet>
         <title>{authPageTitle}</title>
         <meta name="description" content={authPageDescription} />
@@ -1079,10 +1079,10 @@ export default function AuthPage() {
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lora:wght@400;500;600&display=swap" rel="stylesheet" />
       </Helmet>
       
-      <div className="min-h-screen flex items-center justify-center py-8">
-        <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-2xl overflow-hidden shadow-2xl">
+      <div className="min-h-screen flex items-center justify-center py-4">
+        <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-2xl overflow-hidden shadow-2xl max-h-[calc(100vh-2rem)]">
           {/* Left Panel - Image */}
-          <section className="hidden lg:flex flex-col justify-center items-center bg-gradient-to-br from-deep-navy-800 via-deep-navy-700 to-deep-navy-800 p-12 relative overflow-hidden">
+          <section className="hidden lg:flex flex-col justify-center items-center bg-gradient-to-br from-deep-navy-800 via-deep-navy-700 to-deep-navy-800 p-8 relative overflow-hidden">
             <div className="absolute inset-0 opacity-40">
               <img 
                 src="/auth-hero.png" 
@@ -1136,11 +1136,11 @@ export default function AuthPage() {
 
           {/* Right Panel - Form */}
           <section className={cn(
-            "flex flex-col justify-center bg-white p-8 sm:p-12 lg:p-16",
-            isPhone ? "px-5 py-8 sm:px-8" : ""
+            "flex flex-col justify-center bg-white p-6 sm:p-8 lg:p-10 overflow-y-auto max-h-[calc(100vh-2rem)]",
+            isPhone ? "px-5 py-6 sm:px-6" : ""
           )}>
             <div className="w-full max-w-sm mx-auto">
-              <div className="mb-12 flex items-center justify-between gap-4">
+              <div className="mb-6 flex items-center justify-between gap-4">
                 <AuthBrandLink compact className="border-transparent bg-transparent px-0 py-0 shadow-none backdrop-blur-0 hover:translate-y-0 hover:border-transparent" />
               </div>
 

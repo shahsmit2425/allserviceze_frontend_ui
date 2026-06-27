@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AppShell } from "../components/AppShell";
 import { PremiumHero } from "../components/premium/PremiumHero";
 import { PremiumFeatures } from "../components/premium/PremiumFeatures";
+import ServiceCategoriesGrid from "../components/premium/ServiceCategoriesGrid";
 import { PremiumTestimonials } from "../components/premium/PremiumTestimonials";
 import { PremiumCTA } from "../components/premium/PremiumCTA";
 import { Button } from "../components/ui/button";
@@ -448,6 +449,9 @@ export default function LandingPage() {
         title="Why Choose ServiceTones"
         description="A marketplace built for trust, transparency, and convenience"
       />
+
+      {/* Service Categories Section */}
+      <ServiceCategoriesGrid />
 
       {/* How It Works Section */}
       <section className="py-20 md:py-28 bg-gradient-to-b from-white to-slate-50">

@@ -120,7 +120,7 @@ export default function PricingPage() {
       />
 
       {/* Homeowner Plans */}
-      <section className="py-20 md:py-32 bg-gradient-to-b from-copper-50 via-white to-slate-50">
+      <section className="py-20 md:py-32 bg-white">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 mb-20">
           <div className="text-center mb-16 max-w-3xl mx-auto">
             <h2 className="text-5xl md:text-6xl font-bold text-deep-navy-800 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
@@ -260,7 +260,7 @@ export default function PricingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 md:py-32 bg-gradient-to-b from-copper-50 via-white to-slate-50">
+      <section className="py-20 md:py-32 bg-white">
         <div className="max-w-3xl mx-auto px-6 sm:px-10 lg:px-12">
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-6xl font-bold text-deep-navy-800 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
