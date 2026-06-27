@@ -5,6 +5,7 @@ import { AppShell } from "../components/AppShell";
 import { PremiumHero } from "../components/premium/PremiumHero";
 import { PremiumFeatures } from "../components/premium/PremiumFeatures";
 import ServiceCategoriesGrid from "../components/premium/ServiceCategoriesGrid";
+import { HowItWorks } from "../components/premium/HowItWorks";
 import { PremiumTestimonials } from "../components/premium/PremiumTestimonials";
 import { PremiumCTA } from "../components/premium/PremiumCTA";
 import { Button } from "../components/ui/button";
@@ -438,9 +439,8 @@ export default function LandingPage() {
       <PremiumHero
         heading="Find Verified Local Professionals Instantly"
         subheading="Post your project, get matched with trusted providers, and compare quotes in one place. No endless phone calls needed."
-        searchPlaceholder="What service do you need? (e.g., Plumbing, Electrical)"
-        ctaText="Search"
-        onSearch={handleSearch}
+        ctaText="Get Started"
+        cta={() => window.location.href = '/auth?mode=register'}
       />
 
       {/* Service Categories Section */}
@@ -454,52 +454,7 @@ export default function LandingPage() {
       />
 
       {/* How It Works Section */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-white to-slate-50">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
-          <div className="text-center mb-16 max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-deep-navy-800 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Three Simple Steps
-            </h2>
-            <p className="text-lg text-deep-navy-500" style={{ fontFamily: "'Lora', serif" }}>
-              Get matched with the right professional in minutes
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { num: "1", title: "Post Your Project", desc: "Tell us what you need and when. Just a few minutes." },
-              { num: "2", title: "Get Instant Quotes", desc: "Verified pros respond with pricing within hours." },
-              { num: "3", title: "Hire & Collaborate", desc: "Review profiles, compare quotes, and hire with confidence." },
-            ].map((step) => (
-              <div key={step.num} className="text-center">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-copper-500 to-copper-600 text-white font-bold text-xl flex items-center justify-center mx-auto mb-6">
-                  {step.num}
-                </div>
-                <h3 className="text-2xl font-bold text-deep-navy-800 mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
-                  {step.title}
-                </h3>
-                <p className="text-deep-navy-500" style={{ fontFamily: "'Lora', serif" }}>
-                  {step.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-20 md:py-28 bg-deep-navy-800 text-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {TRUST_STATS.map((stat) => (
-              <div key={stat.label}>
-                <div className="text-4xl font-bold text-primary mb-2">{stat.value}</div>
-                <p className="text-deep-navy-200" style={{ fontFamily: "'Lora', serif" }}>{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <HowItWorks />
 
       {/* Testimonials Section */}
       <PremiumTestimonials

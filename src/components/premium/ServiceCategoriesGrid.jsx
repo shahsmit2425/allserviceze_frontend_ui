@@ -5,13 +5,13 @@ const ServiceCategoriesGrid = () => {
     {
       id: 1,
       name: 'House Cleaning',
-      bgColor: 'bg-gradient-to-br from-blue-400 to-blue-600',
+      bgColor: 'bg-gradient-to-br from-blue-500 to-blue-700',
       icon: '🧹',
     },
     {
       id: 2,
       name: 'Carpet Cleaning',
-      bgColor: 'bg-gradient-to-br from-gray-700 to-gray-900',
+      bgColor: 'bg-gradient-to-br from-purple-600 to-purple-800',
       icon: '🧼',
     },
     {
@@ -23,8 +23,68 @@ const ServiceCategoriesGrid = () => {
     {
       id: 4,
       name: 'Pressure Washing',
-      bgColor: 'bg-gradient-to-br from-green-500 to-green-700',
+      bgColor: 'bg-gradient-to-br from-green-600 to-green-800',
       icon: '💧',
+    },
+    {
+      id: 5,
+      name: 'Plumbing',
+      bgColor: 'bg-gradient-to-br from-red-600 to-red-800',
+      icon: '🔧',
+    },
+    {
+      id: 6,
+      name: 'Electrical',
+      bgColor: 'bg-gradient-to-br from-yellow-600 to-yellow-800',
+      icon: '⚡',
+    },
+    {
+      id: 7,
+      name: 'Landscaping',
+      bgColor: 'bg-gradient-to-br from-emerald-600 to-emerald-800',
+      icon: '🌿',
+    },
+    {
+      id: 8,
+      name: 'Painting',
+      bgColor: 'bg-gradient-to-br from-pink-600 to-pink-800',
+      icon: '🎨',
+    },
+    {
+      id: 9,
+      name: 'HVAC',
+      bgColor: 'bg-gradient-to-br from-cyan-600 to-cyan-800',
+      icon: '❄️',
+    },
+    {
+      id: 10,
+      name: 'Roofing',
+      bgColor: 'bg-gradient-to-br from-slate-600 to-slate-800',
+      icon: '🏠',
+    },
+    {
+      id: 11,
+      name: 'Flooring',
+      bgColor: 'bg-gradient-to-br from-orange-600 to-orange-800',
+      icon: '🪵',
+    },
+    {
+      id: 12,
+      name: 'Handyman',
+      bgColor: 'bg-gradient-to-br from-indigo-600 to-indigo-800',
+      icon: '🔨',
+    },
+    {
+      id: 13,
+      name: 'Moving',
+      bgColor: 'bg-gradient-to-br from-teal-600 to-teal-800',
+      icon: '📦',
+    },
+    {
+      id: 14,
+      name: 'Cleaning Services',
+      bgColor: 'bg-gradient-to-br from-violet-600 to-violet-800',
+      icon: '✨',
     },
   ];
 
@@ -42,12 +102,12 @@ const ServiceCategoriesGrid = () => {
         </div>
 
         {/* Categories Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4">
           {categories.map((category) => (
             <Link
               key={category.id}
               to={`/browse/projects?service=${category.name.toLowerCase().replace(/\s+/g, '-')}`}
-              className="group relative overflow-hidden rounded-2xl h-64 shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105"
+              className="group relative overflow-hidden rounded-2xl h-48 shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
               {/* Background Gradient */}
               <div className={`absolute inset-0 ${category.bgColor} opacity-90 group-hover:opacity-100 transition-opacity duration-300`}></div>

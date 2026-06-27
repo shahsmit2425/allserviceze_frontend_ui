@@ -1,14 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 
 export function PremiumHero({ 
   heading, 
   subheading, 
   cta,
   ctaText,
-  secondaryCtaText,
-  searchPlaceholder,
-  onSearch 
+  secondaryCtaText
 }) {
   return (
     <section className="relative overflow-hidden py-20 md:py-32 bg-white">
@@ -42,37 +39,22 @@ export function PremiumHero({
         </p>
 
         {/* CTA Section */}
-        {searchPlaceholder ? (
-          <form onSubmit={onSearch} className="flex flex-col sm:flex-row gap-3 max-w-2xl mx-auto mb-8">
-            <Input 
-              placeholder={searchPlaceholder}
-              className="h-14 rounded-xl border-deep-navy-200 flex-1"
-            />
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <Button 
+            onClick={cta}
+            className="h-14 px-8 rounded-xl bg-gradient-to-r from-copper-500 to-copper-600 hover:from-copper-600 hover:to-copper-700 text-white font-semibold"
+          >
+            {ctaText || "Get Started"}
+          </Button>
+          {secondaryCtaText && (
             <Button 
-              type="submit"
-              className="h-14 px-8 rounded-xl bg-gradient-to-r from-copper-500 to-copper-600 hover:from-copper-600 hover:to-copper-700 text-white font-semibold"
+              variant="outline"
+              className="h-14 px-8 rounded-xl border-deep-navy-200 text-deep-navy-800 font-semibold hover:bg-white"
             >
-              {ctaText || "Search"}
+              {secondaryCtaText}
             </Button>
-          </form>
-        ) : (
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <Button 
-              onClick={cta}
-              className="h-14 px-8 rounded-xl bg-gradient-to-r from-copper-500 to-copper-600 hover:from-copper-600 hover:to-copper-700 text-white font-semibold"
-            >
-              {ctaText || "Get Started"}
-            </Button>
-            {secondaryCtaText && (
-              <Button 
-                variant="outline"
-                className="h-14 px-8 rounded-xl border-deep-navy-200 text-deep-navy-800 font-semibold hover:bg-white"
-              >
-                {secondaryCtaText}
-              </Button>
-            )}
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </section>
   );
