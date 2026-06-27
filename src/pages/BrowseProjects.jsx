@@ -87,9 +87,9 @@ const PROJECT_STATUS_OPTIONS = [
 ];
 
 const urgencyColors = {
-  low: "border border-slate-200 bg-slate-50 text-slate-700",
+  low: "border border-teal-200 bg-slate-50 text-teal-700",
   normal: "border border-sky-200 bg-sky-50 text-sky-800",
-  high: "border border-amber-200 bg-amber-50 text-amber-800",
+  high: "border border-amber-100 bg-amber-50 text-amber-800",
   urgent: "border border-rose-200 bg-rose-50 text-rose-800"
 };
 
@@ -545,14 +545,14 @@ export default function BrowseProjects() {
         <section className="overflow-hidden">
           <div className="px-5 py-0 sm:px-7">
             <div className="mx-auto max-w-4xl text-center">
-              <div className="inline-flex items-center gap-2 rounded-full border border-slate-300/40 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm mb-6">
+              <div className="inline-flex items-center gap-2 rounded-full border border-teal-300/40 bg-white px-4 py-2 text-sm font-semibold text-teal-700 shadow-sm mb-6">
                 <Briefcase className="h-4 w-4" />
                 <span>Browse Projects</span>
               </div>
-              <h1 className="text-5xl sm:text-6xl font-bold text-slate-900 leading-tight mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+              <h1 className="text-5xl sm:text-6xl font-bold text-teal-900 leading-tight mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
                 Find Projects Worth Bidding On
               </h1>
-              <p className="text-lg text-slate-600 max-w-2xl mx-auto" style={{ fontFamily: "'Lora', serif" }}>
+              <p className="text-lg text-teal-600 max-w-2xl mx-auto" style={{ fontFamily: "'Lora', serif" }}>
                 Browse active projects, filter by budget and timeline, and submit competitive quotes to grow your business.
               </p>
             </div>
@@ -562,7 +562,7 @@ export default function BrowseProjects() {
                 event.preventDefault();
                 applyFilters();
               }}
-              className="mx-auto mt-8 grid max-w-5xl gap-3 rounded-2xl border border-slate-300 bg-white p-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.78fr)_12rem]"
+              className="mx-auto mt-8 grid max-w-5xl gap-3 rounded-2xl border border-teal-300 bg-white p-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.78fr)_12rem]"
             >
               <div className="relative">
                 <Briefcase className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -583,7 +583,7 @@ export default function BrowseProjects() {
                   maxLength={5}
                 />
               </div>
-              <Button type="submit" className="h-12 rounded-xl bg-gradient-to-r from-slate-900 to-slate-800 text-white hover:from-slate-800 hover:to-slate-700 font-semibold shadow-md hover:shadow-lg transition-all">
+              <Button type="submit" className="h-12 rounded-xl bg-gradient-to-r from-teal-900 to-teal-800 text-white hover:from-teal-800 hover:to-teal-700 font-semibold shadow-md hover:shadow-lg transition-all">
                 Search
               </Button>
             </form>
@@ -670,7 +670,7 @@ export default function BrowseProjects() {
                 </Accordion>
 
                 <div className="border-t border-border/60 px-5 py-4">
-                  <Button className="w-full rounded-xl bg-gradient-to-r from-slate-900 to-slate-800 text-white hover:from-slate-800 hover:to-slate-700 font-semibold shadow-md hover:shadow-lg transition-all disabled:opacity-50" onClick={applyFilters} disabled={!hasDraftChanges}>
+                  <Button className="w-full rounded-xl bg-gradient-to-r from-teal-900 to-teal-800 text-white hover:from-teal-800 hover:to-teal-700 font-semibold shadow-md hover:shadow-lg transition-all disabled:opacity-50" onClick={applyFilters} disabled={!hasDraftChanges}>
                     Apply Filters
                   </Button>
                   <p className="mt-3 text-xs leading-5 text-muted-foreground">Filters stay draft-based until you apply them.</p>
@@ -837,7 +837,7 @@ export default function BrowseProjects() {
                   return (
                     <Card
                       key={project.id}
-                      className="result-card-surface border border-slate-300 bg-white rounded-2xl hover:shadow-lg hover:border-slate-400 transition-all"
+                      className="result-card-surface border border-teal-300 bg-white rounded-2xl hover:shadow-lg hover:border-slate-400 transition-all"
                       data-testid={`project-card-${project.id}`}
                       style={{ contentVisibility: 'auto', containIntrinsicSize: '360px' }}
                     >
@@ -888,8 +888,8 @@ export default function BrowseProjects() {
                           </div>
 
                           <div className="flex flex-wrap items-center gap-2">
-                            <Badge className="bg-amber-50 text-amber-700 border border-amber-200 rounded-full px-3 py-1 text-xs font-semibold">{project.urgency}</Badge>
-                            <Badge className="bg-slate-100 text-slate-700 border border-slate-200 rounded-full px-3 py-1 text-xs font-semibold">{project.category}</Badge>
+                            <Badge className="bg-amber-50 text-amber-700 border border-amber-100 rounded-full px-3 py-1 text-xs font-semibold">{project.urgency}</Badge>
+                            <Badge className="bg-teal-100 text-teal-700 border border-teal-200 rounded-full px-3 py-1 text-xs font-semibold">{project.category}</Badge>
                             {project.customerVerified ? (
                               <Badge className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-emerald-700">
                                 <CheckCircle className="mr-1 h-3 w-3" />
@@ -897,7 +897,7 @@ export default function BrowseProjects() {
                               </Badge>
                             ) : null}
                             {project.derivedProjectType ? (
-                              <Badge className="bg-slate-100 text-slate-700 border border-slate-200 rounded-full px-3 py-1 text-xs font-semibold">{project.derivedProjectType}</Badge>
+                              <Badge className="bg-teal-100 text-teal-700 border border-teal-200 rounded-full px-3 py-1 text-xs font-semibold">{project.derivedProjectType}</Badge>
                             ) : null}
                           </div>
 
@@ -947,12 +947,12 @@ export default function BrowseProjects() {
                               <span className="font-medium text-foreground">{opportunityLabel}</span>
                             </div>
                             <div className="flex flex-col gap-2 sm:flex-row">
-                              <Button asChild size="sm" className="min-w-[9.5rem] justify-center rounded-xl border border-slate-300 text-slate-900 hover:bg-slate-50 font-semibold">
+                              <Button asChild size="sm" className="min-w-[9.5rem] justify-center rounded-xl border border-teal-300 text-teal-900 hover:bg-slate-50 font-semibold">
                                 <Link to={projectUrl} aria-label={`View details for ${project.title}`}>
                                   View Project
                                 </Link>
                               </Button>
-                              <Button asChild size="sm" className="min-w-[9.5rem] justify-center rounded-xl bg-gradient-to-r from-slate-900 to-slate-800 text-white hover:from-slate-800 hover:to-slate-700 font-semibold">
+                              <Button asChild size="sm" className="min-w-[9.5rem] justify-center rounded-xl bg-gradient-to-r from-teal-900 to-teal-800 text-white hover:from-teal-800 hover:to-teal-700 font-semibold">
                                 <Link to={projectUrl} aria-label={`Submit bid for ${project.title}`}>
                                   {getPrimaryActionLabel(project)}
                                   <ArrowRight className="ml-2 h-4 w-4" />

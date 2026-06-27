@@ -65,7 +65,7 @@ const MARKETPLACE_CATEGORIES = [
   {
     name: "Roofing",
     icon: House,
-    accent: "bg-slate-100 text-slate-700",
+    accent: "bg-teal-100 text-teal-700",
     description: "Repairs, leak checks, inspections, and replacements.",
   },
   {
@@ -453,10 +453,10 @@ export default function LandingPage() {
       <section className="py-20 md:py-28 bg-gradient-to-b from-white to-slate-50">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
           <div className="text-center mb-16 max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <h2 className="text-4xl md:text-5xl font-bold text-teal-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
               Three Simple Steps
             </h2>
-            <p className="text-lg text-slate-600" style={{ fontFamily: "'Lora', serif" }}>
+            <p className="text-lg text-teal-600" style={{ fontFamily: "'Lora', serif" }}>
               Get matched with the right professional in minutes
             </p>
           </div>
@@ -468,13 +468,13 @@ export default function LandingPage() {
               { num: "3", title: "Hire & Collaborate", desc: "Review profiles, compare quotes, and hire with confidence." },
             ].map((step) => (
               <div key={step.num} className="text-center">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-slate-900 to-slate-800 text-white font-bold text-xl flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-teal-900 to-teal-800 text-white font-bold text-xl flex items-center justify-center mx-auto mb-6">
                   {step.num}
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
+                <h3 className="text-2xl font-bold text-teal-900 mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
                   {step.title}
                 </h3>
-                <p className="text-slate-600" style={{ fontFamily: "'Lora', serif" }}>
+                <p className="text-teal-600" style={{ fontFamily: "'Lora', serif" }}>
                   {step.desc}
                 </p>
               </div>
@@ -484,13 +484,13 @@ export default function LandingPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 md:py-28 bg-slate-900 text-white">
+      <section className="py-20 md:py-28 bg-teal-900 text-white">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {TRUST_STATS.map((stat) => (
               <div key={stat.label}>
                 <div className="text-4xl font-bold text-primary mb-2">{stat.value}</div>
-                <p className="text-slate-300" style={{ fontFamily: "'Lora', serif" }}>{stat.label}</p>
+                <p className="text-teal-300" style={{ fontFamily: "'Lora', serif" }}>{stat.label}</p>
               </div>
             ))}
           </div>
@@ -514,7 +514,7 @@ export default function LandingPage() {
       />
 
       {/* Footer */}
-      <footer className="bg-slate-900 text-white py-16">
+      <footer className="bg-teal-900 text-white py-16">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div>
@@ -548,7 +548,7 @@ export default function LandingPage() {
               </ul>
             </div>
           </div>
-          <div className="border-t border-slate-700 pt-8 text-center text-sm text-slate-400">
+          <div className="border-t border-teal-700 pt-8 text-center text-sm text-slate-400">
             <p>&copy; 2024 ServiceTones. All rights reserved.</p>
           </div>
         </div>

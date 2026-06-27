@@ -39,7 +39,7 @@ const DASHBOARD_CANONICAL_URL = "https://servicetones.com/dashboard";
 const API_URL = `${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}/api`;
 
 const statusColors = {
-  draft: "bg-slate-100 text-slate-700",
+  draft: "bg-teal-100 text-teal-700",
   pending_approval: "bg-blue-100 text-blue-700",
   pending: "bg-blue-100 text-blue-700",
   approved: "bg-emerald-100 text-emerald-700",
@@ -48,7 +48,7 @@ const statusColors = {
   sold: "bg-emerald-100 text-emerald-700",
   in_progress: "bg-blue-100 text-blue-700",
   completed: "bg-emerald-100 text-emerald-700",
-  closed: "bg-slate-200 text-slate-700",
+  closed: "bg-teal-200 text-teal-700",
   rejected: "bg-rose-100 text-rose-700",
   paused: "bg-orange-100 text-orange-700",
 };
@@ -635,7 +635,7 @@ export default function CustomerDashboard() {
                             <div className={isNativeTablet ? "grid gap-4 xl:grid-cols-[minmax(0,1.2fr)_18rem]" : "grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_18rem]"}>
                               <div className="space-y-4">
                                 <div className="flex flex-wrap items-center gap-2">
-                                  <Badge className={statusColors[project.status] || "bg-slate-100 text-slate-700"}>{statusLabels[project.status] || project.status}</Badge>
+                                  <Badge className={statusColors[project.status] || "bg-teal-100 text-teal-700"}>{statusLabels[project.status] || project.status}</Badge>
                                   <Badge variant="outline" className="rounded-lg border-border/60 bg-background/85 px-3 py-1 text-xs font-semibold">{project.category}</Badge>
                                   {project.unreadProjectMessages > 0 && <Badge variant="outline" className="rounded-lg border-border/60 bg-background/85 px-3 py-1 text-xs font-semibold text-primary">{project.unreadProjectMessages} unread</Badge>}
                                 </div>
@@ -799,7 +799,7 @@ export default function CustomerDashboard() {
               {recentActivityItems.map((item) => (
                 <div key={item.id} className="rounded-xl border border-border/60 bg-white p-4 shadow-sm">
                   <div className="flex items-start gap-3">
-                    <div className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-100 text-slate-700">
+                    <div className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-2xl bg-teal-100 text-teal-700">
                       {item.type === "bid" ? <DollarSign className="h-4 w-4" /> : item.type === "message" ? <MessageSquare className="h-4 w-4" /> : <TrendingUp className="h-4 w-4" />}
                     </div>
                     <div className="min-w-0 flex-1">

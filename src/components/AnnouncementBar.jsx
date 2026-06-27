@@ -77,7 +77,7 @@ export default function AnnouncementBar() {
           <div
             key={announcement.id}
             className={cn(
-              "flex items-start justify-between gap-4 rounded-[1.35rem] border px-4 py-4 shadow-lg shadow-slate-900/5 backdrop-blur-xl",
+              "flex items-start justify-between gap-4 rounded-[1.35rem] border px-4 py-4 shadow-lg shadow-teal-900/5 backdrop-blur-xl",
               priorityStyles[announcement.priority] || priorityStyles.normal
             )}
           >

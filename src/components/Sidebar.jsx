@@ -18,14 +18,14 @@ const SidebarLink = ({ to, icon: Icon, label, isActive, onClick }) => (
     className={cn(
       "group flex items-center gap-3.5 rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200 relative",
       isActive
-        ? "bg-gradient-to-r from-amber-400/10 to-amber-400/5 text-slate-900 shadow-sm border border-amber-400/30"
-        : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+        ? "bg-gradient-to-r from-amber-600/10 to-amber-600/5 text-teal-900 shadow-sm border border-amber-600/30"
+        : "text-teal-600 hover:text-teal-900 hover:bg-slate-50"
     )}
   >
     <Icon className={cn("w-5 h-5 flex-shrink-0", isActive && "text-amber-500")} />
     <span className="flex-1">{label}</span>
     {isActive && (
-      <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-400" />
+      <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600" />
     )}
   </Link>
 );
@@ -65,21 +65,21 @@ export const Sidebar = () => {
       {/* Sidebar */}
       <aside
         className={cn(
-          "fixed inset-y-0 left-0 z-40 flex flex-col border-r border-slate-200 bg-gradient-to-b from-white to-slate-50/50 transition-all duration-300",
+          "fixed inset-y-0 left-0 z-40 flex flex-col border-r border-teal-200 bg-gradient-to-b from-white to-slate-50/50 transition-all duration-300",
           sidebarOpen ? "w-64" : "w-20"
         )}
         style={{ paddingTop: "env(safe-area-inset-top)" }}
       >
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-slate-200 px-4 py-4 sm:px-5">
+        <div className="flex items-center justify-between border-b border-teal-200 px-4 py-4 sm:px-5">
           {sidebarOpen && (
-            <Link to="/" className="flex items-center gap-2.5 font-heading text-lg font-bold text-slate-900">
+            <Link to="/" className="flex items-center gap-2.5 font-heading text-lg font-bold text-teal-900">
               <img
                 src="/favicon.svg"
                 alt="ServiceTones"
                 width="32"
                 height="32"
-                className="h-8 w-8 rounded-lg object-cover ring-1 ring-amber-400/20"
+                className="h-8 w-8 rounded-lg object-cover ring-1 ring-amber-600/20"
               />
               <span>ServiceTones</span>
             </Link>
@@ -88,7 +88,7 @@ export const Sidebar = () => {
             variant="ghost"
             size="icon"
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="rounded-lg hover:bg-slate-100"
+            className="rounded-lg hover:bg-teal-100"
           >
             {sidebarOpen ? <ChevronRight className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </Button>
@@ -96,13 +96,13 @@ export const Sidebar = () => {
 
         {/* Search Bar */}
         {sidebarOpen && user && (
-          <div className="border-b border-slate-200 px-4 py-3 sm:px-5">
+          <div className="border-b border-teal-200 px-4 py-3 sm:px-5">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
               <input
                 type="text"
                 placeholder="Search..."
-                className="w-full rounded-lg border border-slate-300 bg-white pl-9 pr-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 transition-colors focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/20"
+                className="w-full rounded-lg border border-teal-300 bg-white pl-9 pr-3 py-2 text-sm text-teal-900 placeholder:text-slate-400 transition-colors focus:border-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-600/20"
               />
             </div>
           </div>
@@ -128,7 +128,7 @@ export const Sidebar = () => {
 
             {/* Divider */}
             {sidebarOpen && (
-              <div className="my-6 border-t border-slate-200" />
+              <div className="my-6 border-t border-teal-200" />
             )}
 
             {/* Additional Options */}
@@ -147,7 +147,7 @@ export const Sidebar = () => {
 
         {/* Notifications Badge */}
         {!sidebarOpen && user && (
-          <div className="border-t border-slate-200 px-2 py-3 text-center">
+          <div className="border-t border-teal-200 px-2 py-3 text-center">
             <NotificationBell />
           </div>
         )}
@@ -155,26 +155,26 @@ export const Sidebar = () => {
         {/* User Profile Section */}
         {user && (
           <div className={cn(
-            "border-t border-slate-200 bg-gradient-to-t from-slate-50 to-white p-3 sm:p-4",
+            "border-t border-teal-200 bg-gradient-to-t from-slate-50 to-white p-3 sm:p-4",
             sidebarOpen ? "" : "flex flex-col items-center"
           )}>
             <div
               className={cn(
                 "group relative rounded-lg cursor-pointer transition-all",
-                sidebarOpen ? "p-3 hover:bg-slate-100" : "flex flex-col items-center gap-2"
+                sidebarOpen ? "p-3 hover:bg-teal-100" : "flex flex-col items-center gap-2"
               )}
               onClick={() => setUserMenuOpen(!userMenuOpen)}
             >
               <div className="flex items-center gap-3">
-                <Avatar className="h-10 w-10 border-2 border-amber-400/30 ring-2 ring-white">
+                <Avatar className="h-10 w-10 border-2 border-amber-600/30 ring-2 ring-white">
                   <AvatarImage src={user.profile_image} />
-                  <AvatarFallback className="bg-gradient-to-br from-amber-400 to-amber-500 text-white font-semibold">
+                  <AvatarFallback className="bg-gradient-to-br from-amber-600 to-amber-500 text-white font-semibold">
                     {getInitials(user.full_name)}
                   </AvatarFallback>
                 </Avatar>
                 {sidebarOpen && (
                   <div className="flex-1 min-w-0">
-                    <p className="truncate font-semibold text-slate-900 text-sm">{user.full_name}</p>
+                    <p className="truncate font-semibold text-teal-900 text-sm">{user.full_name}</p>
                     <p className="truncate text-xs text-slate-500">{user.email}</p>
                   </div>
                 )}
@@ -182,11 +182,11 @@ export const Sidebar = () => {
 
               {/* User Menu Dropdown */}
               {userMenuOpen && sidebarOpen && (
-                <div className="absolute bottom-full left-0 right-0 mb-2 rounded-lg border border-slate-200 bg-white shadow-lg p-2 z-50">
+                <div className="absolute bottom-full left-0 right-0 mb-2 rounded-lg border border-teal-200 bg-white shadow-lg p-2 z-50">
                   {user.role === "customer" && !isAdmin && (
                     <button
                       onClick={() => navigate("/dashboard")}
-                      className="w-full flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
+                      className="w-full flex items-center gap-3 px-3 py-2 text-sm text-teal-700 hover:bg-teal-100 rounded-lg transition-colors"
                     >
                       <Home className="w-4 h-4" />
                       Dashboard
@@ -196,38 +196,38 @@ export const Sidebar = () => {
                     <>
                       <button
                         onClick={() => navigate("/dashboard")}
-                        className="w-full flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
+                        className="w-full flex items-center gap-3 px-3 py-2 text-sm text-teal-700 hover:bg-teal-100 rounded-lg transition-colors"
                       >
                         <Home className="w-4 h-4" />
                         Dashboard
                       </button>
                       <button
                         onClick={() => navigate("/business-profile")}
-                        className="w-full flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
+                        className="w-full flex items-center gap-3 px-3 py-2 text-sm text-teal-700 hover:bg-teal-100 rounded-lg transition-colors"
                       >
                         <Building2 className="w-4 h-4" />
                         Business Profile
                       </button>
                       <button
                         onClick={() => navigate("/schedule")}
-                        className="w-full flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
+                        className="w-full flex items-center gap-3 px-3 py-2 text-sm text-teal-700 hover:bg-teal-100 rounded-lg transition-colors"
                       >
                         <Calendar className="w-4 h-4" />
                         Schedule
                       </button>
                       <button
                         onClick={() => navigate("/subscription")}
-                        className="w-full flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
+                        className="w-full flex items-center gap-3 px-3 py-2 text-sm text-teal-700 hover:bg-teal-100 rounded-lg transition-colors"
                       >
                         <Crown className="w-4 h-4" />
                         Subscription
                       </button>
                     </>
                   )}
-                  <div className="border-t border-slate-200 my-2" />
+                  <div className="border-t border-teal-200 my-2" />
                   <button
                     onClick={() => navigate("/settings")}
-                    className="w-full flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
+                    className="w-full flex items-center gap-3 px-3 py-2 text-sm text-teal-700 hover:bg-teal-100 rounded-lg transition-colors"
                   >
                     <Shield className="w-4 h-4" />
                     Account Settings

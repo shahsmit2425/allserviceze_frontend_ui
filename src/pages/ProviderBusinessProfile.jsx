@@ -573,13 +573,13 @@ export default function ProviderBusinessProfile() {
                 </div>
                 <p className="text-sm text-muted-foreground">Complete {incompleteChecklistCount} item{incompleteChecklistCount === 1 ? "" : "s"} to increase visibility</p>
               </div>
-              <div className="mt-4 h-2.5 overflow-hidden rounded-lg bg-slate-100">
+              <div className="mt-4 h-2.5 overflow-hidden rounded-lg bg-teal-100">
                 <div className="h-full rounded-lg bg-[linear-gradient(90deg,hsl(var(--primary))_0%,hsl(var(--secondary))_100%)]" style={{ width: `${profileStrength}%` }} />
               </div>
               <div className="mt-4 space-y-2">
                 {profileChecklist.map((item) => (
                   <div key={item.key} className="flex items-center gap-3 text-sm">
-                    <span className={`flex h-5 w-5 items-center justify-center rounded-lg ${item.complete ? "bg-emerald-100 text-emerald-700" : "bg-slate-100 text-muted-foreground"}`}>
+                    <span className={`flex h-5 w-5 items-center justify-center rounded-lg ${item.complete ? "bg-emerald-100 text-emerald-700" : "bg-teal-100 text-muted-foreground"}`}>
                       {item.complete ? <CheckCircle2 className="h-3.5 w-3.5" /> : <X className="h-3.5 w-3.5" />}
                     </span>
                     <span className={item.complete ? "text-foreground" : "text-muted-foreground"}>{item.label}</span>

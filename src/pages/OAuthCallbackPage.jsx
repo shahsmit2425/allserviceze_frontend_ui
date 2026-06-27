@@ -79,7 +79,7 @@ export default function OAuthCallbackPage() {
     return (
       <div className="min-h-screen bg-transparent px-4 py-8" data-theme="customer">
         <div className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-xl items-center justify-center">
-          <div className="w-full rounded-2xl border border-white/70 bg-white/88 p-8 text-center shadow-xl shadow-slate-900/5 backdrop-blur-sm sm:p-10">
+          <div className="w-full rounded-2xl border border-white/70 bg-white/88 p-8 text-center shadow-xl shadow-teal-900/5 backdrop-blur-sm sm:p-10">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">Social sign in</p>
             <h1 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-foreground">We could not finish sign in</h1>
             <p className="mt-4 text-sm leading-7 text-destructive">{error}</p>
@@ -95,7 +95,7 @@ export default function OAuthCallbackPage() {
   return (
     <div className="min-h-screen bg-transparent px-4 py-8" data-theme="customer">
       <div className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-xl items-center justify-center">
-        <div className="w-full rounded-2xl border border-white/70 bg-white/88 p-8 text-center shadow-xl shadow-slate-900/5 backdrop-blur-sm sm:p-10">
+        <div className="w-full rounded-2xl border border-white/70 bg-white/88 p-8 text-center shadow-xl shadow-teal-900/5 backdrop-blur-sm sm:p-10">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">Social sign in</p>
           <h1 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-foreground">Completing your account</h1>
           <div className="mt-8 flex flex-col items-center gap-3 text-muted-foreground">

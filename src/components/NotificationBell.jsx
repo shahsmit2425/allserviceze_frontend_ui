@@ -82,7 +82,7 @@ export const NotificationBell = () => {
             <Bell className="w-5 h-5" />
             {unreadCount > 0 && (
               <span
-                className="absolute -right-1 -top-1 flex h-5 min-w-[20px] items-center justify-center rounded-full border-2 border-background bg-primary px-1.5 text-[10px] font-bold text-primary-foreground shadow-md shadow-slate-900/20"
+                className="absolute -right-1 -top-1 flex h-5 min-w-[20px] items-center justify-center rounded-full border-2 border-background bg-primary px-1.5 text-[10px] font-bold text-primary-foreground shadow-md shadow-teal-900/20"
               >
                 {unreadCount > 9 ? "9+" : unreadCount}
               </span>
@@ -92,7 +92,7 @@ export const NotificationBell = () => {
         <PopoverContent className="w-[23rem] overflow-hidden rounded-[1.5rem] border border-border/70 bg-popover/95 p-0 shadow-xl shadow-slate-950/30 backdrop-blur-xl" align="end">
           <div className="flex items-center justify-between border-b border-border/70 bg-muted/45 p-4">
             <div className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-primary/10 text-primary shadow-sm shadow-slate-900/5">
+              <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-primary/10 text-primary shadow-sm shadow-teal-900/5">
                 <Bell className="h-4 w-4" />
               </div>
               <div>
@@ -143,7 +143,7 @@ export const NotificationBell = () => {
                     onClick={() => handleNotificationClick(notification)}
                   >
                     <div className="flex gap-3">
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-muted/60 text-xl shadow-sm shadow-slate-900/5">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-muted/60 text-xl shadow-sm shadow-teal-900/5">
                         <span>{getNotificationIcon(notification.type)}</span>
                       </div>
                       <div className="flex-1 min-w-0">
@@ -158,7 +158,7 @@ export const NotificationBell = () => {
                         </p>
                       </div>
                       {!notification.read && (
-                        <div className="mt-2 h-2.5 w-2.5 rounded-full bg-primary shadow-sm shadow-slate-900/10" />
+                        <div className="mt-2 h-2.5 w-2.5 rounded-full bg-primary shadow-sm shadow-teal-900/10" />
                       )}
                     </div>
                   </div>
@@ -166,7 +166,7 @@ export const NotificationBell = () => {
               </div>
             ) : (
               <div className="flex h-full flex-col items-center justify-center py-10 text-center text-muted-foreground">
-                <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-[1.35rem] bg-muted/60 shadow-sm shadow-slate-900/5">
+                <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-[1.35rem] bg-muted/60 shadow-sm shadow-teal-900/5">
                   <Bell className="h-6 w-6 opacity-60" />
                 </div>
                 <p className="text-sm font-medium text-foreground/75">No notifications yet</p>

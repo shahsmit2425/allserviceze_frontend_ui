@@ -127,7 +127,7 @@ export default function ScheduledCallButton({ booking, viewAs, subscriptionTier:
             {videoReady ? "Video ready" : "Video locked"}
           </span>
           {presenceCount > 0 && (
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/20 bg-background/80 px-3 py-2 text-xs font-semibold text-emerald-100 shadow-sm shadow-slate-900/5">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/20 bg-background/80 px-3 py-2 text-xs font-semibold text-emerald-100 shadow-sm shadow-teal-900/5">
               Room active • {presenceCount}
             </span>
           )}

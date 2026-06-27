@@ -39,25 +39,25 @@ const desktopLinkClasses = (active, variant = "default") => cn(
   "group flex items-center gap-2 text-sm font-medium transition-all duration-200",
   variant === "landing"
     ? active
-      ? "px-0 py-2 text-slate-900"
-      : "px-0 py-2 text-slate-600 hover:text-slate-900"
+      ? "px-0 py-2 text-teal-900"
+      : "px-0 py-2 text-teal-600 hover:text-teal-900"
     : active
-      ? "rounded-xl border border-slate-300 bg-slate-100 px-3.5 py-2.5 text-slate-900 font-semibold"
-      : "rounded-lg px-3.5 py-2.5 text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+      ? "rounded-xl border border-teal-300 bg-teal-100 px-3.5 py-2.5 text-teal-900 font-semibold"
+      : "rounded-lg px-3.5 py-2.5 text-teal-600 hover:bg-teal-100 hover:text-teal-900"
 );
 
 const mobileLinkClasses = (active) => cn(
   "flex items-center gap-3 rounded-xl border px-4 py-3 text-sm font-medium transition-all duration-200",
   active
-    ? "border-slate-300 bg-slate-100 text-slate-900 font-semibold"
-    : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+    ? "border-teal-300 bg-teal-100 text-teal-900 font-semibold"
+    : "border-teal-200 bg-white text-teal-600 hover:bg-slate-50 hover:text-teal-900"
 );
 
 const tabletLinkClasses = (active) => cn(
   "inline-flex min-w-max items-center gap-2.5 rounded-xl border px-4 py-2.5 text-sm font-medium transition-all duration-200",
   active
-    ? "border-slate-300 bg-slate-100 text-slate-900 font-semibold"
-    : "border-slate-200 bg-white/50 text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+    ? "border-teal-300 bg-teal-100 text-teal-900 font-semibold"
+    : "border-teal-200 bg-white/50 text-teal-600 hover:bg-slate-50 hover:text-teal-900"
 );
 
 export const Navbar = ({ variant = "default" }) => {
@@ -99,12 +99,12 @@ export const Navbar = ({ variant = "default" }) => {
     <nav
       className={cn(
         "fixed inset-x-0 top-0 z-50 overflow-visible",
-        isLandingNav && "border-b border-slate-200 bg-white/80 backdrop-blur-md"
+        isLandingNav && "border-b border-teal-200 bg-white/80 backdrop-blur-md"
       )}
       style={{ paddingTop: "env(safe-area-inset-top)" }}
     >
       <div className={cn(isLandingNav ? "mx-auto w-full max-w-[96rem] px-4 sm:px-6 lg:px-10" : "page-shell pt-2.5")}>
-      <div className={cn("w-full overflow-visible", isLandingNav ? "bg-transparent shadow-none" : "rounded-none border-b border-slate-200 bg-white/95 shadow-none")}>
+      <div className={cn("w-full overflow-visible", isLandingNav ? "bg-transparent shadow-none" : "rounded-none border-b border-teal-200 bg-white/95 shadow-none")}>
         <div className={cn("overflow-visible", isLandingNav ? "px-0" : "px-3.5 sm:px-5 lg:px-6")}>
           <div className={cn("flex items-center justify-between overflow-visible", isLandingNav ? "h-[4.85rem]" : "h-[4.1rem]")}>
           {/* Logo */}
@@ -123,8 +123,8 @@ export const Navbar = ({ variant = "default" }) => {
                 className="h-9 w-9 rounded-[0.9rem] object-cover ring-1 ring-border"
               />
               <div className="flex flex-col">
-                <span className="font-bold tracking-[-0.03em] text-slate-900 sm:text-[1.04rem]" style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.2rem', fontWeight: 700 }}>ServiceTones</span>
-                <span className="hidden text-[9px] font-semibold uppercase tracking-[0.26em] text-slate-600 lg:block">
+                <span className="font-bold tracking-[-0.03em] text-teal-900 sm:text-[1.04rem]" style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.2rem', fontWeight: 700 }}>ServiceTones</span>
+                <span className="hidden text-[9px] font-semibold uppercase tracking-[0.26em] text-teal-600 lg:block">
                   Marketplace
                 </span>
               </div>
@@ -161,10 +161,10 @@ export const Navbar = ({ variant = "default" }) => {
 
                 <div className="ml-4 flex items-center gap-3 lg:ml-auto">
                   <Link to="/auth">
-                    <Button variant="ghost" className="rounded-xl px-5 text-slate-700 hover:text-slate-900 hover:bg-slate-100 font-semibold">Log In</Button>
+                    <Button variant="ghost" className="rounded-xl px-5 text-teal-700 hover:text-teal-900 hover:bg-teal-100 font-semibold">Log In</Button>
                   </Link>
                   <Link to="/auth?mode=register">
-                    <Button className="rounded-xl px-6 bg-gradient-to-r from-slate-900 to-slate-800 text-white hover:from-slate-800 hover:to-slate-700 font-semibold shadow-md hover:shadow-lg transition-all">Get Started</Button>
+                    <Button className="rounded-xl px-6 bg-gradient-to-r from-teal-900 to-teal-800 text-white hover:from-teal-800 hover:to-teal-700 font-semibold shadow-md hover:shadow-lg transition-all">Get Started</Button>
                   </Link>
                 </div>
               </>
@@ -232,19 +232,19 @@ export const Navbar = ({ variant = "default" }) => {
                 
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" className="relative h-10 w-10 rounded-[0.95rem] bg-slate-100 p-0 shadow-sm hover:bg-slate-200" data-testid="user-menu-trigger">
-                      <Avatar className="h-9 w-9 border-2 border-slate-300">
+                    <Button variant="ghost" className="relative h-10 w-10 rounded-[0.95rem] bg-teal-100 p-0 shadow-sm hover:bg-teal-200" data-testid="user-menu-trigger">
+                      <Avatar className="h-9 w-9 border-2 border-teal-300">
                         <AvatarImage src={user.profile_image} />
-                        <AvatarFallback className="bg-slate-900 text-white font-semibold">
+                        <AvatarFallback className="bg-teal-900 text-white font-semibold">
                           {getInitials(user.full_name)}
                         </AvatarFallback>
                       </Avatar>
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="w-64 rounded-xl border border-slate-200 bg-white p-2 shadow-lg">
-                    <div className="rounded-xl bg-slate-100 px-3 py-3">
-                      <p className="font-semibold text-slate-900">{user.full_name}</p>
-                      <p className="mt-1 text-sm text-slate-600">{user.email}</p>
+                  <DropdownMenuContent align="end" className="w-64 rounded-xl border border-teal-200 bg-white p-2 shadow-lg">
+                    <div className="rounded-xl bg-teal-100 px-3 py-3">
+                      <p className="font-semibold text-teal-900">{user.full_name}</p>
+                      <p className="mt-1 text-sm text-teal-600">{user.email}</p>
                       <div className="mt-3">
                         <RoleBadge role={user.role} isAdmin={user.is_admin} />
                       </div>
@@ -315,10 +315,10 @@ export const Navbar = ({ variant = "default" }) => {
             ) : (
               <>
                 <Link to="/auth">
-                  <Button variant="outline" className="rounded-xl border-slate-300 text-slate-900 hover:bg-slate-100 font-semibold px-5">Log In</Button>
+                  <Button variant="outline" className="rounded-xl border-teal-300 text-teal-900 hover:bg-teal-100 font-semibold px-5">Log In</Button>
                 </Link>
                 <Link to="/auth?mode=register">
-                  <Button className="rounded-xl bg-gradient-to-r from-slate-900 to-slate-800 text-white hover:from-slate-800 hover:to-slate-700 font-semibold px-5 shadow-md hover:shadow-lg transition-all">Get Started</Button>
+                  <Button className="rounded-xl bg-gradient-to-r from-teal-900 to-teal-800 text-white hover:from-teal-800 hover:to-teal-700 font-semibold px-5 shadow-md hover:shadow-lg transition-all">Get Started</Button>
                 </Link>
               </>
             )}
@@ -334,7 +334,7 @@ export const Navbar = ({ variant = "default" }) => {
                 variant="ghost"
                 size="icon"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="rounded-xl bg-slate-100 text-slate-900 hover:bg-slate-200 shadow-sm md:hidden font-semibold"
+                className="rounded-xl bg-teal-100 text-teal-900 hover:bg-teal-200 shadow-sm md:hidden font-semibold"
                 data-testid="mobile-menu-button"
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -361,7 +361,7 @@ export const Navbar = ({ variant = "default" }) => {
                 {!user && (
                   <Link
                     to="/auth?mode=register"
-                    className="inline-flex min-w-max items-center rounded-xl bg-gradient-to-r from-slate-900 to-slate-800 px-6 py-2.5 text-sm font-semibold text-white hover:from-slate-800 hover:to-slate-700 shadow-md hover:shadow-lg transition-all"
+                    className="inline-flex min-w-max items-center rounded-xl bg-gradient-to-r from-teal-900 to-teal-800 px-6 py-2.5 text-sm font-semibold text-white hover:from-teal-800 hover:to-teal-700 shadow-md hover:shadow-lg transition-all"
                   >
                     Get Started
                   </Link>
@@ -373,10 +373,10 @@ export const Navbar = ({ variant = "default" }) => {
                 {user ? (
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" className="relative h-10 w-10 rounded-[0.95rem] bg-slate-100 p-0 shadow-sm hover:bg-slate-200" data-testid="tablet-user-menu-trigger">
-                        <Avatar className="h-9 w-9 border-2 border-slate-300">
+                      <Button variant="ghost" className="relative h-10 w-10 rounded-[0.95rem] bg-teal-100 p-0 shadow-sm hover:bg-teal-200" data-testid="tablet-user-menu-trigger">
+                        <Avatar className="h-9 w-9 border-2 border-teal-300">
                           <AvatarImage src={user.profile_image} />
-                          <AvatarFallback className="bg-slate-900 text-white font-semibold">
+                          <AvatarFallback className="bg-teal-900 text-white font-semibold">
                             {getInitials(user.full_name)}
                           </AvatarFallback>
                         </Avatar>
@@ -458,11 +458,11 @@ export const Navbar = ({ variant = "default" }) => {
             ) : (
               <>
                 {/* User Info */}
-                <div className="mb-2 rounded-lg bg-slate-100 px-4 py-4 shadow-sm">
+                <div className="mb-2 rounded-lg bg-teal-100 px-4 py-4 shadow-sm">
                   <div className="flex items-center gap-3">
-                    <Avatar className="h-10 w-10 border-2 border-slate-300">
+                    <Avatar className="h-10 w-10 border-2 border-teal-300">
                       <AvatarImage src={user.profile_image} />
-                      <AvatarFallback className="bg-slate-900 text-white font-semibold">
+                      <AvatarFallback className="bg-teal-900 text-white font-semibold">
                         {getInitials(user.full_name)}
                       </AvatarFallback>
                     </Avatar>
