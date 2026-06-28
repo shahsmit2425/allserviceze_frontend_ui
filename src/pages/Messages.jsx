@@ -602,7 +602,7 @@ export default function Messages() {
           key={conversation.id}
           type="button"
           onClick={() => openConversation(conversation)}
-          className={`w-full rounded-lg border px-4 py-3 text-left transition ${isActive ? "border-primary/20 bg-primary/6 shadow-[0_18px_40px_-34px_rgba(59,130,246,0.28)]" : "border-border/60 bg-white hover:border-primary/18 hover:bg-white"}`}
+          className={`w-full rounded-lg border px-4 py-3 text-left transition duration-200 ${isActive ? "border-copper-400 bg-copper-50 shadow-md" : "border-deep-navy-100 bg-white hover:border-copper-300 hover:shadow-md hover:bg-white"}`}
         >
           <div className="flex items-start gap-3">
             {participant?.avatar ? (
@@ -642,9 +642,9 @@ export default function Messages() {
     return (
       <AppShell theme={pageTheme} className="pb-12" contentClassName="pb-12">
         <div className="page-shell py-6 sm:py-8">
-          <div className="rounded-xl border border-border/60 bg-white px-5 py-5 shadow-[0_18px_48px_-40px_rgba(15,23,42,0.16)]">
-            <div className="flex items-center gap-3 text-sm text-muted-foreground">
-              <Loader2 className="h-5 w-5 animate-spin text-primary" />
+          <div className="rounded-xl border border-deep-navy-100 bg-white px-6 py-6 shadow-md">
+            <div className="flex items-center gap-3 text-sm text-deep-navy-600">
+              <Loader2 className="h-5 w-5 animate-spin text-copper-500" />
               Preparing your messaging workspace...
             </div>
           </div>
@@ -657,9 +657,9 @@ export default function Messages() {
     return (
       <AppShell theme={pageTheme} className="pb-12" contentClassName="pb-12">
         <div className="page-shell py-6 sm:py-8">
-          <div className="rounded-xl border border-red-200 bg-red-50/80 px-6 py-6 shadow-[0_18px_48px_-40px_rgba(15,23,42,0.16)]">
+          <div className="rounded-xl border border-red-200 bg-red-50 px-6 py-6 shadow-md">
             <div className="flex items-start gap-4">
-              <AlertCircle className="mt-0.5 h-6 w-6 text-red-500" />
+              <AlertCircle className="mt-0.5 h-6 w-6 text-red-600" />
               <div>
                 <p className="text-base font-semibold text-foreground">Messaging service unavailable</p>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">Unable to load conversations right now. Try again in a moment.</p>
@@ -815,9 +815,9 @@ export default function Messages() {
                   <div ref={messageEndRef} />
                 </div>
 
-                <div className="sticky bottom-0 border-t border-border/60 bg-white/95 px-4 py-4 backdrop-blur sm:px-5">
+                <div className="sticky bottom-0 border-t border-deep-navy-100 bg-white px-4 py-4 sm:px-5">
                   {replyingTo ? (
-                    <div className="mb-3 flex items-start justify-between gap-3 rounded-lg border border-border/60 bg-white/85 px-3 py-3 text-sm">
+                    <div className="mb-3 flex items-start justify-between gap-3 rounded-lg border border-deep-navy-100 bg-deep-navy-50 px-3 py-3 text-sm shadow-sm">
                       <div className="min-w-0">
                         <p className="font-semibold text-foreground">Replying to {replyingTo.sender_name || "message"}</p>
                         <p className="mt-1 truncate text-muted-foreground">{replyingTo.content}</p>
@@ -952,7 +952,7 @@ export default function Messages() {
                         <div className="mt-4 space-y-3">
                           <p className="text-sm font-semibold text-foreground">Recent reviews</p>
                           {providerReviews.slice(0, 2).map((review) => (
-                            <div key={review.id} className="rounded-[1rem] bg-white/85 px-4 py-3 text-sm">
+                            <div key={review.id} className="rounded-[1rem] bg-white px-4 py-3 text-sm">
                               <div className="flex items-center gap-2 text-copper-500">
                                 {Array.from({ length: review.rating }).map((_, index) => <Star key={`${review.id}-${index}`} className="h-3.5 w-3.5 fill-current" />)}
                               </div>

@@ -290,7 +290,7 @@ export default function ProviderOnboarding() {
                         variant="outline"
                         onClick={handleAddServiceArea}
                         disabled={!newServiceArea.trim()}
-                        className="rounded-lg bg-white/80"
+                        className="rounded-lg bg-white"
                       >
                         <Plus className="w-4 h-4 mr-1" />
                         Add
@@ -407,7 +407,7 @@ export default function ProviderOnboarding() {
                 variant="outline"
                 onClick={prevStep}
                 disabled={currentStep === 1}
-                className="rounded-lg bg-white/80"
+                className="rounded-lg bg-white"
               >
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back

@@ -11,7 +11,7 @@ import { usePlatform } from "@/mobile/hooks/usePlatform";
 
 const API_URL = `${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}/api`;
 const SETTINGS_CANONICAL_URL = "https://servicetones.com/settings";
-const panelClassName = "rounded-lg border border-border/60 bg-white/90 p-4 shadow-sm";
+const panelClassName = "rounded-lg border border-border/60 bg-white p-4 shadow-sm";
 
 const LazySettingsSections = lazy(() => import("./SettingsPageSections"));
 const LazySettingsDeleteDialog = lazy(() => import("./SettingsDeleteDialog"));
@@ -348,15 +348,15 @@ export default function SettingsPage() {
             </div>
             <div className="glass-panel p-4 sm:p-5">
               <div className={isNativeTablet ? "grid gap-3 sm:grid-cols-3 xl:grid-cols-1" : "grid gap-3 sm:grid-cols-3 lg:grid-cols-1"}>
-                <div className="rounded-lg border border-border/60 bg-white/90 p-4 shadow-sm">
+                <div className="rounded-lg border border-border/60 bg-white p-4 shadow-sm">
                   <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">Role</p>
                   <p className="mt-2 text-lg font-semibold capitalize text-foreground">{user?.role || "User"}</p>
                 </div>
-                <div className="rounded-lg border border-border/60 bg-white/90 p-4 shadow-sm">
+                <div className="rounded-lg border border-border/60 bg-white p-4 shadow-sm">
                   <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">Device sync</p>
                   <p className="mt-2 text-lg font-semibold text-foreground">{isNative ? "Web + Mobile" : "Web"}</p>
                 </div>
-                <div className="rounded-lg border border-border/60 bg-white/90 p-4 shadow-sm">
+                <div className="rounded-lg border border-border/60 bg-white p-4 shadow-sm">
                   <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">Quiet hours</p>
                   <p className="mt-2 text-lg font-semibold text-foreground">
                     {quietHoursStatus}

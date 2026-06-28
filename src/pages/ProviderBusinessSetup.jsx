@@ -318,7 +318,7 @@ export default function ProviderBusinessSetup() {
                                 size="sm"
                                 disabled={uploadingAvatar}
                                 onClick={() => document.getElementById('avatar-upload').click()}
-                                className="cursor-pointer rounded-lg bg-white/80"
+                                className="cursor-pointer rounded-lg bg-white"
                               >
                                 {uploadingAvatar ? (
                                   <>
@@ -452,7 +452,7 @@ export default function ProviderBusinessSetup() {
                           variant="outline"
                           onClick={handleAddServiceArea}
                           disabled={!newServiceArea.trim()}
-                          className="rounded-lg bg-white/80"
+                          className="rounded-lg bg-white"
                         >
                           <Plus className="w-4 h-4 mr-1" />
                           Add
@@ -555,7 +555,7 @@ export default function ProviderBusinessSetup() {
                     variant="outline"
                     onClick={() => setCurrentStep(currentStep - 1)}
                     disabled={currentStep === 1}
-                    className="rounded-lg bg-white/80"
+                    className="rounded-lg bg-white"
                   >
                     <ArrowLeft className="w-4 h-4 mr-2" />
                     Previous
@@ -584,7 +584,7 @@ export default function ProviderBusinessSetup() {
           </div>
 
           <aside className="space-y-4 xl:sticky xl:top-6 xl:self-start">
-            <Card className="border-white/70 bg-white/80 shadow-sm">
+            <Card className="border-white/70 bg-white shadow-sm">
               <CardContent className="space-y-3 p-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">Setup summary</p>
                 <div className="rounded-lg border border-white/70 bg-muted/40 px-4 py-3">
@@ -618,7 +618,7 @@ export default function ProviderBusinessSetup() {
               </CardContent>
             </Card>
 
-            <Card className="border-white/70 bg-white/80 shadow-sm">
+            <Card className="border-white/70 bg-white shadow-sm">
               <CardContent className="p-5">
                 <button onClick={() => navigate("/dashboard")} className="text-sm font-medium text-primary underline underline-offset-4">
                   Skip for now

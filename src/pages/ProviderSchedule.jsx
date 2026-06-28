@@ -39,7 +39,7 @@ export default function ProviderSchedule() {
             </div>
 
             <div className="flex flex-col gap-3 sm:flex-row lg:flex-col lg:items-stretch">
-              <Button variant="outline" className="rounded-lg bg-white/80" onClick={() => navigate("/dashboard")}>
+              <Button variant="outline" className="rounded-lg bg-white border-deep-navy-100 hover:bg-deep-navy-50" onClick={() => navigate("/dashboard")}>
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back To Dashboard
               </Button>
@@ -52,25 +52,25 @@ export default function ProviderSchedule() {
         </section>
 
         <div className="grid gap-6 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
-          <Card className="form-shell border-0">
+          <Card className="form-shell border border-deep-navy-100 shadow-md">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Calendar className="h-5 w-5 text-primary" />
+                <Calendar className="h-5 w-5 text-copper-600" />
                 Availability Calendar
               </CardTitle>
               <CardDescription>Block days, adjust weekly availability, and protect time around active jobs.</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="glass-panel p-3 sm:p-4">
+              <div className="p-3 sm:p-4 rounded-lg bg-deep-navy-50">
                 <ProviderCalendar providerId={user?.id} />
               </div>
             </CardContent>
           </Card>
 
-          <Card className="form-shell border-0">
+          <Card className="form-shell border border-deep-navy-100 shadow-md">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <MessageSquare className="h-5 w-5 text-primary" />
+                <MessageSquare className="h-5 w-5 text-copper-600" />
                 Appointments And Calls
               </CardTitle>
               <CardDescription>Review booking requests, confirm visits, and manage the customer call options attached to each appointment.</CardDescription>

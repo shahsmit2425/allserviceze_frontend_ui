@@ -920,23 +920,23 @@ export default function BrowseProjects() {
                           </div>
 
                           <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
-                            <div className="rounded-lg border border-border/60 bg-muted/35 px-3.5 py-3">
+                            <div className="rounded-lg border border-border/60 bg-white px-3.5 py-3">
                               <p className="detail-kicker">Budget</p>
                               <p className="mt-1.5 text-sm font-semibold text-foreground">{formatBudgetRange(project)}</p>
                             </div>
-                            <div className="rounded-lg border border-border/60 bg-muted/35 px-3.5 py-3">
+                            <div className="rounded-lg border border-border/60 bg-white px-3.5 py-3">
                               <p className="detail-kicker">Timeline</p>
                               <p className="mt-1.5 text-sm font-semibold text-foreground">{project.deadlineLabel}</p>
                             </div>
-                            <div className="rounded-lg border border-border/60 bg-muted/35 px-3.5 py-3">
+                            <div className="rounded-lg border border-border/60 bg-white px-3.5 py-3">
                               <p className="detail-kicker">Bid count</p>
                               <p className="mt-1.5 text-sm font-semibold text-foreground">{project.bidCountValue} bids</p>
                             </div>
-                            <div className="rounded-lg border border-border/60 bg-muted/35 px-3.5 py-3">
+                            <div className="rounded-lg border border-border/60 bg-white px-3.5 py-3">
                               <p className="detail-kicker">Competition</p>
                               <p className="mt-1.5 text-sm font-semibold text-foreground">{project.bidCountValue === 0 ? "Be first" : project.bidCountValue <= 2 ? "Still early" : `${project.bidCountValue}+ active`}</p>
                             </div>
-                            <div className="rounded-lg border border-border/60 bg-muted/35 px-3.5 py-3">
+                            <div className="rounded-lg border border-border/60 bg-white px-3.5 py-3">
                               <p className="detail-kicker">Customer</p>
                               <p className="mt-1.5 text-sm font-semibold text-foreground line-clamp-1">{project.customerVerified ? "Verified homeowner" : project.customer_name || "Marketplace customer"}</p>
                             </div>

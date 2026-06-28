@@ -921,7 +921,7 @@ export default function BrowseProviders() {
                           </div>
 
                           <div className="grid gap-3 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
-                            <div className="rounded-xl border border-border/60 bg-muted/35 p-4">
+                            <div className="rounded-xl border border-border/60 bg-white p-4">
                               <div className="flex items-center justify-between gap-3">
                                 <p className="detail-kicker">Featured review</p>
                                 {provider.featuredReview?.rating ? (
@@ -959,7 +959,7 @@ export default function BrowseProviders() {
                         </div>
 
                         <div className="space-y-4">
-                          <div className="rounded-xl border border-border/60 bg-muted/35 p-4">
+                          <div className="rounded-xl border border-border/60 bg-white p-4">
                             <div className="flex items-center justify-between gap-3">
                               <p className="detail-kicker">Portfolio preview</p>
                               <span className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">

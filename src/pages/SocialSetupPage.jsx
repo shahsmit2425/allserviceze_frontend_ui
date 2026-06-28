@@ -214,11 +214,11 @@ export default function SocialSetupPage() {
                 <div className="space-y-3">
                   <Label>I am a</Label>
                   <RadioGroup value={role} onValueChange={setRole} className="grid gap-3 sm:grid-cols-2">
-                    <label htmlFor="role_customer" className="flex cursor-pointer items-center gap-3 rounded-lg border border-deep-navy-100/80 bg-white/80 px-4 py-4">
+                    <label htmlFor="role_customer" className="flex cursor-pointer items-center gap-3 rounded-lg border border-deep-navy-100/80 bg-white px-4 py-4">
                       <RadioGroupItem value="customer" id="role_customer" />
                       <span className="text-sm font-medium text-foreground">Customer</span>
                     </label>
-                    <label htmlFor="role_provider" className="flex cursor-pointer items-center gap-3 rounded-lg border border-deep-navy-100/80 bg-white/80 px-4 py-4">
+                    <label htmlFor="role_provider" className="flex cursor-pointer items-center gap-3 rounded-lg border border-deep-navy-100/80 bg-white px-4 py-4">
                       <RadioGroupItem value="provider" id="role_provider" />
                       <span className="text-sm font-medium text-foreground">Service Provider</span>
                     </label>

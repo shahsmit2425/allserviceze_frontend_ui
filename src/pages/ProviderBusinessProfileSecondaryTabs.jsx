@@ -281,7 +281,7 @@ export default function ProviderBusinessProfileSecondaryTabs({
                           {saving ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
                           {editingPortfolioId ? "Update Portfolio Item" : "Add to Portfolio"}
                         </Button>
-                        <Button variant="outline" onClick={handleCancelEdit} className="rounded-lg bg-white/80">Cancel</Button>
+                        <Button variant="outline" onClick={handleCancelEdit} className="rounded-lg bg-white">Cancel</Button>
                       </div>
                     </div>
                   )}
@@ -456,7 +456,7 @@ export default function ProviderBusinessProfileSecondaryTabs({
                           {saving ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
                           Add Google Review
                         </Button>
-                        <Button variant="outline" onClick={() => setShowGoogleReviewForm(false)} className="rounded-lg bg-white/80">Cancel</Button>
+                        <Button variant="outline" onClick={() => setShowGoogleReviewForm(false)} className="rounded-lg bg-white">Cancel</Button>
                       </div>
                     </div>
                   ) : null}

@@ -425,7 +425,7 @@ export default function CustomerDashboard() {
             </div>
 
             <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-              <div className="rounded-xl border border-border/60 bg-white/95 p-4 shadow-sm">
+              <div className="rounded-xl border border-border/60 bg-white p-4 shadow-sm">
                 <p className="detail-kicker">Priority this week</p>
                 <p className="mt-2 text-2xl font-semibold tracking-[-0.05em] text-foreground">{actionableProjects.length}</p>
                 <p className="mt-1 text-sm text-muted-foreground">projects need attention</p>
@@ -439,7 +439,7 @@ export default function CustomerDashboard() {
         </section>
 
         <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-          <Card className="result-card-surface border border-border/60 shadow-sm">
+          <Card className="result-card-surface border border-deep-navy-100 shadow-md">
             <CardContent className="p-4 sm:p-5">
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -454,7 +454,7 @@ export default function CustomerDashboard() {
             </CardContent>
           </Card>
 
-          <Card className="result-card-surface border border-border/60 shadow-sm">
+          <Card className="result-card-surface border border-deep-navy-100 shadow-md">
             <CardContent className="p-4 sm:p-5">
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -469,7 +469,7 @@ export default function CustomerDashboard() {
             </CardContent>
           </Card>
 
-          <Card className="result-card-surface border border-border/60 shadow-sm">
+          <Card className="result-card-surface border border-deep-navy-100 shadow-md">
             <CardContent className="p-4 sm:p-5">
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -484,7 +484,7 @@ export default function CustomerDashboard() {
             </CardContent>
           </Card>
 
-          <Card className="result-card-surface border border-border/60 shadow-sm">
+          <Card className="result-card-surface border border-deep-navy-100 shadow-md">
             <CardContent className="p-4 sm:p-5">
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -501,13 +501,13 @@ export default function CustomerDashboard() {
         </div>
 
         <div className="grid gap-5 xl:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
-          <div className="form-shell border-0 p-4 sm:p-5">
+          <div className="form-shell border border-deep-navy-100 p-4 sm:p-5">
             <div className="flex flex-col gap-3 border-b border-white/60 pb-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="caption">Action Center</p>
                 <h2 className="mt-2 text-xl font-semibold tracking-[-0.04em] text-foreground">Surface the next hire decision first</h2>
               </div>
-              <Button variant="outline" className="rounded-lg border-border/60 bg-white/85" onClick={() => navigate("/messages")}>Open Inbox</Button>
+              <Button variant="outline" className="rounded-lg border-border/60 bg-white" onClick={() => navigate("/messages")}>Open Inbox</Button>
             </div>
 
             <div className="mt-4 grid gap-3 md:grid-cols-3">
@@ -541,7 +541,7 @@ export default function CustomerDashboard() {
 
             <div className="mt-4 space-y-3">
               {actionableProjects.map((project) => (
-                <div key={`action-${project.id}`} className="rounded-xl border border-border/60 bg-muted/35 p-4">
+                <div key={`action-${project.id}`} className="rounded-xl border border-border/60 bg-white p-4">
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                     <div>
                       <div className="flex flex-wrap items-center gap-2">
@@ -558,14 +558,14 @@ export default function CustomerDashboard() {
                 </div>
               ))}
               {!actionableProjects.length && (
-                <div className="rounded-xl border border-dashed border-border/60 bg-muted/30 p-4 text-sm text-muted-foreground">
+                <div className="rounded-xl border border-dashed border-border/60 bg-white p-4 text-sm text-muted-foreground">
                   Post a project or open messages to start receiving provider activity here.
                 </div>
               )}
             </div>
           </div>
 
-          <Card className="form-shell border border-border/60 shadow-sm">
+          <Card className="form-shell border border-deep-navy-100 shadow-md">
             <CardHeader className="pb-3">
               <div>
                 <p className="caption">Invite Providers</p>
@@ -597,7 +597,7 @@ export default function CustomerDashboard() {
                 </div>
               ))}
               {!recommendedProviders.length && (
-                <div className="rounded-xl border border-dashed border-border/60 bg-muted/30 p-4 text-sm text-muted-foreground">
+                <div className="rounded-xl border border-dashed border-border/60 bg-white p-4 text-sm text-muted-foreground">
                   Recommended providers will appear here as soon as featured marketplace profiles are available.
                 </div>
               )}
@@ -606,7 +606,7 @@ export default function CustomerDashboard() {
         </div>
 
         <div className="grid gap-5 xl:grid-cols-[minmax(0,1.35fr)_minmax(0,0.65fr)]">
-          <Card className="form-shell border border-border/60 shadow-sm">
+          <Card className="form-shell border border-deep-navy-100 shadow-md">
             <CardHeader className="pb-0">
               <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
                 <div>
@@ -618,7 +618,7 @@ export default function CustomerDashboard() {
             </CardHeader>
             <CardContent>
               <Tabs value={activeTab} onValueChange={setActiveTab}>
-                <TabsList className={isNativePhone ? "mobile-tabs-rail mb-5 flex rounded-xl border border-border/60 bg-white/90 p-1.5" : "mb-5 h-auto flex-wrap gap-2 rounded-xl border border-border/60 bg-white/90 p-1.5"}>
+                <TabsList className={isNativePhone ? "mobile-tabs-rail mb-5 flex rounded-xl border border-border/60 bg-white p-1.5" : "mb-5 h-auto flex-wrap gap-2 rounded-xl border border-border/60 bg-white p-1.5"}>
                   <TabsTrigger value="all">All ({counts.all})</TabsTrigger>
                   <TabsTrigger value="live">Live ({counts.live})</TabsTrigger>
                   <TabsTrigger value="pending">Pending ({counts.pending})</TabsTrigger>
@@ -630,7 +630,7 @@ export default function CustomerDashboard() {
                   {filteredProjects.length > 0 ? (
                     <div className="space-y-3">
                       {priorityProjects.map((project) => (
-                        <Card key={project.id} className="result-card-surface border border-border/60 shadow-sm" style={{ contentVisibility: "auto", containIntrinsicSize: "360px" }}>
+                        <Card key={project.id} className="result-card-surface border border-deep-navy-100 shadow-md" style={{ contentVisibility: "auto", containIntrinsicSize: "360px" }}>
                           <CardContent className="p-4 sm:p-5">
                             <div className={isNativeTablet ? "grid gap-4 xl:grid-cols-[minmax(0,1.2fr)_18rem]" : "grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_18rem]"}>
                               <div className="space-y-4">
@@ -776,7 +776,7 @@ export default function CustomerDashboard() {
                       )}
                     </div>
                   ) : (
-                    <div className="rounded-xl border border-dashed border-border/60 bg-muted/30 px-5 py-10 text-center">
+                    <div className="rounded-xl border border-dashed border-border/60 bg-white px-5 py-10 text-center">
                       <Briefcase className="mx-auto h-10 w-10 text-muted-foreground" />
                       <h3 className="mt-4 text-lg font-semibold text-foreground">No projects in this lane</h3>
                       <p className="mt-2 text-sm leading-6 text-muted-foreground">Post a new project or switch tabs to review the rest of your marketplace activity.</p>
@@ -788,7 +788,7 @@ export default function CustomerDashboard() {
           </Card>
 
           <div className="space-y-5">
-          <Card className="form-shell border border-border/60 shadow-sm">
+          <Card className="form-shell border border-deep-navy-100 shadow-md">
             <CardHeader className="pb-3">
               <div>
                 <p className="caption">Activity Feed</p>
@@ -811,13 +811,13 @@ export default function CustomerDashboard() {
                 </div>
               ))}
               {!recentActivityItems.length && (
-                <div className="rounded-xl border border-dashed border-border/60 bg-muted/30 p-4 text-sm text-muted-foreground">
+                <div className="rounded-xl border border-dashed border-border/60 bg-white p-4 text-sm text-muted-foreground">
                   Activity will appear here as providers bid, message, and view your projects.
                 </div>
               )}
             </CardContent>
           </Card>
-          <Card className="form-shell border border-border/60 shadow-sm">
+          <Card className="form-shell border border-deep-navy-100 shadow-md">
             <CardHeader className="pb-3">
               <div>
                 <p className="caption">Hire Queue</p>
@@ -844,7 +844,7 @@ export default function CustomerDashboard() {
                 </div>
               ))}
               {!projectsReadyForQuotes.length && (
-                <div className="rounded-xl border border-dashed border-border/60 bg-muted/30 p-4 text-sm text-muted-foreground">
+                <div className="rounded-xl border border-dashed border-border/60 bg-white p-4 text-sm text-muted-foreground">
                   Live projects with incoming quotes will appear here first so hiring decisions stay visible.
                 </div>
               )}
@@ -852,7 +852,7 @@ export default function CustomerDashboard() {
           </Card>
 
           {(upcomingBookings.length > 0 || activeConversationProjects.length > 0 || awardedProjects.length > 0) && (
-            <Card className="form-shell border border-border/60 shadow-sm">
+            <Card className="form-shell border border-deep-navy-100 shadow-md">
               <CardHeader className="pb-3">
                 <div>
                   <p className="caption">Delivery Support</p>

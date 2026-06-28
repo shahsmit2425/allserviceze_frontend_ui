@@ -4,7 +4,7 @@ import { ArrowLeft } from "lucide-react";
 export default function TermsPage() {
   return (
     <div className="min-h-screen bg-transparent" data-theme="customer">
-      <header className="sticky top-0 z-10 border-b border-white/60 bg-white/80 backdrop-blur-xl">
+      <header className="sticky top-0 z-10 border-b border-white/60 bg-white backdrop-blur-xl">
         <div className="page-shell py-4">
           <Link to="/" className="inline-flex items-center gap-2 rounded-lg border border-deep-navy-100/80 bg-white px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
             <ArrowLeft className="w-4 h-4" /> Back to Home
