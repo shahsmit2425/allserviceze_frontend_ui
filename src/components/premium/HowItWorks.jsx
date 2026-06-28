@@ -74,12 +74,6 @@ export function HowItWorks() {
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="mt-12 text-center">
-          <button className="px-8 py-4 rounded-xl bg-gradient-to-r from-copper-500 to-copper-600 hover:from-copper-600 hover:to-copper-700 text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300" style={{ fontFamily: "'Poppins', sans-serif" }}>
-            Start Your Project Today
-          </button>
-        </div>
       </div>
     </section>
   );

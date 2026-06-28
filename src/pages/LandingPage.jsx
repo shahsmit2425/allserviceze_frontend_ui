@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
 import { AppShell } from "../components/AppShell";
-import { PremiumHero } from "../components/premium/PremiumHero";
 import { PremiumFeatures } from "../components/premium/PremiumFeatures";
 import ServiceCategoriesGrid from "../components/premium/ServiceCategoriesGrid";
 import { HowItWorks } from "../components/premium/HowItWorks";
@@ -434,14 +433,6 @@ export default function LandingPage() {
         <link rel="canonical" href="https://servicetones.com/" />
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lora:wght@400;500;600&display=swap" rel="stylesheet" />
       </Helmet>
-
-      {/* Hero Section */}
-      <PremiumHero
-        heading="Find Verified Local Professionals Instantly"
-        subheading="Post your project, get matched with trusted providers, and compare quotes in one place. No endless phone calls needed."
-        ctaText="Get Started"
-        cta={() => window.location.href = '/auth?mode=register'}
-      />
 
       {/* Service Categories Section */}
       <ServiceCategoriesGrid />
