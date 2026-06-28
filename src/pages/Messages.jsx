@@ -781,28 +781,55 @@ export default function Messages() {
                         const isLastOwnMessage = isOwnMessage && index === messages.length - 1;
 
                         return (
-                          <div key={message.id} className={`flex ${isOwnMessage ? "justify-end" : "justify-start"}`}>
-                            <div className={`max-w-[84%] rounded-lg px-4 py-3 shadow-[0_16px_34px_-28px_rgba(15,23,42,0.12)] ${isOwnMessage ? "bg-[linear-gradient(135deg,hsl(var(--primary))_0%,hsl(var(--secondary))_100%)] text-primary-foreground" : "border border-border/60 bg-white text-foreground"}`}>
+                          <div key={message.id} className={`flex ${isOwnMessage ? "justify-end" : "justify-start"} group`}>
+                            <div className={`max-w-[75%] rounded-2xl px-4 py-3 transition-all ${
+                              isOwnMessage 
+                                ? "bg-gradient-to-br from-copper-500 to-copper-600 text-white shadow-md hover:shadow-lg" 
+                                : "bg-deep-navy-50 border border-deep-navy-100 text-deep-navy-800 shadow-sm hover:shadow-md"
+                            }`}>
                               {message.reply_to_preview ? (
-                                <div className={`mb-2 rounded-[0.9rem] px-3 py-2 text-xs ${isOwnMessage ? "bg-white/12 text-primary-foreground/88" : "bg-white text-muted-foreground"}`}>
+                                <div className={`mb-2.5 rounded-lg px-3 py-2 text-xs border-l-2 ${
+                                  isOwnMessage 
+                                    ? "border-white/40 bg-white/10 text-white/90" 
+                                    : "border-copper-400 bg-copper-50 text-copper-700 font-medium"
+                                }`}>
                                   {message.reply_to_preview}
                                 </div>
                               ) : null}
-                              <p className={`whitespace-pre-wrap break-words text-sm leading-6 ${message.is_deleted ? "italic opacity-75" : ""}`}>{message.content}</p>
-                              <div className="mt-2 flex items-center justify-between gap-4 text-[11px] opacity-80">
-                                <div className="flex items-center gap-2">
-                                  <span>{formatMessageTime(message.created_at)}</span>
+                              <p className={`whitespace-pre-wrap break-words text-sm leading-6 ${message.is_deleted ? "italic opacity-70" : ""}`}>
+                                {message.content}
+                              </p>
+                              <div className="mt-2.5 flex items-center justify-between gap-3 text-[11px]">
+                                <div className={`flex items-center gap-1.5 ${isOwnMessage ? "text-white/70" : "text-deep-navy-500"}`}>
+                                  <span className="font-medium">{formatMessageTime(message.created_at)}</span>
                                   {isLastOwnMessage && !message.is_deleted ? (
-                                    <span className="inline-flex items-center gap-1">
-                                      {message.read_at ? <CheckCheck className="h-3.5 w-3.5" /> : <Check className="h-3.5 w-3.5" />}
-                                      {message.read_at ? `Read ${formatMessageTime(message.read_at)}` : "Sent"}
+                                    <span className="inline-flex items-center gap-1 ml-1">
+                                      {message.read_at ? <CheckCheck className="h-3 w-3" /> : <Check className="h-3 w-3" />}
                                     </span>
                                   ) : null}
                                 </div>
                                 {!message.is_deleted ? (
-                                  <div className="flex items-center gap-3">
-                                    <button type="button" onClick={() => handleReplySelect(message)} className="text-[11px] font-medium">Reply</button>
-                                    {canDeleteMessage ? <button type="button" onClick={() => handleDeleteMessage(message.id)} className="text-[11px] font-medium">Delete</button> : null}
+                                  <div className={`flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity`}>
+                                    <button 
+                                      type="button" 
+                                      onClick={() => handleReplySelect(message)} 
+                                      className={`font-medium rounded px-2 py-0.5 transition-colors ${
+                                        isOwnMessage 
+                                          ? "hover:bg-white/20 text-white/80 hover:text-white" 
+                                          : "hover:bg-copper-100 text-deep-navy-600 hover:text-copper-700"
+                                      }`}
+                                    >
+                                      Reply
+                                    </button>
+                                    {canDeleteMessage ? (
+                                      <button 
+                                        type="button" 
+                                        onClick={() => handleDeleteMessage(message.id)} 
+                                        className="font-medium rounded px-2 py-0.5 transition-colors hover:bg-rose-500/20 text-white/70 hover:text-rose-300"
+                                      >
+                                        Delete
+                                      </button>
+                                    ) : null}
                                   </div>
                                 ) : null}
                               </div>
@@ -817,19 +844,19 @@ export default function Messages() {
 
                 <div className="sticky bottom-0 border-t border-deep-navy-100 bg-white px-4 py-4 sm:px-5">
                   {replyingTo ? (
-                    <div className="mb-3 flex items-start justify-between gap-3 rounded-lg border border-deep-navy-100 bg-deep-navy-50 px-3 py-3 text-sm shadow-sm">
+                    <div className="mb-3 flex items-start justify-between gap-3 rounded-xl border-l-4 border-l-copper-500 border border-deep-navy-100 bg-gradient-to-r from-copper-50 to-white px-4 py-3 text-sm shadow-sm">
                       <div className="min-w-0">
-                        <p className="font-semibold text-foreground">Replying to {replyingTo.sender_name || "message"}</p>
-                        <p className="mt-1 truncate text-muted-foreground">{replyingTo.content}</p>
+                        <p className="font-semibold text-deep-navy-800">↳ Replying to <span className="text-copper-600">{replyingTo.sender_name || "message"}</span></p>
+                        <p className="mt-1.5 truncate text-deep-navy-600 text-xs">{replyingTo.content}</p>
                       </div>
-                      <button type="button" onClick={() => setReplyingTo(null)} className="text-xs font-semibold text-muted-foreground">Cancel</button>
+                      <button type="button" onClick={() => setReplyingTo(null)} className="text-xs font-bold text-deep-navy-400 hover:text-deep-navy-600 transition-colors">✕</button>
                     </div>
                   ) : null}
 
                   {selectedAttachmentFiles.length > 0 ? (
                     <div className="mb-3 flex flex-wrap gap-2">
                       {selectedAttachmentFiles.map((file) => (
-                        <span key={`${file.name}-${file.size}`} className="inline-flex items-center gap-2 rounded-lg bg-deep-navy-50 px-3 py-1.5 text-xs font-medium text-foreground">
+                        <span key={`${file.name}-${file.size}`} className="inline-flex items-center gap-2 rounded-lg bg-copper-50 border border-copper-200 px-3 py-1.5 text-xs font-medium text-copper-700">
                           <Paperclip className="h-3.5 w-3.5" />
                           {file.name}
                         </span>
@@ -842,8 +869,9 @@ export default function Messages() {
                     <button
                       type="button"
                       onClick={() => attachmentInputRef.current?.click()}
-                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border/60 bg-white text-foreground transition hover:border-primary/20 hover:bg-primary/5"
+                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-deep-navy-200 bg-white text-deep-navy-600 transition hover:bg-deep-navy-50 hover:border-copper-400"
                       aria-label="Add attachment references"
+                      title="Add files"
                     >
                       <Paperclip className="h-4 w-4" />
                     </button>
@@ -859,9 +887,13 @@ export default function Messages() {
                       rows={1}
                       disabled={!blockStatus.can_message}
                       placeholder={blockStatus.can_message ? "Write a message, ask a question, or move the project forward" : "Messaging unavailable"}
-                      className="min-h-[48px] flex-1 resize-none rounded-lg border border-border/60 bg-background px-4 py-3 text-sm text-foreground outline-none transition focus:border-primary/30"
+                      className="min-h-[48px] flex-1 resize-none rounded-xl border border-deep-navy-200 bg-white px-4 py-3 text-sm text-deep-navy-800 outline-none transition focus:border-copper-400 focus:ring-1 focus:ring-copper-200"
                     />
-                    <Button onClick={handleSendMessage} disabled={sendingMessage || (!draftMessage.trim() && !selectedAttachmentFiles.length) || !blockStatus.can_message} className="h-11 rounded-lg px-4">
+                    <Button 
+                      onClick={handleSendMessage} 
+                      disabled={sendingMessage || (!draftMessage.trim() && !selectedAttachmentFiles.length) || !blockStatus.can_message} 
+                      className="h-11 rounded-xl px-5 bg-gradient-to-r from-copper-500 to-copper-600 text-white hover:from-copper-600 hover:to-copper-700 font-semibold"
+                    >
                       {sendingMessage ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Send className="mr-2 h-4 w-4" />}
                       Send
                     </Button>
