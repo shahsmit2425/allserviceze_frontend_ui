@@ -837,79 +837,87 @@ export default function BrowseProjects() {
                   return (
                     <Card
                       key={project.id}
-                      className="border border-deep-navy-100 bg-white rounded-lg hover:shadow-md transition-all"
+                      className="border border-deep-navy-100 bg-white rounded-lg hover:shadow-lg hover:border-copper-300 transition-all"
                       data-testid={`project-card-${project.id}`}
-                      style={{ contentVisibility: 'auto', containIntrinsicSize: '320px' }}
                     >
-                      <CardContent className="p-4">
-                        <div className="space-y-3">
-                          {/* Status Badge */}
-                          <Badge className={project.my_bid_status ? "status-badge-info" : project.bidCountValue === 0 ? "status-badge-success" : "status-badge-neutral"}>
-                            {project.my_bid_status ? opportunityLabel : project.bidCountValue === 0 ? "First quote" : "Open"}
-                          </Badge>
+                      <CardContent className="p-4 sm:p-5">
+                        {/* Horizontal Layout: Left Content + Right Stats */}
+                        <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6">
+                          
+                          {/* LEFT SECTION: Project Info */}
+                          <div className="flex-1 min-w-0">
+                            {/* Status Badge */}
+                            <Badge className={`mb-2 ${project.my_bid_status ? "status-badge-info" : project.bidCountValue === 0 ? "status-badge-success" : "status-badge-neutral"}`}>
+                              {project.my_bid_status ? opportunityLabel : project.bidCountValue === 0 ? "First quote" : "Open"}
+                            </Badge>
 
-                          {/* Header */}
-                          <div className="flex items-start justify-between gap-2">
-                            <div className="flex-1 min-w-0">
-                              <div className="text-xs text-deep-navy-500 mb-1">
-                                {project.location && `${project.location} • `}{project.postedDateLabel}
-                              </div>
-                              <Link
-                                to={projectUrl}
-                                className="group inline-block rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500"
-                                aria-label={`Open project ${project.title}`}
-                              >
-                                <h3 className="text-sm font-semibold text-deep-navy-800 group-hover:text-copper-600 line-clamp-2">
-                                  {project.title}
-                                </h3>
-                              </Link>
+                            {/* Meta Info */}
+                            <div className="text-xs text-deep-navy-500 mb-1.5">
+                              {project.location && `${project.location}`} {project.location && project.postedDateLabel && '•'} {project.postedDateLabel}
                             </div>
+
+                            {/* Title */}
+                            <Link
+                              to={projectUrl}
+                              className="group inline-block rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500 mb-3"
+                              aria-label={`Open project ${project.title}`}
+                            >
+                              <h3 className="text-base font-semibold text-deep-navy-800 group-hover:text-copper-600 line-clamp-2">
+                                {project.title}
+                              </h3>
+                            </Link>
+
+                            {/* Category Tags */}
+                            <div className="flex flex-wrap gap-2">
+                              <Badge variant="outline" className="text-xs font-medium">{project.category}</Badge>
+                              {project.customerVerified && (
+                                <Badge variant="outline" className="text-xs text-emerald-700 border-emerald-200 font-medium">
+                                  <CheckCircle className="h-3 w-3 mr-1" />
+                                  Verified
+                                </Badge>
+                              )}
+                            </div>
+                          </div>
+
+                          {/* RIGHT SECTION: Stats + Actions */}
+                          <div className="flex flex-col gap-3 sm:text-right sm:flex-shrink-0 sm:w-48">
+                            {/* Stats Grid */}
+                            <div className="grid grid-cols-3 sm:grid-cols-1 gap-3 py-2 sm:py-0 border-y sm:border-0 border-deep-navy-50">
+                              <div>
+                                <p className="text-xs text-deep-navy-500 font-medium mb-0.5">Budget</p>
+                                <p className="text-sm font-bold text-deep-navy-800">{formatBudgetRange(project)}</p>
+                              </div>
+                              <div>
+                                <p className="text-xs text-deep-navy-500 font-medium mb-0.5">Timeline</p>
+                                <p className="text-sm font-bold text-deep-navy-800">{project.deadlineLabel}</p>
+                              </div>
+                              <div>
+                                <p className="text-xs text-deep-navy-500 font-medium mb-0.5">Bids</p>
+                                <p className="text-sm font-bold text-copper-600">{project.bidCountValue}</p>
+                              </div>
+                            </div>
+
+                            {/* Action Buttons */}
+                            <div className="flex flex-col sm:flex-col gap-2 pt-1">
+                              <Button asChild size="sm" className="rounded-lg bg-gradient-to-r from-copper-500 to-copper-600 text-white hover:from-copper-600 hover:to-copper-700 font-semibold w-full">
+                                <Link to={projectUrl}>{getPrimaryActionLabel(project)}</Link>
+                              </Button>
+                              <Button asChild variant="outline" size="sm" className="rounded-lg border-deep-navy-200 text-deep-navy-800 hover:bg-deep-navy-50 font-medium w-full">
+                                <Link to={projectUrl}>View Details</Link>
+                              </Button>
+                            </div>
+
+                            {/* Favorite Button */}
                             {user?.role === "provider" && (
                               <button
                                 onClick={(e) => handleToggleFavorite(e, project.id, project.is_favorited)}
-                                className="flex-shrink-0 p-1"
+                                className="flex items-center justify-center sm:justify-end gap-1 p-2 text-xs font-medium transition-colors"
                                 title={project.is_favorited ? "Remove from favorites" : "Add to favorites"}
                               >
                                 <Heart className={cn("h-4 w-4", project.is_favorited ? "fill-red-500 text-red-500" : "text-deep-navy-300 hover:text-red-400")} />
+                                <span className="hidden sm:inline text-deep-navy-600">{project.is_favorited ? "Saved" : "Save"}</span>
                               </button>
                             )}
-                          </div>
-
-                          {/* Quick Info Row */}
-                          <div className="grid grid-cols-3 gap-2 pt-1 border-t border-deep-navy-50">
-                            <div>
-                              <p className="text-xs text-deep-navy-500">Budget</p>
-                              <p className="text-sm font-semibold text-deep-navy-800">{formatBudgetRange(project)}</p>
-                            </div>
-                            <div>
-                              <p className="text-xs text-deep-navy-500">Timeline</p>
-                              <p className="text-sm font-semibold text-deep-navy-800">{project.deadlineLabel}</p>
-                            </div>
-                            <div>
-                              <p className="text-xs text-deep-navy-500">Bids</p>
-                              <p className="text-sm font-semibold text-deep-navy-800">{project.bidCountValue}</p>
-                            </div>
-                          </div>
-
-                          {/* Category Tags */}
-                          <div className="flex flex-wrap gap-1">
-                            <Badge variant="outline" className="text-xs">{project.category}</Badge>
-                            {project.customerVerified && (
-                              <Badge variant="outline" className="text-xs text-emerald-700 border-emerald-200">
-                                <CheckCircle className="h-2.5 w-2.5 mr-1" />
-                                Verified
-                              </Badge>
-                            )}
-                          </div>
-
-                          {/* CTA Buttons */}
-                          <div className="flex gap-2 pt-2">
-                            <Button asChild variant="outline" size="sm" className="flex-1 rounded-lg border-deep-navy-200 text-deep-navy-800">
-                              <Link to={projectUrl}>View</Link>
-                            </Button>
-                            <Button asChild size="sm" className="flex-1 rounded-lg bg-gradient-to-r from-copper-500 to-copper-600 text-white">
-                              <Link to={projectUrl}>{getPrimaryActionLabel(project)}</Link>
-                            </Button>
                           </div>
                         </div>
                       </CardContent>

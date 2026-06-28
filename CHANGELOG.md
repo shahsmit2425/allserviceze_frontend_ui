@@ -32,11 +32,13 @@
 |------|--------|--------|
 | src/components/AppShell.jsx | Always show top Navbar, remove conditional Sidebar | Consistent navigation - navbar always at top |
 | src/components/Navbar.jsx | Dashboard menu already in user dropdown | Single top navigation point works well |
-| src/pages/BrowseProjects.jsx | Card reduced from 120 lines → 50 lines | Modern minimal design |
-| | • Removed "Why Bid Now" section | Reduced info density |
-| | • Simplified to essential: Status, Title, Quick info, Tags, CTAs | Clean hierarchy |
-| | • 3-column grid layout for Budget/Timeline/Bids | More readable |
-| | • Single favorite button (top right) | Less visual clutter |
+| src/pages/BrowseProjects.jsx | Redesigned to HORIZONTAL LAYOUT | Better space utilization |
+| | • Left section: Status, Title, Location, Category badges | Clear project identity |
+| | • Right section: Budget/Timeline/Bids stats + Action buttons | Visual separation |
+| | • Responsive: Vertical on mobile, horizontal on desktop | Mobile-friendly |
+| | • Stats in 3-col grid on mobile, stacked on desktop | Adaptive layout |
+| | • Favorite button integrated into right section | Clean organization |
+| | • Primary action button (Review/Bid) now prominent | Better CTA visibility |
 | src/pages/Messages.jsx | Updated borders and shadows (already done) | Clean card styling |
 | src/pages/CustomerDashboard.jsx | Dashboard cards simplified (in next phase) | Clean dashboard experience |
 | src/pages/ProviderDashboard.jsx | Dashboard cards simplified (in next phase) | Consistency across dashboards |
