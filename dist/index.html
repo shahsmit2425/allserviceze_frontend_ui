@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <script>
+            // CRITICAL: Suppress ALL console output IMMEDIATELY in production
+            // This MUST be the first script to catch all third-party library logs
+            // Version: 3.1 - Updated 2026-04-03-21:00 - Ultra-aggressive mode + Cache-busting
+            (function() {
+                var hostname = window.location.hostname;
+                var isDevelopment = hostname === 'localhost' || 
+                                   hostname === '127.0.0.1' ||
+                                   hostname.startsWith('192.168.') ||
+                                   hostname.startsWith('10.0.') ||
+                                   hostname.endsWith('.codespaces.github.com');
+                
+                if (!isDevelopment) {
+                    // Store originals for emergency debugging
+                    window.__originalConsole = {
+                        log: console.log,
+                        warn: console.warn,
+                        error: console.error,
+                        info: console.info,
+                        debug: console.debug,
+                        trace: console.trace,
+                        table: console.table,
+                        group: console.group,
+                        groupEnd: console.groupEnd,
+                        groupCollapsed: console.groupCollapsed,
+                        dir: console.dir,
+                        dirxml: console.dirxml,
+                        assert: console.assert
+                    };
+                    
+                    // Override all console methods to be completely silent
+                    var noop = function() {};
+                    console.log = noop;
+                    console.warn = noop;
+                    console.error = noop;
+                    console.info = noop;
+                    console.debug = noop;
+                    console.trace = noop;
+                    console.table = noop;
+                    console.group = noop;
+                    console.groupEnd = noop;
+                    console.groupCollapsed = noop;
+                    console.dir = noop;
+                    console.dirxml = noop;
+                    console.assert = noop;
+                    
+                    // Suppress unhandled promise rejections from appearing in console
+                    window.addEventListener('unhandledrejection', function(event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        event.stopImmediatePropagation();
+                        return false;
+                    }, true);
+                    
+                    // Suppress error events from appearing in console  
+                    window.addEventListener('error', function(event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        event.stopImmediatePropagation();
+                        return false;
+                    }, true);
+                    
+                    // Intercept XMLHttpRequest errors to prevent logging
+                    var XHR = XMLHttpRequest.prototype;
+                    var oldOpen = XHR.open;
+                    var oldSend = XHR.send;
+                    
+                    XHR.open = function(method, url) {
+                        this._url = url;
+                        return oldOpen.apply(this, arguments);
+                    };
+                    
+                    XHR.send = function() {
+                        var xhr = this;
+                        var oldOnReadyStateChange = xhr.onreadystatechange;
+                        
+                        xhr.onreadystatechange = function() {
+                            try {
+                                if (oldOnReadyStateChange) {
+                                    oldOnReadyStateChange.apply(this, arguments);
+                                }
+                            } catch(e) {
+                                // Silently catch and suppress
+                            }
+                        };
+                        
+                        // Suppress error events on XHR
+                        xhr.addEventListener('error', function(e) {
+                            e.stopPropagation();
+                            e.stopImmediatePropagation();
+                        }, true);
+                        
+                        xhr.addEventListener('load', function() {
+                            // Suppress 400/401 from logging
+                            if (xhr.status >= 400 && xhr.status < 600) {
+                                // Stop propagation to prevent console logging
+                            }
+                        }, true);
+                        
+                        return oldSend.apply(this, arguments);
+                    };
+                }
+            })();
+        </script>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta http-equiv="x-dns-prefetch-control" content="on" />
+        <meta name="theme-color" content="#2563eb" />
+        <link rel="preconnect" href="https://api.servicetones.com" crossorigin />
+        <link rel="preconnect" href="https://dev-api.servicetones.com" crossorigin />
+        <link rel="dns-prefetch" href="https://api.servicetones.com" />
+        <link rel="dns-prefetch" href="https://dev-api.servicetones.com" />
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://js.stripe.com https://maps.googleapis.com https://maps.gstatic.com https://apis.google.com https://www.gstatic.com; script-src-elem 'self' 'unsafe-inline' https://js.stripe.com https://maps.googleapis.com https://maps.gstatic.com https://apis.google.com https://www.gstatic.com; worker-src 'self' blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https://servicetones.com https://*.amazonaws.com https://www.google.com https://maps.gstatic.com https://*.gstatic.com; connect-src 'self' https://api.servicetones.com https://dev-api.servicetones.com https://stagging-api.servicetones.com https://production-api.servicetones.com https://servicetones-production-api.onrender.com https://servicetones-dev-api.onrender.com https://servicetones-stagging-api.onrender.com https://api.stripe.com https://maps.googleapis.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firebaseinstallations.googleapis.com https://www.googleapis.com https://apis.google.com https://*.daily.co https://daily.co https://*.pluot.blue wss://*.daily.co wss://daily.co wss://*.pluot.blue wss://api.servicetones.com wss://dev-api.servicetones.com wss://stagging-api.servicetones.com wss://production-api.servicetones.com wss://servicetones-production-api.onrender.com wss://servicetones-dev-api.onrender.com https://*.ingest.us.sentry.io https://*.sentry.io; frame-src https://js.stripe.com https://hooks.stripe.com https://accounts.google.com https://apis.google.com https://*.firebaseapp.com https://*.web.app https://*.daily.co https://daily.co" />
+        <meta name="description" content="ServiceTones - Find verified, background-checked home service professionals for plumbing, electrical, cleaning, painting and more. Book instantly." />
+        <meta property="og:title" content="ServiceTones - Home Services Marketplace" />
+        <meta property="og:description" content="Find verified home service professionals near you. Plumbing, electrical, cleaning, painting and more. Book instantly." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://servicetones.com" />
+        <meta property="og:image" content="https://servicetones.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="ServiceTones - Home Services Marketplace" />
+        <meta name="twitter:description" content="Find verified home service professionals near you." />
+        <meta name="twitter:image" content="https://servicetones.com/og-image.png" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="apple-touch-icon" href="/favicon.svg" />
+        <link rel="canonical" href="https://servicetones.com" />
+        <title>ServiceTones - Home Services Marketplace</title>
+      <script type="module" crossorigin src="/assets/index-Cedo7ZqB.js"></script>
+      <link rel="modulepreload" crossorigin href="/assets/vendor-react-chWVYcNb.js">
+      <link rel="modulepreload" crossorigin href="/assets/vendor-ui-DOq7cX9G.js">
+      <link rel="modulepreload" crossorigin href="/assets/vendor-native-Dogns-CX.js">
+      <link rel="modulepreload" crossorigin href="/assets/vendor-utils-mhxWN9Wd.js">
+      <link rel="modulepreload" crossorigin href="/assets/vendor-charts-Byf33PRq.js">
+      <link rel="stylesheet" crossorigin href="/assets/index-CFY1doa3.css">
+    </head>
+    <body>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <script>
+            // SPA redirect pickup: restores the original path after 404.html redirect
+            (function() {
+                var redirect = sessionStorage.getItem('spa-redirect');
+                if (redirect && redirect !== '/' && redirect.startsWith('/') && !redirect.startsWith('//')) {
+                    sessionStorage.removeItem('spa-redirect');
+                    window.history.replaceState(null, '', redirect);
+                }
+            })();
+        </script>
+        <div id="root"></div>
+    </body>
+</html>

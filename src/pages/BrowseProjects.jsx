@@ -87,9 +87,9 @@ const PROJECT_STATUS_OPTIONS = [
 ];
 
 const urgencyColors = {
-  low: "border border-slate-200 bg-slate-50 text-slate-700",
+  low: "border border-deep-navy-100 bg-white text-deep-navy-600",
   normal: "border border-sky-200 bg-sky-50 text-sky-800",
-  high: "border border-amber-200 bg-amber-50 text-amber-800",
+  high: "border border-copper-100 bg-copper-50 text-amber-800",
   urgent: "border border-rose-200 bg-rose-50 text-rose-800"
 };
 
@@ -541,19 +541,19 @@ export default function BrowseProjects() {
         <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
-      <div className="page-shell space-y-6 py-7 sm:space-y-7 sm:py-8">
-        <section className="overflow-hidden rounded-[2rem] border border-border/60 bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_62%,#f7faf8_100%)] shadow-[0_28px_80px_-48px_rgba(15,23,42,0.22)]">
-          <div className="px-5 py-8 sm:px-7 sm:py-10">
+      <div className="page-shell space-y-6 py-20 sm:py-32 bg-white sm:space-y-7">
+        <section className="overflow-hidden">
+          <div className="px-5 py-0 sm:px-7">
             <div className="mx-auto max-w-4xl text-center">
-              <div className="inline-flex items-center gap-2 rounded-lg border border-primary/10 bg-white px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-primary shadow-sm">
-                <Briefcase className="h-3.5 w-3.5" />
-                Project marketplace
+              <div className="inline-flex items-center gap-2 rounded-full border border-deep-navy-200/40 bg-white px-4 py-2 text-sm font-semibold text-deep-navy-600 shadow-sm mb-6">
+                <Briefcase className="h-4 w-4" />
+                <span>Browse Projects</span>
               </div>
-              <h1 className="mt-5 font-heading text-[clamp(2.6rem,5vw,4.5rem)] font-extrabold leading-[0.94] tracking-[-0.06em] text-foreground">
+              <h1 className="text-5xl sm:text-6xl font-bold text-deep-navy-800 leading-tight mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
                 Find Projects Worth Bidding On
               </h1>
-              <p className="mt-3 text-base leading-7 text-muted-foreground sm:text-xl">
-                Keep filters visible, scan urgency and budget faster, and move from search to proposal without losing context.
+              <p className="text-lg text-deep-navy-500 max-w-2xl mx-auto" style={{ fontFamily: "'Lora', serif" }}>
+                Browse active projects, filter by budget and timeline, and submit competitive quotes to grow your business.
               </p>
             </div>
 
@@ -562,7 +562,7 @@ export default function BrowseProjects() {
                 event.preventDefault();
                 applyFilters();
               }}
-              className="mx-auto mt-8 grid max-w-5xl gap-3 rounded-2xl border border-white/70 bg-white/92 p-3 shadow-[0_28px_50px_-38px_rgba(15,23,42,0.18)] lg:grid-cols-[minmax(0,1fr)_minmax(0,0.78fr)_12rem]"
+              className="mx-auto mt-8 grid max-w-5xl gap-3 rounded-2xl border border-deep-navy-200 bg-white p-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.78fr)_12rem]"
             >
               <div className="relative">
                 <Briefcase className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -583,7 +583,7 @@ export default function BrowseProjects() {
                   maxLength={5}
                 />
               </div>
-              <Button type="submit" className="h-12 rounded-xl bg-[linear-gradient(90deg,#ff3b30_0%,#ff8a00_100%)] text-white shadow-[0_18px_40px_-22px_rgba(255,89,51,0.55)] hover:opacity-95">
+              <Button type="submit" className="h-12 rounded-xl bg-gradient-to-r from-copper-500 to-copper-600 text-white hover:from-copper-600 hover:to-copper-700 font-semibold shadow-md hover:shadow-lg transition-all">
                 Search
               </Button>
             </form>
@@ -621,7 +621,7 @@ export default function BrowseProjects() {
                   ) : null}
                 </div>
 
-                <Accordion type="multiple" defaultValue={["category", "budget", "timeline", "urgency", "verification", "projectType", "status"]} className="w-full">
+                <Accordion type="multiple" defaultValue={["category", "budget", "timeline"]} className="w-full">
                   <AccordionItem value="category" className="px-5">
                     <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Category</AccordionTrigger>
                     <AccordionContent className="space-y-3">
@@ -641,7 +641,7 @@ export default function BrowseProjects() {
                   <AccordionItem value="budget" className="px-5">
                     <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Budget</AccordionTrigger>
                     <AccordionContent className="space-y-3">
-                      {BUDGET_OPTIONS.filter((option) => option.value !== "all").map((option) => (
+                      {BUDGET_OPTIONS.filter((option) => option.value !== "all").slice(0, 4).map((option) => (
                         <label key={option.value} className="flex cursor-pointer items-center gap-3 text-sm text-foreground/88">
                           <Checkbox
                             checked={draftFilters.budget === option.value}
@@ -653,7 +653,7 @@ export default function BrowseProjects() {
                     </AccordionContent>
                   </AccordionItem>
 
-                  <AccordionItem value="timeline" className="px-5">
+                  <AccordionItem value="timeline" className="border-b-0 px-5">
                     <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Timeline</AccordionTrigger>
                     <AccordionContent className="space-y-3">
                       {TIMELINE_OPTIONS.filter((option) => option.value !== "all").map((option) => (
@@ -667,71 +667,10 @@ export default function BrowseProjects() {
                       ))}
                     </AccordionContent>
                   </AccordionItem>
-
-                  <AccordionItem value="urgency" className="px-5">
-                    <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Urgency</AccordionTrigger>
-                    <AccordionContent className="space-y-3">
-                      {URGENCY_FILTER_OPTIONS.map((option) => (
-                        <label key={option.value} className="flex cursor-pointer items-center gap-3 text-sm text-foreground/88">
-                          <Checkbox
-                            checked={draftFilters.urgency === option.value}
-                            onCheckedChange={(checked) => setDraftFilters((prev) => ({ ...prev, urgency: checked ? option.value : "all" }))}
-                          />
-                          <span>{option.label}</span>
-                        </label>
-                      ))}
-                    </AccordionContent>
-                  </AccordionItem>
-
-                  <AccordionItem value="verification" className="px-5">
-                    <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Verification</AccordionTrigger>
-                    <AccordionContent className="space-y-3">
-                      <label className="flex cursor-pointer items-center gap-3 text-sm text-foreground/88">
-                        <Checkbox
-                          checked={draftFilters.verifiedCustomer === "verified"}
-                          onCheckedChange={(checked) => setDraftFilters((prev) => ({ ...prev, verifiedCustomer: checked ? "verified" : "all" }))}
-                        />
-                        <span className="flex-1">Verified customers only</span>
-                        <span className="text-xs font-medium text-muted-foreground">{verifiedCustomerCountTotal}</span>
-                      </label>
-                    </AccordionContent>
-                  </AccordionItem>
-
-                  <AccordionItem value="projectType" className="px-5">
-                    <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Project Type</AccordionTrigger>
-                    <AccordionContent className="space-y-3">
-                      {PROJECT_TYPE_OPTIONS.filter((option) => option.value !== "all").map((option) => (
-                        <label key={option.value} className="flex cursor-pointer items-center gap-3 text-sm text-foreground/88">
-                          <Checkbox
-                            checked={draftFilters.projectType === option.value}
-                            onCheckedChange={(checked) => setDraftFilters((prev) => ({ ...prev, projectType: checked ? option.value : "all" }))}
-                          />
-                          <span>{option.label}</span>
-                        </label>
-                      ))}
-                    </AccordionContent>
-                  </AccordionItem>
-
-                  {user?.role === "provider" ? (
-                    <AccordionItem value="status" className="border-b-0 px-5">
-                      <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Project Status</AccordionTrigger>
-                      <AccordionContent className="space-y-3">
-                        {PROJECT_STATUS_OPTIONS.map((option) => (
-                          <label key={option.value} className="flex cursor-pointer items-center gap-3 text-sm text-foreground/88">
-                            <Checkbox
-                              checked={draftFilters.status === option.value}
-                              onCheckedChange={(checked) => setDraftFilters((prev) => ({ ...prev, status: checked ? option.value : "all" }))}
-                            />
-                            <span>{option.label}</span>
-                          </label>
-                        ))}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ) : null}
                 </Accordion>
 
                 <div className="border-t border-border/60 px-5 py-4">
-                  <Button className="w-full rounded-xl bg-[linear-gradient(90deg,#ff3b30_0%,#ff8a00_100%)] text-white hover:opacity-95" onClick={applyFilters} disabled={!hasDraftChanges}>
+                  <Button className="w-full rounded-xl bg-gradient-to-r from-copper-500 to-copper-600 text-white hover:from-copper-600 hover:to-copper-700 font-semibold shadow-md hover:shadow-lg transition-all disabled:opacity-50" onClick={applyFilters} disabled={!hasDraftChanges}>
                     Apply Filters
                   </Button>
                   <p className="mt-3 text-xs leading-5 text-muted-foreground">Filters stay draft-based until you apply them.</p>
@@ -898,7 +837,7 @@ export default function BrowseProjects() {
                   return (
                     <Card
                       key={project.id}
-                      className="result-card-surface border border-border/60 shadow-sm"
+                      className="result-card-surface border border-deep-navy-200 bg-white rounded-2xl hover:shadow-lg hover:border-slate-400 transition-all"
                       data-testid={`project-card-${project.id}`}
                       style={{ contentVisibility: 'auto', containIntrinsicSize: '360px' }}
                     >
@@ -949,16 +888,16 @@ export default function BrowseProjects() {
                           </div>
 
                           <div className="flex flex-wrap items-center gap-2">
-                            <Badge className={urgencyColors[project.urgency]}>{project.urgency}</Badge>
-                            <Badge variant="outline" className="rounded-lg px-3 py-1 text-xs font-semibold">{project.category}</Badge>
+                            <Badge className="bg-copper-50 text-amber-700 border border-copper-100 rounded-full px-3 py-1 text-xs font-semibold">{project.urgency}</Badge>
+                            <Badge className="bg-deep-navy-50 text-deep-navy-600 border border-deep-navy-100 rounded-full px-3 py-1 text-xs font-semibold">{project.category}</Badge>
                             {project.customerVerified ? (
-                              <Badge className="rounded-lg border-0 bg-emerald-100 px-3 py-1 text-emerald-700">
+                              <Badge className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-emerald-700">
                                 <CheckCircle className="mr-1 h-3 w-3" />
                                 Verified customer
                               </Badge>
                             ) : null}
                             {project.derivedProjectType ? (
-                              <Badge variant="outline" className="rounded-lg px-3 py-1 text-xs font-semibold">{project.derivedProjectType}</Badge>
+                              <Badge className="bg-deep-navy-50 text-deep-navy-600 border border-deep-navy-100 rounded-full px-3 py-1 text-xs font-semibold">{project.derivedProjectType}</Badge>
                             ) : null}
                           </div>
 
@@ -981,23 +920,23 @@ export default function BrowseProjects() {
                           </div>
 
                           <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
-                            <div className="rounded-lg border border-border/60 bg-muted/35 px-3.5 py-3">
+                            <div className="rounded-lg border border-border/60 bg-white px-3.5 py-3">
                               <p className="detail-kicker">Budget</p>
                               <p className="mt-1.5 text-sm font-semibold text-foreground">{formatBudgetRange(project)}</p>
                             </div>
-                            <div className="rounded-lg border border-border/60 bg-muted/35 px-3.5 py-3">
+                            <div className="rounded-lg border border-border/60 bg-white px-3.5 py-3">
                               <p className="detail-kicker">Timeline</p>
                               <p className="mt-1.5 text-sm font-semibold text-foreground">{project.deadlineLabel}</p>
                             </div>
-                            <div className="rounded-lg border border-border/60 bg-muted/35 px-3.5 py-3">
+                            <div className="rounded-lg border border-border/60 bg-white px-3.5 py-3">
                               <p className="detail-kicker">Bid count</p>
                               <p className="mt-1.5 text-sm font-semibold text-foreground">{project.bidCountValue} bids</p>
                             </div>
-                            <div className="rounded-lg border border-border/60 bg-muted/35 px-3.5 py-3">
+                            <div className="rounded-lg border border-border/60 bg-white px-3.5 py-3">
                               <p className="detail-kicker">Competition</p>
                               <p className="mt-1.5 text-sm font-semibold text-foreground">{project.bidCountValue === 0 ? "Be first" : project.bidCountValue <= 2 ? "Still early" : `${project.bidCountValue}+ active`}</p>
                             </div>
-                            <div className="rounded-lg border border-border/60 bg-muted/35 px-3.5 py-3">
+                            <div className="rounded-lg border border-border/60 bg-white px-3.5 py-3">
                               <p className="detail-kicker">Customer</p>
                               <p className="mt-1.5 text-sm font-semibold text-foreground line-clamp-1">{project.customerVerified ? "Verified homeowner" : project.customer_name || "Marketplace customer"}</p>
                             </div>
@@ -1008,12 +947,12 @@ export default function BrowseProjects() {
                               <span className="font-medium text-foreground">{opportunityLabel}</span>
                             </div>
                             <div className="flex flex-col gap-2 sm:flex-row">
-                              <Button asChild size="sm" variant="outline" className="min-w-[9.5rem] justify-center rounded-lg border-border/60">
+                              <Button asChild size="sm" className="min-w-[9.5rem] justify-center rounded-xl border border-deep-navy-200 text-deep-navy-800 hover:bg-white font-semibold">
                                 <Link to={projectUrl} aria-label={`View details for ${project.title}`}>
                                   View Project
                                 </Link>
                               </Button>
-                              <Button asChild size="sm" className="min-w-[9.5rem] justify-center rounded-lg">
+                              <Button asChild size="sm" className="min-w-[9.5rem] justify-center rounded-xl bg-gradient-to-r from-copper-500 to-copper-600 text-white hover:from-copper-600 hover:to-copper-700 font-semibold">
                                 <Link to={projectUrl} aria-label={`Submit bid for ${project.title}`}>
                                   {getPrimaryActionLabel(project)}
                                   <ArrowRight className="ml-2 h-4 w-4" />

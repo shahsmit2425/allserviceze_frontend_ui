@@ -551,19 +551,19 @@ export default function BrowseProviders() {
         <link rel="canonical" href="https://servicetones.com/providers" />
       </Helmet>
 
-      <div className="page-shell space-y-6 py-7 sm:space-y-7 sm:py-8">
-        <section className="overflow-hidden rounded-[2rem] border border-border/60 bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_62%,#f7faf8_100%)] shadow-[0_28px_80px_-48px_rgba(15,23,42,0.22)]">
-          <div className="px-5 py-8 sm:px-7 sm:py-10">
+      <div className="page-shell space-y-6 py-20 sm:py-32 bg-white sm:space-y-7">
+        <section className="overflow-hidden">
+          <div className="px-5 py-0 sm:px-7">
             <div className="mx-auto max-w-4xl text-center">
-              <div className="inline-flex items-center gap-2 rounded-lg border border-primary/10 bg-white px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-primary shadow-sm">
-                <ShieldCheck className="h-3.5 w-3.5" />
-                Verified service marketplace
+              <div className="inline-flex items-center gap-2 rounded-full border border-deep-navy-200/40 bg-white px-4 py-2 text-sm font-semibold text-deep-navy-600 shadow-sm mb-6">
+                <ShieldCheck className="h-4 w-4" />
+                <span>Verified Professionals</span>
               </div>
-              <h1 className="mt-5 font-heading text-[clamp(2.6rem,5vw,4.5rem)] font-extrabold leading-[0.94] tracking-[-0.06em] text-foreground">
+              <h1 className="text-5xl sm:text-6xl font-bold text-deep-navy-800 leading-tight mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
                 Find Your Perfect Provider
               </h1>
-              <p className="mt-3 text-base leading-7 text-muted-foreground sm:text-xl">
-                Connect with verified service professionals near you and keep every filter visible while you compare.
+              <p className="text-lg text-deep-navy-500 max-w-2xl mx-auto" style={{ fontFamily: "'Lora', serif" }}>
+                Connect with verified service professionals in your area. Compare ratings, experience, and pricing to find your ideal match.
               </p>
             </div>
 
@@ -572,7 +572,7 @@ export default function BrowseProviders() {
                 event.preventDefault();
                 applyFilters();
               }}
-              className="mx-auto mt-8 grid max-w-5xl gap-3 rounded-2xl border border-white/70 bg-white/92 p-3 shadow-[0_28px_50px_-38px_rgba(15,23,42,0.18)] lg:grid-cols-[minmax(0,1fr)_minmax(0,0.78fr)_12rem]"
+              className="mx-auto mt-8 grid max-w-5xl gap-3 rounded-2xl border border-deep-navy-200 bg-white p-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.78fr)_12rem]"
             >
               <div className="relative">
                 <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -593,7 +593,7 @@ export default function BrowseProviders() {
                   maxLength={5}
                 />
               </div>
-              <Button type="submit" className="h-12 rounded-xl bg-[linear-gradient(90deg,#ff3b30_0%,#ff8a00_100%)] text-white shadow-[0_18px_40px_-22px_rgba(255,89,51,0.55)] hover:opacity-95">
+              <Button type="submit" className="h-12 rounded-xl bg-gradient-to-r from-copper-500 to-copper-600 text-white hover:from-copper-600 hover:to-copper-700 font-semibold shadow-md hover:shadow-lg transition-all">
                 Search
               </Button>
             </form>
@@ -631,11 +631,11 @@ export default function BrowseProviders() {
                   ) : null}
                 </div>
 
-                <Accordion type="multiple" defaultValue={["rating", "rate", "availability", "verification", "skills"]} className="w-full">
+                <Accordion type="multiple" defaultValue={["rating"]} className="w-full">
                   <AccordionItem value="rating" className="px-5">
-                    <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Rating & Reviews</AccordionTrigger>
+                    <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Rating</AccordionTrigger>
                     <AccordionContent className="space-y-3">
-                      {RATING_OPTIONS.filter((option) => option.value !== "All").map((option) => (
+                      {RATING_OPTIONS.filter((option) => option.value !== "All").slice(0, 3).map((option) => (
                         <label key={option.value} className="flex cursor-pointer items-center gap-3 text-sm text-foreground/88">
                           <Checkbox
                             checked={draftFilters.rating === option.value}
@@ -648,9 +648,9 @@ export default function BrowseProviders() {
                   </AccordionItem>
 
                   <AccordionItem value="rate" className="px-5">
-                    <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Hourly Rate</AccordionTrigger>
+                    <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Budget</AccordionTrigger>
                     <AccordionContent className="space-y-4">
-                      <div className="rounded-xl border border-border/60 bg-muted/20 p-4">
+                      <div className="rounded-lg border border-border/60 bg-muted/20 p-4">
                         <Slider
                           value={[draftFilters.maxRate]}
                           min={75}
@@ -658,64 +658,27 @@ export default function BrowseProviders() {
                           step={25}
                           onValueChange={([value]) => setDraftFilters((prev) => ({ ...prev, maxRate: value }))}
                         />
-                        <div className="mt-4 flex items-center justify-between text-sm text-muted-foreground">
-                          <span>$75</span>
-                          <span className="font-semibold text-foreground">{formatRateCapLabel(draftFilters.maxRate)}</span>
-                        </div>
+                        <div className="mt-3 text-sm font-medium text-foreground text-center">{formatRateCapLabel(draftFilters.maxRate)}</div>
                       </div>
-                      <button type="button" className="text-xs font-semibold uppercase tracking-[0.14em] text-primary" onClick={() => setDraftFilters((prev) => ({ ...prev, maxRate: DEFAULT_PROVIDER_RATE_CAP }))}>
-                        Any hourly rate
-                      </button>
                     </AccordionContent>
                   </AccordionItem>
 
-                  <AccordionItem value="availability" className="px-5">
-                    <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Availability</AccordionTrigger>
-                    <AccordionContent className="space-y-3">
-                      <label className="flex cursor-pointer items-center gap-3 text-sm text-foreground/88">
-                        <Checkbox
-                          checked={draftFilters.availability === "available"}
-                          onCheckedChange={(checked) => setDraftFilters((prev) => ({ ...prev, availability: checked ? "available" : "all" }))}
-                        />
-                        <span className="flex-1">Available now</span>
-                        <span className="text-xs font-medium text-muted-foreground">{availableNowCount}</span>
-                      </label>
-                    </AccordionContent>
-                  </AccordionItem>
-
-                  <AccordionItem value="verification" className="px-5">
-                    <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Verification</AccordionTrigger>
+                  <AccordionItem value="verification" className="border-b-0 px-5">
+                    <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Verified Only</AccordionTrigger>
                     <AccordionContent className="space-y-3">
                       <label className="flex cursor-pointer items-center gap-3 text-sm text-foreground/88">
                         <Checkbox
                           checked={draftFilters.verifiedOnly === "true"}
                           onCheckedChange={(checked) => setDraftFilters((prev) => ({ ...prev, verifiedOnly: checked ? "true" : "false" }))}
                         />
-                        <span className="flex-1">Verified providers only</span>
-                        <span className="text-xs font-medium text-muted-foreground">{totalVerifiedProviderCount}</span>
+                        <span className="flex-1">Show only verified</span>
                       </label>
-                    </AccordionContent>
-                  </AccordionItem>
-
-                  <AccordionItem value="skills" className="border-b-0 px-5">
-                    <AccordionTrigger className="py-5 text-[0.95rem] font-semibold hover:no-underline">Skills</AccordionTrigger>
-                    <AccordionContent className="space-y-3">
-                      {providerCategoryCounts.map(([categoryName, count]) => (
-                        <label key={categoryName} className="flex cursor-pointer items-center gap-3 text-sm text-foreground/88">
-                          <Checkbox
-                            checked={draftFilters.category === categoryName}
-                            onCheckedChange={(checked) => setDraftFilters((prev) => ({ ...prev, category: checked ? categoryName : "All" }))}
-                          />
-                          <span className="flex-1">{categoryName}</span>
-                          <span className="text-xs font-medium text-muted-foreground">{count}</span>
-                        </label>
-                      ))}
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>
 
                 <div className="border-t border-border/60 px-5 py-4">
-                  <Button className="w-full rounded-xl bg-[linear-gradient(90deg,#ff3b30_0%,#ff8a00_100%)] text-white hover:opacity-95" onClick={applyFilters} disabled={!hasDraftChanges}>
+                  <Button className="w-full rounded-xl bg-gradient-to-r from-copper-500 to-copper-600 text-white hover:from-copper-600 hover:to-copper-700 font-semibold shadow-md hover:shadow-lg transition-all disabled:opacity-50" onClick={applyFilters} disabled={!hasDraftChanges}>
                     Apply Filters
                   </Button>
                   <p className="mt-3 text-xs leading-5 text-muted-foreground">Filters stay draft-based until you apply them.</p>
@@ -734,72 +697,34 @@ export default function BrowseProviders() {
                 {hasActiveFilters ? <span className="info-chip">{activeFilterCount} active</span> : null}
               </div>
 
-              <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                <Select value={draftFilters.category} onValueChange={(value) => setDraftFilters((prev) => ({ ...prev, category: value }))}>
-                  <SelectTrigger className="h-11 rounded-lg border-border/60 bg-background">
-                    <SelectValue placeholder="Category" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {CATEGORIES.map((cat) => (
-                      <SelectItem key={cat} value={cat}>{cat}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-
+              <div className="mt-4 space-y-3">
                 <Select value={draftFilters.rating} onValueChange={(value) => setDraftFilters((prev) => ({ ...prev, rating: value }))}>
                   <SelectTrigger className="h-11 rounded-lg border-border/60 bg-background">
                     <SelectValue placeholder="Minimum rating" />
                   </SelectTrigger>
                   <SelectContent>
-                    {RATING_OPTIONS.map((option) => (
+                    {RATING_OPTIONS.slice(0, 3).map((option) => (
                       <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
 
-                <Select value={draftFilters.experience} onValueChange={(value) => setDraftFilters((prev) => ({ ...prev, experience: value }))}>
-                  <SelectTrigger className="h-11 rounded-lg border-border/60 bg-background">
-                    <SelectValue placeholder="Experience level" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {EXPERIENCE_OPTIONS.map((option) => (
-                      <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-
-                <Select value={draftFilters.radius} onValueChange={(value) => setDraftFilters((prev) => ({ ...prev, radius: value }))} disabled={!draftFilters.zipcode}>
-                  <SelectTrigger className="h-11 rounded-lg border-border/60 bg-background">
-                    <SelectValue placeholder="Distance" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {DISTANCE_OPTIONS.map((opt) => (
-                      <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="mt-4 space-y-2">
-                <div className="flex items-center justify-between text-sm">
-                  <span className="font-medium text-foreground">Hourly rate</span>
-                  <span className="text-muted-foreground">{formatRateCapLabel(draftFilters.maxRate)}</span>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="font-medium text-foreground">Budget</span>
+                    <span className="text-muted-foreground">{formatRateCapLabel(draftFilters.maxRate)}</span>
+                  </div>
+                  <Slider
+                    value={[draftFilters.maxRate]}
+                    min={75}
+                    max={DEFAULT_PROVIDER_RATE_CAP}
+                    step={25}
+                    onValueChange={([value]) => setDraftFilters((prev) => ({ ...prev, maxRate: value }))}
+                  />
                 </div>
-                <Slider
-                  value={[draftFilters.maxRate]}
-                  min={75}
-                  max={DEFAULT_PROVIDER_RATE_CAP}
-                  step={25}
-                  onValueChange={([value]) => setDraftFilters((prev) => ({ ...prev, maxRate: value }))}
-                />
-              </div>
 
-              <div className="mt-4 flex flex-wrap gap-2">
-                <Button type="button" variant={draftFilters.verifiedOnly === "true" ? "default" : "outline"} className="rounded-lg" onClick={() => setDraftFilters((prev) => ({ ...prev, verifiedOnly: prev.verifiedOnly === "true" ? "false" : "true" }))}>
-                  Verified only
-                </Button>
-                <Button type="button" variant={draftFilters.availability === "available" ? "default" : "outline"} className="rounded-lg" onClick={() => setDraftFilters((prev) => ({ ...prev, availability: prev.availability === "available" ? "all" : "available" }))}>
-                  Available now
+                <Button type="button" variant={draftFilters.verifiedOnly === "true" ? "default" : "outline"} className="w-full rounded-lg" onClick={() => setDraftFilters((prev) => ({ ...prev, verifiedOnly: prev.verifiedOnly === "true" ? "false" : "true" }))}>
+                  {draftFilters.verifiedOnly === "true" ? "✓ " : ""}Verified only
                 </Button>
               </div>
 
@@ -823,9 +748,8 @@ export default function BrowseProviders() {
               <div className="browse-summary-card">
                 <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                   <div>
-                    <h2 className="text-[1.8rem] font-semibold tracking-[-0.05em] text-foreground">All Providers</h2>
+                    <h2 className="text-2xl font-semibold tracking-[-0.05em] text-foreground">Browse Providers</h2>
                     <p className="mt-1 text-sm text-muted-foreground">{sortedProviders.length} providers found</p>
-                    <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">Compare response time, hourly rate, recent reviews, and verification without losing your filter context.</p>
                   </div>
 
                   <div className="flex items-center gap-2">
@@ -894,7 +818,7 @@ export default function BrowseProviders() {
                 {sortedProviders.map((provider) => (
                   <Card 
                     key={provider.id} 
-                    className="result-card-surface cursor-pointer group overflow-hidden border border-border/60 shadow-[0_24px_60px_-48px_rgba(15,23,42,0.24)] transition-all duration-200 hover:-translate-y-0.5"
+                    className="result-card-surface cursor-pointer group overflow-hidden border border-deep-navy-200 bg-white rounded-2xl transition-all duration-200 hover:shadow-lg hover:border-slate-400"
                     onClick={() => navigate(`/providers/${provider.id}`)}
                   >
                     <CardContent className="p-4 sm:p-5 lg:p-6">
@@ -946,32 +870,32 @@ export default function BrowseProviders() {
                           </div>
 
                           <div className="flex flex-wrap gap-2">
-                            <Badge className="market-card-chip market-card-chip-accent">
-                              <Star className="h-3.5 w-3.5 fill-yellow-400 text-yellow-400" />
+                            <Badge className="bg-deep-navy-50 text-deep-navy-600 border border-deep-navy-100 rounded-full px-3 py-1 text-sm font-medium">
+                              <Star className="h-3.5 w-3.5 fill-copper-600 text-copper-600 mr-1" />
                               {provider.avg_rating > 0 ? provider.avg_rating.toFixed(1) : "New"}
-                              <span className="text-muted-foreground">{formatReviewCount(provider.total_reviews)}</span>
+                              <span className="text-slate-500 ml-1">{formatReviewCount(provider.total_reviews)}</span>
                             </Badge>
                             {(provider.provider_profile?.is_verified || provider.document_verified) && (
-                              <Badge className="market-card-chip">
-                                <ShieldCheck className="h-3.5 w-3.5 text-primary" />
+                              <Badge className="bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full px-3 py-1 text-sm font-medium">
+                                <ShieldCheck className="h-3.5 w-3.5 text-emerald-600 mr-1" />
                                 Verified
                               </Badge>
                             )}
                             {provider.document_verified && (
-                              <Badge className="market-card-chip">
-                                <CheckCircle className="h-3.5 w-3.5 text-emerald-600" />
+                              <Badge className="bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-3 py-1 text-sm font-medium">
+                                <CheckCircle className="h-3.5 w-3.5 text-blue-600 mr-1" />
                                 ID checked
                               </Badge>
                             )}
                             {(provider.provider_profile?.licenses || []).length > 0 && (
-                              <Badge className="market-card-chip">
-                                <FileText className="h-3.5 w-3.5 text-primary" />
+                              <Badge className="bg-deep-navy-50 text-deep-navy-600 border border-deep-navy-100 rounded-full px-3 py-1 text-sm font-medium">
+                                <FileText className="h-3.5 w-3.5 text-deep-navy-500 mr-1" />
                                 Licensed
                               </Badge>
                             )}
-                            <Badge className="market-card-chip">
-                              <Clock3 className="h-3.5 w-3.5 text-primary" />
-                              {provider.provider_profile?.available ? "Available now" : "Schedule check needed"}
+                            <Badge className="bg-copper-50 text-amber-700 border border-copper-100 rounded-full px-3 py-1 text-sm font-medium">
+                              <Clock3 className="h-3.5 w-3.5 text-copper-600 mr-1" />
+                              {provider.provider_profile?.available ? "Available now" : "Check availability"}
                             </Badge>
                           </div>
 
@@ -997,7 +921,7 @@ export default function BrowseProviders() {
                           </div>
 
                           <div className="grid gap-3 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
-                            <div className="rounded-xl border border-border/60 bg-muted/35 p-4">
+                            <div className="rounded-xl border border-border/60 bg-white p-4">
                               <div className="flex items-center justify-between gap-3">
                                 <p className="detail-kicker">Featured review</p>
                                 {provider.featuredReview?.rating ? (
@@ -1035,7 +959,7 @@ export default function BrowseProviders() {
                         </div>
 
                         <div className="space-y-4">
-                          <div className="rounded-xl border border-border/60 bg-muted/35 p-4">
+                          <div className="rounded-xl border border-border/60 bg-white p-4">
                             <div className="flex items-center justify-between gap-3">
                               <p className="detail-kicker">Portfolio preview</p>
                               <span className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
@@ -1044,11 +968,11 @@ export default function BrowseProviders() {
                             </div>
                             <div className="mt-3 grid grid-cols-3 gap-2">
                               {(provider.portfolioPreview || []).slice(0, 6).map((item) => (
-                                <div key={item.id} className="overflow-hidden rounded-xl border border-border/60 bg-slate-100">
+                                <div key={item.id} className="overflow-hidden rounded-xl border border-border/60 bg-deep-navy-50">
                                   {item.images?.[0] ? (
                                     <img src={item.images[0]} alt={item.title} className="h-20 w-full object-cover sm:h-24" />
                                   ) : (
-                                    <div className="flex h-20 items-center justify-center bg-slate-100 px-2 text-center text-[11px] font-semibold text-muted-foreground sm:h-24">
+                                    <div className="flex h-20 items-center justify-center bg-deep-navy-50 px-2 text-center text-[11px] font-semibold text-muted-foreground sm:h-24">
                                       {item.title}
                                     </div>
                                   )}
@@ -1081,14 +1005,13 @@ export default function BrowseProviders() {
                             </div>
 
                             <div className="mt-4 grid gap-2 sm:grid-cols-3">
-                              <Button size="sm" className="rounded-lg" onClick={(e) => { e.stopPropagation(); navigate(`/providers/${provider.id}`); }}>
+                              <Button size="sm" className="rounded-xl bg-gradient-to-r from-copper-500 to-copper-600 text-white hover:from-copper-600 hover:to-copper-700 font-semibold" onClick={(e) => { e.stopPropagation(); navigate(`/providers/${provider.id}`); }}>
                                 View Profile
                                 <ArrowRight className="ml-2 h-4 w-4" />
                               </Button>
                               <Button
                                 size="sm"
-                                variant="outline"
-                                className="rounded-lg"
+                                className="rounded-xl border border-deep-navy-200 text-deep-navy-800 hover:bg-white font-semibold"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   navigate(`/providers/${provider.id}`);

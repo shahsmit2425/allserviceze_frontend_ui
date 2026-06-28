@@ -514,7 +514,7 @@ export default function PostProject() {
                       hint="Clear, specific titles improve quote relevance."
                     />
                   </div>
-                  <div className="rounded-xl border border-border/60 bg-muted/35 px-4 py-4 text-sm text-muted-foreground">
+                  <div className="rounded-xl border border-border/60 bg-white px-4 py-4 text-sm text-muted-foreground">
                     <p className="detail-kicker">Quality signal</p>
                     <p className="mt-2 leading-6">Mention the trade, the problem, and the intended result in one line.</p>
                     <p className={`mt-3 text-xs ${formData.title.length >= LIMITS.projectTitle ? "text-emerald-600" : "text-muted-foreground"}`}>
@@ -542,7 +542,7 @@ export default function PostProject() {
                       </Select>
                     </FormField>
                   </div>
-                  <div className="rounded-xl border border-border/60 bg-muted/35 px-4 py-4 text-sm text-muted-foreground">
+                  <div className="rounded-xl border border-border/60 bg-white px-4 py-4 text-sm text-muted-foreground">
                     <p className="detail-kicker">Why this matters</p>
                     <p className="mt-2 leading-6">The selected category shapes follow-up questions so providers waste less time clarifying basics.</p>
                   </div>
@@ -645,7 +645,7 @@ export default function PostProject() {
                                         ? current.filter((item) => item !== option)
                                         : [...current, option],
                                     })}
-                                    className={`rounded-lg px-3 py-2 text-sm transition ${isSelected ? "bg-primary text-primary-foreground" : "bg-slate-100 text-foreground hover:bg-slate-200"}`}
+                                    className={`rounded-lg px-3 py-2 text-sm transition ${isSelected ? "bg-primary text-primary-foreground" : "bg-deep-navy-50 text-foreground hover:bg-deep-navy-100"}`}
                                   >
                                     {option}
                                   </button>
@@ -664,7 +664,7 @@ export default function PostProject() {
                                     key={label}
                                     type="button"
                                     onClick={() => patchQuestionnaireAnswers({ [question.id]: value })}
-                                    className={`rounded-lg px-3 py-2 text-sm transition ${isSelected ? "bg-primary text-primary-foreground" : "bg-slate-100 text-foreground hover:bg-slate-200"}`}
+                                    className={`rounded-lg px-3 py-2 text-sm transition ${isSelected ? "bg-primary text-primary-foreground" : "bg-deep-navy-50 text-foreground hover:bg-deep-navy-100"}`}
                                   >
                                     {label}
                                   </button>
@@ -713,7 +713,7 @@ export default function PostProject() {
                   />
                 </div>
 
-                <label className="mt-4 flex items-start gap-3 rounded-xl border border-border/60 bg-muted/35 px-4 py-3.5 text-sm text-foreground/88">
+                <label className="mt-4 flex items-start gap-3 rounded-xl border border-border/60 bg-white px-4 py-3.5 text-sm text-foreground/88">
                   <Checkbox
                     id="budget-not-sure"
                     checked={formData.budget_not_sure}
@@ -739,7 +739,7 @@ export default function PostProject() {
                         key={preset.label}
                         type="button"
                         onClick={() => patchFormData({ deadline: nextDate })}
-                        className={`rounded-xl border px-4 py-4 text-left transition ${isSelected ? "border-primary/20 bg-primary/8 text-primary" : "border-border/60 bg-muted/35 text-foreground hover:bg-slate-100"}`}
+                        className={`rounded-xl border px-4 py-4 text-left transition ${isSelected ? "border-primary/20 bg-primary/8 text-primary" : "border-border/60 bg-white text-foreground hover:bg-deep-navy-50"}`}
                       >
                         <p className="text-sm font-semibold">{preset.label}</p>
                         <p className="mt-1 text-sm text-muted-foreground">{formatTimelineSummary(nextDate)}</p>
@@ -788,7 +788,7 @@ export default function PostProject() {
 
                 <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
                   {formData.images.map((image, index) => (
-                    <div key={image} className="group relative aspect-video overflow-hidden rounded-xl bg-slate-100">
+                    <div key={image} className="group relative aspect-video overflow-hidden rounded-xl bg-deep-navy-50">
                       <img src={image} alt={`Project ${index + 1}`} className="h-full w-full object-cover" />
                       <button
                         type="button"
@@ -806,7 +806,7 @@ export default function PostProject() {
                       type="button"
                       onClick={() => fileInputRef.current?.click()}
                       disabled={uploadingImage}
-                      className="flex aspect-video flex-col items-center justify-center rounded-xl border border-dashed border-border/60 bg-muted/30 text-center transition hover:border-primary/30 hover:bg-primary/5"
+                      className="flex aspect-video flex-col items-center justify-center rounded-xl border border-dashed border-border/60 bg-white text-center transition hover:border-primary/30 hover:bg-primary/5"
                     >
                       {uploadingImage ? (
                         <Loader2 className="h-7 w-7 animate-spin text-muted-foreground" />
@@ -893,7 +893,7 @@ export default function PostProject() {
                             key={skill}
                             type="button"
                             onClick={() => handleSkillToggle(skill)}
-                            className={`rounded-lg px-3 py-2 text-sm transition ${isSelected ? "bg-primary text-primary-foreground" : "bg-slate-100 text-foreground hover:bg-slate-200"}`}
+                            className={`rounded-lg px-3 py-2 text-sm transition ${isSelected ? "bg-primary text-primary-foreground" : "bg-deep-navy-50 text-foreground hover:bg-deep-navy-100"}`}
                           >
                             {skill}
                           </button>
@@ -907,7 +907,7 @@ export default function PostProject() {
           </main>
 
           <aside className="space-y-4 xl:sticky xl:top-[6rem]">
-            <div className="rounded-xl border border-border/60 bg-white/95 p-5 shadow-sm backdrop-blur-sm">
+            <div className="rounded-xl border border-border/60 bg-white p-5 shadow-sm backdrop-blur-sm">
               <div className="flex items-center justify-between gap-3">
                 <div>
                   <p className="detail-kicker">Floating save state</p>
@@ -918,7 +918,7 @@ export default function PostProject() {
                 </div>
               </div>
 
-              <div className="mt-4 h-2 overflow-hidden rounded-full bg-slate-200/80">
+              <div className="mt-4 h-2 overflow-hidden rounded-full bg-deep-navy-100/80">
                 <div className="h-full rounded-full bg-primary transition-all duration-300" style={{ width: `${validation.completion}%` }} />
               </div>
 
@@ -940,7 +940,7 @@ export default function PostProject() {
               </div>
             </div>
 
-            <div className="rounded-xl border border-border/60 bg-muted/35 p-5">
+            <div className="rounded-xl border border-border/60 bg-white p-5">
               <p className="detail-kicker">Listing preview</p>
               <h3 className="mt-2 text-lg font-semibold tracking-[-0.03em] text-foreground">How providers will read this</h3>
               <div className="mt-4 space-y-4 text-sm">
@@ -994,7 +994,7 @@ export default function PostProject() {
           </div>
 
           <div className="flex flex-col-reverse gap-3 sm:flex-row">
-            <Button variant="outline" className="rounded-lg border-border/60 bg-white/85" onClick={() => handleSubmit(true)} disabled={loading}>
+            <Button variant="outline" className="rounded-lg border-border/60 bg-white" onClick={() => handleSubmit(true)} disabled={loading}>
               {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
               Save Draft
             </Button>
@@ -1006,7 +1006,7 @@ export default function PostProject() {
           </div>
         </div>
 
-        <div className="mt-4 rounded-xl border border-amber-200/80 bg-amber-50/80 px-4 py-4">
+        <div className="mt-4 rounded-xl border border-copper-100/80 bg-copper-50/80 px-4 py-4">
           <div className="flex items-start gap-3">
             <Zap className="mt-0.5 h-5 w-5 text-amber-700" />
             <div>

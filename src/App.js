@@ -7,6 +7,11 @@ import { ChatProvider } from "./context/ChatContext";
 import { NotificationProvider, useNotifications } from "./context/NotificationContext";
 import { Loader2 } from "lucide-react";
 import ErrorBoundary from "./components/ErrorBoundary";
+import "@fontsource/poppins/400.css";
+import "@fontsource/poppins/500.css";
+import "@fontsource/poppins/600.css";
+import "@fontsource/poppins/700.css";
+import "@fontsource/poppins/800.css";
 
 // CRITICAL: Load API debugger FIRST to catch all network requests
 import "./utils/apiDebug";
@@ -19,6 +24,9 @@ const PushNotificationsInit = lazy(() => import("./mobile/components/PushNotific
 
 // Lazy load all other pages
 const ForgotPasswordPage = lazy(() => import("./pages/ForgotPasswordPage"));
+const ServicesPage = lazy(() => import("./pages/ServicesPage"));
+const PricingPage = lazy(() => import("./pages/PricingPage"));
+const HelpCenterPage = lazy(() => import("./pages/HelpCenterPage"));
 const ProviderProfile = lazy(() => import("./pages/ProviderProfile"));
 const CustomerDashboard = lazy(() => import("./pages/CustomerDashboard"));
 const ProviderDashboard = lazy(() => import("./pages/ProviderDashboard"));
@@ -231,6 +239,9 @@ function AppRoutes() {
       <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/auth" element={user ? <Navigate to={getDefaultRedirect()} replace /> : <AuthPage />} />
+      <Route path="/services" element={<ServicesPage />} />
+      <Route path="/pricing" element={<PricingPage />} />
+      <Route path="/help" element={<HelpCenterPage />} />
       
       {/* Search Route - Public */}
       <Route path="/search" element={<SearchResults />} />

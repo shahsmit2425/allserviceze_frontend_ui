@@ -602,13 +602,13 @@ export default function Messages() {
           key={conversation.id}
           type="button"
           onClick={() => openConversation(conversation)}
-          className={`w-full rounded-lg border px-4 py-3 text-left transition ${isActive ? "border-primary/20 bg-primary/6 shadow-[0_18px_40px_-34px_rgba(59,130,246,0.28)]" : "border-border/60 bg-white hover:border-primary/18 hover:bg-slate-50"}`}
+          className={`w-full rounded-lg border px-4 py-3 text-left transition duration-200 ${isActive ? "border-copper-400 bg-copper-50 shadow-md" : "border-deep-navy-100 bg-white hover:border-copper-300 hover:shadow-md hover:bg-white"}`}
         >
           <div className="flex items-start gap-3">
             {participant?.avatar ? (
               <img src={participant.avatar} alt={participant?.name || "Participant"} className="h-11 w-11 rounded-full object-cover" />
             ) : (
-              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-slate-100 text-sm font-semibold text-foreground">
+              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-deep-navy-50 text-sm font-semibold text-foreground">
                 {(participant?.name || "U").charAt(0).toUpperCase()}
               </div>
             )}
@@ -642,9 +642,9 @@ export default function Messages() {
     return (
       <AppShell theme={pageTheme} className="pb-12" contentClassName="pb-12">
         <div className="page-shell py-6 sm:py-8">
-          <div className="rounded-xl border border-border/60 bg-white px-5 py-5 shadow-[0_18px_48px_-40px_rgba(15,23,42,0.16)]">
-            <div className="flex items-center gap-3 text-sm text-muted-foreground">
-              <Loader2 className="h-5 w-5 animate-spin text-primary" />
+          <div className="rounded-xl border border-deep-navy-100 bg-white px-6 py-6 shadow-md">
+            <div className="flex items-center gap-3 text-sm text-deep-navy-600">
+              <Loader2 className="h-5 w-5 animate-spin text-copper-500" />
               Preparing your messaging workspace...
             </div>
           </div>
@@ -657,9 +657,9 @@ export default function Messages() {
     return (
       <AppShell theme={pageTheme} className="pb-12" contentClassName="pb-12">
         <div className="page-shell py-6 sm:py-8">
-          <div className="rounded-xl border border-red-200 bg-red-50/80 px-6 py-6 shadow-[0_18px_48px_-40px_rgba(15,23,42,0.16)]">
+          <div className="rounded-xl border border-red-200 bg-red-50 px-6 py-6 shadow-md">
             <div className="flex items-start gap-4">
-              <AlertCircle className="mt-0.5 h-6 w-6 text-red-500" />
+              <AlertCircle className="mt-0.5 h-6 w-6 text-red-600" />
               <div>
                 <p className="text-base font-semibold text-foreground">Messaging service unavailable</p>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">Unable to load conversations right now. Try again in a moment.</p>
@@ -711,7 +711,7 @@ export default function Messages() {
                   {selectedParticipant.avatar ? (
                     <img src={selectedParticipant.avatar} alt={selectedParticipant.name} className="h-10 w-10 rounded-full object-cover" />
                   ) : (
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 text-sm font-semibold text-foreground">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-deep-navy-50 text-sm font-semibold text-foreground">
                       {(selectedParticipant.name || "U").charAt(0).toUpperCase()}
                     </div>
                   )}
@@ -784,7 +784,7 @@ export default function Messages() {
                           <div key={message.id} className={`flex ${isOwnMessage ? "justify-end" : "justify-start"}`}>
                             <div className={`max-w-[84%] rounded-lg px-4 py-3 shadow-[0_16px_34px_-28px_rgba(15,23,42,0.12)] ${isOwnMessage ? "bg-[linear-gradient(135deg,hsl(var(--primary))_0%,hsl(var(--secondary))_100%)] text-primary-foreground" : "border border-border/60 bg-white text-foreground"}`}>
                               {message.reply_to_preview ? (
-                                <div className={`mb-2 rounded-[0.9rem] px-3 py-2 text-xs ${isOwnMessage ? "bg-white/12 text-primary-foreground/88" : "bg-slate-50 text-muted-foreground"}`}>
+                                <div className={`mb-2 rounded-[0.9rem] px-3 py-2 text-xs ${isOwnMessage ? "bg-white/12 text-primary-foreground/88" : "bg-white text-muted-foreground"}`}>
                                   {message.reply_to_preview}
                                 </div>
                               ) : null}
@@ -815,9 +815,9 @@ export default function Messages() {
                   <div ref={messageEndRef} />
                 </div>
 
-                <div className="sticky bottom-0 border-t border-border/60 bg-white/95 px-4 py-4 backdrop-blur sm:px-5">
+                <div className="sticky bottom-0 border-t border-deep-navy-100 bg-white px-4 py-4 sm:px-5">
                   {replyingTo ? (
-                    <div className="mb-3 flex items-start justify-between gap-3 rounded-lg border border-border/60 bg-slate-50/85 px-3 py-3 text-sm">
+                    <div className="mb-3 flex items-start justify-between gap-3 rounded-lg border border-deep-navy-100 bg-deep-navy-50 px-3 py-3 text-sm shadow-sm">
                       <div className="min-w-0">
                         <p className="font-semibold text-foreground">Replying to {replyingTo.sender_name || "message"}</p>
                         <p className="mt-1 truncate text-muted-foreground">{replyingTo.content}</p>
@@ -829,7 +829,7 @@ export default function Messages() {
                   {selectedAttachmentFiles.length > 0 ? (
                     <div className="mb-3 flex flex-wrap gap-2">
                       {selectedAttachmentFiles.map((file) => (
-                        <span key={`${file.name}-${file.size}`} className="inline-flex items-center gap-2 rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-foreground">
+                        <span key={`${file.name}-${file.size}`} className="inline-flex items-center gap-2 rounded-lg bg-deep-navy-50 px-3 py-1.5 text-xs font-medium text-foreground">
                           <Paperclip className="h-3.5 w-3.5" />
                           {file.name}
                         </span>
@@ -842,7 +842,7 @@ export default function Messages() {
                     <button
                       type="button"
                       onClick={() => attachmentInputRef.current?.click()}
-                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border/60 bg-slate-50 text-foreground transition hover:border-primary/20 hover:bg-primary/5"
+                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border/60 bg-white text-foreground transition hover:border-primary/20 hover:bg-primary/5"
                       aria-label="Add attachment references"
                     >
                       <Paperclip className="h-4 w-4" />
@@ -952,8 +952,8 @@ export default function Messages() {
                         <div className="mt-4 space-y-3">
                           <p className="text-sm font-semibold text-foreground">Recent reviews</p>
                           {providerReviews.slice(0, 2).map((review) => (
-                            <div key={review.id} className="rounded-[1rem] bg-slate-50/85 px-4 py-3 text-sm">
-                              <div className="flex items-center gap-2 text-amber-500">
+                            <div key={review.id} className="rounded-[1rem] bg-white px-4 py-3 text-sm">
+                              <div className="flex items-center gap-2 text-copper-500">
                                 {Array.from({ length: review.rating }).map((_, index) => <Star key={`${review.id}-${index}`} className="h-3.5 w-3.5 fill-current" />)}
                               </div>
                               <p className="mt-2 leading-6 text-foreground/88">{review.comment}</p>

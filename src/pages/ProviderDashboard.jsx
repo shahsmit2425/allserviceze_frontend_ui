@@ -335,7 +335,7 @@ export default function ProviderDashboard() {
   const renderActivityIcon = (type) => {
     if (type === "message") return <MessageSquare className="h-4 w-4 text-primary" />;
     if (type === "won") return <Trophy className="h-4 w-4 text-emerald-600" />;
-    if (type === "shortlist") return <Star className="h-4 w-4 text-amber-500" />;
+    if (type === "shortlist") return <Star className="h-4 w-4 text-copper-500" />;
     return <Briefcase className="h-4 w-4 text-sky-600" />;
   };
 
@@ -417,7 +417,7 @@ export default function ProviderDashboard() {
     <>
       <AppShell theme="provider" className="bg-background pb-12" contentClassName="pb-12" data-testid="provider-dashboard">
         <div className="page-shell space-y-7 py-7 sm:space-y-8 sm:py-8">
-          <section className="toolbar-surface overflow-hidden border-0 bg-[linear-gradient(135deg,#f8fcff_0%,#eef8f5_55%,#ffffff_100%)] px-5 py-5 sm:px-6 sm:py-6">
+          <section className="toolbar-surface overflow-hidden border border-deep-navy-100 bg-[linear-gradient(135deg,#f8fcff_0%,#eef8f5_55%,#ffffff_100%)] px-5 py-5 sm:px-6 sm:py-6">
             <div className="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
               <div>
                 <p className="detail-kicker">Welcome back {user?.name || user?.full_name || "Provider"}</p>
@@ -435,17 +435,17 @@ export default function ProviderDashboard() {
             </div>
 
             <div className="mt-5 grid gap-3 sm:grid-cols-3">
-              <div className="rounded-xl border border-white/80 bg-white/85 px-4 py-4 shadow-sm shadow-slate-900/5">
+              <div className="rounded-xl border border-white/80 bg-white px-4 py-4 shadow-sm shadow-deep-navy-800/5">
                 <p className="caption">New matching projects</p>
                 <p className="mt-2 text-3xl font-semibold tracking-[-0.05em] text-foreground">{recommendedProjects.length}</p>
                 <p className="mt-2 text-sm text-muted-foreground">Fresh live jobs you have not bid on yet.</p>
               </div>
-              <div className="rounded-xl border border-white/80 bg-white/85 px-4 py-4 shadow-sm shadow-slate-900/5">
+              <div className="rounded-xl border border-white/80 bg-white px-4 py-4 shadow-sm shadow-deep-navy-800/5">
                 <p className="caption">Open bid pipeline</p>
                 <p className="mt-2 text-3xl font-semibold tracking-[-0.05em] text-foreground">{formatCurrency(openBidValue)}</p>
                 <p className="mt-2 text-sm text-muted-foreground">Current proposal value waiting on customer action.</p>
               </div>
-              <div className="rounded-xl border border-white/80 bg-white/85 px-4 py-4 shadow-sm shadow-slate-900/5">
+              <div className="rounded-xl border border-white/80 bg-white px-4 py-4 shadow-sm shadow-deep-navy-800/5">
                 <p className="caption">Won work</p>
                 <p className="mt-2 text-3xl font-semibold tracking-[-0.05em] text-foreground">{formatCurrency(wonValue)}</p>
                 <p className="mt-2 text-sm text-muted-foreground">Awarded pipeline already converted into revenue opportunities.</p>
@@ -455,7 +455,7 @@ export default function ProviderDashboard() {
 
           <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_23rem]">
             <div className="space-y-6">
-              <Card className="form-shell border-0">
+              <Card className="form-shell border border-deep-navy-100">
                 <CardHeader className="pb-0">
                   <div className="flex items-end justify-between gap-4">
                     <div>
@@ -495,7 +495,7 @@ export default function ProviderDashboard() {
                           <p className="caption">Bids awaiting response</p>
                           <p className="mt-2 text-2xl font-semibold tracking-[-0.05em] text-foreground">{counts.active}</p>
                         </div>
-                        <FileText className="h-5 w-5 text-amber-600" />
+                        <FileText className="h-5 w-5 text-copper-600" />
                       </div>
                       <p className="mt-3 text-sm leading-6 text-muted-foreground">Follow up on proposals still sitting in customer review.</p>
                     </button>
@@ -503,7 +503,7 @@ export default function ProviderDashboard() {
                 </CardContent>
               </Card>
 
-              <Card className="form-shell border-0">
+              <Card className="form-shell border border-deep-navy-100">
                 <CardHeader className="pb-0">
                   <div className="flex items-end justify-between gap-4">
                     <div>
@@ -529,15 +529,15 @@ export default function ProviderDashboard() {
                               <h3 className="mt-3 text-lg font-semibold tracking-[-0.03em] text-foreground">{project.title}</h3>
                               <p className="mt-2 line-clamp-2 text-sm leading-6 text-muted-foreground">{project.description}</p>
                               <div className="mt-4 flex flex-wrap gap-2.5 text-sm">
-                                <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-slate-900/5">
+                                <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-deep-navy-800/5">
                                   <DollarSign className="h-4 w-4 text-primary" />
                                   <span className="font-medium">{formatBudgetRange(project)}</span>
                                 </span>
-                                <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-slate-900/5">
+                                <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-deep-navy-800/5">
                                   <MapPin className="h-4 w-4 text-primary" />
                                   <span className="font-medium">{project.location || "Flexible location"}</span>
                                 </span>
-                                <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-slate-900/5">
+                                <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-deep-navy-800/5">
                                   <Calendar className="h-4 w-4 text-primary" />
                                   <span className="font-medium">{formatActivityTime(project.created_at)}</span>
                                 </span>
@@ -569,7 +569,7 @@ export default function ProviderDashboard() {
                 </CardContent>
               </Card>
 
-              <Card className="form-shell border-0">
+              <Card className="form-shell border border-deep-navy-100">
           <CardHeader className="pb-0">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
               <div>
@@ -674,25 +674,25 @@ export default function ProviderDashboard() {
                                 </div>
 
                                 <div className="mt-4 flex flex-wrap gap-2.5 text-sm">
-                                  <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-slate-900/5">
+                                  <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-deep-navy-800/5">
                                     <DollarSign className="h-4 w-4 text-primary" />
                                     <span className="font-medium">Bid ${bid.amount}</span>
                                   </span>
-                                  <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-slate-900/5">
+                                  <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-deep-navy-800/5">
                                     <Clock className="h-4 w-4 text-primary" />
                                     <span className="font-medium">{bid.estimated_days} days</span>
                                   </span>
-                                  <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-slate-900/5">
+                                  <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-deep-navy-800/5">
                                     <Calendar className="h-4 w-4 text-primary" />
                                     <span className="font-medium">{formatDistanceToNow(new Date(bid.created_at), { addSuffix: true })}</span>
                                   </span>
                                   {project ? (
-                                    <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-slate-900/5">
+                                    <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-deep-navy-800/5">
                                       <Briefcase className="h-4 w-4 text-primary" />
                                       <span className="font-medium">${project.budget_min} - ${project.budget_max}</span>
                                     </span>
                                   ) : (
-                                    <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-slate-900/5">
+                                    <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-deep-navy-800/5">
                                       <FileText className="h-4 w-4 text-primary" />
                                       <span className="font-medium">{statusLabels[bid.status]}</span>
                                     </span>
@@ -849,7 +849,7 @@ export default function ProviderDashboard() {
             </div>
 
             <div className="space-y-6">
-              <Card className="form-shell border-0">
+              <Card className="form-shell border border-deep-navy-100">
                 <CardHeader className="pb-0">
                   <div className="flex items-end justify-between gap-4">
                     <div>
@@ -864,7 +864,7 @@ export default function ProviderDashboard() {
                     <div className="space-y-3">
                       {recentActivity.map((item) => (
                         <div key={item.id} className="flex items-start gap-3 rounded-xl border border-border/60 bg-white px-4 py-3 shadow-sm">
-                          <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-2xl bg-slate-50">
+                          <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-2xl bg-white">
                             {renderActivityIcon(item.type)}
                           </div>
                           <div className="min-w-0 flex-1">
@@ -886,7 +886,7 @@ export default function ProviderDashboard() {
               <button
                 type="button"
                 onClick={() => navigate("/schedule")}
-                className="form-shell w-full border-0 p-5 text-left transition hover:border-primary/20 hover:bg-primary/5"
+                className="form-shell w-full border border-deep-navy-100 p-5 text-left transition hover:border-primary/20 hover:bg-primary/5"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div>
@@ -915,7 +915,7 @@ export default function ProviderDashboard() {
                 </div>
               </button>
 
-              <button type="button" onClick={() => setShowAllReviews(true)} className="form-shell w-full border-0 p-5 text-left transition hover:border-primary/20 hover:bg-primary/5">
+              <button type="button" onClick={() => setShowAllReviews(true)} className="form-shell w-full border border-deep-navy-100 p-5 text-left transition hover:border-primary/20 hover:bg-primary/5">
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <p className="caption">Reputation</p>
@@ -958,7 +958,7 @@ export default function ProviderDashboard() {
             {/* Project Details */}
             {projectDetails ? (
               <div className="space-y-5">
-                <div className="rounded-xl border border-border/60 bg-white/90 p-5 shadow-sm backdrop-blur-sm">
+                <div className="rounded-xl border border-border/60 bg-white p-5 shadow-sm backdrop-blur-sm">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Completed project overview</p>
                   <p className="mt-3 text-base leading-7 text-muted-foreground break-words overflow-wrap-anywhere">{projectDetails.description}</p>
                 </div>
@@ -997,7 +997,7 @@ export default function ProviderDashboard() {
                 </div>
 
                 {projectDetails.required_skills?.length > 0 && (
-                  <div className="rounded-xl border border-border/60 bg-muted/35 p-4 shadow-sm">
+                  <div className="rounded-xl border border-border/60 bg-white p-4 shadow-sm">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Required skills</p>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {projectDetails.required_skills.map((skill, i) => (
@@ -1008,7 +1008,7 @@ export default function ProviderDashboard() {
                 )}
 
                 {projectDetails.images?.length > 0 && (
-                  <div className="rounded-xl border border-border/60 bg-muted/35 p-4 shadow-sm">
+                  <div className="rounded-xl border border-border/60 bg-white p-4 shadow-sm">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Project images</p>
                     <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
                       {projectDetails.images.map((img, i) => (
@@ -1027,18 +1027,18 @@ export default function ProviderDashboard() {
                 <div className="rounded-xl border border-primary/10 bg-primary/5 p-4 shadow-sm shadow-primary/5">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">Your winning bid</p>
                   <div className="mt-3 flex flex-wrap items-center gap-4 text-sm text-foreground">
-                    <span className="inline-flex items-center gap-2 rounded-lg bg-white/80 px-3 py-2 font-semibold shadow-sm">
+                    <span className="inline-flex items-center gap-2 rounded-lg bg-white px-3 py-2 font-semibold shadow-sm">
                       <DollarSign className="h-4 w-4 text-primary" />
                       ${selectedProject?.amount}
                     </span>
                     {selectedProject?.estimated_days && (
-                      <span className="inline-flex items-center gap-2 rounded-lg bg-white/80 px-3 py-2 font-semibold shadow-sm">
+                      <span className="inline-flex items-center gap-2 rounded-lg bg-white px-3 py-2 font-semibold shadow-sm">
                         <Clock className="h-4 w-4 text-primary" />
                         {selectedProject.estimated_days} days
                       </span>
                     )}
                     {projectDetails.completed_at && (
-                      <span className="inline-flex items-center gap-2 rounded-lg bg-white/80 px-3 py-2 font-semibold shadow-sm">
+                      <span className="inline-flex items-center gap-2 rounded-lg bg-white px-3 py-2 font-semibold shadow-sm">
                         <CheckCircle className="h-4 w-4 text-primary" />
                         Completed {new Date(projectDetails.completed_at).toLocaleDateString()}
                       </span>
@@ -1094,7 +1094,7 @@ export default function ProviderDashboard() {
 
                   {/* Provider Reply */}
                   {projectReview.provider_reply ? (
-                    <div className="ml-4 pl-4 border-l-2 border-primary/30 bg-muted/30 rounded-r-lg p-3">
+                    <div className="ml-4 pl-4 border-l-2 border-primary/30 bg-white rounded-r-lg p-3">
                       <div className="flex items-center gap-2 mb-1">
                         <MessageSquare className="w-3.5 h-3.5 text-primary" />
                         <span className="text-sm font-semibold text-primary">Your Reply</span>
@@ -1152,7 +1152,7 @@ export default function ProviderDashboard() {
       {/* Image Lightbox */}
       {lightboxImage && (
         <div
-          className="fixed inset-0 z-[100] bg-black/80 flex items-center justify-center p-4 cursor-pointer"
+          className="fixed inset-0 z-[100] bg-copper-600/80 flex items-center justify-center p-4 cursor-pointer"
           onClick={() => setLightboxImage(null)}
         >
           <button className="absolute top-4 right-4 text-white text-3xl font-bold hover:text-gray-300 z-[101]" onClick={() => setLightboxImage(null)}>&times;</button>
@@ -1222,7 +1222,7 @@ export default function ProviderDashboard() {
 
                   {/* Provider Reply */}
                   {review.provider_reply ? (
-                    <div className="ml-4 pl-4 border-l-2 border-primary/30 bg-muted/30 rounded-r-lg p-3">
+                    <div className="ml-4 pl-4 border-l-2 border-primary/30 bg-white rounded-r-lg p-3">
                       <div className="flex items-center gap-2 mb-1">
                         <MessageSquare className="w-3.5 h-3.5 text-primary" />
                         <span className="text-sm font-semibold text-primary">Your Reply</span>

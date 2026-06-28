@@ -275,9 +275,9 @@ export default function ProviderDocumentVerification() {
 
             {/* Error Display */}
             {status?.stripe_verification_status === 'requires_input' && (
-              <div className="form-section border-amber-200 bg-amber-50/90">
+              <div className="form-section border-copper-100 bg-copper-50/90">
                 <div className="flex gap-3">
-                  <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <AlertCircle className="w-5 h-5 text-copper-600 flex-shrink-0 mt-0.5" />
                   <div>
                     <h4 className="font-semibold text-amber-900 mb-1">Verification Failed - Action Required</h4>
                     <p className="text-sm text-amber-800 mb-2">

@@ -58,7 +58,7 @@ export default function MyBookings({ viewAs = "customer", subscriptionTier = "fr
     <div>
       <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-[1rem] border border-white/80 bg-white/80 shadow-sm shadow-slate-900/5">
+          <div className="flex h-11 w-11 items-center justify-center rounded-[1rem] border border-white/80 bg-white/80 shadow-sm shadow-deep-navy-800/5">
             <CalendarDays className="h-5 w-5 text-[#1B4332]" />
           </div>
           <div>
@@ -99,7 +99,7 @@ export default function MyBookings({ viewAs = "customer", subscriptionTier = "fr
       </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab}>
-        <TabsList className="mb-5 h-auto flex-wrap gap-2 rounded-[1.2rem] border border-white/80 bg-white/80 p-1.5 shadow-sm shadow-slate-900/5">
+        <TabsList className="mb-5 h-auto flex-wrap gap-2 rounded-[1.2rem] border border-white/80 bg-white/80 p-1.5 shadow-sm shadow-deep-navy-800/5">
           {TABS.map(({ value, label }) => {
             const count = bookings.filter((b) => b.status === value).length;
             return (

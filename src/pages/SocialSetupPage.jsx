@@ -182,14 +182,14 @@ export default function SocialSetupPage() {
               </p>
 
               {email && (
-                <div className="mt-6 rounded-lg border border-white/70 bg-white/70 px-4 py-3 text-sm font-medium text-foreground shadow-sm shadow-slate-900/5">
+                <div className="mt-6 rounded-lg border border-white/70 bg-white/70 px-4 py-3 text-sm font-medium text-foreground shadow-sm shadow-deep-navy-800/5">
                   {email}
                 </div>
               )}
             </div>
           </section>
 
-          <Card className="w-full overflow-hidden rounded-xl border border-white/70 bg-white/88 shadow-xl shadow-slate-900/5 backdrop-blur-sm">
+          <Card className="w-full overflow-hidden rounded-xl border border-white/70 bg-white/88 shadow-xl shadow-deep-navy-800/5 backdrop-blur-sm">
             <CardHeader className="pb-4">
               <CardTitle className="text-2xl font-semibold tracking-[-0.04em]">Almost there</CardTitle>
               <CardDescription className="mt-1 text-sm leading-6">
@@ -214,11 +214,11 @@ export default function SocialSetupPage() {
                 <div className="space-y-3">
                   <Label>I am a</Label>
                   <RadioGroup value={role} onValueChange={setRole} className="grid gap-3 sm:grid-cols-2">
-                    <label htmlFor="role_customer" className="flex cursor-pointer items-center gap-3 rounded-lg border border-slate-200/80 bg-slate-50/80 px-4 py-4">
+                    <label htmlFor="role_customer" className="flex cursor-pointer items-center gap-3 rounded-lg border border-deep-navy-100/80 bg-white px-4 py-4">
                       <RadioGroupItem value="customer" id="role_customer" />
                       <span className="text-sm font-medium text-foreground">Customer</span>
                     </label>
-                    <label htmlFor="role_provider" className="flex cursor-pointer items-center gap-3 rounded-lg border border-slate-200/80 bg-slate-50/80 px-4 py-4">
+                    <label htmlFor="role_provider" className="flex cursor-pointer items-center gap-3 rounded-lg border border-deep-navy-100/80 bg-white px-4 py-4">
                       <RadioGroupItem value="provider" id="role_provider" />
                       <span className="text-sm font-medium text-foreground">Service Provider</span>
                     </label>

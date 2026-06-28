@@ -297,7 +297,7 @@ export default function ProviderBusinessSetup() {
                               </div>
                             )}
                             {uploadingAvatar && (
-                              <div className="absolute inset-0 flex items-center justify-center rounded-full bg-black/50">
+                              <div className="absolute inset-0 flex items-center justify-center rounded-full bg-copper-600/50">
                                 <Loader2 className="w-6 h-6 animate-spin text-white" />
                               </div>
                             )}
@@ -318,7 +318,7 @@ export default function ProviderBusinessSetup() {
                                 size="sm"
                                 disabled={uploadingAvatar}
                                 onClick={() => document.getElementById('avatar-upload').click()}
-                                className="cursor-pointer rounded-lg bg-white/80"
+                                className="cursor-pointer rounded-lg bg-white"
                               >
                                 {uploadingAvatar ? (
                                   <>
@@ -452,7 +452,7 @@ export default function ProviderBusinessSetup() {
                           variant="outline"
                           onClick={handleAddServiceArea}
                           disabled={!newServiceArea.trim()}
-                          className="rounded-lg bg-white/80"
+                          className="rounded-lg bg-white"
                         >
                           <Plus className="w-4 h-4 mr-1" />
                           Add
@@ -555,7 +555,7 @@ export default function ProviderBusinessSetup() {
                     variant="outline"
                     onClick={() => setCurrentStep(currentStep - 1)}
                     disabled={currentStep === 1}
-                    className="rounded-lg bg-white/80"
+                    className="rounded-lg bg-white"
                   >
                     <ArrowLeft className="w-4 h-4 mr-2" />
                     Previous
@@ -584,7 +584,7 @@ export default function ProviderBusinessSetup() {
           </div>
 
           <aside className="space-y-4 xl:sticky xl:top-6 xl:self-start">
-            <Card className="border-white/70 bg-white/80 shadow-sm">
+            <Card className="border-white/70 bg-white shadow-sm">
               <CardContent className="space-y-3 p-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">Setup summary</p>
                 <div className="rounded-lg border border-white/70 bg-muted/40 px-4 py-3">
@@ -607,7 +607,7 @@ export default function ProviderBusinessSetup() {
             <Card className="alert-warning shadow-sm">
               <CardContent className="p-5">
                 <div className="flex gap-3">
-                  <Shield className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <Shield className="w-5 h-5 text-copper-600 flex-shrink-0 mt-0.5" />
                   <div>
                     <h4 className="font-semibold text-amber-900 mb-1">Why do we need this?</h4>
                     <p className="text-sm text-amber-800">
@@ -618,7 +618,7 @@ export default function ProviderBusinessSetup() {
               </CardContent>
             </Card>
 
-            <Card className="border-white/70 bg-white/80 shadow-sm">
+            <Card className="border-white/70 bg-white shadow-sm">
               <CardContent className="p-5">
                 <button onClick={() => navigate("/dashboard")} className="text-sm font-medium text-primary underline underline-offset-4">
                   Skip for now

@@ -168,7 +168,7 @@ export const ImageUpload = ({
 
       {/* Mobile source picker */}
       {isNative && showSourcePicker && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-end" onClick={() => setShowSourcePicker(false)}>
+        <div className="fixed inset-0 bg-copper-600/50 z-50 flex items-end" onClick={() => setShowSourcePicker(false)}>
           <div className="bg-white w-full rounded-t-2xl p-4 space-y-2" onClick={(e) => e.stopPropagation()}>
             <h3 className="text-lg font-semibold text-center mb-4">Choose Photo Source</h3>
             <Button
@@ -354,7 +354,7 @@ export const ServiceImageGallery = ({ images = [], onImagesChange, maxImages = 5
 
       {/* Mobile source picker */}
       {isNative && showSourcePicker && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-end" onClick={() => setShowSourcePicker(false)}>
+        <div className="fixed inset-0 bg-copper-600/50 z-50 flex items-end" onClick={() => setShowSourcePicker(false)}>
           <div className="bg-white w-full rounded-t-2xl p-4 space-y-2" onClick={(e) => e.stopPropagation()}>
             <h3 className="text-lg font-semibold text-center mb-4">Choose Photo Source</h3>
             <Button

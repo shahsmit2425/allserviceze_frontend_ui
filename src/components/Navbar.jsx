@@ -36,28 +36,28 @@ const RoleBadge = ({ role, isAdmin }) => {
 };
 
 const desktopLinkClasses = (active, variant = "default") => cn(
-  "group flex items-center gap-2 text-sm font-medium transition-all duration-200",
+  "group flex items-center gap-2 text-base font-bold transition-all duration-200",
   variant === "landing"
     ? active
-      ? "px-0 py-2 text-foreground"
-      : "px-0 py-2 text-muted-foreground hover:text-foreground"
+      ? "px-0 py-2 text-deep-navy-800"
+      : "px-0 py-2 text-deep-navy-600 hover:text-deep-navy-800"
     : active
-      ? "rounded-[0.95rem] border border-primary/12 bg-primary/6 px-3.5 py-2.5 text-primary"
-      : "rounded-lg px-3.5 py-2.5 text-muted-foreground hover:bg-muted hover:text-foreground"
+      ? "rounded-xl border border-deep-navy-200 bg-deep-navy-50 px-3.5 py-2.5 text-deep-navy-800 font-bold"
+      : "rounded-lg px-3.5 py-2.5 text-deep-navy-600 hover:bg-deep-navy-50 hover:text-deep-navy-800"
 );
 
 const mobileLinkClasses = (active) => cn(
-  "flex items-center gap-3 rounded-lg border px-4 py-3 text-sm font-medium transition-all duration-200",
+  "flex items-center gap-3 rounded-xl border px-4 py-3 text-base font-bold transition-all duration-200",
   active
-    ? "border-primary/16 bg-primary/6 text-primary"
-    : "border-border bg-background text-foreground/80 hover:bg-muted hover:text-foreground"
+    ? "border-deep-navy-200 bg-deep-navy-50 text-deep-navy-800 font-bold"
+    : "border-deep-navy-100 bg-white text-deep-navy-600 hover:bg-white hover:text-deep-navy-800"
 );
 
 const tabletLinkClasses = (active) => cn(
-  "inline-flex min-w-max items-center gap-2.5 rounded-lg border px-4 py-2.5 text-sm font-medium transition-all duration-200",
+  "inline-flex min-w-max items-center gap-2.5 rounded-xl border px-4 py-2.5 text-base font-bold transition-all duration-200",
   active
-    ? "border-primary/16 bg-primary/6 text-primary"
-    : "border-border/60 bg-background/92 text-foreground/80 hover:bg-muted hover:text-foreground"
+    ? "border-deep-navy-200 bg-deep-navy-50 text-deep-navy-800 font-bold"
+    : "border-deep-navy-100 bg-white/50 text-deep-navy-600 hover:bg-white hover:text-deep-navy-800"
 );
 
 export const Navbar = ({ variant = "default" }) => {
@@ -97,38 +97,23 @@ export const Navbar = ({ variant = "default" }) => {
 
   return (
     <nav
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 overflow-visible",
-        isLandingNav && "border-b border-border/60 bg-background/95 backdrop-blur-xl"
-      )}
+      className="fixed inset-x-0 top-0 z-50 overflow-visible border-b border-deep-navy-50 bg-white shadow-sm"
       style={{ paddingTop: "env(safe-area-inset-top)" }}
     >
-      <div className={cn(isLandingNav ? "mx-auto w-full max-w-[96rem] px-4 sm:px-6 lg:px-10" : "page-shell pt-2.5")}>
-      <div className={cn("w-full overflow-visible", isLandingNav ? "bg-transparent shadow-none" : "rounded-lg border border-border/60 bg-background/96 shadow-[0_12px_28px_-24px_rgba(15,23,42,0.08)]")}>
-        <div className={cn("overflow-visible", isLandingNav ? "px-0" : "px-3.5 sm:px-5 lg:px-6")}>
-          <div className={cn("flex items-center justify-between overflow-visible", isLandingNav ? "h-[4.85rem]" : "h-[4.1rem]")}>
+      <div className={cn(isLandingNav ? "mx-auto w-full max-w-[96rem] px-4 sm:px-6 lg:px-10" : "mx-auto w-full max-w-[96rem] px-4 sm:px-6 lg:px-10")}>
+      <div className="w-full overflow-visible bg-transparent shadow-none">
+        <div className="overflow-visible px-0 py-2">
+          <div className="flex items-center justify-between gap-8 overflow-visible h-20">
           {/* Logo */}
-            <Link to="/" className={cn(
-              "group flex items-center gap-2.5 transition-colors duration-200",
-              isLandingNav
-                ? "py-2"
-                : "-ml-2 rounded-[0.95rem] px-2.5 py-2 hover:bg-muted"
-            )} data-testid="logo-link">
+            <Link to="/" className="group flex items-center transition-all duration-200 flex-shrink-0 hover:opacity-80" data-testid="logo-link">
               <img
                 src="/favicon.svg"
                 alt="ServiceTones"
-                width="36"
+                width="40"
                 height="36"
                 decoding="async"
-                className="h-9 w-9 rounded-[0.9rem] object-cover ring-1 ring-border"
+                className="h-10 w-10 rounded-[0.9rem] object-cover ring-1 ring-border"
               />
-              <div className="flex flex-col">
-                <span className="font-heading text-base font-extrabold tracking-[-0.03em] text-foreground sm:text-[1.04rem]">ServiceTones</span>
-                <span className="hidden text-[9px] font-semibold uppercase tracking-[0.26em] text-muted-foreground lg:block">
-                  Structured local services
-                </span>
-              </div>
-              {!isLandingNav && <div className="hidden lg:flex">{brandBadge}</div>}
             </Link>
 
           {/* Desktop Navigation */}
@@ -161,10 +146,10 @@ export const Navbar = ({ variant = "default" }) => {
 
                 <div className="ml-4 flex items-center gap-3 lg:ml-auto">
                   <Link to="/auth">
-                    <Button variant="ghost" className="rounded-lg px-4.5 text-foreground/80 hover:text-foreground">Log In</Button>
+                    <Button variant="ghost" className="rounded-xl px-6 text-base text-deep-navy-700 hover:text-deep-navy-900 hover:bg-deep-navy-50 font-bold">Log In</Button>
                   </Link>
                   <Link to="/auth?mode=register">
-                    <Button className="rounded-lg px-5.5 shadow-[0_18px_40px_-26px_hsl(var(--primary)/0.48)]">Get Started</Button>
+                    <Button className="rounded-xl px-6 bg-gradient-to-r from-copper-500 to-copper-600 text-white hover:from-copper-600 hover:to-copper-700 font-semibold shadow-md hover:shadow-lg transition-all">Get Started</Button>
                   </Link>
                 </div>
               </>
@@ -232,19 +217,19 @@ export const Navbar = ({ variant = "default" }) => {
                 
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" className="relative h-10 w-10 rounded-[0.95rem] bg-muted p-0 shadow-sm hover:bg-accent" data-testid="user-menu-trigger">
-                      <Avatar className="h-9 w-9 border-2 border-primary/18">
+                    <Button variant="ghost" className="relative h-10 w-10 rounded-[0.95rem] bg-deep-navy-50 p-0 shadow-sm hover:bg-deep-navy-100" data-testid="user-menu-trigger">
+                      <Avatar className="h-9 w-9 border-2 border-deep-navy-200">
                         <AvatarImage src={user.profile_image} />
-                        <AvatarFallback className="bg-primary text-primary-foreground font-semibold">
+                        <AvatarFallback className="bg-deep-navy-800 text-white font-semibold">
                           {getInitials(user.full_name)}
                         </AvatarFallback>
                       </Avatar>
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="w-64 rounded-lg border border-border bg-background p-2 shadow-[0_18px_42px_-28px_rgba(15,23,42,0.16)]">
-                    <div className="rounded-lg bg-muted px-3 py-3">
-                      <p className="font-semibold tracking-[-0.01em]">{user.full_name}</p>
-                      <p className="mt-1 text-sm text-muted-foreground">{user.email}</p>
+                  <DropdownMenuContent align="end" className="w-64 rounded-xl border border-deep-navy-100 bg-white p-2 shadow-lg">
+                    <div className="rounded-xl bg-deep-navy-50 px-3 py-3">
+                      <p className="font-semibold text-deep-navy-800">{user.full_name}</p>
+                      <p className="mt-1 text-sm text-deep-navy-500">{user.email}</p>
                       <div className="mt-3">
                         <RoleBadge role={user.role} isAdmin={user.is_admin} />
                       </div>
@@ -315,10 +300,10 @@ export const Navbar = ({ variant = "default" }) => {
             ) : (
               <>
                 <Link to="/auth">
-                  <Button variant="outline" className="rounded-[0.95rem] bg-card px-4.5 shadow-none">Log In</Button>
+                  <Button variant="outline" className="rounded-xl border-deep-navy-200 text-deep-navy-800 hover:bg-deep-navy-50 font-semibold px-5">Log In</Button>
                 </Link>
                 <Link to="/auth?mode=register">
-                  <Button className="rounded-[0.95rem] px-4.5">Get Started</Button>
+                  <Button className="rounded-xl bg-gradient-to-r from-copper-500 to-copper-600 text-white hover:from-copper-600 hover:to-copper-700 font-bold px-6 py-2.5 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105">Get Started</Button>
                 </Link>
               </>
             )}
@@ -334,7 +319,7 @@ export const Navbar = ({ variant = "default" }) => {
                 variant="ghost"
                 size="icon"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="rounded-[0.95rem] bg-muted shadow-sm hover:bg-accent md:hidden"
+                className="rounded-xl bg-deep-navy-50 text-deep-navy-800 hover:bg-deep-navy-100 shadow-sm md:hidden font-semibold"
                 data-testid="mobile-menu-button"
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -361,7 +346,7 @@ export const Navbar = ({ variant = "default" }) => {
                 {!user && (
                   <Link
                     to="/auth?mode=register"
-                    className="inline-flex min-w-max items-center rounded-full bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-[0_18px_36px_-24px_hsl(var(--primary)/0.48)]"
+                    className="inline-flex min-w-max items-center rounded-xl bg-gradient-to-r from-copper-500 to-copper-600 px-7 py-3 text-base font-bold text-white hover:from-copper-600 hover:to-copper-700 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
                   >
                     Get Started
                   </Link>
@@ -373,10 +358,10 @@ export const Navbar = ({ variant = "default" }) => {
                 {user ? (
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" className="relative h-10 w-10 rounded-[0.95rem] bg-muted p-0 shadow-sm hover:bg-accent" data-testid="tablet-user-menu-trigger">
-                        <Avatar className="h-9 w-9 border-2 border-primary/18">
+                      <Button variant="ghost" className="relative h-10 w-10 rounded-[0.95rem] bg-deep-navy-50 p-0 shadow-sm hover:bg-deep-navy-100" data-testid="tablet-user-menu-trigger">
+                        <Avatar className="h-9 w-9 border-2 border-deep-navy-200">
                           <AvatarImage src={user.profile_image} />
-                          <AvatarFallback className="bg-primary text-primary-foreground font-semibold">
+                          <AvatarFallback className="bg-deep-navy-800 text-white font-semibold">
                             {getInitials(user.full_name)}
                           </AvatarFallback>
                         </Avatar>
@@ -458,11 +443,11 @@ export const Navbar = ({ variant = "default" }) => {
             ) : (
               <>
                 {/* User Info */}
-                <div className="mb-2 rounded-lg bg-muted px-4 py-4 shadow-sm">
+                <div className="mb-2 rounded-lg bg-deep-navy-50 px-4 py-4 shadow-sm">
                   <div className="flex items-center gap-3">
-                    <Avatar className="h-10 w-10 border-2 border-primary/18">
+                    <Avatar className="h-10 w-10 border-2 border-deep-navy-200">
                       <AvatarImage src={user.profile_image} />
-                      <AvatarFallback className="bg-primary text-primary-foreground font-semibold">
+                      <AvatarFallback className="bg-deep-navy-800 text-white font-semibold">
                         {getInitials(user.full_name)}
                       </AvatarFallback>
                     </Avatar>

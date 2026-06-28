@@ -223,13 +223,13 @@ function AuthDivider({ children }) {
 
 function AuthField({ id, label, icon: Icon, hint, className, inputClassName, ...props }) {
   return (
-    <div className={cn("space-y-2", className)}>
-      <Label htmlFor={id} className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{label}</Label>
+    <div className={cn("space-y-2.5", className)}>
+      <Label htmlFor={id} className="text-sm font-semibold text-deep-navy-600 block" style={{ fontFamily: "'Lora', serif" }}>{label}</Label>
       <div className="relative">
-        {Icon ? <Icon className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground/60" /> : null}
-        <Input id={id} className={cn("h-11 rounded-xl border-border/60 bg-muted/30 text-sm transition-colors focus:border-primary focus:bg-background", Icon ? "pl-10" : "", inputClassName)} {...props} />
+        {Icon ? <Icon className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" /> : null}
+        <Input id={id} className={cn("h-12 rounded-xl border border-deep-navy-200 bg-white text-sm text-deep-navy-800 placeholder:text-slate-400 transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none", Icon ? "pl-12" : "pl-4", inputClassName)} {...props} />
       </div>
-      {hint ? <p className="text-[0.72rem] leading-5 text-muted-foreground">{hint}</p> : null}
+      {hint ? <p className="text-xs leading-5 text-slate-500">{hint}</p> : null}
     </div>
   );
 }
@@ -456,7 +456,7 @@ function SocialLoginButtons() {
           type="button"
           onClick={() => handleSocialLogin('apple')}
           aria-label="Continue with Apple"
-          className="flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-border/60 bg-muted/30 px-4 text-sm font-medium text-foreground transition-all duration-150 hover:border-border hover:bg-muted/60"
+          className="flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-border/60 bg-white px-4 text-sm font-medium text-foreground transition-all duration-150 hover:border-border hover:bg-muted/60"
         >
           <svg className="h-[1.1rem] w-[1.1rem]" viewBox="0 0 24 24" fill="currentColor">
             <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11" />
@@ -467,7 +467,7 @@ function SocialLoginButtons() {
           type="button"
           onClick={() => handleSocialLogin('google')}
           aria-label="Continue with Google"
-          className="flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-border/60 bg-muted/30 px-4 text-sm font-medium text-foreground transition-all duration-150 hover:border-border hover:bg-muted/60"
+          className="flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-border/60 bg-white px-4 text-sm font-medium text-foreground transition-all duration-150 hover:border-border hover:bg-muted/60"
         >
           <svg className="h-[1.1rem] w-[1.1rem]" viewBox="0 0 24 24">
             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -992,16 +992,76 @@ export default function AuthPage() {
                     </form>
                   </CardContent>
                 </Card>
+            </div>
+          </section>
+
+          {/* Right Panel - Benefits */}
+          <section className="hidden lg:flex flex-col justify-center bg-gradient-to-br from-slate-50 via-copper-50/30 to-white p-14 relative overflow-hidden border-l border-deep-navy-100">
+            {/* Subtle decorative elements */}
+            <div className="absolute top-0 right-0 w-80 h-80 bg-copper-100/8 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-72 h-72 bg-deep-navy-100/5 rounded-full blur-3xl" />
+            
+            <div className="relative z-10 max-w-lg">
+              <div className="mb-14">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-deep-navy-50 rounded-full mb-6 border border-deep-navy-100">
+                  <span className="w-2 h-2 rounded-full bg-deep-navy-800" />
+                  <span className="text-deep-navy-600 text-sm font-semibold" style={{ fontFamily: "'Lora', serif" }}>Why ServiceTones</span>
+                </div>
+                <h2 className="text-4xl font-bold mb-4 text-deep-navy-800" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  Build Trust, Together
+                </h2>
+                <p className="text-deep-navy-500 text-lg leading-relaxed" style={{ fontFamily: "'Lora', serif" }}>
+                  Connect with verified professionals and manage your entire project in one organized place.
+                </p>
               </div>
-            </section>
-          </div>
+
+              <div className="space-y-6">
+                {[
+                  { icon: "✓", title: "Verified Professionals", desc: "Background checked and rated by real customers" },
+                  { icon: "★", title: "Quality Assured", desc: "4.8 rating from 25,000+ completed projects" },
+                  { icon: "✓", title: "Transparent Pricing", desc: "Compare quotes side-by-side, no hidden fees" },
+                  { icon: "◆", title: "Secure & Organized", desc: "All communication and contracts in one place" }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex gap-4 group">
+                    <div className="flex-shrink-0 mt-1">
+                      <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-deep-navy-100 text-deep-navy-600 font-bold text-sm group-hover:bg-deep-navy-200 transition-colors">
+                        {item.icon}
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-deep-navy-800 mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>{item.title}</h3>
+                      <p className="text-deep-navy-500 text-sm" style={{ fontFamily: "'Lora', serif" }}>{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-14 pt-8 border-t border-deep-navy-100">
+                <div className="grid grid-cols-3 gap-6">
+                  <div>
+                    <div className="text-3xl font-bold text-deep-navy-800 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>15K+</div>
+                    <p className="text-deep-navy-500 text-sm" style={{ fontFamily: "'Lora', serif" }}>Verified Professionals</p>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold text-deep-navy-800 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>25K+</div>
+                    <p className="text-deep-navy-500 text-sm" style={{ fontFamily: "'Lora', serif" }}>Projects Completed</p>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold text-deep-navy-800 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>4.8★</div>
+                    <p className="text-deep-navy-500 text-sm" style={{ fontFamily: "'Lora', serif" }}>Average Rating</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
-      </main>
+      </div>
+    </main>
     );
   }
 
   return (
-    <main className="min-h-screen bg-[linear-gradient(180deg,#f8fbff_0%,#ffffff_38%,#f5f8f7_100%)]">
+    <main className="min-h-screen bg-white" style={{ fontFamily: "'Georgia', 'Garamond', serif" }}>
       <Helmet>
         <title>{authPageTitle}</title>
         <meta name="description" content={authPageDescription} />
@@ -1016,28 +1076,72 @@ export default function AuthPage() {
         <meta name="twitter:image" content={AUTH_OG_IMAGE} />
         <link rel="canonical" href={AUTH_PAGE_URL} />
         <script type="application/ld+json">{JSON.stringify(authSchema)}</script>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lora:wght@400;500;600&display=swap" rel="stylesheet" />
       </Helmet>
-      <div className="page-shell safe-top-shell safe-bottom-shell py-4 sm:py-6 lg:py-8">
-        <div className={cn(
-          "mx-auto grid min-h-[calc(100vh-2rem)] w-full max-w-[96rem] overflow-hidden rounded-2xl border border-border/75 bg-white shadow-[0_34px_90px_-56px_rgba(15,23,42,0.24)]",
-          isNativeTablet ? "xl:grid-cols-[minmax(0,29rem)_minmax(0,1fr)]" : "lg:grid-cols-[minmax(0,29rem)_minmax(0,1fr)]"
-        )}>
+      
+      <div className="min-h-screen flex items-center justify-center py-4">
+        <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-2xl overflow-hidden shadow-2xl max-h-[calc(100vh-2rem)]">
+          {/* Left Panel - Image */}
+          <section className="hidden lg:flex flex-col justify-center items-center bg-gradient-to-br from-deep-navy-800 via-deep-navy-700 to-deep-navy-800 p-8 relative overflow-hidden">
+            <div className="absolute inset-0 opacity-40">
+              <img 
+                src="/auth-hero.png" 
+                alt="ServiceTones marketplace" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="relative z-10 max-w-md text-center text-white">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full mb-8 border border-white/20 backdrop-blur-sm">
+                <span className="w-2 h-2 rounded-full bg-copper-600" />
+                <span className="text-sm font-semibold" style={{ fontFamily: "'Lora', serif" }}>Join ServiceTones</span>
+              </div>
+              <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Connect & Grow Together
+              </h2>
+              <p className="text-white/80 text-lg leading-relaxed mb-12" style={{ fontFamily: "'Lora', serif" }}>
+                Join thousands of professionals and homeowners building trust, one project at a time.
+              </p>
+              
+              <div className="space-y-6 pt-8 border-t border-white/20">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-copper-600/20 text-copper-400 font-semibold">✓</div>
+                  </div>
+                  <div className="text-left">
+                    <p className="font-semibold mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>Verified Professionals</p>
+                    <p className="text-white/70 text-sm" style={{ fontFamily: "'Lora', serif" }}>All pros are background checked and rated</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-copper-600/20 text-copper-400 font-semibold">★</div>
+                  </div>
+                  <div className="text-left">
+                    <p className="font-semibold mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>Quality Assured</p>
+                    <p className="text-white/70 text-sm" style={{ fontFamily: "'Lora', serif" }}>4.8 rating from 25,000+ projects</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-copper-600/20 text-copper-400 font-semibold">◆</div>
+                  </div>
+                  <div className="text-left">
+                    <p className="font-semibold mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>Secure & Transparent</p>
+                    <p className="text-white/70 text-sm" style={{ fontFamily: "'Lora', serif" }}>All communication in one place</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Right Panel - Form */}
           <section className={cn(
-            "order-2 flex bg-white",
-            isPhone ? "px-5 py-6 sm:px-8" : "px-6 py-8 sm:px-8 lg:order-1 lg:px-10 xl:px-12"
+            "flex flex-col justify-center bg-white p-6 sm:p-8 lg:p-10 overflow-y-auto max-h-[calc(100vh-2rem)]",
+            isPhone ? "px-5 py-6 sm:px-6" : ""
           )}>
-            <div className="mx-auto flex w-full max-w-[25rem] flex-col justify-center">
-              <div className="mb-8 flex items-center justify-between gap-4">
+            <div className="w-full max-w-sm mx-auto">
+              <div className="mb-6 flex items-center justify-between gap-4">
                 <AuthBrandLink compact className="border-transparent bg-transparent px-0 py-0 shadow-none backdrop-blur-0 hover:translate-y-0 hover:border-transparent" />
-                {activeTab === "register" ? (
-                  <button
-                    type="button"
-                    onClick={() => handleTabChange("login")}
-                    className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    Back to login
-                  </button>
-                ) : null}
               </div>
 
               {oauthError === "not_registered" && (
@@ -1075,36 +1179,24 @@ export default function AuthPage() {
                 ) : null}
 
                 <TabsContent value="login" className="mt-0">
-                  <div className="space-y-6">
-                    <div className="space-y-3">
-                      <p className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-primary">Welcome back</p>
-                      <h1 className="font-heading text-[2.35rem] font-extrabold leading-[0.96] tracking-[-0.06em] text-foreground">
-                        Welcome Back
-                      </h1>
-                      <p className="text-sm leading-7 text-muted-foreground">
-                        Sign in to review quotes, message providers, and keep every home-service project organized in one place.
-                      </p>
+                  <div className="space-y-3 mb-8">
+                    <h1 className="text-5xl font-bold text-deep-navy-800" style={{ fontFamily: "'Playfair Display', serif" }}>
+                      Welcome Back
+                    </h1>
+                    <p className="text-lg text-deep-navy-500" style={{ fontFamily: "'Lora', serif" }}>
+                      Sign in to continue your journey
+                    </p>
                     </div>
 
-                    <div className="grid gap-3 sm:grid-cols-3" aria-label="Marketplace trust stats">
-                      {authTrustStats.map((item) => (
-                        <div key={item.label} className="rounded-xl border border-border/75 bg-slate-50/75 px-3.5 py-3.5 shadow-[0_14px_30px_-28px_rgba(15,23,42,0.14)]">
-                          <item.icon className="h-4 w-4 text-primary" />
-                          <p className="mt-3 text-lg font-bold tracking-[-0.05em] text-foreground">{item.value}</p>
-                          <p className="mt-1 text-[0.78rem] leading-5 text-muted-foreground">{item.label}</p>
-                        </div>
-                      ))}
-                    </div>
-
-                    <Card className="border-border/75 bg-white shadow-[0_24px_54px_-40px_rgba(15,23,42,0.18)]">
-                      <CardContent className="p-5 sm:p-6">
+                    <Card className="border border-deep-navy-100 bg-white shadow-lg rounded-2xl">
+                      <CardContent className="p-6 sm:p-8">
                         {isNative ? (
                           <Suspense fallback={null}>
                             <LazyBiometricLogin onLogin={handleLogin} className="mb-4" />
                           </Suspense>
                         ) : null}
 
-                        <div className="space-y-4">
+                        <div className="space-y-5">
                           {pageError ? (
                             <div className="rounded-lg border border-destructive/20 bg-destructive/8 px-4 py-3 text-sm text-destructive">
                               {pageError}
@@ -1154,7 +1246,7 @@ export default function AuthPage() {
                             </div>
 
                             {isNative && biometricAvailable ? (
-                              <div className="rounded-lg border border-border/75 bg-slate-50/75 px-4 py-3.5">
+                              <div className="rounded-lg border border-border/75 bg-white/75 px-4 py-3.5">
                                 <div className="flex items-start gap-3">
                                   <Checkbox
                                     id="enable-biometric"
@@ -1168,21 +1260,22 @@ export default function AuthPage() {
                               </div>
                             ) : null}
 
-                            <Button
-                              type="submit"
-                              className="w-full rounded-[1rem] bg-primary/90 py-3 text-sm font-semibold hover:bg-primary"
-                              disabled={loading}
-                              data-testid="login-submit-btn"
-                            >
-                              {loading ? "Signing in..." : "Continue"}
-                            </Button>
+                        <Button
+                          type="submit"
+                          className="w-full rounded-xl py-3 bg-gradient-to-r from-copper-500 to-copper-600 text-white font-semibold hover:from-copper-600 hover:to-copper-700 transition-all shadow-md hover:shadow-lg mt-6"
+                          disabled={loading}
+                          data-testid="login-submit-btn"
+                          style={{ fontFamily: "'Lora', serif" }}
+                        >
+                          {loading ? "Signing in..." : "Sign in"}
+                        </Button>
                           </form>
 
                           <SocialLoginButtons />
 
-                          <p className="text-sm text-muted-foreground">
+                          <p className="text-sm text-deep-navy-500">
                             New to ServiceTones?{" "}
-                            <button type="button" onClick={() => handleTabChange("register")} className="font-semibold text-primary hover:underline">
+                            <button type="button" onClick={() => handleTabChange("register")} className="font-semibold text-deep-navy-800 hover:underline">
                               Register
                             </button>
                           </p>
@@ -1193,44 +1286,21 @@ export default function AuthPage() {
                     <p className="text-xs leading-6 text-muted-foreground">
                       By continuing, you agree to our <Link to="/terms" className="underline hover:text-foreground">Terms</Link> and <Link to="/privacy" className="underline hover:text-foreground">Privacy Policy</Link>.
                     </p>
-                  </div>
                 </TabsContent>
 
                 <TabsContent value="register" className="mt-0">
-                  <div className="space-y-6">
-                    <div className="space-y-3">
-                      <p className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-primary">Create account</p>
-                      <h1 className="font-heading text-[2.1rem] font-extrabold leading-[0.98] tracking-[-0.06em] text-foreground">
-                        Join the marketplace
-                      </h1>
-                      <p className="text-sm leading-7 text-muted-foreground">
-                        Create an account to post projects as a homeowner or manage leads as a provider.
-                      </p>
-                    </div>
+                  <div className="space-y-3 mb-8">
+                    <h1 className="text-5xl font-bold text-deep-navy-800" style={{ fontFamily: "'Playfair Display', serif" }}>
+                      Join Us
+                    </h1>
+                    <p className="text-lg text-deep-navy-500" style={{ fontFamily: "'Lora', serif" }}>
+                      {isAdmin
+                        ? "Create your admin account"
+                        : "Start your journey with ServiceTones"}
+                    </p>
+                  </div>
 
-                    <div className="grid gap-3 sm:grid-cols-3">
-                      {authTrustStats.map((item) => (
-                        <div key={`register-${item.label}`} className="rounded-xl border border-border/75 bg-slate-50/75 px-3.5 py-3 shadow-[0_14px_30px_-28px_rgba(15,23,42,0.14)]">
-                          <item.icon className="h-4 w-4 text-primary" />
-                          <p className="mt-2.5 text-base font-bold tracking-[-0.04em] text-foreground">{item.value}</p>
-                          <p className="mt-1 text-[0.75rem] leading-5 text-muted-foreground">{item.label}</p>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="rounded-xl border border-border/75 bg-slate-50/75 p-4">
-                      <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-primary">What your account unlocks</p>
-                      <div className="mt-4 space-y-3">
-                        {authAudienceSignals.map((item) => (
-                          <div key={item} className="flex gap-3 text-sm leading-6 text-muted-foreground">
-                            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary" />
-                            <span>{item}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <Card className="border-border/75 bg-white shadow-[0_24px_54px_-40px_rgba(15,23,42,0.18)]">
+                    <Card className="border-border/40 bg-white shadow-sm">
                       <CardContent className="p-5 sm:p-6">
                         <div className="space-y-5">
                           <div className="space-y-3">
@@ -1238,8 +1308,7 @@ export default function AuthPage() {
                             <SocialLoginButtons />
                           </div>
 
-                          <form onSubmit={handleRegister} className="space-y-5">
-                          <div className="grid gap-4 sm:grid-cols-2">
+                          <form onSubmit={handleRegister} className="space-y-4">
                             <AuthField
                               id="register-name"
                               label="Full Name *"
@@ -1249,17 +1318,6 @@ export default function AuthPage() {
                               onChange={(e) => updateRegisterField('full_name', e.target.value)}
                               data-testid="register-name-input"
                             />
-                            <AuthField
-                              id="register-phone"
-                              type="tel"
-                              label="Phone"
-                              icon={Phone}
-                              placeholder="+1 (555) 000-0000"
-                              value={registerData.phone}
-                              onChange={(e) => updateRegisterField('phone', e.target.value)}
-                              data-testid="register-phone-input"
-                            />
-                          </div>
 
                           <AuthField
                             id="register-email"
@@ -1272,7 +1330,6 @@ export default function AuthPage() {
                             data-testid="register-email-input"
                           />
 
-                          <div className="grid gap-4 sm:grid-cols-2">
                             <div className="space-y-2.5">
                               <Label htmlFor="register-password">Password *</Label>
                               <div className="relative">
@@ -1296,7 +1353,6 @@ export default function AuthPage() {
                                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                                 </button>
                               </div>
-                              <p className="text-xs leading-5 text-muted-foreground">Use at least 8 characters, one uppercase letter, and a number or symbol.</p>
                             </div>
 
                             <AuthField
@@ -1309,15 +1365,14 @@ export default function AuthPage() {
                               onChange={(e) => updateRegisterField('confirmPassword', e.target.value)}
                               data-testid="register-confirm-input"
                             />
-                          </div>
 
-                          <div className="space-y-4 rounded-xl border border-border/75 bg-slate-50/75 p-4">
-                            <Label>I am joining as</Label>
+                          <div className="space-y-3">
+                            <Label className="font-semibold text-foreground">I am joining as</Label>
 
                             <RadioGroup
                               value={registerData.role}
                               onValueChange={(value) => updateRegisterField('role', value)}
-                              className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4"
+                              className="grid grid-cols-1 gap-3"
                             >
                               {authRoleOptions.map((roleOption) => (
                                 <div
@@ -1338,9 +1393,10 @@ export default function AuthPage() {
 
                           <Button
                             type="submit"
-                            className="mt-2 w-full rounded-lg py-3"
+                            className="w-full rounded-xl py-3 bg-gradient-to-r from-copper-500 to-copper-600 text-white font-semibold hover:from-copper-600 hover:to-copper-700 transition-all shadow-md hover:shadow-lg mt-6"
                             disabled={loading}
                             data-testid="register-submit-btn"
+                            style={{ fontFamily: "'Lora', serif" }}
                           >
                             {loading ? "Creating account..." : "Create Account"}
                           </Button>
@@ -1349,67 +1405,18 @@ export default function AuthPage() {
                       </CardContent>
                     </Card>
 
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-deep-navy-500">
                       Already have an account?{" "}
-                      <button type="button" onClick={() => handleTabChange("login")} className="font-semibold text-primary hover:underline">
+                      <button type="button" onClick={() => handleTabChange("login")} className="font-semibold text-deep-navy-800 hover:underline">
                         Sign in
                       </button>
                     </p>
-                  </div>
                 </TabsContent>
               </Tabs>
             </div>
           </section>
 
-          {!isPhone ? (
-            <section className="order-1 relative min-h-[24rem] overflow-hidden border-b border-border/70 bg-slate-950 lg:order-2 lg:min-h-full lg:border-b-0 lg:border-l">
-              <img
-                src="/hero-home.jpg"
-                alt="Real home-service professionals working with homeowners on renovation and repair projects"
-                loading="lazy"
-                decoding="async"
-                fetchPriority="low"
-                className="absolute inset-0 h-full w-full object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.18),rgba(15,23,42,0.74))]" />
-              <div className="relative flex h-full flex-col justify-between p-8 text-white lg:p-10 xl:p-12">
-                <div className="max-w-xl space-y-5">
-                  <p className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-white/68">High-trust conversion flow</p>
-                  <h2 className="font-heading text-[2.6rem] font-extrabold leading-[0.95] tracking-[-0.06em]">
-                    Built for homeowners hiring confidently and providers managing better leads.
-                  </h2>
-                  <p className="max-w-lg text-sm leading-7 text-white/78">
-                    A cleaner sign-in experience for a marketplace where real people compare quotes, review provider credentials, and move projects forward.
-                  </p>
-                </div>
 
-                <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_18rem] xl:items-end">
-                  <div className="rounded-xl border border-white/14 bg-black/28 p-5 shadow-[0_24px_50px_-32px_rgba(15,23,42,0.55)] backdrop-blur-sm">
-                    <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-white/62">What people need to see</p>
-                    <ul className="mt-4 space-y-3 text-sm leading-6 text-white/84">
-                      {authRightRailMoments.map((item) => (
-                        <li key={item} className="flex gap-3">
-                          <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-300" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="rounded-xl border border-white/14 bg-white/10 p-5 shadow-[0_24px_50px_-32px_rgba(15,23,42,0.55)] backdrop-blur-sm">
-                    <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-white/62">Why this converts</p>
-                    <div className="mt-4 space-y-4">
-                      {authAudienceSignals.map((item) => (
-                        <div key={item} className="border-t border-white/12 pt-4 first:border-t-0 first:pt-0">
-                          <p className="text-sm leading-6 text-white/84">{item}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-          ) : null}
         </div>
       </div>
     </main>

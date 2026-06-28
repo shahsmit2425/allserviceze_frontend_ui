@@ -92,7 +92,7 @@ export const LoadingOverlay = ({ show, text = 'Loading...' }) => {
   if (!show) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 bg-copper-600/50 z-50 flex items-center justify-center">
       <div className="bg-white rounded-lg p-6 shadow-xl">
         <LoadingSpinner size="lg" text={text} />
       </div>

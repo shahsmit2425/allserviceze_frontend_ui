@@ -24,8 +24,8 @@ import {
   LogOut,
 } from "lucide-react";
 
-const panelClassName = "rounded-xl border border-border/60 bg-muted/35 p-4 shadow-sm";
-const compactLinkClassName = "flex items-center justify-between rounded-lg border border-border/60 bg-muted/35 px-3.5 py-3 text-sm font-medium transition-all duration-200 hover:border-primary/20 hover:bg-white hover:text-primary";
+const panelClassName = "rounded-xl border border-border/60 bg-white p-4 shadow-sm";
+const compactLinkClassName = "flex items-center justify-between rounded-lg border border-border/60 bg-white px-3.5 py-3 text-sm font-medium transition-all duration-200 hover:border-primary/20 hover:bg-white hover:text-primary";
 
 const formatLastSavedAt = (value) => {
   if (!value) {
@@ -365,7 +365,7 @@ export default function SettingsPageSections({
               </div>
             </div>
 
-            <div className="rounded-lg border border-border/60 bg-muted/35 px-4 py-3 text-xs text-muted-foreground">
+            <div className="rounded-lg border border-border/60 bg-white px-4 py-3 text-xs text-muted-foreground">
               Android push requires a push-enabled mobile build, at least one registered Android device token for this account, and backend FCM credentials.
             </div>
 

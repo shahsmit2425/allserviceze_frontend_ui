@@ -573,13 +573,13 @@ export default function ProviderBusinessProfile() {
                 </div>
                 <p className="text-sm text-muted-foreground">Complete {incompleteChecklistCount} item{incompleteChecklistCount === 1 ? "" : "s"} to increase visibility</p>
               </div>
-              <div className="mt-4 h-2.5 overflow-hidden rounded-lg bg-slate-100">
+              <div className="mt-4 h-2.5 overflow-hidden rounded-lg bg-deep-navy-50">
                 <div className="h-full rounded-lg bg-[linear-gradient(90deg,hsl(var(--primary))_0%,hsl(var(--secondary))_100%)]" style={{ width: `${profileStrength}%` }} />
               </div>
               <div className="mt-4 space-y-2">
                 {profileChecklist.map((item) => (
                   <div key={item.key} className="flex items-center gap-3 text-sm">
-                    <span className={`flex h-5 w-5 items-center justify-center rounded-lg ${item.complete ? "bg-emerald-100 text-emerald-700" : "bg-slate-100 text-muted-foreground"}`}>
+                    <span className={`flex h-5 w-5 items-center justify-center rounded-lg ${item.complete ? "bg-emerald-100 text-emerald-700" : "bg-deep-navy-50 text-muted-foreground"}`}>
                       {item.complete ? <CheckCircle2 className="h-3.5 w-3.5" /> : <X className="h-3.5 w-3.5" />}
                     </span>
                     <span className={item.complete ? "text-foreground" : "text-muted-foreground"}>{item.label}</span>
@@ -592,7 +592,7 @@ export default function ProviderBusinessProfile() {
         </section>
 
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="mb-6 grid w-full grid-cols-2 gap-2 rounded-xl border border-white/70 bg-white/80 p-1 shadow-sm sm:grid-cols-4">
+          <TabsList className="mb-6 grid w-full grid-cols-2 gap-2 rounded-xl border border-white/70 bg-white p-1 shadow-sm sm:grid-cols-4">
             <TabsTrigger value="business" className="flex items-center gap-2">
               <Building2 className="w-4 h-4" />
               Business Info
@@ -687,7 +687,7 @@ export default function ProviderBusinessProfile() {
                             </div>
                           )}
                           {uploadingAvatar && (
-                            <div className="absolute inset-0 bg-black/50 rounded-lg flex items-center justify-center">
+                            <div className="absolute inset-0 bg-copper-600/50 rounded-lg flex items-center justify-center">
                               <Loader2 className="w-6 h-6 text-white animate-spin" />
                             </div>
                           )}
@@ -711,7 +711,7 @@ export default function ProviderBusinessProfile() {
                             size="sm"
                             disabled={uploadingAvatar}
                             onClick={() => document.getElementById('avatar-upload-profile').click()}
-                            className="rounded-lg bg-white/80"
+                            className="rounded-lg bg-white"
                           >
                             {uploadingAvatar ? (
                               <>
@@ -801,7 +801,7 @@ export default function ProviderBusinessProfile() {
                         </CardTitle>
                         <CardDescription>{primaryPortfolioImages.length} photo{primaryPortfolioImages.length === 1 ? "" : "s"} surfaced directly on your public proof layer.</CardDescription>
                       </div>
-                      <Button variant="outline" className="rounded-lg bg-white/80" onClick={() => setActiveTab("portfolio")}>
+                      <Button variant="outline" className="rounded-lg bg-white" onClick={() => setActiveTab("portfolio")}>
                         {portfolio.length > 0 ? "Manage Portfolio" : "Upload Portfolio"}
                       </Button>
                     </CardHeader>
@@ -813,11 +813,11 @@ export default function ProviderBusinessProfile() {
                           ))}
                         </div>
                       ) : (
-                        <div className="rounded-lg border border-dashed border-border/70 bg-slate-50/80 p-5 text-sm text-muted-foreground">
+                        <div className="rounded-lg border border-dashed border-border/70 bg-white p-5 text-sm text-muted-foreground">
                           Portfolio photos are one of the strongest conversion drivers on a marketplace profile. Add completed work to increase trust.
                         </div>
                       )}
-                      <div className="flex items-center justify-between gap-3 rounded-lg border border-border/70 bg-slate-50/70 px-4 py-3 text-sm">
+                      <div className="flex items-center justify-between gap-3 rounded-lg border border-border/70 bg-white/70 px-4 py-3 text-sm">
                         <span className="text-muted-foreground">Portfolio projects</span>
                         <span className="font-semibold text-foreground">{portfolio.length}</span>
                       </div>
@@ -929,7 +929,7 @@ export default function ProviderBusinessProfile() {
                     <CardContent className="space-y-4">
                       <div className="space-y-2">
                         {trustChecks.map((item) => (
-                          <div key={item.label} className="flex items-center justify-between gap-3 rounded-lg border border-white/70 bg-white/80 px-4 py-3 text-sm shadow-sm">
+                          <div key={item.label} className="flex items-center justify-between gap-3 rounded-lg border border-white/70 bg-white px-4 py-3 text-sm shadow-sm">
                             <span className="text-foreground">{item.label}</span>
                             <span className={item.complete ? "text-emerald-700" : "text-amber-700"}>{item.complete ? "Verified" : item.label === "Admin Review" ? "In review" : "Pending"}</span>
                           </div>
@@ -945,7 +945,7 @@ export default function ProviderBusinessProfile() {
                           variant="outline"
                           size="sm"
                           onClick={() => navigate("/provider-verification")}
-                          className="rounded-lg bg-white/80"
+                          className="rounded-lg bg-white"
                         >
                           <FileCheck className="w-4 h-4 mr-2" />
                           {user?.document_verified ? "View Verification Status" : "Complete Verification"}
@@ -1041,10 +1041,10 @@ export default function ProviderBusinessProfile() {
                           <p className="mt-2 text-xl font-semibold text-foreground">{googleReviews.length}</p>
                         </div>
                       </div>
-                      <div className="rounded-lg border border-border/70 bg-slate-50/80 px-4 py-3 text-sm text-muted-foreground">
+                      <div className="rounded-lg border border-border/70 bg-white px-4 py-3 text-sm text-muted-foreground">
                         Total review proof: <span className="font-semibold text-foreground">{reviewProofCount}</span>
                       </div>
-                      <Button variant="outline" className="w-full rounded-lg bg-white/80" onClick={() => setActiveTab("google-reviews")}>
+                      <Button variant="outline" className="w-full rounded-lg bg-white" onClick={() => setActiveTab("google-reviews")}>
                         Manage Review Proof
                         <ChevronRight className="ml-2 h-4 w-4" />
                       </Button>
@@ -1053,7 +1053,7 @@ export default function ProviderBusinessProfile() {
                 </div>
               </div>
 
-              <div className="rounded-lg border border-border/70 bg-slate-50/70 px-4 py-3 text-sm text-muted-foreground">
+              <div className="rounded-lg border border-border/70 bg-white/70 px-4 py-3 text-sm text-muted-foreground">
                 Social links are optional supporting proof. For ServiceTones, trust, portfolio, reviews, and coverage do the heavier lifting.
               </div>
             </div>

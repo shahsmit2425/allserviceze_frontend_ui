@@ -1,0 +1,7 @@
+/*
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://js.stripe.com https://maps.googleapis.com https://maps.gstatic.com; script-src-elem 'self' 'unsafe-inline' https://js.stripe.com https://maps.googleapis.com https://maps.gstatic.com; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob: https://servicetones.com https://*.amazonaws.com https://www.google.com; connect-src 'self' https://api.servicetones.com https://dev-api.servicetones.com https://stagging-api.servicetones.com https://production-api.servicetones.com https://servicetones-production-api.onrender.com https://servicetones-dev-api.onrender.com https://servicetones-stagging-api.onrender.com https://api.stripe.com https://maps.googleapis.com https://*.ingest.us.sentry.io https://*.sentry.io wss://api.servicetones.com wss://dev-api.servicetones.com wss://stagging-api.servicetones.com wss://production-api.servicetones.com wss://servicetones-production-api.onrender.com wss://servicetones-dev-api.onrender.com; frame-src https://js.stripe.com https://hooks.stripe.com; frame-ancestors 'none'
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
