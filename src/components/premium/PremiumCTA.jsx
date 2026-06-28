@@ -31,7 +31,7 @@ export function PremiumCTA({
 
         {description && (
           <p 
-            className={`text-lg md:text-xl mb-10 max-w-2xl mx-auto ${isDark ? "text-deep-navy-100" : "text-deep-navy-500"}`}
+            className={`text-lg md:text-xl mb-10 max-w-2xl mx-auto ${isDark ? "text-white" : "text-deep-navy-500"}`}
             style={{ fontFamily: "'Lora', serif" }}
           >
             {description}
@@ -53,10 +53,9 @@ export function PremiumCTA({
           {secondaryText && (
             <Button 
               onClick={onSecondary}
-              variant="outline"
-              className={`h-14 px-8 rounded-xl font-semibold ${
+              className={`h-14 px-8 rounded-xl font-semibold transition-all ${
                 isDark
-                  ? "border-white text-white hover:bg-white/10"
+                  ? "bg-white/20 border border-white text-white hover:bg-white/30"
                   : "border-deep-navy-200 text-deep-navy-800 hover:bg-deep-navy-50"
               }`}
             >

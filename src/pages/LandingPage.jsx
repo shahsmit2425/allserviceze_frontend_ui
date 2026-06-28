@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
 import { AppShell } from "../components/AppShell";
-import { PremiumHero } from "../components/premium/PremiumHero";
 import { PremiumFeatures } from "../components/premium/PremiumFeatures";
 import ServiceCategoriesGrid from "../components/premium/ServiceCategoriesGrid";
 import { HowItWorks } from "../components/premium/HowItWorks";
@@ -435,14 +434,6 @@ export default function LandingPage() {
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lora:wght@400;500;600&display=swap" rel="stylesheet" />
       </Helmet>
 
-      {/* Hero Section */}
-      <PremiumHero
-        heading="Find Verified Local Professionals Instantly"
-        subheading="Post your project, get matched with trusted providers, and compare quotes in one place. No endless phone calls needed."
-        ctaText="Get Started"
-        cta={() => window.location.href = '/auth?mode=register'}
-      />
-
       {/* Service Categories Section */}
       <ServiceCategoriesGrid />
 
@@ -473,41 +464,41 @@ export default function LandingPage() {
       />
 
       {/* Footer */}
-      <footer className="bg-deep-navy-800 text-white py-16">
+      <footer className="bg-deep-navy-900 text-white py-16">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div>
-              <h3 className="font-bold text-lg mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>ServiceTones</h3>
-              <p className="text-slate-400 text-sm" style={{ fontFamily: "'Lora', serif" }}>
+              <h3 className="font-bold text-lg mb-4 text-white" style={{ fontFamily: "'Playfair Display', serif" }}>ServiceTones</h3>
+              <p className="text-gray-300 text-sm" style={{ fontFamily: "'Lora', serif" }}>
                 Connecting New Jersey homeowners with verified local professionals.
               </p>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">For Homeowners</h4>
-              <ul className="space-y-2 text-sm text-slate-400">
+              <h4 className="font-semibold mb-4 text-white">For Homeowners</h4>
+              <ul className="space-y-2 text-sm text-gray-300">
                 <li><Link to="/projects/post" className="hover:text-white transition">Post a Project</Link></li>
                 <li><Link to="/providers" className="hover:text-white transition">Browse Pros</Link></li>
                 <li><a href="#" className="hover:text-white transition">How It Works</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">For Professionals</h4>
-              <ul className="space-y-2 text-sm text-slate-400">
+              <h4 className="font-semibold mb-4 text-white">For Professionals</h4>
+              <ul className="space-y-2 text-sm text-gray-300">
                 <li><Link to="/auth?mode=register" className="hover:text-white transition">Become a Pro</Link></li>
                 <li><Link to="/subscription" className="hover:text-white transition">Pricing</Link></li>
                 <li><a href="#" className="hover:text-white transition">Resources</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Support</h4>
-              <ul className="space-y-2 text-sm text-slate-400">
+              <h4 className="font-semibold mb-4 text-white">Support</h4>
+              <ul className="space-y-2 text-sm text-gray-300">
                 <li><Link to="/privacy" className="hover:text-white transition">Privacy</Link></li>
                 <li><Link to="/terms" className="hover:text-white transition">Terms</Link></li>
                 <li><a href="mailto:support@servicetones.com" className="hover:text-white transition">Contact</a></li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-deep-navy-600 pt-8 text-center text-sm text-slate-400">
+          <div className="border-t border-deep-navy-700 pt-8 text-center text-sm text-gray-300">
             <p>&copy; 2024 ServiceTones. All rights reserved.</p>
           </div>
         </div>

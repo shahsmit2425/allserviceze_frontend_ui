@@ -688,10 +688,10 @@ export default function ProviderCalendar({ providerId }) {
 
       {/* ═══════════════ BLOCK DATE MODAL ══════════════════════════════════ */}
       <Dialog open={blockModal} onOpenChange={setBlockModal}>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2">
-              <Ban className="w-5 h-5 text-rose-400" /> Block Date
+        <DialogContent className="sm:max-w-md border border-deep-navy-100 bg-white shadow-lg">
+          <DialogHeader className="border-b border-deep-navy-50 pb-4">
+            <DialogTitle className="flex items-center gap-2 text-lg font-bold text-deep-navy-800">
+              <Ban className="w-5 h-5 text-rose-500" /> Block Date
             </DialogTitle>
           </DialogHeader>
 
@@ -829,18 +829,23 @@ export default function ProviderCalendar({ providerId }) {
             )}
           </div>
 
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setBlockModal(false)} disabled={blockSaving}>
+          <DialogFooter className="border-t border-deep-navy-50 pt-4 mt-6 flex gap-3 justify-end">
+            <Button 
+              variant="outline" 
+              onClick={() => setBlockModal(false)} 
+              disabled={blockSaving}
+              className="rounded-lg border-deep-navy-200 hover:bg-deep-navy-50"
+            >
               Cancel
             </Button>
             <Button
               onClick={handleBlockSubmit}
               disabled={blockSaving}
-              className="bg-red-600 hover:bg-red-700 text-white"
+              className="rounded-lg bg-rose-500 hover:bg-rose-600 text-white font-semibold"
             >
               {blockSaving
                 ? <><Loader2 className="w-4 h-4 animate-spin mr-2" /> Blocking...</>
-                : <><Ban className="w-4 h-4 mr-2" /> Block</>
+                : <><Ban className="w-4 h-4 mr-2" /> Block Date</>
               }
             </Button>
           </DialogFooter>
