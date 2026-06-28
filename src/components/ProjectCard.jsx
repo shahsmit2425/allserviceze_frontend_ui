@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
-import { Heart, MapPin, CheckCircle, Briefcase } from "lucide-react";
+import { Heart, MapPin, CheckCircle } from "lucide-react";
 import { cn } from "../lib/utils";
 
 const urgencyColors = {
@@ -25,119 +25,124 @@ export function ProjectCard({
   const projectUrl = `/projects/${project.id}`;
 
   return (
-    <Card className="border border-deep-navy-100 bg-white rounded-lg hover:shadow-lg hover:border-copper-300 transition-all">
-      <CardContent className="p-4 sm:p-5">
-        {/* Horizontal Layout: Left | Center Metrics | Right Actions */}
-        <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+    <Card className="border border-deep-navy-200 bg-white rounded-lg hover:shadow-xl transition-all w-full">
+      <CardContent className="p-5 sm:p-6">
+        {/* Full-width Thumbtack-style horizontal layout */}
+        <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-8">
           
-          {/* LEFT SECTION: Icon + Title + Meta */}
-          <div className="flex items-start gap-3 flex-shrink-0 md:w-48">
-            {/* Icon */}
-            <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-copper-100 to-copper-50 flex items-center justify-center flex-shrink-0">
-              <Briefcase className="w-6 h-6 text-copper-600" />
-            </div>
-
-            {/* Title + Meta */}
-            <div className="flex-1 min-w-0">
-              <Link
-                to={projectUrl}
-                className="group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500 rounded"
-                aria-label={`Open project ${project.title}`}
-              >
-                <h3 className="text-sm font-bold text-deep-navy-900 group-hover:text-copper-600 line-clamp-2">
-                  {project.title}
-                </h3>
-              </Link>
-              <p className="text-xs text-deep-navy-500 mt-1">{project.category}</p>
-              <p className="text-xs text-deep-navy-500 flex items-center gap-1 mt-1">
-                <MapPin className="h-3 w-3" />
-                {project.zip_code || project.location?.split(",")[1]?.trim() || "N/A"}
-              </p>
-            </div>
-          </div>
-
-          {/* CENTER SECTION: 4-Column Metrics Grid */}
-          <div className="flex-1 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 py-3 px-3 md:px-4 md:py-0 md:border-l md:border-r border-deep-navy-50">
-            {/* Column 1: Budget */}
-            <div className="text-center md:text-left">
-              <p className="text-xs font-medium text-deep-navy-500 uppercase tracking-wider">Budget</p>
-              <p className="text-sm font-bold text-copper-600 mt-1">{formatBudgetRange(project)}</p>
-            </div>
-
-            {/* Column 2: Urgency */}
-            <div className="text-center md:text-left">
-              <p className="text-xs font-medium text-deep-navy-500 uppercase tracking-wider">Urgency</p>
-              <Badge className={cn("mt-1 text-xs", urgencyColors[project.urgency] || "bg-deep-navy-50 text-deep-navy-800")}>
-                {project.urgency?.charAt(0).toUpperCase() + project.urgency?.slice(1) || "N/A"}
-              </Badge>
-            </div>
-
-            {/* Column 3: Property Type */}
-            <div className="text-center md:text-left">
-              <p className="text-xs font-medium text-deep-navy-500 uppercase tracking-wider">Property</p>
-              <p className="text-sm font-semibold text-deep-navy-800 truncate mt-1">
-                {project.property_type || project.questionnaire_responses?.property_type || "N/A"}
-              </p>
-            </div>
-
-            {/* Column 4: Bids */}
-            <div className="text-center md:text-left">
-              <p className="text-xs font-medium text-deep-navy-500 uppercase tracking-wider">Bids</p>
-              <p className="text-sm font-bold text-copper-600 mt-1">{project.bidCountValue}</p>
-            </div>
-          </div>
-
-          {/* RIGHT SECTION: Status + Actions */}
-          <div className="flex flex-col gap-3 flex-shrink-0 md:w-48">
-            {/* Status Badge */}
-            <Badge
-              className={cn(
-                "text-xs text-center md:text-left w-full justify-center md:justify-start",
-                project.my_bid_status
-                  ? "status-badge-info"
-                  : project.bidCountValue === 0
-                    ? "status-badge-success"
-                    : "status-badge-neutral"
-              )}
+          {/* LEFT: Project Title + Meta */}
+          <div className="flex-1 min-w-0">
+            <Link
+              to={projectUrl}
+              className="group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 rounded inline-block"
+              aria-label={`Open project ${project.title}`}
             >
-              {project.my_bid_status ? opportunityLabel : project.bidCountValue === 0 ? "First quote" : "Open"}
-            </Badge>
+              <h2 className="text-lg font-bold text-deep-navy-900 group-hover:text-cyan-600 line-clamp-2">
+                {project.title}
+              </h2>
+            </Link>
 
-            {/* Verification Badge */}
-            {project.customerVerified && (
-              <Badge variant="outline" className="text-xs text-emerald-700 border-emerald-200 font-medium text-center md:text-left justify-center md:justify-start">
-                <CheckCircle className="h-3 w-3 mr-1" />
-                Verified
+            {/* Category + Location + Key Info */}
+            <div className="flex flex-wrap items-center gap-4 mt-3 text-sm text-deep-navy-700">
+              <Badge variant="outline" className="text-xs font-semibold">
+                {project.category}
               </Badge>
-            )}
+              
+              <div className="flex items-center gap-1.5">
+                <MapPin className="h-4 w-4 text-deep-navy-500 flex-shrink-0" />
+                <span>{project.zip_code || project.location?.split(",")[1]?.trim() || "N/A"}</span>
+              </div>
 
-            {/* Action Buttons */}
-            <div className="flex gap-2 flex-wrap md:flex-col">
+              {project.customerVerified && (
+                <div className="flex items-center gap-1.5 text-cyan-600 font-semibold">
+                  <CheckCircle className="h-4 w-4 flex-shrink-0" />
+                  Verified Customer
+                </div>
+              )}
+            </div>
+
+            {/* Key Details Row */}
+            <div className="flex flex-wrap gap-6 mt-4 text-sm">
+              <div>
+                <p className="text-xs text-deep-navy-500 font-semibold uppercase">Urgency</p>
+                <Badge className={cn("mt-1 text-xs", urgencyColors[project.urgency] || "bg-deep-navy-50 text-deep-navy-800")}>
+                  {project.urgency?.charAt(0).toUpperCase() + project.urgency?.slice(1) || "N/A"}
+                </Badge>
+              </div>
+              
+              <div>
+                <p className="text-xs text-deep-navy-500 font-semibold uppercase">Property Type</p>
+                <p className="mt-1 font-semibold text-deep-navy-800">
+                  {project.property_type || project.questionnaire_responses?.property_type || "N/A"}
+                </p>
+              </div>
+
+              <div>
+                <p className="text-xs text-deep-navy-500 font-semibold uppercase">Status</p>
+                <p className="mt-1 font-semibold text-deep-navy-800 capitalize">
+                  {project.status?.replace(/_/g, ' ') || 'Pending'}
+                </p>
+              </div>
+
+              <div>
+                <p className="text-xs text-deep-navy-500 font-semibold uppercase">Bids Received</p>
+                <p className="mt-1 font-bold text-cyan-600">{project.bidCountValue}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT: Budget + CTA */}
+          <div className="flex flex-col md:flex-col items-start md:items-end justify-between gap-4 flex-shrink-0 md:w-48">
+            {/* Budget Section */}
+            <div className="w-full md:w-auto md:text-right">
+              <p className="text-sm text-deep-navy-600 font-medium">Budget</p>
+              <p className="text-3xl font-bold text-deep-navy-900 mt-1">
+                {formatBudgetRange(project)}
+              </p>
+            </div>
+
+            {/* Status and Action Buttons */}
+            <div className="flex flex-col gap-2 w-full md:w-auto">
+              {/* Status Badge */}
+              <Badge
+                className={cn(
+                  "text-xs text-center md:text-right font-semibold w-full md:w-auto justify-center md:justify-end",
+                  project.my_bid_status
+                    ? "bg-blue-100 text-blue-800"
+                    : project.bidCountValue === 0
+                      ? "bg-green-100 text-green-800"
+                      : "bg-deep-navy-100 text-deep-navy-800"
+                )}
+              >
+                {project.my_bid_status ? opportunityLabel : project.bidCountValue === 0 ? "First Quote Available" : "Open for Bids"}
+              </Badge>
+
+              {/* Action Button */}
               <Button
                 asChild
-                size="sm"
-                className="flex-1 md:flex-none rounded-lg bg-gradient-to-r from-copper-500 to-copper-600 text-white hover:from-copper-600 hover:to-copper-700 font-semibold text-xs"
+                className="rounded-lg bg-cyan-500 hover:bg-cyan-600 text-white font-semibold text-sm px-6 py-2.5 w-full md:w-48"
               >
                 <Link to={projectUrl}>{getPrimaryActionLabel(project)}</Link>
               </Button>
+
+              {/* Save Button */}
               {user?.role === "provider" && (
                 <button
                   onClick={(e) => {
                     e.preventDefault();
                     onFavoriteToggle?.(project.id);
                   }}
-                  className="p-2 text-xs font-medium transition-colors rounded-lg hover:bg-deep-navy-50 flex items-center justify-center md:justify-start gap-1"
-                  title={project.is_favorited ? "Remove from favorites" : "Add to favorites"}
+                  className="p-2 text-sm font-medium transition-colors rounded-lg hover:bg-deep-navy-50 flex items-center justify-center gap-1.5"
+                  title={project.is_favorited ? "Remove from saved" : "Save project"}
                 >
                   <Heart
                     className={cn(
-                      "h-4 w-4",
+                      "h-5 w-5",
                       project.is_favorited
                         ? "fill-red-500 text-red-500"
-                        : "text-deep-navy-300 hover:text-red-400"
+                        : "text-deep-navy-400 hover:text-red-500"
                     )}
                   />
-                  <span className="hidden md:inline">{project.is_favorited ? "Saved" : "Save"}</span>
                 </button>
               )}
             </div>
