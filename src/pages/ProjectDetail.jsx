@@ -479,15 +479,15 @@ export default function ProjectDetail() {
           Back
         </Button>
 
-        <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_19rem]">
-          {/* Main Content */}
-          <div className="space-y-5">
-            {/* Project Header */}
-            <section className="page-hero">
-              <div className="space-y-6">
-                <div>
-                  <div className="mb-5 flex flex-wrap gap-2">
-                    <span className="page-kicker">Project</span>
+        <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
+          {/* LEFT COLUMN: Main Project Content */}
+          <div className="space-y-6">
+            {/* Project Header Card */}
+            <Card className="border border-deep-navy-100">
+              <CardContent className="p-6">
+                <div className="space-y-4">
+                  {/* Badges Row */}
+                  <div className="flex flex-wrap gap-2">
                     {project.category && (
                       <Badge variant="outline" className="rounded-lg px-3 py-1 text-xs font-semibold">{project.category}</Badge>
                     )}
@@ -499,143 +499,137 @@ export default function ProjectDetail() {
                     </Badge>
                   </div>
 
-                  <h1 className="max-w-4xl text-[clamp(2rem,3.8vw,3.15rem)] font-heading font-bold leading-[1.03] tracking-[-0.06em] text-foreground">{project.title}</h1>
+                  {/* Title */}
+                  <h1 className="text-2xl sm:text-3xl font-bold text-deep-navy-800">{project.title}</h1>
 
-                  <p className="mt-4 whitespace-pre-wrap break-words text-[15px] leading-7 text-muted-foreground overflow-wrap-anywhere sm:text-base">
+                  {/* Description */}
+                  <p className="text-sm sm:text-base leading-6 text-deep-navy-600">
                     {project.description}
                   </p>
 
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    <span className="info-chip">
-                      <Clock className="h-4 w-4 text-primary" />
+                  {/* Meta Info Chips */}
+                  <div className="flex flex-wrap gap-2 pt-2 border-t border-deep-navy-50">
+                    <span className="text-xs text-deep-navy-500 flex items-center gap-1">
+                      <Clock className="h-3 w-3" />
                       Posted {formatDistanceToNow(new Date(project.created_at), { addSuffix: true })}
                     </span>
-                    <span className="info-chip">
-                      <MessageSquare className="h-4 w-4 text-copper-600" />
+                    <span className="text-xs text-deep-navy-500 flex items-center gap-1">
+                      <MessageSquare className="h-3 w-3" />
                       {project.bid_count} bids
                     </span>
-                    <span className="info-chip">
-                      <Eye className="h-4 w-4 text-sky-600" />
+                    <span className="text-xs text-deep-navy-500 flex items-center gap-1">
+                      <Eye className="h-3 w-3" />
                       {project.view_count} views
                     </span>
                     {project.location && (
-                      <span className="info-chip">
-                        <MapPin className="h-4 w-4 text-primary" />
+                      <span className="text-xs text-deep-navy-500 flex items-center gap-1">
+                        <MapPin className="h-3 w-3" />
                         {project.location}
                       </span>
                     )}
                   </div>
                 </div>
+              </CardContent>
+            </Card>
+
+            {/* Quick Stats Cards Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {/* Budget Card */}
+              <Card className="border border-deep-navy-100">
+                <CardContent className="p-3">
+                  <p className="text-xs font-semibold text-deep-navy-500 mb-2">Budget</p>
+                  <p className="text-lg font-bold text-deep-navy-800">
+                    {project.budget_min && project.budget_max
+                      ? `$${project.budget_min}`
+                      : "N/A"}
+                  </p>
+                  <p className="text-xs text-deep-navy-400">to ${project.budget_max || "TBD"}</p>
+                </CardContent>
+              </Card>
+
+              {/* Deadline Card */}
+              <Card className="border border-deep-navy-100">
+                <CardContent className="p-3">
+                  <p className="text-xs font-semibold text-deep-navy-500 mb-2">Deadline</p>
+                  <p className="text-lg font-bold text-deep-navy-800">{new Date(project.deadline).toLocaleDateString()}</p>
+                </CardContent>
+              </Card>
+
+              {/* Status Card */}
+              <Card className="border border-deep-navy-100">
+                <CardContent className="p-3">
+                  <p className="text-xs font-semibold text-deep-navy-500 mb-2">Status</p>
+                  <p className="text-sm font-bold text-deep-navy-800 capitalize">
+                    {project.status === "sold" ? "Sold" : project.status === "awarded" ? "Awarded" : project.status.replace("_", " ")}
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Bids Card */}
+              <Card className="border border-deep-navy-100">
+                <CardContent className="p-3">
+                  <p className="text-xs font-semibold text-deep-navy-500 mb-2">Bids</p>
+                  <p className="text-lg font-bold text-copper-600">{project.bid_count}</p>
+                </CardContent>
+              </Card>
+            </div>
+
+            {project.status === "rejected" && project.rejection_reason && (
+              <div className="alert-danger">
+                <div className="mb-1 flex items-center gap-2 font-medium text-red-800">
+                  <AlertTriangle className="w-4 h-4" />
+                  Rejection reason
+                </div>
+                <p className="text-sm text-red-700">{project.rejection_reason}</p>
               </div>
-
-              <div className="project-detail-summary-grid sm:grid-cols-2 xl:grid-cols-2">
-                <div className="project-detail-summary-item">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">Budget</p>
-                  <div className="mt-3 flex items-start gap-3">
-                    <DollarSign className="mt-1 h-5 w-5 text-primary" />
-                    <p className="text-base font-semibold leading-7 text-foreground">
-                      {project.budget_min && project.budget_max
-                        ? `$${project.budget_min} - $${project.budget_max}`
-                        : "Not sure yet"}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="project-detail-summary-item">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">Deadline</p>
-                  <div className="mt-3 flex items-start gap-3">
-                    <Calendar className="mt-1 h-5 w-5 text-primary" />
-                    <p className="text-base font-semibold leading-7 text-foreground">{new Date(project.deadline).toLocaleDateString()}</p>
-                  </div>
-                </div>
-
-                <div className="project-detail-summary-item">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">Status</p>
-                  <div className="mt-3 space-y-1">
-                    <p className="text-base font-semibold capitalize leading-7 text-foreground">
-                      {project.status === "sold" ? "Sold" : project.status === "awarded" ? "Awarded" : project.status.replace("_", " ")}
-                    </p>
-                    <p className="text-sm leading-6 text-muted-foreground">
-                      {project.bid_count > 0 ? `${project.bid_count} provider proposal${project.bid_count === 1 ? " is" : "s are"} attached to this project.` : "No provider proposals yet."}
-                    </p>
-                  </div>
-                </div>
-
-                {project.location && (
-                  <div className="project-detail-summary-item">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">Location</p>
-                    <div className="mt-3 flex items-start gap-3">
-                      <MapPin className="mt-1 h-5 w-5 text-primary" />
-                      <p className="text-base font-semibold leading-7 text-foreground">{project.location}</p>
-                    </div>
-                  </div>
-                )}
-
-                {project.property_type && (
-                  <div className={cn("project-detail-summary-item", project.location ? "xl:col-span-1" : "sm:col-span-2 xl:col-span-2")}>
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">Property</p>
-                    <div className="mt-3 flex flex-wrap items-center gap-2 text-base font-semibold text-foreground">
-                      <span>{project.property_type}</span>
-                      {project.property_ownership && (
-                        <span className="text-muted-foreground">({project.property_ownership})</span>
-                      )}
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {project.status === "rejected" && project.rejection_reason && (
-                <div className="alert-danger mt-6">
-                  <div className="mb-1 flex items-center gap-2 font-medium text-red-800">
-                    <AlertTriangle className="w-4 h-4" />
-                    Rejection reason
-                  </div>
-                  <p className="text-sm text-red-700">{project.rejection_reason}</p>
-                </div>
-              )}
-            </section>
+            )}
 
             {(project.required_skills?.length > 0 || projectAnswerEntries.length > 0) && (
-              <Card className="result-card-surface">
-                <CardHeader className="pb-2">
-                  <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-                    <div>
-                      <CardTitle className="content-card-title">Project details</CardTitle>
-                      <p className="mt-2 text-sm leading-6 text-muted-foreground">Skills and customer answers in one place.</p>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-5">
-                  {project.required_skills?.length > 0 && (
-                    <div className="space-y-3">
-                      <p className="mb-3 text-sm font-medium uppercase tracking-[0.18em] text-muted-foreground">Required skills</p>
-                      <div className="project-answer-skill-cloud">
+              <div>
+                {/* Required Skills */}
+                {project.required_skills?.length > 0 && (
+                  <Card className="border border-deep-navy-100 mb-6">
+                    <CardHeader>
+                      <CardTitle className="text-lg font-semibold">Required Skills</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="flex flex-wrap gap-2">
                         {project.required_skills.map((skill, idx) => (
-                          <Badge key={idx} className="project-answer-skill-chip">{skill}</Badge>
+                          <Badge key={idx} variant="outline" className="rounded-full">{skill}</Badge>
                         ))}
                       </div>
-                    </div>
-                  )}
+                    </CardContent>
+                  </Card>
+                )}
 
-                  {projectAnswerEntries.length > 0 && (
-                    <div>
-                      <p className="mb-3 text-sm font-medium uppercase tracking-[0.18em] text-muted-foreground">Project answers</p>
-                      <dl className="project-answer-table">
+                {/* Project Details Info Cards Grid */}
+                {projectAnswerEntries.length > 0 && (
+                  <Card className="border border-deep-navy-100">
+                    <CardHeader>
+                      <CardTitle className="text-lg font-semibold">Project Details</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {projectAnswerEntries.map(([key, value]) => {
                           const formattedValue = formatProjectAnswerValue(value);
+                          const meta = getProjectAnswerMeta(key);
+                          const IconComponent = meta.icon;
 
                           return (
-                            <div key={key} className="project-answer-row">
-                              <dt className="project-answer-question">{formatProjectAnswerLabel(key)}</dt>
-                              <dd className="project-answer-value">{formattedValue}</dd>
+                            <div key={key} className="border border-deep-navy-50 rounded-lg p-4 bg-white">
+                              <div className="flex items-start gap-2 mb-2">
+                                <IconComponent className="h-4 w-4 text-copper-600 flex-shrink-0 mt-0.5" />
+                                <p className="text-xs font-semibold text-deep-navy-500 uppercase">{formatProjectAnswerLabel(key)}</p>
+                              </div>
+                              <p className="text-sm font-semibold text-deep-navy-800">{formattedValue}</p>
                             </div>
                           );
                         })}
-                      </dl>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
+              </div>
             )}
 
             {/* Project Images Gallery */}
@@ -1008,37 +1002,37 @@ export default function ProjectDetail() {
             )}
           </div>
 
-          {/* Sidebar */}
-          <div className="space-y-5 xl:sticky xl:top-[5.85rem] xl:self-start">
-            {/* Customer Info */}
-            <Card className="result-card-surface">
-              <CardContent className="p-6">
-                <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Posted by</p>
+          {/* RIGHT COLUMN: Fixed Sidebar */}
+          <div className="space-y-5 lg:sticky lg:top-24 lg:self-start">
+            {/* Customer Card */}
+            <Card className="border border-deep-navy-100">
+              <CardContent className="p-4">
+                <p className="text-xs font-semibold text-deep-navy-500 mb-3 uppercase">Posted By</p>
                 <div className="flex items-center gap-3">
-                  <Avatar className="w-12 h-12">
-                    <AvatarFallback>{project.customer_name?.charAt(0)}</AvatarFallback>
+                  <Avatar className="w-12 h-12 border border-deep-navy-100">
+                    <AvatarFallback className="bg-copper-100 text-copper-700 font-semibold">{project.customer_name?.charAt(0)}</AvatarFallback>
                   </Avatar>
                   <div>
-                    <p className="text-base font-semibold text-foreground">{project.customer_name}</p>
-                    <p className="text-sm text-muted-foreground">Customer</p>
+                    <p className="text-sm font-semibold text-deep-navy-800">{project.customer_name}</p>
+                    <p className="text-xs text-deep-navy-500">Customer</p>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Actions */}
-            <Card className="result-card-surface">
-              <CardContent className="p-6 space-y-4">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Next step</p>
+            {/* Actions Card */}
+            <Card className="border border-deep-navy-100">
+              <CardContent className="p-4 space-y-3">
+                <p className="text-xs font-semibold text-deep-navy-500 uppercase">Next Step</p>
                 {/* Provider Actions */}
                 {isProvider && project.status === "live" && (
                   <>
                     {myBid ? (
                       <div className="space-y-3">
-                        <div className="rounded-xl border border-primary/12 bg-primary/5 p-4">
-                          <p className="text-sm font-medium">Your bid</p>
-                          <p className="text-2xl font-bold text-primary">${myBid.amount}</p>
-                          <p className="text-sm text-muted-foreground">{myBid.estimated_days} days</p>
+                        <div className="rounded-lg border border-copper-200 bg-copper-50 p-4">
+                          <p className="text-xs font-semibold text-copper-700 mb-2">Your Bid</p>
+                          <p className="text-3xl font-bold text-copper-700">${myBid.amount}</p>
+                          <p className="text-xs text-copper-600 mb-3">{myBid.estimated_days} days to complete</p>
                           <Badge className={statusColors[myBid.status] || "bg-gray-100"}>
                             {myBid.status}
                           </Badge>
@@ -1046,14 +1040,14 @@ export default function ProjectDetail() {
                         {myBid.status === "active" && (
                           <Button 
                             variant="outline" 
-                            className="w-full rounded-lg" 
+                            className="w-full rounded-lg border-red-200 text-red-700 hover:bg-red-50" 
                             onClick={handleWithdrawBid}
                             disabled={projectActionPending || withdrawBidPending}
                           >
                             {withdrawBidPending ? (
                               <>
                                 <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                                Withdrawing Bid...
+                                Withdrawing...
                               </>
                             ) : (
                               "Withdraw Bid"
@@ -1064,7 +1058,7 @@ export default function ProjectDetail() {
                     ) : (
                       <Dialog open={bidDialogOpen} onOpenChange={setBidDialogOpen}>
                         <DialogTrigger asChild>
-                          <Button className="w-full rounded-lg" data-testid="submit-bid-btn">
+                          <Button className="w-full rounded-lg bg-gradient-to-r from-copper-500 to-copper-600 text-white hover:from-copper-600 hover:to-copper-700 font-semibold" data-testid="submit-bid-btn">
                             <Send className="w-4 h-4 mr-2" />
                             Submit Proposal
                           </Button>
