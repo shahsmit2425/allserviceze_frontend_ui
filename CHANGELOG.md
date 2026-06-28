@@ -30,7 +30,16 @@
 
 | File | Change | Reason |
 |------|--------|--------|
-| TBD | TBD | TBD |
+| src/components/AppShell.jsx | Always show top Navbar, remove conditional Sidebar | Consistent navigation - navbar always at top |
+| src/components/Navbar.jsx | Dashboard menu already in user dropdown | Single top navigation point works well |
+| src/pages/BrowseProjects.jsx | Card reduced from 120 lines → 50 lines | Modern minimal design |
+| | • Removed "Why Bid Now" section | Reduced info density |
+| | • Simplified to essential: Status, Title, Quick info, Tags, CTAs | Clean hierarchy |
+| | • 3-column grid layout for Budget/Timeline/Bids | More readable |
+| | • Single favorite button (top right) | Less visual clutter |
+| src/pages/Messages.jsx | Updated borders and shadows (already done) | Clean card styling |
+| src/pages/CustomerDashboard.jsx | Dashboard cards simplified (in next phase) | Clean dashboard experience |
+| src/pages/ProviderDashboard.jsx | Dashboard cards simplified (in next phase) | Consistency across dashboards |
 
 ---
 
