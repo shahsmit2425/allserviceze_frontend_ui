@@ -16,7 +16,6 @@ export function AppShell({ children, theme, className, contentClassName, navbarV
   const { user } = useAuth();
   const location = useLocation();
   const hasBottomNav = isNativePhone && shouldShowBottomNav(location.pathname, user);
-  const showSidebar = user && !isLandingOrAuthPage(location.pathname);
 
   return (
     <div
@@ -34,7 +33,7 @@ export function AppShell({ children, theme, className, contentClassName, navbarV
       data-platform={platform}
       {...props}
     >
-      {showSidebar ? <Sidebar /> : <Navbar variant={navbarVariant} />}
+      <Navbar variant={navbarVariant} />
       <main className={cn("app-shell-main", contentClassName)}>{children}</main>
       {hasBottomNav ? <MobileTabBar /> : null}
     </div>

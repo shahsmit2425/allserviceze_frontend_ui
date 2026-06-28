@@ -837,40 +837,29 @@ export default function BrowseProjects() {
                   return (
                     <Card
                       key={project.id}
-                      className="result-card-surface border border-deep-navy-200 bg-white rounded-2xl hover:shadow-lg hover:border-slate-400 transition-all"
+                      className="border border-deep-navy-100 bg-white rounded-lg hover:shadow-md transition-all"
                       data-testid={`project-card-${project.id}`}
-                      style={{ contentVisibility: 'auto', containIntrinsicSize: '360px' }}
+                      style={{ contentVisibility: 'auto', containIntrinsicSize: '320px' }}
                     >
-                      <CardContent className="p-5 sm:p-5.5">
-                        <div className="space-y-4">
-                          <div className="flex flex-wrap items-center gap-2">
-                            <Badge className={project.my_bid_status ? "status-badge-info" : project.bidCountValue === 0 ? "status-badge-success" : project.bidCountValue <= 2 ? "status-badge-warning" : "status-badge-neutral"}>
-                              {project.my_bid_status ? opportunityLabel : project.bidCountValue === 0 ? "First quote advantage" : project.bidCountValue <= 2 ? "Low competition" : "Open marketplace"}
-                            </Badge>
-                            {project.isNew ? <Badge className="status-badge-info">New</Badge> : null}
-                            {project.is_featured ? <Badge className="status-badge-warning">Featured</Badge> : null}
-                          </div>
+                      <CardContent className="p-4">
+                        <div className="space-y-3">
+                          {/* Status Badge */}
+                          <Badge className={project.my_bid_status ? "status-badge-info" : project.bidCountValue === 0 ? "status-badge-success" : "status-badge-neutral"}>
+                            {project.my_bid_status ? opportunityLabel : project.bidCountValue === 0 ? "First quote" : "Open"}
+                          </Badge>
 
-                          <div className="flex items-start justify-between gap-3">
-                            <div className="min-w-0">
-                              <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-                                {project.location ? (
-                                  <span className="inline-flex items-center gap-1.5">
-                                    <MapPin className="h-3.5 w-3.5" />
-                                    {project.location}
-                                  </span>
-                                ) : null}
-                                <span className="inline-flex items-center gap-1.5">
-                                  <Clock className="h-3.5 w-3.5" />
-                                  {project.postedDateLabel}
-                                </span>
+                          {/* Header */}
+                          <div className="flex items-start justify-between gap-2">
+                            <div className="flex-1 min-w-0">
+                              <div className="text-xs text-deep-navy-500 mb-1">
+                                {project.location && `${project.location} • `}{project.postedDateLabel}
                               </div>
                               <Link
                                 to={projectUrl}
-                                className="group inline-block rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                                className="group inline-block rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500"
                                 aria-label={`Open project ${project.title}`}
                               >
-                                <h3 className="text-[1.15rem] font-semibold leading-6 tracking-[-0.04em] text-foreground transition-colors group-hover:text-primary">
+                                <h3 className="text-sm font-semibold text-deep-navy-800 group-hover:text-copper-600 line-clamp-2">
                                   {project.title}
                                 </h3>
                               </Link>
@@ -878,87 +867,49 @@ export default function BrowseProjects() {
                             {user?.role === "provider" && (
                               <button
                                 onClick={(e) => handleToggleFavorite(e, project.id, project.is_favorited)}
-                                aria-label={project.is_favorited ? `Remove ${project.title} from favorites` : `Save ${project.title} to favorites`}
-                                className="favorite-toggle p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                                className="flex-shrink-0 p-1"
                                 title={project.is_favorited ? "Remove from favorites" : "Add to favorites"}
                               >
-                                <Heart className={cn("h-4 w-4 transition-colors", project.is_favorited ? "favorite-toggle-active fill-current" : "favorite-toggle-idle hover:text-pink-400")} />
+                                <Heart className={cn("h-4 w-4", project.is_favorited ? "fill-red-500 text-red-500" : "text-deep-navy-300 hover:text-red-400")} />
                               </button>
                             )}
                           </div>
 
-                          <div className="flex flex-wrap items-center gap-2">
-                            <Badge className="bg-copper-50 text-amber-700 border border-copper-100 rounded-full px-3 py-1 text-xs font-semibold">{project.urgency}</Badge>
-                            <Badge className="bg-deep-navy-50 text-deep-navy-600 border border-deep-navy-100 rounded-full px-3 py-1 text-xs font-semibold">{project.category}</Badge>
-                            {project.customerVerified ? (
-                              <Badge className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-emerald-700">
-                                <CheckCircle className="mr-1 h-3 w-3" />
-                                Verified customer
+                          {/* Quick Info Row */}
+                          <div className="grid grid-cols-3 gap-2 pt-1 border-t border-deep-navy-50">
+                            <div>
+                              <p className="text-xs text-deep-navy-500">Budget</p>
+                              <p className="text-sm font-semibold text-deep-navy-800">{formatBudgetRange(project)}</p>
+                            </div>
+                            <div>
+                              <p className="text-xs text-deep-navy-500">Timeline</p>
+                              <p className="text-sm font-semibold text-deep-navy-800">{project.deadlineLabel}</p>
+                            </div>
+                            <div>
+                              <p className="text-xs text-deep-navy-500">Bids</p>
+                              <p className="text-sm font-semibold text-deep-navy-800">{project.bidCountValue}</p>
+                            </div>
+                          </div>
+
+                          {/* Category Tags */}
+                          <div className="flex flex-wrap gap-1">
+                            <Badge variant="outline" className="text-xs">{project.category}</Badge>
+                            {project.customerVerified && (
+                              <Badge variant="outline" className="text-xs text-emerald-700 border-emerald-200">
+                                <CheckCircle className="h-2.5 w-2.5 mr-1" />
+                                Verified
                               </Badge>
-                            ) : null}
-                            {project.derivedProjectType ? (
-                              <Badge className="bg-deep-navy-50 text-deep-navy-600 border border-deep-navy-100 rounded-full px-3 py-1 text-xs font-semibold">{project.derivedProjectType}</Badge>
-                            ) : null}
+                            )}
                           </div>
 
-                          <div className="rounded-xl border border-border/60 bg-background px-4 py-3.5">
-                            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary">Why bid now</p>
-                            <p className="mb-3 text-sm font-medium text-foreground">{getOpportunityReason(project)}</p>
-                            <p className="line-clamp-3 text-sm leading-6 text-muted-foreground">
-                              {project.description}
-                            </p>
-                            <div className="mt-3 flex flex-wrap items-center gap-2 text-xs font-medium text-muted-foreground">
-                              {project.photoCount > 0 ? (
-                                <span className="market-card-chip">
-                                  {project.photoCount} photo{project.photoCount === 1 ? "" : "s"}
-                                </span>
-                              ) : null}
-                              {project.required_skills?.slice(0, 2).map((skill) => (
-                                <span key={skill} className="market-card-chip">{skill}</span>
-                              ))}
-                            </div>
-                          </div>
-
-                          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
-                            <div className="rounded-lg border border-border/60 bg-white px-3.5 py-3">
-                              <p className="detail-kicker">Budget</p>
-                              <p className="mt-1.5 text-sm font-semibold text-foreground">{formatBudgetRange(project)}</p>
-                            </div>
-                            <div className="rounded-lg border border-border/60 bg-white px-3.5 py-3">
-                              <p className="detail-kicker">Timeline</p>
-                              <p className="mt-1.5 text-sm font-semibold text-foreground">{project.deadlineLabel}</p>
-                            </div>
-                            <div className="rounded-lg border border-border/60 bg-white px-3.5 py-3">
-                              <p className="detail-kicker">Bid count</p>
-                              <p className="mt-1.5 text-sm font-semibold text-foreground">{project.bidCountValue} bids</p>
-                            </div>
-                            <div className="rounded-lg border border-border/60 bg-white px-3.5 py-3">
-                              <p className="detail-kicker">Competition</p>
-                              <p className="mt-1.5 text-sm font-semibold text-foreground">{project.bidCountValue === 0 ? "Be first" : project.bidCountValue <= 2 ? "Still early" : `${project.bidCountValue}+ active`}</p>
-                            </div>
-                            <div className="rounded-lg border border-border/60 bg-white px-3.5 py-3">
-                              <p className="detail-kicker">Customer</p>
-                              <p className="mt-1.5 text-sm font-semibold text-foreground line-clamp-1">{project.customerVerified ? "Verified homeowner" : project.customer_name || "Marketplace customer"}</p>
-                            </div>
-                          </div>
-
-                          <div className="flex flex-col gap-3 pt-0.5 sm:flex-row sm:items-center sm:justify-between">
-                            <div className="text-sm text-muted-foreground">
-                              <span className="font-medium text-foreground">{opportunityLabel}</span>
-                            </div>
-                            <div className="flex flex-col gap-2 sm:flex-row">
-                              <Button asChild size="sm" className="min-w-[9.5rem] justify-center rounded-xl border border-deep-navy-200 text-deep-navy-800 hover:bg-white font-semibold">
-                                <Link to={projectUrl} aria-label={`View details for ${project.title}`}>
-                                  View Project
-                                </Link>
-                              </Button>
-                              <Button asChild size="sm" className="min-w-[9.5rem] justify-center rounded-xl bg-gradient-to-r from-copper-500 to-copper-600 text-white hover:from-copper-600 hover:to-copper-700 font-semibold">
-                                <Link to={projectUrl} aria-label={`Submit bid for ${project.title}`}>
-                                  {getPrimaryActionLabel(project)}
-                                  <ArrowRight className="ml-2 h-4 w-4" />
-                                </Link>
-                              </Button>
-                            </div>
+                          {/* CTA Buttons */}
+                          <div className="flex gap-2 pt-2">
+                            <Button asChild variant="outline" size="sm" className="flex-1 rounded-lg border-deep-navy-200 text-deep-navy-800">
+                              <Link to={projectUrl}>View</Link>
+                            </Button>
+                            <Button asChild size="sm" className="flex-1 rounded-lg bg-gradient-to-r from-copper-500 to-copper-600 text-white">
+                              <Link to={projectUrl}>{getPrimaryActionLabel(project)}</Link>
+                            </Button>
                           </div>
                         </div>
                       </CardContent>
