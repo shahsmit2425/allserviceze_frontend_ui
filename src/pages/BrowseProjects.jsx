@@ -20,6 +20,7 @@ import { useAuth } from "../context/AuthContext";
 import { useCategories } from "../hooks/useCategories";
 import { usePlatform } from "@/mobile/hooks/usePlatform";
 import { cn } from "@/lib/utils";
+import { ProjectCard } from "../components/ProjectCard";
 import axios from "axios";
 import { 
   Briefcase, MapPin,
@@ -822,7 +823,7 @@ export default function BrowseProjects() {
                 <Loader2 className="w-8 h-8 animate-spin text-primary" />
               </div>
             ) : sortedProjects.length > 0 ? (
-              <div className={cn("grid gap-4", isNativeTablet ? "xl:grid-cols-2" : "lg:grid-cols-2")}>
+              <div className={cn("grid gap-4", isNativeTablet ? "md:grid-cols-2 lg:grid-cols-3" : "md:grid-cols-2 lg:grid-cols-3")}>
                 {visibleProjects.map((project) => {
                   const opportunityLabel = project.my_bid_status
                     ? project.my_bid_status === "awarded"
@@ -833,135 +834,21 @@ export default function BrowseProjects() {
                     : project.urgency === "urgent"
                       ? "Urgent"
                       : "Open for quotes";
-                  const projectUrl = `/projects/${project.id}`;
+
                   return (
-                    <Card
+                    <ProjectCard
                       key={project.id}
-                      className="border border-deep-navy-100 bg-white rounded-lg hover:shadow-lg hover:border-copper-300 transition-all"
-                      data-testid={`project-card-${project.id}`}
-                    >
-                      <CardContent className="p-4 sm:p-5">
-                        {/* Header: Title + Status */}
-                        <div className="flex items-start justify-between gap-3 mb-3">
-                          <div className="flex-1 min-w-0">
-                            <Link
-                              to={projectUrl}
-                              className="group inline-block rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500"
-                              aria-label={`Open project ${project.title}`}
-                            >
-                              <h3 className="text-base font-semibold text-deep-navy-800 group-hover:text-copper-600 line-clamp-2">
-                                {project.title}
-                              </h3>
-                            </Link>
-                          </div>
-                          <Badge className={`flex-shrink-0 ${project.my_bid_status ? "status-badge-info" : project.bidCountValue === 0 ? "status-badge-success" : "status-badge-neutral"}`}>
-                            {project.my_bid_status ? opportunityLabel : project.bidCountValue === 0 ? "First quote" : "Open"}
-                          </Badge>
-                        </div>
-
-                        {/* Meta Info */}
-                        <div className="text-xs text-deep-navy-500 mb-4">
-                          {project.postedDateLabel}
-                        </div>
-
-                        {/* Main Data Grid - Full Width */}
-                        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 mb-4 pb-4 border-b border-deep-navy-50">
-                          {/* Category */}
-                          <div className="space-y-1">
-                            <p className="text-xs font-medium text-deep-navy-500">Category</p>
-                            <Badge variant="outline" className="text-xs font-medium w-full justify-start">
-                              {project.category}
-                            </Badge>
-                          </div>
-
-                          {/* Zip Code */}
-                          <div className="space-y-1">
-                            <p className="text-xs font-medium text-deep-navy-500 flex items-center gap-1">
-                              <MapPin className="h-3 w-3" />
-                              Zip
-                            </p>
-                            <p className="text-sm font-semibold text-deep-navy-800">
-                              {project.zip_code || project.location?.split(',')[1]?.trim() || 'N/A'}
-                            </p>
-                          </div>
-
-                          {/* Urgency Level */}
-                          <div className="space-y-1">
-                            <p className="text-xs font-medium text-deep-navy-500">Urgency</p>
-                            <Badge className={urgencyColors[project.urgency] || "bg-deep-navy-50 text-deep-navy-800"}>
-                              {project.urgency?.charAt(0).toUpperCase() + project.urgency?.slice(1)}
-                            </Badge>
-                          </div>
-
-                          {/* Project Status */}
-                          <div className="space-y-1">
-                            <p className="text-xs font-medium text-deep-navy-500">Status</p>
-                            <p className="text-sm font-semibold text-deep-navy-800 capitalize">
-                              {project.status?.replace(/_/g, ' ') || 'Pending'}
-                            </p>
-                          </div>
-
-                          {/* Property Type */}
-                          <div className="space-y-1">
-                            <p className="text-xs font-medium text-deep-navy-500">Property</p>
-                            <p className="text-sm font-semibold text-deep-navy-800 truncate">
-                              {project.property_type || project.questionnaire_responses?.property_type || 'N/A'}
-                            </p>
-                          </div>
-
-                          {/* Ownership */}
-                          <div className="space-y-1">
-                            <p className="text-xs font-medium text-deep-navy-500">Ownership</p>
-                            <p className="text-sm font-semibold text-deep-navy-800 truncate">
-                              {project.questionnaire_responses?.ownership || 'N/A'}
-                            </p>
-                          </div>
-
-                          {/* Budget */}
-                          <div className="space-y-1">
-                            <p className="text-xs font-medium text-deep-navy-500">Budget</p>
-                            <p className="text-sm font-bold text-copper-600">{formatBudgetRange(project)}</p>
-                          </div>
-
-                          {/* Bids */}
-                          <div className="space-y-1">
-                            <p className="text-xs font-medium text-deep-navy-500">Bids</p>
-                            <p className="text-sm font-bold text-copper-600">{project.bidCountValue}</p>
-                          </div>
-                        </div>
-
-                        {/* Bottom Section: Customer Badge + Actions */}
-                        <div className="flex items-center justify-between gap-3">
-                          <div className="flex items-center gap-2">
-                            {project.customerVerified && (
-                              <Badge variant="outline" className="text-xs text-emerald-700 border-emerald-200 font-medium">
-                                <CheckCircle className="h-3 w-3 mr-1" />
-                                Verified
-                              </Badge>
-                            )}
-                          </div>
-
-                          {/* Action Buttons */}
-                          <div className="flex items-center gap-2">
-                            <Button asChild size="sm" className="rounded-lg bg-gradient-to-r from-copper-500 to-copper-600 text-white hover:from-copper-600 hover:to-copper-700 font-semibold">
-                              <Link to={projectUrl}>{getPrimaryActionLabel(project)}</Link>
-                            </Button>
-                            {user?.role === "provider" && (
-                              <button
-                                onClick={(e) => handleToggleFavorite(e, project.id, project.is_favorited)}
-                                className="p-2 text-xs font-medium transition-colors rounded-lg hover:bg-deep-navy-50"
-                                title={project.is_favorited ? "Remove from favorites" : "Add to favorites"}
-                              >
-                                <Heart className={cn("h-4 w-4", project.is_favorited ? "fill-red-500 text-red-500" : "text-deep-navy-300 hover:text-red-400")} />
-                              </button>
-                            )}
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  )})}
+                      project={project}
+                      onFavoriteToggle={(projectId) => handleToggleFavorite({preventDefault: () => {}}, projectId, !project.is_favorited)}
+                      user={user}
+                      formatBudgetRange={formatBudgetRange}
+                      getPrimaryActionLabel={getPrimaryActionLabel}
+                      opportunityLabel={opportunityLabel}
+                    />
+                  );
+                })}
                 {sortedProjects.length > visibleCount && (
-                  <div className="flex justify-center pt-2">
+                  <div className="flex justify-center col-span-full pt-2">
                     <Button variant="outline" className="w-full rounded-lg border-border/60 bg-background sm:w-auto" onClick={() => setVisibleCount((count) => count + 12)}>
                       Load More Projects
                     </Button>

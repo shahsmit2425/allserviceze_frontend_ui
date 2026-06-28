@@ -10,6 +10,7 @@ import { useAuth } from "../context/AuthContext";
 import { toast } from "sonner";
 import axios from "axios";
 import { usePendingActions } from "../hooks/usePendingActions";
+import { ProjectCard } from "../components/ProjectCard";
 import { 
   Briefcase, DollarSign, Calendar, MessageSquare, Eye,
   Plus, Loader2, Trash2, Send, CheckCircle, Edit,
