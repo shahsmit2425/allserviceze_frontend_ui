@@ -416,193 +416,42 @@ export default function ProviderDashboard() {
   return (
     <>
       <AppShell theme="provider" className="bg-background pb-12" contentClassName="pb-12" data-testid="provider-dashboard">
-        <div className="page-shell space-y-7 py-7 sm:space-y-8 sm:py-8">
-          <section className="toolbar-surface overflow-hidden border border-deep-navy-100 bg-[linear-gradient(135deg,#f8fcff_0%,#eef8f5_55%,#ffffff_100%)] px-5 py-5 sm:px-6 sm:py-6">
-            <div className="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
-              <div>
-                <p className="detail-kicker">Welcome back {user?.name || user?.full_name || "Provider"}</p>
-                <h1 className="mt-2 text-3xl font-semibold tracking-[-0.05em] text-foreground sm:text-4xl">
-                  Marketplace activity should lead your day.
-                </h1>
-                <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground sm:text-base">
-                  Find new projects, follow up on active bids, answer customers faster, and move awarded work into delivery from one focused workspace.
-                </p>
+        <div className="page-shell space-y-6 py-7 sm:py-8">
+          <Card className="form-shell border border-deep-navy-100">
+            <CardHeader className="pb-0">
+              <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                <div>
+                  <CardTitle className="text-2xl font-semibold text-deep-navy-800">Your Active Bids</CardTitle>
+                  <p className="mt-1 text-sm text-deep-navy-600">Manage your proposals and track your pipeline</p>
+                </div>
+                <Button onClick={() => navigate("/projects")} className="rounded-lg bg-gradient-to-r from-copper-500 to-copper-600 text-white">
+                  <Briefcase className="mr-2 h-4 w-4" />
+                  Find New Jobs
+                </Button>
               </div>
-              <Button onClick={() => navigate("/projects")} className="rounded-lg">
-                <Briefcase className="mr-2 h-4 w-4" />
-                Find New Jobs
-              </Button>
-            </div>
-
-            <div className="mt-5 grid gap-3 sm:grid-cols-3">
-              <div className="rounded-xl border border-white/80 bg-white px-4 py-4 shadow-sm shadow-deep-navy-800/5">
-                <p className="caption">New matching projects</p>
-                <p className="mt-2 text-3xl font-semibold tracking-[-0.05em] text-foreground">{recommendedProjects.length}</p>
-                <p className="mt-2 text-sm text-muted-foreground">Fresh live jobs you have not bid on yet.</p>
+            </CardHeader>
+            <CardContent className="pt-6">
+              {/* Stats Row */}
+              <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                <div className="rounded-lg border border-deep-navy-100 bg-white px-4 py-3">
+                  <p className="text-xs font-semibold text-deep-navy-500">Active</p>
+                  <p className="mt-1 text-2xl font-bold text-deep-navy-800">{counts.active}</p>
+                </div>
+                <div className="rounded-lg border border-deep-navy-100 bg-white px-4 py-3">
+                  <p className="text-xs font-semibold text-deep-navy-500">Shortlisted</p>
+                  <p className="mt-1 text-2xl font-bold text-deep-navy-800">{counts.shortlisted}</p>
+                </div>
+                <div className="rounded-lg border border-deep-navy-100 bg-white px-4 py-3">
+                  <p className="text-xs font-semibold text-deep-navy-500">Won</p>
+                  <p className="mt-1 text-2xl font-bold text-copper-600">{counts.won}</p>
+                </div>
+                <div className="rounded-lg border border-deep-navy-100 bg-white px-4 py-3">
+                  <p className="text-xs font-semibold text-deep-navy-500">Completed</p>
+                  <p className="mt-1 text-2xl font-bold text-deep-navy-800">{counts.completed}</p>
+                </div>
               </div>
-              <div className="rounded-xl border border-white/80 bg-white px-4 py-4 shadow-sm shadow-deep-navy-800/5">
-                <p className="caption">Open bid pipeline</p>
-                <p className="mt-2 text-3xl font-semibold tracking-[-0.05em] text-foreground">{formatCurrency(openBidValue)}</p>
-                <p className="mt-2 text-sm text-muted-foreground">Current proposal value waiting on customer action.</p>
-              </div>
-              <div className="rounded-xl border border-white/80 bg-white px-4 py-4 shadow-sm shadow-deep-navy-800/5">
-                <p className="caption">Won work</p>
-                <p className="mt-2 text-3xl font-semibold tracking-[-0.05em] text-foreground">{formatCurrency(wonValue)}</p>
-                <p className="mt-2 text-sm text-muted-foreground">Awarded pipeline already converted into revenue opportunities.</p>
-              </div>
-            </div>
-          </section>
-
-          <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_23rem]">
-            <div className="space-y-6">
-              <Card className="form-shell border border-deep-navy-100">
-                <CardHeader className="pb-0">
-                  <div className="flex items-end justify-between gap-4">
-                    <div>
-                      <p className="caption">Action Center</p>
-                      <CardTitle className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-foreground">Keep work moving</CardTitle>
-                    </div>
-                    <Button variant="outline" className="rounded-lg bg-white/70" onClick={() => navigate("/messages")}>
-                      Open messages
-                    </Button>
-                  </div>
-                </CardHeader>
-                <CardContent className="pt-6">
-                  <div className="grid gap-3 sm:grid-cols-3">
-                    <button type="button" onClick={() => navigate("/projects")} className="rounded-xl border border-border/60 bg-white px-4 py-4 text-left shadow-sm transition hover:border-primary/20 hover:bg-primary/5">
-                      <div className="flex items-start justify-between gap-3">
-                        <div>
-                          <p className="caption">New project matches</p>
-                          <p className="mt-2 text-2xl font-semibold tracking-[-0.05em] text-foreground">{recommendedProjects.length}</p>
-                        </div>
-                        <Briefcase className="h-5 w-5 text-sky-600" />
-                      </div>
-                      <p className="mt-3 text-sm leading-6 text-muted-foreground">Prioritize live jobs that fit your current pipeline.</p>
-                    </button>
-                    <button type="button" onClick={() => navigate("/messages")} className="rounded-xl border border-border/60 bg-white px-4 py-4 text-left shadow-sm transition hover:border-primary/20 hover:bg-primary/5">
-                      <div className="flex items-start justify-between gap-3">
-                        <div>
-                          <p className="caption">Customer messages</p>
-                          <p className="mt-2 text-2xl font-semibold tracking-[-0.05em] text-foreground">{unreadMessageCount}</p>
-                        </div>
-                        <MessageSquare className="h-5 w-5 text-emerald-600" />
-                      </div>
-                      <p className="mt-3 text-sm leading-6 text-muted-foreground">Unread conversations that can unblock hiring decisions.</p>
-                    </button>
-                    <button type="button" onClick={() => setActiveTab("active")} className="rounded-xl border border-border/60 bg-white px-4 py-4 text-left shadow-sm transition hover:border-primary/20 hover:bg-primary/5">
-                      <div className="flex items-start justify-between gap-3">
-                        <div>
-                          <p className="caption">Bids awaiting response</p>
-                          <p className="mt-2 text-2xl font-semibold tracking-[-0.05em] text-foreground">{counts.active}</p>
-                        </div>
-                        <FileText className="h-5 w-5 text-copper-600" />
-                      </div>
-                      <p className="mt-3 text-sm leading-6 text-muted-foreground">Follow up on proposals still sitting in customer review.</p>
-                    </button>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="form-shell border border-deep-navy-100">
-                <CardHeader className="pb-0">
-                  <div className="flex items-end justify-between gap-4">
-                    <div>
-                      <p className="caption">Recommended Projects</p>
-                      <CardTitle className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-foreground">Fresh jobs to bid now</CardTitle>
-                    </div>
-                    <Button variant="outline" className="rounded-lg bg-white/70" onClick={() => navigate("/projects")}>Browse all</Button>
-                  </div>
-                </CardHeader>
-                <CardContent className="pt-6">
-                  {recommendedProjects.length > 0 ? (
-                    <div className="space-y-3">
-                      {recommendedProjects.map((project) => (
-                        <div key={project.id} className="rounded-xl border border-border/60 bg-white px-4 py-4 shadow-sm">
-                          <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-                            <div className="min-w-0 flex-1">
-                              <div className="flex flex-wrap items-center gap-2">
-                                {project.category ? (
-                                  <Badge variant="outline" className="rounded-lg px-3 py-1 text-xs font-semibold">{project.category}</Badge>
-                                ) : null}
-                                {project.urgency ? <Badge className="status-badge-warning">{project.urgency}</Badge> : null}
-                              </div>
-                              <h3 className="mt-3 text-lg font-semibold tracking-[-0.03em] text-foreground">{project.title}</h3>
-                              <p className="mt-2 line-clamp-2 text-sm leading-6 text-muted-foreground">{project.description}</p>
-                              <div className="mt-4 flex flex-wrap gap-2.5 text-sm">
-                                <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-deep-navy-800/5">
-                                  <DollarSign className="h-4 w-4 text-primary" />
-                                  <span className="font-medium">{formatBudgetRange(project)}</span>
-                                </span>
-                                <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-deep-navy-800/5">
-                                  <MapPin className="h-4 w-4 text-primary" />
-                                  <span className="font-medium">{project.location || "Flexible location"}</span>
-                                </span>
-                                <span className="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/85 px-3 py-2 text-foreground/85 shadow-sm shadow-deep-navy-800/5">
-                                  <Calendar className="h-4 w-4 text-primary" />
-                                  <span className="font-medium">{formatActivityTime(project.created_at)}</span>
-                                </span>
-                              </div>
-                            </div>
-                            <div className="flex shrink-0 flex-col gap-2 lg:w-40">
-                              <Button className="rounded-lg" onClick={() => navigate(`/projects/${project.id}`)}>
-                                Bid Now
-                              </Button>
-                              <Button variant="outline" className="rounded-lg border-border/60" onClick={() => navigate(`/projects/${project.id}`)}>
-                                View Details
-                              </Button>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="empty-state-panel px-5 py-8 text-center">
-                      <Briefcase className="mx-auto h-10 w-10 text-muted-foreground" />
-                      <h3 className="mt-4 text-lg font-semibold text-foreground">No fresh matches right now</h3>
-                      <p className="mt-2 text-sm leading-6 text-muted-foreground">Browse all live projects to widen the pipeline and uncover nearby opportunities.</p>
-                      <Button onClick={() => navigate("/projects")} className="mt-4 rounded-lg">
-                        <Briefcase className="mr-2 h-4 w-4" />
-                        Find New Jobs
-                      </Button>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-
-              <Card className="form-shell border border-deep-navy-100">
-          <CardHeader className="pb-0">
-            <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-              <div>
-                <p className="caption">Pipeline</p>
-                <CardTitle className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-foreground">Bids and won work</CardTitle>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">Stay focused on proposals, shortlist movement, wins, and delivery handoff.</p>
-              </div>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <div className="mb-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-              <div className="rounded-xl border border-border/60 bg-white px-4 py-4 shadow-sm">
-                <p className="caption">Active bids</p>
-                <p className="mt-2 text-2xl font-semibold tracking-[-0.05em] text-foreground">{counts.active}</p>
-                <p className="mt-2 text-sm text-muted-foreground">Waiting on customer review.</p>
-              </div>
-              <div className="rounded-xl border border-border/60 bg-white px-4 py-4 shadow-sm">
-                <p className="caption">Shortlisted</p>
-                <p className="mt-2 text-2xl font-semibold tracking-[-0.05em] text-foreground">{counts.shortlisted}</p>
-                <p className="mt-2 text-sm text-muted-foreground">Closer to conversion.</p>
-              </div>
-              <div className="rounded-xl border border-border/60 bg-white px-4 py-4 shadow-sm">
-                <p className="caption">Won</p>
-                <p className="mt-2 text-2xl font-semibold tracking-[-0.05em] text-foreground">{counts.won}</p>
-                <p className="mt-2 text-sm text-muted-foreground">Ready to start delivery.</p>
-              </div>
-              <div className="rounded-xl border border-border/60 bg-white px-4 py-4 shadow-sm">
-                <p className="caption">Completed</p>
-                <p className="mt-2 text-2xl font-semibold tracking-[-0.05em] text-foreground">{counts.completed}</p>
-                <p className="mt-2 text-sm text-muted-foreground">Finished jobs and reviews.</p>
-              </div>
-            </div>
-            <Tabs value={activeTab} onValueChange={setActiveTab}>
+              {/* Tabs Section */}
+              <Tabs value={activeTab} onValueChange={setActiveTab}>
               <TabsList className={isNativePhone ? "mobile-tabs-rail mb-6 flex" : "mb-6 h-auto flex-wrap gap-2"}>
                 <TabsTrigger value="active">Active ({counts.active})</TabsTrigger>
                 <TabsTrigger value="won">Won ({counts.won})</TabsTrigger>
@@ -844,105 +693,10 @@ export default function ProviderDashboard() {
                 )}
               </TabsContent>
             </Tabs>
-          </CardContent>
-              </Card>
-            </div>
-
-            <div className="space-y-6">
-              <Card className="form-shell border border-deep-navy-100">
-                <CardHeader className="pb-0">
-                  <div className="flex items-end justify-between gap-4">
-                    <div>
-                      <p className="caption">Recent Activity</p>
-                      <CardTitle className="mt-2 text-xl font-semibold tracking-[-0.04em] text-foreground">Signals that need attention</CardTitle>
-                    </div>
-                    <Button variant="ghost" className="rounded-lg px-0 text-primary" onClick={() => navigate("/messages")}>View inbox</Button>
-                  </div>
-                </CardHeader>
-                <CardContent className="pt-6">
-                  {recentActivity.length > 0 ? (
-                    <div className="space-y-3">
-                      {recentActivity.map((item) => (
-                        <div key={item.id} className="flex items-start gap-3 rounded-xl border border-border/60 bg-white px-4 py-3 shadow-sm">
-                          <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-2xl bg-white">
-                            {renderActivityIcon(item.type)}
-                          </div>
-                          <div className="min-w-0 flex-1">
-                            <p className="text-sm font-semibold text-foreground">{item.title}</p>
-                            <p className="mt-1 truncate text-sm text-muted-foreground">{item.meta}</p>
-                          </div>
-                          <span className="shrink-0 text-xs font-medium text-muted-foreground">{formatActivityTime(item.timestamp)}</span>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="rounded-xl border border-dashed border-border/60 bg-white px-4 py-6 text-sm text-muted-foreground">
-                      Activity will appear here as bids move, customers reply, and new project matches come in.
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-
-              <button
-                type="button"
-                onClick={() => navigate("/schedule")}
-                className="form-shell w-full border border-deep-navy-100 p-5 text-left transition hover:border-primary/20 hover:bg-primary/5"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="caption">Calendar And Appointments</p>
-                    <h2 className="mt-2 text-xl font-semibold tracking-[-0.04em] text-foreground">Move scheduling into a dedicated workspace</h2>
-                    <p className="mt-2 text-sm leading-6 text-muted-foreground">Open your full schedule page to manage blocked dates, upcoming appointments, and customer audio or video call permissions.</p>
-                  </div>
-                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 shadow-sm">
-                    <Calendar className="h-5 w-5 text-primary" />
-                  </div>
-                </div>
-                <div className="mt-5 flex flex-wrap gap-3">
-                  <span className="inline-flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-sm font-semibold text-foreground shadow-sm">
-                    Calendar availability
-                  </span>
-                  <span className="inline-flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-sm font-semibold text-foreground shadow-sm">
-                    Appointments
-                  </span>
-                  <span className="inline-flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-sm font-semibold text-foreground shadow-sm">
-                    Call settings
-                  </span>
-                </div>
-                <div className="mt-5 flex items-center text-sm font-semibold text-primary">
-                  Open schedule page
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </div>
-              </button>
-
-              <button type="button" onClick={() => setShowAllReviews(true)} className="form-shell w-full border border-deep-navy-100 p-5 text-left transition hover:border-primary/20 hover:bg-primary/5">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="caption">Reputation</p>
-                    <h2 className="mt-2 text-xl font-semibold tracking-[-0.04em] text-foreground">Reviews that help you win</h2>
-                    <p className="mt-2 text-sm leading-6 text-muted-foreground">Use customer proof to strengthen future bids and follow-ups.</p>
-                  </div>
-                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-yellow-100 shadow-sm">
-                    <TrendingUp className="h-5 w-5 text-yellow-600" />
-                  </div>
-                </div>
-                <div className="mt-5 flex flex-wrap gap-3">
-                  <span className="inline-flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-sm font-semibold text-foreground shadow-sm">
-                    <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                    {stats?.avg_rating?.toFixed(1) || "New"}
-                  </span>
-                  <span className="inline-flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-sm font-semibold text-foreground shadow-sm">
-                    {stats?.total_reviews || 0} reviews
-                  </span>
-                  <span className="inline-flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-sm font-semibold text-foreground shadow-sm">
-                    {stats?.completed_projects || counts.completed} completed jobs
-                  </span>
-                </div>
-              </button>
-            </div>
-          </div>
-      </div>
-    </AppShell>
+            </CardContent>
+          </Card>
+        </div>
+      </AppShell>
 
       {/* Project Detail Dialog */}
       <Dialog open={!!selectedProject} onOpenChange={(open) => { if (!open) { setSelectedProject(null); setProjectDetails(null); setReplyText(""); } }}>
