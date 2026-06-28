@@ -173,8 +173,10 @@ export default function Messages() {
   const [showDetailsPanel, setShowDetailsPanel] = useState(!isNativePhone);
 
   const messageEndRef = useRef(null);
+  const messagesContainerRef = useRef(null);
   const attachmentInputRef = useRef(null);
   const rightPanelRef = useRef(null);
+  const userAtBottomRef = useRef(true);
   const selectedConversationId = selectedConversation?.id || null;
   const pageTheme = user?.role === "provider" ? "provider" : "customer";
   const selectedParticipant = useMemo(
@@ -399,8 +401,26 @@ export default function Messages() {
     return () => window.clearInterval(interval);
   }, [fetchMessages, selectedConversation?.unread_count, selectedConversationId]);
 
+  // Track if user is at bottom to prevent auto-scroll when scrolling up
   useEffect(() => {
-    messageEndRef.current?.scrollIntoView({ block: "end" });
+    const container = messagesContainerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      // Check if user is at bottom (within 50px tolerance)
+      const isAtBottom = container.scrollHeight - container.scrollTop - container.clientHeight < 50;
+      userAtBottomRef.current = isAtBottom;
+    };
+
+    container.addEventListener("scroll", handleScroll);
+    return () => container.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Only auto-scroll if user was at bottom
+  useEffect(() => {
+    if (userAtBottomRef.current) {
+      messageEndRef.current?.scrollIntoView({ block: "end" });
+    }
   }, [messages]);
 
   useEffect(() => {
@@ -766,7 +786,7 @@ export default function Messages() {
                   </div>
                 ) : null}
 
-                <div className="flex-1 overflow-y-auto bg-[linear-gradient(180deg,#fbfdff_0%,#f7fafc_100%)] px-4 py-5 sm:px-5">
+                <div ref={messagesContainerRef} className="flex-1 overflow-y-auto bg-[linear-gradient(180deg,#fbfdff_0%,#f7fafc_100%)] px-4 py-5 sm:px-5">
                   {loadingMessages ? (
                     <div className="flex justify-center py-8">
                       <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />

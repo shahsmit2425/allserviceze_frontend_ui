@@ -16,6 +16,7 @@ import { useAuth } from "../context/AuthContext";
 import { useCategories } from "../hooks/useCategories";
 import { usePlatform } from "@/mobile/hooks/usePlatform";
 import { toast } from "sonner";
+import { ProviderCard } from "../components/ProviderCard";
 import axios from "axios";
 import { 
   Star, MapPin, Heart, Loader2, X,
