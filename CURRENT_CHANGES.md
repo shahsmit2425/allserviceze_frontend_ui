@@ -1,11 +1,92 @@
-# Current PR Changes - v0/shahsmit2811-3914-d2544dad
+# Current PR Changes - v0/shahsmit2811-3914-e56524e2
 
 ## Summary
-Implemented unified card design system across the application, applied expanded project card data display, fixed messages auto-scroll behavior, and created reusable card components for consistent UI/UX.
+Implemented horizontal centered card layout redesign for ProjectCard and ProviderCard components, converted from vertical grid layout to professional horizontal design matching modern marketplace standards. Removed portfolio preview from provider cards, fixed messages auto-scroll behavior, and created fully responsive card components.
 
 ---
 
-## 1. Messages Page Auto-Scroll Fix
+## 1. ProjectCard Horizontal Redesign
+
+**File:** `src/components/ProjectCard.jsx`
+
+**Major Redesign:** Converted from vertical stacked layout to horizontal centered layout with three distinct sections.
+
+**New Layout Structure:**
+- **Left Section** (flex-shrink-0, md:w-48):
+  - Briefcase icon with copper gradient background
+  - Project title (bold, line-clamped)
+  - Category label
+  - Location with map pin icon
+  - Fixed width for visual consistency
+
+- **Center Section** (flex-1, split with border):
+  - 4-column responsive metrics grid
+  - Budget, Urgency, Property Type, Bids
+  - Text center on mobile, left-aligned on desktop
+  - Border separators (top/bottom on mobile, left/right on desktop)
+
+- **Right Section** (flex-shrink-0, md:w-48):
+  - Status badge (color-coded based on bid state)
+  - Verification badge (if customer verified)
+  - "Bid Now" / "View Details" action button (copper gradient)
+  - Save/Favorite button for providers
+
+**Responsive Behavior:**
+- Mobile (< md): Stacked vertically, full-width buttons, centered text
+- Desktop (md+): Horizontal layout, 3-section spread, action buttons vertical stack
+
+**Styling & Colors:**
+- Copper gradient icon backgrounds
+- Deep navy text with copper accents
+- Color-coded urgency badges (red/orange/yellow/green)
+- Hover states for interactivity
+
+---
+
+## 2. ProviderCard Horizontal Redesign
+
+**File:** `src/components/ProviderCard.jsx`
+
+**Major Redesign:** Converted from vertical card layout to horizontal centered design, removed portfolio preview section entirely.
+
+**New Layout Structure:**
+- **Left Section** (flex-shrink-0, md:w-56):
+  - Avatar image (14x14 to 16x16 responsive)
+  - Provider name (bold)
+  - Verification badge (green checkmark if verified)
+  - Website link
+  - Location with map icon
+
+- **Center Section** (flex-1, split with border):
+  - 4-column responsive metrics grid
+  - Rating (stars + number), Tasks Completed, Online Status, Hours
+  - Text center on mobile, left-aligned on desktop
+  - Status badge (green for online, gray for offline)
+
+- **Right Section** (flex-shrink-0, md:w-56):
+  - Top 3 skills displayed as badges
+  - "+N more" counter for additional skills
+  - "View Profile" button (copper gradient)
+  - Save/Favorite button
+
+**Removed Components:**
+- Portfolio preview section (no images, no "0 items", no "Portfolio images appear on full profile" text)
+- Tasks/hours section from footer (moved to center metrics)
+- Applied date display
+
+**Responsive Behavior:**
+- Mobile (< md): Stacked vertically, skills wrap, centered text
+- Desktop (md+): Horizontal spread layout, skills row, buttons vertical stack
+
+**Styling & Colors:**
+- Avatar with border, rounded corners
+- Copper accent colors for ratings and buttons
+- Green status badge for online, gray for offline
+- Professional spacing and typography
+
+---
+
+## 3. Messages Page Auto-Scroll Fix
 
 **File:** `src/pages/Messages.jsx`
 
@@ -30,24 +111,6 @@ Implemented unified card design system across the application, applied expanded 
 ✓ Scrolling up to read history stays in place (no forced scroll down)
 ✓ Returns to auto-scroll when manually scrolling back to bottom
 ✓ Works on all screen sizes (mobile, tablet, desktop)
-
----
-
-## 2. Project Card Expanded Data Display
-
-**File:** `src/pages/BrowseProjects.jsx`
-
-**Enhancement:** Redesigned project card layout to display full-width data grid with all required fields.
-
-**Data Fields Now Displayed:**
-- Project Title
-- Project Category (badge format)
-- Zip Code (with map pin icon)
-- Urgency Level (color-coded badge)
-- Project Status (capitalized)
-- Property Type
-- Ownership Information
-- Budget Range (copper text)
 - Bid Count (copper text)
 
 **Layout Structure:**
