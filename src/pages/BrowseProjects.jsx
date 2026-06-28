@@ -823,7 +823,7 @@ export default function BrowseProjects() {
                 <Loader2 className="w-8 h-8 animate-spin text-primary" />
               </div>
             ) : sortedProjects.length > 0 ? (
-              <div className={cn("grid gap-4", isNativeTablet ? "md:grid-cols-2 lg:grid-cols-3" : "md:grid-cols-2 lg:grid-cols-3")}>
+              <div className="space-y-4">
                 {visibleProjects.map((project) => {
                   const opportunityLabel = project.my_bid_status
                     ? project.my_bid_status === "awarded"
