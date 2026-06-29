@@ -1,7 +1,7 @@
 # Current PR Changes - v0/shahsmit2811-3914-383c0d65
 
 ## Summary
-Completely redesigned ProjectCard component with detailed reference layout matching the Thumbtack reference image. New design features icon containers, project description previews, 4-column metrics grid with icons, trust badges, and prominent budget display with action buttons. Provider profile and card components already updated with professional Thumbtack-style layouts. All pages (BrowseProjects, MyProjects, SearchResults) now display projects with enhanced visual hierarchy and engagement.
+Complete redesign of ProjectCard and ProviderCard components to match exact reference designs. ProjectCard features icon containers, description previews, 4-column metrics, and trust badges. ProviderCard now displays large professional photos, 4-column provider metrics, verification badges, credentials, and brown "Request Quote" button. Both components provide enhanced visual hierarchy and professional presentation across all listing pages (BrowseProjects, BrowseProviders, MyProjects, SearchResults).
 
 ---
 
@@ -142,50 +142,57 @@ Completely redesigned ProjectCard component with detailed reference layout match
 
 ---
 
-## 4. ProviderCard - Thumbtack-Style Full-Width Redesign
+## 4. ProviderCard - Exact Reference Design Redesign
 
 **File:** `src/components/ProviderCard.jsx`
 
-**Major Redesign:** Converted to Thumbtack-style professional full-width layout with prominent branding, ratings, and testimonials.
+**Complete Overhaul:** Transformed ProviderCard from simple horizontal layout to comprehensive professional card matching the exact reference design with large photo, multiple verification badges, 4-column metrics, credentials, and prominent "Request Quote" button.
 
 **New Layout Structure:**
-- **Left Section** (flex-shrink-0):
-  - Avatar/Logo image (20x20 px, rounded)
-  - Provider name (large, bold, line-clamped)
-  - Website URL link (small, truncated)
-  - Minimal spacing
 
-- **Center Section** (flex-1, px-6 border):
-  - 5-star rating display (teal stars) + "Exceptional X.X" text + review count in parentheses
-  - "Great value" badge (teal background, checkmark icon)
-  - Key info with icons:
-    * Shield icon + "N hires on AllServices"
-    * Map pin icon + "Serves [Location]"
-    * Message icon + "Responds in about X hours"
-  - Customer testimonial section (gray background, italics)
-  - "See more" link for more reviews
+**Left Section (Large Professional Photo - 288px):**
+- Full-height professional photo (aspect-square) with rounded corners (rounded-2xl)
+- Green "Available now" badge at bottom-left with status indicator
 
-- **Right Section** (flex-shrink-0, md:w-48, text-right):
-  - "Starting price" label
-  - Large price display ($X)
-  - Cyan "View profile" button (full-width md+)
-  - Heart/Save button (icon only)
+**Center Section (Provider Info - Flexible, with borders):**
+- Provider name (2xl bold) + blue verification checkmark
+- Specialization heading (lg, semibold)
+- Service type with building icon + location with map pin (inline row)
+- Three verification badges (green/blue/orange):
+  * Verified (green checkmark)
+  * ID checked (blue checkmark)
+  * Available now (orange clock)
+- 4-Column Metrics Grid (bordered top & bottom, 4 equal columns):
+  * Experience (trophy icon, blue): Years or "Newly listed - Just joined"
+  * Jobs Completed (briefcase icon, green): Count with "No completed jobs yet"
+  * Typical Pricing (dollar icon, orange): "$50/hr - Industry standard"
+  * Response Time (chat icon, purple): Time or "Not published - Typically replies –"
+- 3-Column Credentials (gray boxes):
+  * Licenses (green checkmark): "Shared on profile"
+  * Document Check (blue document): "Completed"
+  * Member Since (orange user): Date (e.g., "May 2024")
 
-**Removed Components:**
-- Portfolio preview section (no longer displayed)
-- Individual skills badges in main card
-- Tasks/hours metrics
+**Right Section (Price & CTAs - 224px):**
+- Heart/Save icon (top right corner)
+- "Starting Price" label
+- Large price display "From $50/hr"
+- "Industry standard" subtext
+- Three buttons (full-width stacked):
+  * Request Quote (amber-to-orange gradient, bold, largest)
+  * View Profile (outline with user icon)
+  * Message (outline with message icon)
 
 **Styling & Colors:**
-- Teal/cyan (#06B6D4) for ratings, badges, "Great value"
-- Deep navy text for primary content
-- Light gray background for testimonials
-- Large hover shadows for interactivity
-- No grid borders, clean full-width design
+- Large rounded corners (rounded-2xl for photo, rounded-xl for card)
+- Strong shadow on hover (shadow-2xl)
+- Color-coded metric icons (blue, green, orange, purple)
+- Gray background boxes (bg-deep-navy-50) for credentials
+- Brown/orange gradient (#B45309 to #EA580C) for Request Quote button
+- Professional typography and spacing
 
 **Responsive Behavior:**
-- Mobile (< md): Stacked vertically, full-width buttons
-- Desktop (md+): Full horizontal single-row layout, right-aligned price section
+- Mobile (< lg): Vertical stacking, full-width sections
+- Large screens (lg+): Horizontal 3-section layout (photo: 288px | info: flex | ctas: 224px)
 
 ---
 
