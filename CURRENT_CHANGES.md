@@ -1,11 +1,69 @@
-# Current PR Changes - v0/shahsmit2811-3914-25fd8c02
+# Current PR Changes - v0/shahsmit2811-3914-383c0d65
 
 ## Summary
-Redesigned Provider Profile hero section, ProjectCard, and ProviderCard to match Thumbtack's professional full-width single-row layout. Provider profile now features a card-based header with avatar, teal ratings, key metrics, and prominent pricing. All components use cyan accents and follow the Thumbtack design language for a cohesive user experience.
+Completely redesigned ProjectCard component with detailed reference layout matching the Thumbtack reference image. New design features icon containers, project description previews, 4-column metrics grid with icons, trust badges, and prominent budget display with action buttons. Provider profile and card components already updated with professional Thumbtack-style layouts. All pages (BrowseProjects, MyProjects, SearchResults) now display projects with enhanced visual hierarchy and engagement.
 
 ---
 
-## 1. Provider Profile Hero Section - Thumbtack-Style Redesign
+## 1. ProjectCard - Detailed Reference Layout Redesign
+
+**File:** `src/components/ProjectCard.jsx`
+
+**Complete Overhaul:** Transformed ProjectCard from simple horizontal layout to comprehensive detail-rich card matching the Thumbtack reference image design.
+
+**New Layout Structure:**
+
+**Left Section (Fixed Width - 80px icon + metadata):**
+- Colored icon container (amber background, 20x20px) with category icon
+- Project title (large bold, 2-line clamp)
+- Category badge with building icon (cyan text)
+- Location with map pin icon and address
+- Verified Customer badge (if customer is verified)
+
+**Center Section (Flexible, bordered left & right):**
+- Project description preview (3-line clamp, full text from questionnaire)
+- 4-Column Metrics Grid with icons and labels:
+  * Priority: Shows urgency level (High/Medium/Low) with colored icon
+  * Property Type: Displays property category with building icon
+  * Status: Shows "Open" status with checkmark (green)
+  * Bids Received: Shows number of bids with message icon
+- Trust Badges (3-column layout):
+  * Verified Customer - "Identity verified" (teal checkmark)
+  * Secure Payments - "Payment protection" (lock icon)
+  * 24/7 Support - "We're here to help" (headphones, orange)
+
+**Right Section (Fixed Width - 64px card):**
+- Posted time/date (top right, subdued text)
+- "BUDGET" label with info icon
+- Large budget display ($X-$X or "Custom Budget")
+- Blue info box: "Budget is flexible" + "Share your best offer"
+- Two Action Buttons (full-width):
+  * Submit Bid (gradient amber/orange with arrow, primary CTA)
+  * View Details (outline button with eye icon)
+- Save Job button (heart icon, for providers, text + icon)
+
+**Styling Features:**
+- White card with subtle deep navy border
+- Hover shadow effect for interactivity
+- Color-coded urgency icons (red/orange/yellow/green)
+- Gradient buttons (amber to orange gradient for Submit Bid)
+- Rounded corners (12px icons, 24px buttons)
+- Professional spacing and typography
+
+**Responsive Behavior:**
+- Mobile (< lg): Vertical stacking, full-width sections
+- Large screens (lg+): Horizontal 3-section layout (left: 320px | center: flex | right: 256px)
+- All text responsive with line clamping for overflow
+
+**Pages Updated:**
+- BrowseProjects.jsx (project discovery page)
+- MyProjects.jsx (provider's project management)
+- SearchResults.jsx (search results listing)
+- All pages now display consistent, professional project cards
+
+---
+
+## 2. Provider Profile Hero Section - Thumbtack-Style Redesign
 
 **File:** `src/pages/ProviderProfile.jsx` (lines 320-491)
 
@@ -51,11 +109,11 @@ Redesigned Provider Profile hero section, ProjectCard, and ProviderCard to match
 
 ---
 
-## 2. ProjectCard - Thumbtack-Style Full-Width Redesign
+## 3. ProjectCard (Previous) - Thumbtack-Style Full-Width Redesign
 
-**File:** `src/components/ProjectCard.jsx`
+**File:** `src/components/ProjectCard.jsx` (superseded by detailed redesign)
 
-**Major Redesign:** Converted from horizontal centered layout to Thumbtack-style full-width single-row card with no icon.
+**Note:** This previous version has been superseded by the detailed reference layout above.
 
 **New Layout Structure:**
 - **Left Section** (flex-1, no fixed width):
@@ -84,7 +142,7 @@ Redesigned Provider Profile hero section, ProjectCard, and ProviderCard to match
 
 ---
 
-## 2. ProviderCard - Thumbtack-Style Full-Width Redesign
+## 4. ProviderCard - Thumbtack-Style Full-Width Redesign
 
 **File:** `src/components/ProviderCard.jsx`
 
@@ -131,7 +189,7 @@ Redesigned Provider Profile hero section, ProjectCard, and ProviderCard to match
 
 ---
 
-## 3. Layout Changes - Single Column Full Width
+## 5. Layout Changes - Single Column Full Width
 
 **File:** `src/pages/BrowseProjects.jsx`
 
@@ -140,12 +198,11 @@ Redesigned Provider Profile hero section, ProjectCard, and ProviderCard to match
 - **After:** `space-y-4` (single column, one card per row, full width)
 - Cards now take up entire width for better visibility
 - Each project card spans full container width
-- Better suited for Thumbtack-style full-width card design
-- Load More button now spans full width
+- Better suited for detailed ProjectCard design with all information visible
 
 ---
 
-## 4. Messages Page Auto-Scroll Fix
+## 6. Messages Page Auto-Scroll Fix
 
 **File:** `src/pages/Messages.jsx`
 
