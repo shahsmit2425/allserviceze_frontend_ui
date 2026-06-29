@@ -1,7 +1,7 @@
 # Current PR Changes - v0/shahsmit2811-3914-383c0d65
 
 ## Summary
-Complete redesign of ProjectCard and ProviderCard components to match exact reference designs. ProjectCard features icon containers, description previews, 4-column metrics, and trust badges. ProviderCard now displays large professional photos, 4-column provider metrics, verification badges, credentials, and brown "Request Quote" button. Both components provide enhanced visual hierarchy and professional presentation across all listing pages (BrowseProjects, BrowseProviders, MyProjects, SearchResults).
+Complete redesign of Provider Profile page and card components to match professional reference designs. Provider Profile features full-width hero banner with large circular avatar, verification badges, pricing display, and "Request a Quote" button. ProjectCard and ProviderCard components provide comprehensive detail layouts with metrics, trust badges, and credentials. All components use professional spacing, colors, and responsive layouts for optimal user experience across all listing and profile pages.
 
 ---
 
@@ -63,49 +63,81 @@ Complete redesign of ProjectCard and ProviderCard components to match exact refe
 
 ---
 
-## 2. Provider Profile Hero Section - Thumbtack-Style Redesign
+## 2. Provider Profile Page - Complete Hero Section Redesign with Reference Design
 
-**File:** `src/pages/ProviderProfile.jsx` (lines 320-491)
+**File:** `src/pages/ProviderProfile.jsx` (lines 320-560)
 
-**Major Transformation:** Converted from stacked vertical layout to professional horizontal card design matching Thumbtack's provider listing and profile styles.
+**Major Transformation:** Complete redesign from simple card to professional hero section with background banner, large circular avatar, verification badges, and comprehensive CTA section.
 
 **New Layout Structure:**
-- **White Card Container:** Deep navy border, rounded corners, hover shadow effect
-- **Left Section** (flex-shrink-0):
-  - Avatar (16-20px) with deep navy border
-  - Company name (bold, large)
-  - Owner name (subdued)
-  - Specialization label
 
-- **Center Section** (flex-1, bordered):
-  - 5-star teal rating display with "Exceptional X.X" text
-  - Review count in parentheses
-  - Verified badge (checkmark + teal background)
-  - Key metrics with icons (experience years, location, response time, portfolio count)
-  - Bio description preview (3-line clamp)
+**Hero Background Banner:**
+- Full-width dark gradient background (deep navy gradient)
+- Subtle pattern overlay for visual depth
+- Height: 320px mobile, 384px desktop
+- Professional backdrop for card overlay
 
-- **Right Section** (flex-shrink-0, md:w-56):
-  - "Starting price" label
-  - Large price display ($X/hour or Custom)
-  - Stacked action buttons:
-    * "Book Now" (cyan primary button, full width md+)
-    * "Message" (outline button)
-    * "Share" (outline button)
+**Overlapping White Card Container:**
+- Negative margin positioning (floating over hero)
+- Deep navy border (2px), rounded corners (rounded-2xl)
+- Strong shadow effect (shadow-2xl) for depth
+- Responsive padding (24px mobile, 32px desktop)
 
-**Additional Sections:**
-- Specializations row with badges (top 8 items + counter)
-- Website and social media links in footer row
-- All sections separated by subtle borders for visual hierarchy
+**Left Section (Large Circular Avatar - centered mobile, left-aligned desktop):**
+- Large circular avatar (128-160px depending on screen size)
+- 4px white border with shadow
+- Green "Available now" badge with status indicator at bottom-right
+- Responsive sizing (h-32 w-32 sm:h-40 sm:w-40)
+
+**Center Section (Provider Info with verification badges):**
+- Provider name (3-4xl bold, deep navy)
+- Blue verification checkmark next to name
+- Specialization heading (lg, semibold)
+- Three verification badges (green/blue/purple backgrounds):
+  * Verified Provider (green)
+  * ID Checked (blue)
+  * Background Checked (purple)
+- Key info with icons (3 items, bordered sections):
+  * Location (map pin icon)
+  * Response time (clock icon, "Responds within 24 hours")
+  * Member since date (calendar icon)
+- All text properly spaced and readable
+
+**Right Section (Pricing & CTAs - fixed width):**
+- Heart/save icon (top right for quick favorite access)
+- "STARTING PRICE" uppercase label (small, bold)
+- Large price display (4xl bold, "$X/hour or Custom")
+- "Industry standard" subtext (small, subdued)
+- Three stacked action buttons (full-width):
+  * Request a Quote (amber-to-orange gradient, bold, primary CTA with arrow)
+  * Message Provider (outline button with message icon)
+  * View Full Profile (outline button with user icon)
+
+**Specializations Section (Below Card):**
+- Section title ("SPECIALIZATIONS" uppercase, bold)
+- 3-column grid (1 mobile, 2 sm, 3 lg)
+- Award icon + specialization name in gray boxes
+- Counter for additional specializations ("+N more specializations")
 
 **Responsive Behavior:**
-- Mobile (< md): Stacked vertically, full-width buttons
-- Desktop (md+): Full horizontal layout, right-aligned pricing
+- Mobile (< lg): 
+  - Avatar centered
+  - Vertical stacking of sections
+  - Full-width buttons
+  - Single column layout
+- Large screens (lg+):
+  - Avatar left-aligned
+  - Horizontal 3-section layout
+  - Fixed widths (avatar: flex-shrink-0, info: flex-1, ctas: w-64)
+  - Wide buttons (w-56)
 
 **Styling & Colors:**
-- White background with deep navy borders (#1a2942)
-- Teal/cyan (#06B6D4) for ratings and primary CTA
-- Deep navy text for primary content
-- Subtle hover shadows and transitions
+- Hero banner: Deep navy gradient (from-deep-navy-900 via-deep-navy-800 to-deep-navy-700)
+- Card: White background with deep navy borders
+- Badges: Green (#059669), Blue (#3B82F6), Purple (#A855F7)
+- Buttons: Amber-to-orange gradient for primary, outline for secondary
+- Text: Deep navy (#1a2942) for primary, subdued grays for secondary
+- Accents: Heart icon (red when favorited), checkmarks (colored by badge type)
 
 ---
 
