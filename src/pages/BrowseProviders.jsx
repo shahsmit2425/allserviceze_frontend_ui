@@ -961,33 +961,6 @@ export default function BrowseProviders() {
 
                         <div className="space-y-4">
                           <div className="rounded-xl border border-border/60 bg-white p-4">
-                            <div className="flex items-center justify-between gap-3">
-                              <p className="detail-kicker">Portfolio preview</p>
-                              <span className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                                {(provider.portfolioPreview || []).length} items
-                              </span>
-                            </div>
-                            <div className="mt-3 grid grid-cols-3 gap-2">
-                              {(provider.portfolioPreview || []).slice(0, 6).map((item) => (
-                                <div key={item.id} className="overflow-hidden rounded-xl border border-border/60 bg-deep-navy-50">
-                                  {item.images?.[0] ? (
-                                    <img src={item.images[0]} alt={item.title} className="h-20 w-full object-cover sm:h-24" />
-                                  ) : (
-                                    <div className="flex h-20 items-center justify-center bg-deep-navy-50 px-2 text-center text-[11px] font-semibold text-muted-foreground sm:h-24">
-                                      {item.title}
-                                    </div>
-                                  )}
-                                </div>
-                              ))}
-                              {!(provider.portfolioPreview || []).length && (
-                                <div className="col-span-3 rounded-xl border border-dashed border-border/60 bg-white px-4 py-8 text-center text-sm text-muted-foreground">
-                                  Portfolio images appear on the full profile.
-                                </div>
-                              )}
-                            </div>
-                          </div>
-
-                          <div className="rounded-xl border border-border/60 bg-white p-4">
                             <div className="grid gap-2 text-sm">
                               <div className="flex items-center justify-between gap-3">
                                 <span className="text-muted-foreground">Licenses</span>
