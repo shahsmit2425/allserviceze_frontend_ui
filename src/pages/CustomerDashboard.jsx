@@ -21,6 +21,7 @@ import {
   ChevronRight,
   DollarSign,
   Edit,
+  Headphones,
   Loader2,
   MessageSquare,
   Pause,
@@ -409,28 +410,37 @@ export default function CustomerDashboard() {
       </Helmet>
 
       <div className="page-shell space-y-5 py-6 sm:space-y-6 sm:py-7">
+        {/* Hero Section with Background Image */}
         <section className="overflow-hidden rounded-2xl border border-border/60 bg-background shadow-[0_28px_80px_-48px_rgba(15,23,42,0.18)]">
-          <div className="grid gap-5 px-5 py-6 sm:px-7 sm:py-7 lg:grid-cols-[minmax(0,1.1fr)_22rem] lg:items-end">
-            <div>
+          <div className="relative grid gap-5 px-5 py-6 sm:px-7 sm:py-7 lg:grid-cols-[minmax(0,1.1fr)_22rem] lg:items-end min-h-64">
+            {/* Background Image */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center rounded-2xl opacity-20 pointer-events-none"
+              style={{
+                backgroundImage: `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:rgb(251,191,36);stop-opacity:0.1" /><stop offset="100%" style="stop-color:rgb(59,130,246);stop-opacity:0.1" /></linearGradient></defs><rect width="1200" height="400" fill="url(%23grad)"/><circle cx="300" cy="100" r="80" fill="rgb(251,191,36)" opacity="0.05"/><circle cx="900" cy="300" r="120" fill="rgb(59,130,246)" opacity="0.05"/></svg>')`,
+              }}
+            />
+            
+            <div className="relative z-10">
               <div className="inline-flex items-center gap-2 rounded-lg border border-primary/10 bg-white px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-primary shadow-sm">
                 <Sparkles className="h-3.5 w-3.5" />
                 Homeowner command center
               </div>
               <h1 className="mt-4 font-heading text-[clamp(2.2rem,4.2vw,3.9rem)] font-extrabold leading-[0.95] tracking-[-0.06em] text-foreground">
-                Welcome back, {user?.full_name?.split(" ")?.[0] || "there"}.
+                Welcome back, <span className="text-amber-600">{user?.full_name?.split(" ")?.[0] || "there"}.</span>
               </h1>
               <p className="mt-3 max-w-3xl text-sm leading-7 text-muted-foreground sm:text-base">
                 Review fresh quotes, reply to active providers, and move the next project forward without leaving one focused workspace.
               </p>
             </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+            <div className="relative z-10 flex flex-col gap-3 sm:flex-row lg:flex-col">
               <div className="rounded-xl border border-border/60 bg-white p-4 shadow-sm">
                 <p className="detail-kicker">Priority this week</p>
                 <p className="mt-2 text-2xl font-semibold tracking-[-0.05em] text-foreground">{actionableProjects.length}</p>
                 <p className="mt-1 text-sm text-muted-foreground">projects need attention</p>
               </div>
-              <Button onClick={() => navigate("/projects/post")} className="rounded-lg h-11">
+              <Button onClick={() => navigate("/projects/post")} className="rounded-lg h-11 bg-amber-700 hover:bg-amber-800">
                 <Plus className="mr-2 h-4 w-4" />
                 Post Project
               </Button>
@@ -439,63 +449,71 @@ export default function CustomerDashboard() {
         </section>
 
         <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-          <Card className="result-card-surface border border-deep-navy-100 shadow-md">
+          <Card className="result-card-surface border border-deep-navy-100 shadow-md hover:shadow-lg transition-shadow">
             <CardContent className="p-4 sm:p-5">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="caption">Live Projects</p>
+                  <p className="caption text-xs font-bold text-deep-navy-600 uppercase">Live Projects</p>
                   <p className="mt-2 text-3xl font-bold tracking-[-0.05em]">{stats.live_projects ?? counts.live}</p>
                 </div>
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 shadow-sm">
-                  <Briefcase className="h-5 w-5 text-primary" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-100 shadow-sm flex-shrink-0">
+                  <Briefcase className="h-6 w-6 text-blue-600" />
                 </div>
               </div>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground">Projects currently collecting provider interest.</p>
+              <Link to="/dashboard?tab=live" className="mt-3 inline-flex items-center text-sm font-medium text-primary hover:text-primary/80">
+                View all <ChevronRight className="ml-1 h-4 w-4" />
+              </Link>
             </CardContent>
           </Card>
 
-          <Card className="result-card-surface border border-deep-navy-100 shadow-md">
+          <Card className="result-card-surface border border-deep-navy-100 shadow-md hover:shadow-lg transition-shadow">
             <CardContent className="p-4 sm:p-5">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="caption">New Bids</p>
+                  <p className="caption text-xs font-bold text-deep-navy-600 uppercase">New Bids</p>
                   <p className="mt-2 text-3xl font-bold tracking-[-0.05em]">{newBidsCount}</p>
                 </div>
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-100 shadow-sm">
-                  <DollarSign className="h-5 w-5 text-emerald-700" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-100 shadow-sm flex-shrink-0">
+                  <DollarSign className="h-6 w-6 text-emerald-700" />
                 </div>
               </div>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground">Quotes waiting to be reviewed across your live projects.</p>
+              <Link to="/dashboard?tab=live" className="mt-3 inline-flex items-center text-sm font-medium text-primary hover:text-primary/80">
+                View all <ChevronRight className="ml-1 h-4 w-4" />
+              </Link>
             </CardContent>
           </Card>
 
-          <Card className="result-card-surface border border-deep-navy-100 shadow-md">
+          <Card className="result-card-surface border border-deep-navy-100 shadow-md hover:shadow-lg transition-shadow">
             <CardContent className="p-4 sm:p-5">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="caption">Unread Messages</p>
+                  <p className="caption text-xs font-bold text-deep-navy-600 uppercase">Unread Messages</p>
                   <p className="mt-2 text-3xl font-bold tracking-[-0.05em]">{unreadMessages}</p>
                 </div>
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-copper-100 shadow-sm">
-                  <MessageSquare className="h-5 w-5 text-amber-700" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-100 shadow-sm flex-shrink-0">
+                  <MessageSquare className="h-6 w-6 text-amber-700" />
                 </div>
               </div>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground">Provider replies and project conversations needing a response.</p>
+              <Link to="/messages" className="mt-3 inline-flex items-center text-sm font-medium text-primary hover:text-primary/80">
+                View messages <ChevronRight className="ml-1 h-4 w-4" />
+              </Link>
             </CardContent>
           </Card>
 
-          <Card className="result-card-surface border border-deep-navy-100 shadow-md">
+          <Card className="result-card-surface border border-deep-navy-100 shadow-md hover:shadow-lg transition-shadow">
             <CardContent className="p-4 sm:p-5">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="caption">Ready To Hire</p>
+                  <p className="caption text-xs font-bold text-deep-navy-600 uppercase">Ready To Hire</p>
                   <p className="mt-2 text-3xl font-bold tracking-[-0.05em]">{projectsReadyForQuotes.length}</p>
                 </div>
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-sky-100 shadow-sm">
-                  <ShieldCheck className="h-5 w-5 text-sky-700" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-purple-100 shadow-sm flex-shrink-0">
+                  <ShieldCheck className="h-6 w-6 text-purple-700" />
                 </div>
               </div>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground">Live projects that already have quotes and can move toward a hiring decision.</p>
+              <Link to="/providers" className="mt-3 inline-flex items-center text-sm font-medium text-primary hover:text-primary/80">
+                View providers <ChevronRight className="ml-1 h-4 w-4" />
+              </Link>
             </CardContent>
           </Card>
         </div>
@@ -890,6 +908,48 @@ export default function CustomerDashboard() {
               </CardContent>
             </Card>
           )}
+        </div>
+
+        {/* Trust Badges Footer */}
+        <div className="mt-8 border-t border-deep-navy-100 pt-8">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+            <div className="text-center">
+              <div className="flex justify-center mb-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100">
+                  <CheckCircle className="h-6 w-6 text-emerald-700" />
+                </div>
+              </div>
+              <p className="text-xs font-bold text-deep-navy-900 uppercase tracking-wide">Verified Professionals</p>
+              <p className="text-xs text-deep-navy-600 mt-2">Background checked</p>
+            </div>
+            <div className="text-center">
+              <div className="flex justify-center mb-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100">
+                  <Briefcase className="h-6 w-6 text-blue-700" />
+                </div>
+              </div>
+              <p className="text-xs font-bold text-deep-navy-900 uppercase tracking-wide">Secure Payments</p>
+              <p className="text-xs text-deep-navy-600 mt-2">Safe and protected</p>
+            </div>
+            <div className="text-center">
+              <div className="flex justify-center mb-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-amber-100">
+                  <Headphones className="h-6 w-6 text-amber-700" />
+                </div>
+              </div>
+              <p className="text-xs font-bold text-deep-navy-900 uppercase tracking-wide">24/7 Support</p>
+              <p className="text-xs text-deep-navy-600 mt-2">We're here to help</p>
+            </div>
+            <div className="text-center">
+              <div className="flex justify-center mb-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-100">
+                  <TrendingUp className="h-6 w-6 text-purple-700" />
+                </div>
+              </div>
+              <p className="text-xs font-bold text-deep-navy-900 uppercase tracking-wide">Satisfaction Guaranteed</p>
+              <p className="text-xs text-deep-navy-600 mt-2">Quality work, every time</p>
+            </div>
+          </div>
         </div>
       </div>
       </div>
