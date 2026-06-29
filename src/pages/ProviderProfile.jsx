@@ -319,91 +319,131 @@ export default function ProviderProfile() {
 
       <div className="page-shell space-y-6 py-6 sm:py-8">
         <section className="page-hero">
-          <div className="relative">
-            <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
-              <Avatar className="h-24 w-24 border-4 border-white shadow-lg sm:h-28 sm:w-28">
-                <AvatarImage
-                  src={providerProfileImage.src}
-                  srcSet={providerProfileImage.srcSet}
-                  sizes={providerProfileImage.sizes}
-                  alt={`${provider.full_name} profile photo`}
-                  loading="eager"
-                  fetchPriority="high"
-                />
-                <AvatarFallback className="bg-primary text-white text-3xl sm:text-4xl">
-                  {provider.full_name?.charAt(0)}
-                </AvatarFallback>
-              </Avatar>
+          <div className="bg-white border border-deep-navy-200 rounded-lg p-5 sm:p-6 hover:shadow-lg transition-shadow">
+            {/* Thumbtack-style horizontal layout */}
+            <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-8">
+              
+              {/* LEFT: Avatar + Company Name */}
+              <div className="flex items-start gap-4 flex-shrink-0">
+                <Avatar className="h-16 w-16 sm:h-20 sm:w-20 border-2 border-deep-navy-100 shadow-md flex-shrink-0">
+                  <AvatarImage
+                    src={providerProfileImage.src}
+                    srcSet={providerProfileImage.srcSet}
+                    sizes={providerProfileImage.sizes}
+                    alt={`${provider.full_name} profile photo`}
+                    loading="eager"
+                    fetchPriority="high"
+                  />
+                  <AvatarFallback className="bg-cyan-500 text-white text-2xl font-bold">
+                    {provider.full_name?.charAt(0)}
+                  </AvatarFallback>
+                </Avatar>
 
-              <div className="min-w-0 flex-1">
-                <span className="page-kicker">
-                  <User className="h-3.5 w-3.5" /> Provider profile
-                </span>
-                <div className="mt-3 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-                  <div className="min-w-0">
-                    <h1 className="text-3xl font-semibold tracking-[-0.04em] text-foreground sm:text-4xl">
-                      {profile.business_name || provider.full_name}
-                    </h1>
-                    {profile.business_name && (
-                      <p className="mt-1 text-sm text-muted-foreground sm:text-base">{provider.full_name}</p>
+                <div className="min-w-0">
+                  <h1 className="text-xl sm:text-2xl font-bold text-deep-navy-900 line-clamp-2">
+                    {profile.business_name || provider.full_name}
+                  </h1>
+                  {profile.business_name && (
+                    <p className="text-sm text-deep-navy-600 mt-1">{provider.full_name}</p>
+                  )}
+                  {profile.specialization && (
+                    <p className="text-xs sm:text-sm text-deep-navy-500 mt-1">{profile.specialization}</p>
+                  )}
+                </div>
+              </div>
+
+              {/* CENTER: Rating + Key Info */}
+              <div className="flex-1 border-b md:border-b-0 md:border-l md:border-r border-deep-navy-100 pb-6 md:pb-0 md:px-6">
+                {/* Rating Row */}
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="flex items-center gap-2">
+                    {avgRating > 0 ? (
+                      <>
+                        <div className="flex gap-0.5">
+                          {Array.from({ length: 5 }).map((_, i) => (
+                            <Star
+                              key={i}
+                              className={`h-4 w-4 ${
+                                i < Math.floor(avgRating)
+                                  ? "fill-cyan-500 text-cyan-500"
+                                  : "fill-gray-200 text-gray-200"
+                              }`}
+                            />
+                          ))}
+                        </div>
+                        <span className="text-lg font-bold text-cyan-600">
+                          Exceptional {avgRating.toFixed(1)}
+                        </span>
+                        <span className="text-sm text-deep-navy-600 ml-1">
+                          ({totalReviews})
+                        </span>
+                      </>
+                    ) : (
+                      <span className="text-sm text-deep-navy-600 font-semibold">New Provider</span>
                     )}
-
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      <div className="info-chip">
-                        <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                        <span className="font-semibold">{avgRating > 0 ? avgRating.toFixed(1) : "New"}</span>
-                        <span className="text-muted-foreground">{totalReviews > 0 ? `${totalReviews} reviews` : "No reviews yet"}</span>
-                      </div>
-                      {profile.location && (
-                        <div className="info-chip">
-                          <MapPin className="w-4 h-4" />
-                          <span>{profile.location}</span>
-                        </div>
-                      )}
-                      {profile.experience_years > 0 && (
-                        <div className="info-chip">
-                          <Briefcase className="w-4 h-4" />
-                          <span>{profile.experience_years} years experience</span>
-                        </div>
-                      )}
-                      <div className="info-chip">
-                        <DollarSign className="w-4 h-4" />
-                        <span>{profile.hourly_rate > 0 ? `$${profile.hourly_rate}/hr` : "Custom quote"}</span>
-                      </div>
-                      <div className="info-chip">
-                        <ImageIcon className="w-4 h-4" />
-                        <span>{portfolio.length} portfolio item{portfolio.length === 1 ? "" : "s"}</span>
-                      </div>
-                      {profile.is_verified && (
-                        <Badge className="rounded-lg border border-emerald-200 bg-emerald-50 text-emerald-700 shadow-sm">
-                          <CheckCircle className="w-3 h-3 mr-1" />
-                          Verified
-                        </Badge>
-                      )}
-                    </div>
                   </div>
+                  {profile.is_verified && (
+                    <Badge className="bg-cyan-50 text-cyan-700 border border-cyan-200 rounded-lg">
+                      <CheckCircle className="h-3 w-3 mr-1" />
+                      Verified
+                    </Badge>
+                  )}
+                </div>
 
+                {/* Key Info with Icons */}
+                <div className="space-y-2.5 text-sm text-deep-navy-700">
+                  {profile.experience_years > 0 && (
+                    <div className="flex items-center gap-2">
+                      <Award className="h-4 w-4 text-deep-navy-500 flex-shrink-0" />
+                      <span className="font-medium">{profile.experience_years} years of experience</span>
+                    </div>
+                  )}
+                  {profile.location && (
+                    <div className="flex items-center gap-2">
+                      <MapPin className="h-4 w-4 text-deep-navy-500 flex-shrink-0" />
+                      <span>Serves {profile.location}</span>
+                    </div>
+                  )}
+                  <div className="flex items-center gap-2">
+                    <Clock className="h-4 w-4 text-deep-navy-500 flex-shrink-0" />
+                    <span>Responds within 24 hours</span>
+                  </div>
+                  {portfolio.length > 0 && (
+                    <div className="flex items-center gap-2">
+                      <ImageIcon className="h-4 w-4 text-deep-navy-500 flex-shrink-0" />
+                      <span>{portfolio.length} portfolio item{portfolio.length === 1 ? "" : "s"}</span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Bio/Description */}
+                {(profile.business_description || profile.bio) && (
+                  <p className="mt-4 text-sm text-deep-navy-700 line-clamp-3 leading-relaxed">
+                    {profile.business_description || profile.bio}
+                  </p>
+                )}
+              </div>
+
+              {/* RIGHT: Pricing + CTA Buttons */}
+              <div className="flex flex-col items-start md:items-end justify-between gap-4 flex-shrink-0 md:w-56">
+                {/* Hourly Rate */}
+                <div className="w-full md:w-auto md:text-right">
+                  <p className="text-sm text-deep-navy-600 font-medium">Starting price</p>
+                  <p className="text-3xl font-bold text-deep-navy-900 mt-1">
+                    {profile.hourly_rate > 0 ? `$${profile.hourly_rate}` : "Custom"}
+                  </p>
+                  {profile.hourly_rate > 0 && (
+                    <p className="text-xs text-deep-navy-500 mt-1">/hour</p>
+                  )}
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex flex-col gap-2 w-full md:w-auto">
                   {user && user.id !== providerId && (
-                    <div className="flex flex-wrap items-center gap-2 md:justify-end">
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        className="rounded-lg border-border/60 bg-background/85"
-                        onClick={handleShare}
-                        aria-label={`Share ${profile.business_name || provider.full_name} profile`}
-                        title="Share this provider"
-                      >
-                        <Share2 className="w-4 h-4" />
-                      </Button>
-                      <Link to={`/messages/${providerId}`}>
-                        <Button variant="outline" className="rounded-lg border-border/60 bg-background/85" data-testid="message-btn">
-                          <MessageSquare className="w-4 h-4 mr-2" />
-                          Message
-                        </Button>
-                      </Link>
+                    <>
                       {user.role === "customer" && (
                         <Button
-                          className="rounded-lg"
+                          className="rounded-lg bg-cyan-500 hover:bg-cyan-600 text-white font-semibold text-sm px-6 py-2.5 w-full md:w-48"
                           onClick={() => {
                             if (loading) return;
                             let serviceToBook;
@@ -430,62 +470,74 @@ export default function ProviderProfile() {
                           Book Now
                         </Button>
                       )}
-                    </div>
+                      <Link to={`/messages/${providerId}`}>
+                        <Button variant="outline" className="rounded-lg border-deep-navy-200 w-full md:w-48 justify-center" data-testid="message-btn">
+                          <MessageSquare className="w-4 h-4 mr-2" />
+                          Message
+                        </Button>
+                      </Link>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="rounded-lg border-deep-navy-200 w-full md:w-48 justify-center"
+                        onClick={handleShare}
+                        title="Share this provider"
+                      >
+                        <Share2 className="w-4 h-4 mr-2" />
+                        Share
+                      </Button>
+                    </>
                   )}
-                </div>
-
-                {(profile.business_description || profile.bio) && (
-                  <p className="mt-4 max-w-3xl text-sm leading-6 text-muted-foreground break-words overflow-wrap-anywhere sm:text-base">
-                    {profile.business_description || profile.bio}
-                  </p>
-                )}
-
-                {profile.skills?.length > 0 && (
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {profile.skills.map((skill, idx) => (
-                      <Badge key={idx} variant="secondary" className="rounded-lg border border-border/60 bg-white px-2.5 py-1 text-[11px] shadow-sm sm:text-xs">{skill}</Badge>
-                    ))}
-                  </div>
-                )}
-
-                <div className="mt-4 flex flex-wrap items-center gap-3">
-                  <img
-                    src={providerLogoImage.src}
-                    srcSet={providerLogoImage.srcSet}
-                    sizes={providerLogoImage.sizes}
-                    alt="ServiceTones"
-                    width="45"
-                    height="45"
-                    className="h-[45px] w-[45px] rounded-xl border border-border/60 bg-white p-2 shadow-sm"
-                    decoding="async"
-                  />
-                  {profile.website && (
-                    <a
-                      href={profile.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 rounded-lg border border-border/60 bg-white px-3 py-1.5 text-sm font-medium text-primary shadow-sm transition-colors hover:bg-white"
-                    >
-                      <Globe className="w-4 h-4" />
-                      Website
-                      <ExternalLink className="w-3 h-3" />
-                    </a>
-                  )}
-                  {socialLinks.map((social, idx) => (
-                    <a
-                      key={idx}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Open ${social.label} for ${profile.business_name || provider.full_name}`}
-                      className={`inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border/60 bg-white shadow-sm transition-opacity hover:bg-white ${social.color}`}
-                      title={social.label}
-                    >
-                      <social.icon className="w-4 h-4" />
-                    </a>
-                  ))}
                 </div>
               </div>
+            </div>
+
+            {/* Skills Section */}
+            {profile.skills?.length > 0 && (
+              <div className="mt-6 pt-6 border-t border-deep-navy-100">
+                <p className="text-xs font-semibold text-deep-navy-600 uppercase tracking-wider mb-3">Specializations</p>
+                <div className="flex flex-wrap gap-2">
+                  {profile.skills.slice(0, 8).map((skill, idx) => (
+                    <Badge key={idx} variant="outline" className="rounded-lg text-xs font-medium border-deep-navy-200">
+                      {skill}
+                    </Badge>
+                  ))}
+                  {profile.skills.length > 8 && (
+                    <Badge variant="outline" className="rounded-lg text-xs font-medium text-deep-navy-600 border-deep-navy-200">
+                      +{profile.skills.length - 8} more
+                    </Badge>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Website + Social Links */}
+            <div className="mt-6 pt-6 border-t border-deep-navy-100 flex flex-wrap items-center gap-3">
+              {profile.website && (
+                <a
+                  href={profile.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-deep-navy-200 bg-white px-3 py-2 text-sm font-medium text-deep-navy-900 hover:bg-deep-navy-50 transition-colors"
+                >
+                  <Globe className="w-4 h-4" />
+                  Website
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              )}
+              {socialLinks.map((social, idx) => (
+                <a
+                  key={idx}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open ${social.label}`}
+                  className={`inline-flex h-9 w-9 items-center justify-center rounded-lg border border-deep-navy-200 bg-white hover:bg-deep-navy-50 transition-colors ${social.color}`}
+                  title={social.label}
+                >
+                  <social.icon className="w-4 h-4" />
+                </a>
+              ))}
             </div>
           </div>
         </section>
