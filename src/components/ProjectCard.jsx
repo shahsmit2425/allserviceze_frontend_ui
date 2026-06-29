@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
-import { Heart, MapPin, CheckCircle, Zap, Building2, Clock, MessageCircle, Shield, Lock, Headphones } from "lucide-react";
+import { Heart, MapPin, CheckCircle, Zap, Building2, MessageCircle, Lock, Headphones, ArrowRight } from "lucide-react";
 import { cn } from "../lib/utils";
 
 const urgencyColors = {
@@ -37,160 +37,140 @@ export function ProjectCard({
   const priorityTextColor = priorityData[project.urgency]?.textColor || "text-gray-700";
 
   return (
-    <Card className="border border-deep-navy-200 bg-white rounded-lg hover:shadow-xl transition-all w-full overflow-hidden">
-      <CardContent className="p-6">
-        {/* Main Content Area */}
-        <div className="flex flex-col lg:flex-row gap-6">
+    <Card className="border border-border/40 bg-white rounded-xl hover:shadow-lg transition-all w-full overflow-hidden">
+      <CardContent className="p-0">
+        <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr_auto] gap-0">
           
-          {/* LEFT: Icon + Title + Meta (Fixed Width) */}
-          <div className="flex gap-4 flex-shrink-0 lg:w-80">
-            {/* Icon with background */}
-            <div className="w-20 h-20 rounded-xl bg-amber-100 flex items-center justify-center flex-shrink-0">
-              <Zap className="w-10 h-10 text-amber-600" />
+          {/* LEFT: Icon + Basic Info */}
+          <div className="bg-gradient-to-br from-amber-50 to-amber-100/50 p-5 flex flex-col items-center justify-start gap-3 min-h-full lg:w-32">
+            <div className="w-16 h-16 rounded-lg bg-amber-200 flex items-center justify-center shadow-sm">
+              <Zap className="w-8 h-8 text-amber-700" />
             </div>
-
-            {/* Title and Meta */}
-            <div className="flex-1 min-w-0">
-              <Link
-                to={projectUrl}
-                className="group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 rounded inline-block"
-                aria-label={`Open project ${project.title}`}
-              >
-                <h2 className="text-xl font-bold text-deep-navy-900 group-hover:text-cyan-600 line-clamp-2">
-                  {project.title}
-                </h2>
-              </Link>
-
-              {/* Category + Location + Verified */}
-              <div className="space-y-2 mt-2">
-                <div className="flex items-center gap-2 text-sm text-cyan-700 font-semibold">
-                  <Building2 className="h-4 w-4 flex-shrink-0" />
-                  <span>{project.category}</span>
-                </div>
-                
-                <div className="flex items-center gap-2 text-sm text-deep-navy-700">
-                  <MapPin className="h-4 w-4 text-deep-navy-500 flex-shrink-0" />
-                  <span>{project.zip_code || project.location?.split(",")[1]?.trim() || "N/A"}</span>
-                </div>
-
-                {project.customerVerified && (
-                  <div className="flex items-center gap-2 text-sm text-cyan-600 font-semibold">
-                    <CheckCircle className="h-4 w-4 flex-shrink-0" />
-                    Verified Customer
-                  </div>
-                )}
+            <div className="text-center space-y-1">
+              <p className="text-xs font-bold text-amber-900 uppercase tracking-wide">{project.category}</p>
+              <div className="flex items-center gap-1 text-xs text-deep-navy-600">
+                <MapPin className="h-3 w-3 flex-shrink-0" />
+                <span>{project.zip_code || "N/A"}</span>
               </div>
+              {project.customerVerified && (
+                <div className="flex items-center gap-1 text-xs text-emerald-600 font-semibold pt-1 justify-center">
+                  <CheckCircle className="h-3 w-3 flex-shrink-0" />
+                  Verified
+                </div>
+              )}
             </div>
           </div>
 
-          {/* CENTER: Description + Metrics Grid */}
-          <div className="flex-1 border-b lg:border-b-0 lg:border-l lg:border-r border-deep-navy-100 pb-6 lg:pb-0 lg:px-6">
-            {/* Description */}
-            <p className="text-sm text-deep-navy-700 line-clamp-3 leading-relaxed mb-4">
-              {project.questionnaire_responses?.description || "Looking for professional service to complete this project."}
-            </p>
+          {/* MIDDLE: Description + Metrics */}
+          <div className="p-5 border-l border-r border-border/20 flex flex-col gap-4">
+            {/* Title + Description */}
+            <div>
+              <Link
+                to={projectUrl}
+                className="group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded inline-block"
+                aria-label={`Open project ${project.title}`}
+              >
+                <h2 className="text-lg font-bold text-deep-navy-900 group-hover:text-amber-700 line-clamp-2 transition-colors">
+                  {project.title}
+                </h2>
+              </Link>
+              <p className="text-sm text-deep-navy-600 line-clamp-2 mt-2 leading-relaxed">
+                {project.questionnaire_responses?.description || "Looking for professional service to complete this project."}
+              </p>
+            </div>
 
             {/* Metrics Grid - 4 Columns */}
-            <div className="grid grid-cols-4 gap-3 mb-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {/* Priority */}
-              <div className="text-center">
-                <div className={cn("flex items-center justify-center gap-1 text-xs font-bold", priorityTextColor)}>
-                  <PriorityIcon className="h-4 w-4" />
+              <div className="bg-deep-navy-50 rounded-lg p-3 text-center">
+                <div className={cn("flex items-center justify-center gap-1 text-xs font-bold mb-1", priorityTextColor)}>
+                  <PriorityIcon className="h-3.5 w-3.5" />
                   {project.urgency?.charAt(0).toUpperCase() + project.urgency?.slice(1) || "N/A"}
                 </div>
-                <p className="text-xs text-deep-navy-500 mt-1 font-semibold">Priority</p>
+                <p className="text-xs text-deep-navy-500 font-semibold">Priority</p>
               </div>
 
               {/* Property Type */}
-              <div className="text-center">
-                <div className="flex items-center justify-center gap-1 text-deep-navy-900 font-bold text-sm">
-                  <Building2 className="h-4 w-4 text-deep-navy-600" />
+              <div className="bg-deep-navy-50 rounded-lg p-3 text-center">
+                <div className="flex items-center justify-center gap-1 text-deep-navy-900 font-bold text-xs mb-1">
+                  <Building2 className="h-3.5 w-3.5 text-deep-navy-600" />
                   {(project.property_type || project.questionnaire_responses?.property_type || "N/A").substring(0, 8)}
                 </div>
-                <p className="text-xs text-deep-navy-500 mt-1 font-semibold">Property Type</p>
+                <p className="text-xs text-deep-navy-500 font-semibold">Property Type</p>
               </div>
 
               {/* Status */}
-              <div className="text-center">
-                <div className="flex items-center justify-center gap-1 text-green-700 font-bold text-sm">
-                  <CheckCircle className="h-4 w-4" />
+              <div className="bg-deep-navy-50 rounded-lg p-3 text-center">
+                <div className="flex items-center justify-center gap-1 text-emerald-700 font-bold text-xs mb-1">
+                  <CheckCircle className="h-3.5 w-3.5" />
                   Open
                 </div>
-                <p className="text-xs text-deep-navy-500 mt-1 font-semibold">Status</p>
+                <p className="text-xs text-deep-navy-500 font-semibold">Status</p>
               </div>
 
               {/* Bids Received */}
-              <div className="text-center">
-                <div className="flex items-center justify-center gap-1 text-deep-navy-900 font-bold text-sm">
-                  <MessageCircle className="h-4 w-4 text-deep-navy-600" />
+              <div className="bg-deep-navy-50 rounded-lg p-3 text-center">
+                <div className="flex items-center justify-center gap-1 text-deep-navy-900 font-bold text-xs mb-1">
+                  <MessageCircle className="h-3.5 w-3.5 text-deep-navy-600" />
                   {project.bidCountValue}
                 </div>
-                <p className="text-xs text-deep-navy-500 mt-1 font-semibold">Bids Received</p>
+                <p className="text-xs text-deep-navy-500 font-semibold">Bids Received</p>
               </div>
             </div>
 
             {/* Trust Badges Row */}
-            <div className="grid grid-cols-3 gap-3 text-xs">
-              <div className="flex items-center gap-2 p-2 bg-deep-navy-50 rounded-lg">
-                <CheckCircle className="h-4 w-4 text-teal-600 flex-shrink-0" />
-                <div>
-                  <p className="font-bold text-deep-navy-900">Verified Customer</p>
-                  <p className="text-deep-navy-600">Identity verified</p>
+            <div className="grid grid-cols-3 gap-2 pt-2">
+              <div className="flex items-center gap-2 p-2 bg-emerald-50 rounded-lg border border-emerald-100">
+                <CheckCircle className="h-4 w-4 text-emerald-600 flex-shrink-0" />
+                <div className="min-w-0">
+                  <p className="font-bold text-xs text-deep-navy-900">Verified</p>
+                  <p className="text-xs text-deep-navy-600">Identity verified</p>
                 </div>
               </div>
-              <div className="flex items-center gap-2 p-2 bg-deep-navy-50 rounded-lg">
-                <Lock className="h-4 w-4 text-teal-600 flex-shrink-0" />
-                <div>
-                  <p className="font-bold text-deep-navy-900">Secure Payments</p>
-                  <p className="text-deep-navy-600">Payment protection</p>
+              <div className="flex items-center gap-2 p-2 bg-blue-50 rounded-lg border border-blue-100">
+                <Lock className="h-4 w-4 text-blue-600 flex-shrink-0" />
+                <div className="min-w-0">
+                  <p className="font-bold text-xs text-deep-navy-900">Secure</p>
+                  <p className="text-xs text-deep-navy-600">Protected</p>
                 </div>
               </div>
-              <div className="flex items-center gap-2 p-2 bg-deep-navy-50 rounded-lg">
-                <Headphones className="h-4 w-4 text-orange-500 flex-shrink-0" />
-                <div>
-                  <p className="font-bold text-deep-navy-900">24/7 Support</p>
-                  <p className="text-deep-navy-600">We're here to help</p>
+              <div className="flex items-center gap-2 p-2 bg-amber-50 rounded-lg border border-amber-100">
+                <Headphones className="h-4 w-4 text-amber-600 flex-shrink-0" />
+                <div className="min-w-0">
+                  <p className="font-bold text-xs text-deep-navy-900">Support</p>
+                  <p className="text-xs text-deep-navy-600">24/7 Help</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* RIGHT: Budget + CTAs (Fixed Width) */}
-          <div className="flex flex-col gap-4 flex-shrink-0 lg:w-64">
-            {/* Posted Time + Budget Label */}
-            <div className="text-right">
-              <p className="text-xs text-deep-navy-600 mb-2">Posted {project.postedDateLabel || "recently"}</p>
-              <div className="inline-flex items-center gap-1 text-deep-navy-600 text-xs mb-2">
-                <span className="font-semibold">BUDGET</span>
-                <span className="text-lg">ℹ️</span>
-              </div>
-            </div>
+          {/* RIGHT: Budget + CTAs */}
+          <div className="p-5 flex flex-col gap-3 lg:w-56 bg-gradient-to-br from-deep-navy-50 to-deep-navy-25">
+            {/* Posted Time */}
+            <p className="text-xs text-deep-navy-600 font-medium">Posted {project.postedDateLabel || "recently"}</p>
 
-            {/* Budget Display */}
-            <div className="text-right">
-              <p className="text-4xl font-bold text-deep-navy-900">
+            {/* Budget Card */}
+            <div className="bg-white rounded-lg p-4 border border-border/30 shadow-sm">
+              <p className="text-xs text-deep-navy-500 uppercase font-bold tracking-wide mb-1">Budget</p>
+              <p className="text-2xl font-bold text-deep-navy-900 line-clamp-1">
                 {project.budget_range_min && project.budget_range_max 
                   ? `$${project.budget_range_min}-$${project.budget_range_max}`
-                  : "Custom Budget"}
+                  : "Custom"}
               </p>
-            </div>
-
-            {/* Budget Flexibility */}
-            <div className="bg-blue-50 rounded-lg p-3 border border-blue-200">
-              <p className="text-sm font-bold text-deep-navy-900">Budget is flexible</p>
-              <p className="text-xs text-deep-navy-700">Share your best offer</p>
+              <p className="text-xs text-deep-navy-600 mt-2">Budget is flexible</p>
+              <p className="text-xs text-deep-navy-500">Share your best offer</p>
             </div>
 
             {/* Action Buttons */}
-            <div className="space-y-2">
+            <div className="space-y-2 pt-1">
               {/* Primary CTA - Submit Bid */}
               <Button
                 asChild
-                className="w-full rounded-full bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white font-bold text-sm py-3"
+                className="w-full rounded-lg bg-amber-700 hover:bg-amber-800 text-white font-bold text-sm py-2.5"
               >
                 <Link to={projectUrl} className="flex items-center justify-center gap-2">
                   Submit Bid
-                  <span className="text-lg">→</span>
+                  <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
 
@@ -198,10 +178,9 @@ export function ProjectCard({
               <Button
                 asChild
                 variant="outline"
-                className="w-full rounded-full border-2 border-deep-navy-300 text-deep-navy-900 font-bold text-sm py-3"
+                className="w-full rounded-lg border border-deep-navy-200 text-deep-navy-900 hover:bg-deep-navy-50 font-semibold text-sm py-2.5"
               >
                 <Link to={projectUrl} className="flex items-center justify-center gap-2">
-                  <span>👁</span>
                   View Details
                 </Link>
               </Button>
@@ -214,7 +193,7 @@ export function ProjectCard({
                   e.preventDefault();
                   onFavoriteToggle?.(project.id);
                 }}
-                className="flex items-center justify-center gap-2 text-deep-navy-800 font-semibold text-sm transition-colors hover:text-red-500 py-2"
+                className="flex items-center justify-center gap-2 text-deep-navy-700 font-semibold text-sm transition-colors hover:text-red-600 py-2 hover:bg-red-50 rounded-lg"
                 title={project.is_favorited ? "Remove from saved" : "Save job"}
               >
                 <Heart
