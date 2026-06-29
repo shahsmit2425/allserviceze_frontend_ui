@@ -28,7 +28,7 @@ import {
   Star, CheckCircle, Send, Loader2, User, ArrowLeft, Paperclip,
   AlertTriangle, ThumbsUp, Award, XCircle, Image as ImageIcon,
   ChevronLeft, ChevronRight, Play, ShoppingBag, Pause, RotateCcw, Briefcase,
-  Trash2, StopCircle, Heart, Search
+  Trash2, StopCircle, Heart, Search, Headphones, CheckCheck, BarChart3, Copy, Lock
 } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 
@@ -1003,27 +1003,102 @@ export default function ProjectDetail() {
           </div>
 
           {/* RIGHT COLUMN: Fixed Sidebar */}
-          <div className="space-y-5 lg:sticky lg:top-24 lg:self-start">
-            {/* Customer Card */}
-            <Card className="border border-deep-navy-100">
-              <CardContent className="p-4">
-                <p className="text-xs font-semibold text-deep-navy-500 mb-3 uppercase">Posted By</p>
-                <div className="flex items-center gap-3">
-                  <Avatar className="w-12 h-12 border border-deep-navy-100">
-                    <AvatarFallback className="bg-copper-100 text-copper-700 font-semibold">{project.customer_name?.charAt(0)}</AvatarFallback>
+          <div className="space-y-4 lg:sticky lg:top-24 lg:self-start">
+            {/* Posted By Card */}
+            <Card className="border-2 border-deep-navy-100 rounded-lg overflow-hidden">
+              <CardContent className="p-5">
+                <p className="text-xs font-bold text-deep-navy-600 mb-4 uppercase tracking-wide">Posted By</p>
+                <div className="flex items-center gap-4">
+                  <Avatar className="w-14 h-14 border-2 border-deep-navy-100 flex-shrink-0">
+                    <AvatarImage src={project.customer_image} />
+                    <AvatarFallback className="bg-amber-100 text-amber-700 font-bold text-lg">{project.customer_name?.charAt(0)}</AvatarFallback>
                   </Avatar>
-                  <div>
-                    <p className="text-sm font-semibold text-deep-navy-800">{project.customer_name}</p>
-                    <p className="text-xs text-deep-navy-500">Customer</p>
+                  <div className="min-w-0">
+                    <p className="text-base font-bold text-deep-navy-900">{project.customer_name}</p>
+                    <p className="text-sm text-deep-navy-600 font-medium">Customer</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Support Card */}
+            <Card className="border-2 border-deep-navy-100 rounded-lg bg-gradient-to-br from-deep-navy-50 to-deep-navy-25 overflow-hidden">
+              <CardContent className="p-5">
+                <p className="text-sm font-bold text-deep-navy-900 mb-2">Need help with this project?</p>
+                <p className="text-xs text-deep-navy-700 mb-4">Our support team is here to help you find the right professional.</p>
+                <Button variant="outline" className="w-full rounded-lg border-amber-300 text-amber-700 hover:bg-amber-50 font-semibold">
+                  <Headphones className="w-4 h-4 mr-2" />
+                  Contact Support
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Next Steps Progress Card */}
+            <Card className="border-2 border-deep-navy-100 rounded-lg overflow-hidden">
+              <CardContent className="p-5">
+                <p className="text-sm font-bold text-deep-navy-900 mb-5">Next Step</p>
+                <div className="space-y-3">
+                  {/* Review Bids */}
+                  <div className="flex gap-3 p-3 rounded-lg hover:bg-deep-navy-50 transition-colors">
+                    <div className="flex-shrink-0 w-5 h-5 rounded-full bg-amber-100 flex items-center justify-center mt-0.5">
+                      <Award className="w-3 h-3 text-amber-700" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-xs font-bold text-deep-navy-900">Review bids from providers</p>
+                      <p className="text-xs text-deep-navy-600">Compare and message</p>
+                    </div>
+                  </div>
+
+                  {/* Ask Questions */}
+                  <div className="flex gap-3 p-3 rounded-lg hover:bg-deep-navy-50 transition-colors">
+                    <div className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mt-0.5">
+                      <MapPin className="w-3 h-3 text-blue-700" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-xs font-bold text-deep-navy-900">Ask questions</p>
+                      <p className="text-xs text-deep-navy-600">Get more details</p>
+                    </div>
+                  </div>
+
+                  {/* Accept a Bid */}
+                  <div className="flex gap-3 p-3 rounded-lg hover:bg-deep-navy-50 transition-colors">
+                    <div className="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 flex items-center justify-center mt-0.5">
+                      <CheckCheck className="w-3 h-3 text-green-700" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-xs font-bold text-deep-navy-900">Accept a bid</p>
+                      <p className="text-xs text-deep-navy-600">Choose the best match</p>
+                    </div>
+                  </div>
+
+                  {/* Project in Progress */}
+                  <div className="flex gap-3 p-3 rounded-lg hover:bg-deep-navy-50 transition-colors">
+                    <div className="flex-shrink-0 w-5 h-5 rounded-full bg-purple-100 flex items-center justify-center mt-0.5">
+                      <Play className="w-3 h-3 text-purple-700" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-xs font-bold text-deep-navy-900">Project in progress</p>
+                      <p className="text-xs text-deep-navy-600">Stay updated</p>
+                    </div>
+                  </div>
+
+                  {/* Project Completion */}
+                  <div className="flex gap-3 p-3 rounded-lg hover:bg-deep-navy-50 transition-colors">
+                    <div className="flex-shrink-0 w-5 h-5 rounded-full bg-yellow-100 flex items-center justify-center mt-0.5">
+                      <Star className="w-3 h-3 text-yellow-700" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-xs font-bold text-deep-navy-900">Project completion</p>
+                      <p className="text-xs text-deep-navy-600">Rate and review</p>
+                    </div>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
             {/* Actions Card */}
-            <Card className="border border-deep-navy-100">
-              <CardContent className="p-4 space-y-3">
-                <p className="text-xs font-semibold text-deep-navy-500 uppercase">Next Step</p>
+            <Card className="border-2 border-deep-navy-100 rounded-lg overflow-hidden">
+              <CardContent className="p-5 space-y-3">
                 {/* Provider Actions */}
                 {isProvider && project.status === "live" && (
                   <>
@@ -1469,6 +1544,40 @@ export default function ProjectDetail() {
                 )}
               </CardContent>
             </Card>
+          </div>
+        </div>
+
+        {/* Trust Badges Footer */}
+        <div className="mt-12 border-t border-deep-navy-100 pt-8">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div className="text-center">
+              <div className="flex justify-center mb-2">
+                <CheckCircle className="h-5 w-5 text-teal-600" />
+              </div>
+              <p className="text-xs font-bold text-deep-navy-900">Verified Professionals</p>
+              <p className="text-xs text-deep-navy-600 mt-1">Background checked</p>
+            </div>
+            <div className="text-center">
+              <div className="flex justify-center mb-2">
+                <Lock className="h-5 w-5 text-teal-600" />
+              </div>
+              <p className="text-xs font-bold text-deep-navy-900">Secure Payments</p>
+              <p className="text-xs text-deep-navy-600 mt-1">Safe and protected</p>
+            </div>
+            <div className="text-center">
+              <div className="flex justify-center mb-2">
+                <Headphones className="h-5 w-5 text-amber-600" />
+              </div>
+              <p className="text-xs font-bold text-deep-navy-900">24/7 Support</p>
+              <p className="text-xs text-deep-navy-600 mt-1">We're here to help</p>
+            </div>
+            <div className="text-center">
+              <div className="flex justify-center mb-2">
+                <Heart className="h-5 w-5 text-teal-600" />
+              </div>
+              <p className="text-xs font-bold text-deep-navy-900">Satisfaction Guaranteed</p>
+              <p className="text-xs text-deep-navy-600 mt-1">Quality work, every time</p>
+            </div>
           </div>
         </div>
       </div>

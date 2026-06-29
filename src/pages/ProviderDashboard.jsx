@@ -20,7 +20,7 @@ import {
   DollarSign, Briefcase, TrendingUp, Loader2,
   FileText, Package, CheckCircle, Clock, MapPin,
   ExternalLink, ArrowRight, XCircle, Trophy, Play, 
-  ShoppingBag, StopCircle, Pause, Heart
+  ShoppingBag, StopCircle, Pause, Heart, Lock, Headphones
 } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 import { usePlatform } from "@/mobile/hooks/usePlatform";
@@ -431,23 +431,76 @@ export default function ProviderDashboard() {
               </div>
             </CardHeader>
             <CardContent className="pt-6">
-              {/* Stats Row */}
-              <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-                <div className="rounded-lg border border-deep-navy-100 bg-white px-4 py-3">
-                  <p className="text-xs font-semibold text-deep-navy-500">Active</p>
-                  <p className="mt-1 text-2xl font-bold text-deep-navy-800">{counts.active}</p>
+              {/* Stats Row - 5 Cards */}
+              <div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-5">
+                {/* Active Bids Card */}
+                <div className="rounded-lg border border-deep-navy-100 bg-white px-4 py-4 hover:shadow-md transition-shadow">
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100 flex-shrink-0">
+                      <Calendar className="h-4 w-4 text-blue-600" />
+                    </div>
+                    <p className="text-xs font-bold text-deep-navy-500 uppercase">Active Bids</p>
+                  </div>
+                  <p className="mt-2 text-2xl font-bold text-deep-navy-800">{counts.active}</p>
+                  <Link to="/dashboard?tab=active" className="mt-2 inline-flex items-center text-xs font-medium text-primary hover:text-primary/80">
+                    View Active <ArrowRight className="ml-1 h-3 w-3" />
+                  </Link>
                 </div>
-                <div className="rounded-lg border border-deep-navy-100 bg-white px-4 py-3">
-                  <p className="text-xs font-semibold text-deep-navy-500">Shortlisted</p>
-                  <p className="mt-1 text-2xl font-bold text-deep-navy-800">{counts.shortlisted}</p>
+
+                {/* Won Card */}
+                <div className="rounded-lg border border-deep-navy-100 bg-white px-4 py-4 hover:shadow-md transition-shadow">
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100 flex-shrink-0">
+                      <CheckCircle className="h-4 w-4 text-emerald-600" />
+                    </div>
+                    <p className="text-xs font-bold text-deep-navy-500 uppercase">Won</p>
+                  </div>
+                  <p className="mt-2 text-2xl font-bold text-emerald-600">{counts.won}</p>
+                  <Link to="/dashboard?tab=won" className="mt-2 inline-flex items-center text-xs font-medium text-primary hover:text-primary/80">
+                    View Won <ArrowRight className="ml-1 h-3 w-3" />
+                  </Link>
                 </div>
-                <div className="rounded-lg border border-deep-navy-100 bg-white px-4 py-3">
-                  <p className="text-xs font-semibold text-deep-navy-500">Won</p>
-                  <p className="mt-1 text-2xl font-bold text-copper-600">{counts.won}</p>
+
+                {/* In Progress Card */}
+                <div className="rounded-lg border border-deep-navy-100 bg-white px-4 py-4 hover:shadow-md transition-shadow">
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-100 flex-shrink-0">
+                      <Clock className="h-4 w-4 text-amber-600" />
+                    </div>
+                    <p className="text-xs font-bold text-deep-navy-500 uppercase">In Progress</p>
+                  </div>
+                  <p className="mt-2 text-2xl font-bold text-deep-navy-800">{counts.in_progress}</p>
+                  <Link to="/dashboard?tab=in_progress" className="mt-2 inline-flex items-center text-xs font-medium text-primary hover:text-primary/80">
+                    View In Progress <ArrowRight className="ml-1 h-3 w-3" />
+                  </Link>
                 </div>
-                <div className="rounded-lg border border-deep-navy-100 bg-white px-4 py-3">
-                  <p className="text-xs font-semibold text-deep-navy-500">Completed</p>
-                  <p className="mt-1 text-2xl font-bold text-deep-navy-800">{counts.completed}</p>
+
+                {/* Completed Card */}
+                <div className="rounded-lg border border-deep-navy-100 bg-white px-4 py-4 hover:shadow-md transition-shadow">
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-100 flex-shrink-0">
+                      <Trophy className="h-4 w-4 text-purple-600" />
+                    </div>
+                    <p className="text-xs font-bold text-deep-navy-500 uppercase">Completed</p>
+                  </div>
+                  <p className="mt-2 text-2xl font-bold text-deep-navy-800">{counts.completed}</p>
+                  <Link to="/dashboard?tab=completed" className="mt-2 inline-flex items-center text-xs font-medium text-primary hover:text-primary/80">
+                    View Completed <ArrowRight className="ml-1 h-3 w-3" />
+                  </Link>
+                </div>
+
+                {/* Shortlisted Card */}
+                <div className="rounded-lg border border-deep-navy-100 bg-white px-4 py-4 hover:shadow-md transition-shadow">
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-pink-100 flex-shrink-0">
+                      <Briefcase className="h-4 w-4 text-pink-600" />
+                    </div>
+                    <p className="text-xs font-bold text-deep-navy-500 uppercase">Shortlisted</p>
+                  </div>
+                  <p className="mt-2 text-2xl font-bold text-deep-navy-800">{counts.shortlisted}</p>
+                  <Link to="/dashboard?tab=shortlisted" className="mt-2 inline-flex items-center text-xs font-medium text-primary hover:text-primary/80">
+                    View Shortlisted <ArrowRight className="ml-1 h-3 w-3" />
+                  </Link>
                 </div>
               </div>
               {/* Tabs Section */}
@@ -469,7 +522,7 @@ export default function ProviderDashboard() {
                       return (
                         <Card key={bid.id} className="result-card-surface">
                           <CardContent className="p-5 sm:p-6">
-                            <div className={isNativeTablet ? "flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between" : "flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between"}>
+                            <div className={isNativeTablet ? "grid gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]" : "grid gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]"}>
                               <div className="min-w-0 flex-1">
                                 <div className="project-card-badges">
                                   <Badge className={bidStatusColors[bid.status]}>
@@ -671,6 +724,50 @@ export default function ProviderDashboard() {
                                     </Button>
                                   )}
                                 </div>
+
+                                {/* Next Step Sidebar */}
+                                <div className="rounded-lg border border-deep-navy-100 bg-gradient-to-br from-deep-navy-50 to-deep-navy-25 p-4 h-fit hidden lg:block">
+                                  <p className="text-sm font-bold text-foreground mb-3">Next Step</p>
+                                  
+                                  {["active", "shortlisted"].includes(bid.status) && (
+                                    <>
+                                      <div className="flex gap-2 items-start mb-3">
+                                        <MessageSquare className="h-4 w-4 text-amber-600 flex-shrink-0 mt-0.5" />
+                                        <div>
+                                          <p className="text-xs font-medium text-foreground">Provider will review your bid.</p>
+                                          <p className="text-xs text-muted-foreground mt-1">We&apos;ll notify you when they respond.</p>
+                                        </div>
+                                      </div>
+                                      <div className="h-2 bg-deep-navy-100 rounded-full overflow-hidden mb-3">
+                                        <div className="h-full w-1/3 bg-primary rounded-full"></div>
+                                      </div>
+                                    </>
+                                  )}
+
+                                  {bid.status === "awarded" && (
+                                    <>
+                                      <div className="flex gap-2 items-start mb-3">
+                                        <CheckCircle className="h-4 w-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                                        <div>
+                                          <p className="text-xs font-medium text-foreground">You&apos;ve been awarded this project!</p>
+                                          <p className="text-xs text-muted-foreground mt-1">Ready to get started?</p>
+                                        </div>
+                                      </div>
+                                      <div className="h-2 bg-deep-navy-100 rounded-full overflow-hidden mb-3">
+                                        <div className="h-full w-2/3 bg-primary rounded-full"></div>
+                                      </div>
+                                    </>
+                                  )}
+
+                                  <Button 
+                                    size="sm"
+                                    variant="outline"
+                                    className="w-full rounded-lg mt-3"
+                                    onClick={() => navigate(`/projects/${bid.project_id}`)}
+                                  >
+                                    View Project
+                                  </Button>
+                                </div>
                               </div>
                             </div>
                           </CardContent>
@@ -695,6 +792,80 @@ export default function ProviderDashboard() {
             </Tabs>
             </CardContent>
           </Card>
+
+          {/* Find More Jobs Section */}
+          <Card className="border border-deep-navy-100">
+            <CardContent className="p-6 sm:p-7">
+              <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                <div className="flex items-start gap-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100 flex-shrink-0">
+                    <Briefcase className="h-6 w-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground">Find more jobs like this</p>
+                    <p className="text-sm text-muted-foreground mt-1">Complete your profile and set your availability to get matched with more projects.</p>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-3 sm:gap-2">
+                  <Button 
+                    variant="outline" 
+                    className="rounded-lg"
+                    onClick={() => navigate("/profile")}
+                  >
+                    Complete Profile
+                  </Button>
+                  <Button 
+                    className="rounded-lg bg-amber-700 hover:bg-amber-800"
+                    onClick={() => navigate("/profile/availability")}
+                  >
+                    Set Availability
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Trust Badges Footer */}
+          <div className="mt-8 border-t border-deep-navy-100 pt-8">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+              <div className="text-center">
+                <div className="flex justify-center mb-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100">
+                    <CheckCircle className="h-6 w-6 text-emerald-700" />
+                  </div>
+                </div>
+                <p className="text-xs font-bold text-deep-navy-900 uppercase tracking-wide">Verified Professionals</p>
+                <p className="text-xs text-deep-navy-600 mt-2">Background checked</p>
+              </div>
+              <div className="text-center">
+                <div className="flex justify-center mb-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100">
+                    <Lock className="h-6 w-6 text-blue-700" />
+                  </div>
+                </div>
+                <p className="text-xs font-bold text-deep-navy-900 uppercase tracking-wide">Secure Payments</p>
+                <p className="text-xs text-deep-navy-600 mt-2">Safe and protected</p>
+              </div>
+              <div className="text-center">
+                <div className="flex justify-center mb-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-amber-100">
+                    <Headphones className="h-6 w-6 text-amber-700" />
+                  </div>
+                </div>
+                <p className="text-xs font-bold text-deep-navy-900 uppercase tracking-wide">24/7 Support</p>
+                <p className="text-xs text-deep-navy-600 mt-2">We're here to help</p>
+              </div>
+              <div className="text-center">
+                <div className="flex justify-center mb-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-100">
+                    <TrendingUp className="h-6 w-6 text-purple-700" />
+                  </div>
+                </div>
+                <p className="text-xs font-bold text-deep-navy-900 uppercase tracking-wide">Satisfaction Guaranteed</p>
+                <p className="text-xs text-deep-navy-600 mt-2">Quality work, every time</p>
+              </div>
+            </div>
+          </div>
         </div>
       </AppShell>
 
