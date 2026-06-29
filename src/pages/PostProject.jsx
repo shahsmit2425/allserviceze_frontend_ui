@@ -27,10 +27,13 @@ import {
   Calendar,
   CheckCircle,
   DollarSign,
+  Headphones,
   Loader2,
+  Lock,
   Send,
   ShieldCheck,
   Sparkles,
+  TrendingUp,
   Upload,
   Wand2,
   X,
@@ -471,28 +474,91 @@ export default function PostProject() {
   return (
     <AppShell theme="customer" data-testid="post-project">
       <div className="page-shell safe-bottom-shell py-6 sm:py-8">
+        {/* Hero Section with Feature Cards */}
+        <section className="mb-5 grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] overflow-hidden rounded-2xl border border-border/60 bg-gradient-to-br from-background to-background/80 shadow-[0_24px_72px_-52px_rgba(15,23,42,0.14)]">
+          <div className="px-5 py-6 sm:px-7 sm:py-7">
+            <span className="page-kicker">
+              <Sparkles className="h-3.5 w-3.5" />
+              {isEditMode ? "Edit listing" : "Create new listing"}
+            </span>
+            <h1 className="mt-4 font-heading text-[clamp(2.25rem,4.2vw,4.1rem)] font-extrabold leading-[0.95] tracking-[-0.06em] text-foreground">
+              {isEditMode ? "Refine your project." : "Post a project."}
+              {!isEditMode && <span className="text-amber-600"> Get it done.</span>}
+            </h1>
+            <p className="mt-3 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">
+              Tell us what you need done and connect with trusted professionals in minutes.
+            </p>
+
+            {/* Feature Cards */}
+            <div className="mt-6 grid gap-3 sm:grid-cols-3">
+              <div className="flex items-start gap-3 rounded-lg bg-white/50 p-4 backdrop-blur-sm">
+                <div className="mt-0.5 flex h-8 w-8 items-center justify-center rounded-lg bg-amber-100 flex-shrink-0">
+                  <Sparkles className="h-4 w-4 text-amber-700" />
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-foreground uppercase">Smart Matching</p>
+                  <p className="text-xs text-muted-foreground mt-1">We connect you with the best pros for your job.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3 rounded-lg bg-white/50 p-4 backdrop-blur-sm">
+                <div className="mt-0.5 flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100 flex-shrink-0">
+                  <DollarSign className="h-4 w-4 text-blue-700" />
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-foreground uppercase">Accurate Quotes</p>
+                  <p className="text-xs text-muted-foreground mt-1">Receive competitive quotes from verified providers.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3 rounded-lg bg-white/50 p-4 backdrop-blur-sm">
+                <div className="mt-0.5 flex h-8 w-8 items-center justify-center rounded-lg bg-green-100 flex-shrink-0">
+                  <Calendar className="h-4 w-4 text-green-700" />
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-foreground uppercase">Save Time</p>
+                  <p className="text-xs text-muted-foreground mt-1">Manage everything in one place, easily.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Background Image Placeholder */}
+          <div className="hidden lg:block w-96 h-80 flex-shrink-0 bg-cover bg-center rounded-r-2xl"
+            style={{
+              backgroundImage: `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 320"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:rgb(217,119,6);stop-opacity:0.1" /><stop offset="100%" style="stop-color:rgb(59,130,246);stop-opacity:0.1" /></linearGradient></defs><rect width="384" height="320" fill="url(%23grad)"/><circle cx="100" cy="80" r="60" fill="rgb(217,119,6)" opacity="0.08"/><circle cx="300" cy="280" r="90" fill="rgb(59,130,246)" opacity="0.08"/><path d="M20,160 Q100,100 200,140 T380,180" stroke="rgb(217,119,6)" stroke-width="2" fill="none" opacity="0.1"/></svg>')`,
+            }}
+          />
+        </section>
+
+        {/* Step Indicators */}
+        <div className="mb-6 flex flex-wrap gap-3 px-1">
+          <div className="flex items-center gap-2">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-amber-600 font-bold text-white text-sm">1</span>
+            <span className="text-sm font-semibold text-foreground">Project Details</span>
+          </div>
+          <div className="text-muted-foreground">•</div>
+          <div className="flex items-center gap-2">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-deep-navy-200 font-semibold text-deep-navy-600 text-sm">2</span>
+            <span className="text-sm text-muted-foreground">Location & Property</span>
+          </div>
+          <div className="text-muted-foreground">•</div>
+          <div className="flex items-center gap-2">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-deep-navy-200 font-semibold text-deep-navy-600 text-sm">3</span>
+            <span className="text-sm text-muted-foreground">Photos & Extras</span>
+          </div>
+          <div className="text-muted-foreground">•</div>
+          <div className="flex items-center gap-2">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-deep-navy-200 font-semibold text-deep-navy-600 text-sm">4</span>
+            <span className="text-sm text-muted-foreground">Review & Publish</span>
+          </div>
+        </div>
+
         <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_22rem] xl:items-start">
           <main className="min-w-0 rounded-2xl border border-border/60 bg-white shadow-[0_24px_72px_-52px_rgba(15,23,42,0.14)]">
             <section className="border-b border-border/60 bg-background px-5 py-6 sm:px-7 sm:py-7">
-              <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-                <div className="max-w-3xl">
-                  <span className="page-kicker">
-                    <Sparkles className="h-3.5 w-3.5" />
-                    {isEditMode ? "Edit listing" : "Create listing"}
-                  </span>
-                  <h1 className="mt-4 font-heading text-[clamp(2.25rem,4.2vw,4.1rem)] font-extrabold leading-[0.95] tracking-[-0.06em] text-foreground">
-                    {isEditMode ? "Refine your project and repost with confidence." : "Post a project that feels fast to finish."}
-                  </h1>
-                  <p className="mt-3 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">
-                    One clean page, conversational prompts, and strong defaults designed to help homeowners post like they’re creating a modern marketplace listing.
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-2">
-                  <span className="info-chip">{formData.category || "Category pending"}</span>
-                  <span className="info-chip">{formatBudgetSummary(formData)}</span>
-                  <span className="info-chip">{formData.images.length}/{MAX_IMAGES} photos</span>
-                </div>
+              <div className="flex flex-col gap-2">
+                <span className="page-kicker">What are you looking to get done?</span>
               </div>
             </section>
 
@@ -907,37 +973,105 @@ export default function PostProject() {
           </main>
 
           <aside className="space-y-4 xl:sticky xl:top-[6rem]">
+            {/* Project Summary Card */}
             <div className="rounded-xl border border-border/60 bg-white p-5 shadow-sm backdrop-blur-sm">
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <p className="detail-kicker">Floating save state</p>
-                  <h3 className="mt-2 text-lg font-semibold tracking-[-0.03em] text-foreground">{saveStatus}</h3>
+              <p className="detail-kicker">Project Summary</p>
+              <p className="mt-1 text-sm text-muted-foreground">See how your listing will appear to providers.</p>
+
+              <div className="mt-4 space-y-3 text-sm">
+                <div className="flex items-center justify-between gap-2 pb-3 border-b border-border/40">
+                  <span className="text-muted-foreground">Title</span>
+                  <span className={`font-medium ${formData.title ? "text-foreground" : "text-muted-foreground"}`}>
+                    {formData.title || "Not added yet"}
+                  </span>
                 </div>
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                  <ShieldCheck className="h-5 w-5" />
+
+                <div className="flex items-center justify-between gap-2 pb-3 border-b border-border/40">
+                  <span className="text-muted-foreground">Category</span>
+                  <span className={`font-medium ${formData.category ? "text-foreground" : "text-muted-foreground"}`}>
+                    {formData.category || "Not selected"}
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between gap-2 pb-3 border-b border-border/40">
+                  <span className="text-muted-foreground">Description</span>
+                  <span className={`font-medium ${formData.description ? "text-foreground" : "text-muted-foreground"}`}>
+                    {formData.description ? "Added" : "Not added yet"}
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between gap-2 pb-3 border-b border-border/40">
+                  <span className="text-muted-foreground">Budget</span>
+                  <span className={`font-medium ${formData.budget_min || formData.budget_max ? "text-foreground" : "text-muted-foreground"}`}>
+                    {formatBudgetSummary(formData) !== "Budget pending" ? formatBudgetSummary(formData) : "Not set"}
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between gap-2 pb-3 border-b border-border/40">
+                  <span className="text-muted-foreground">Timeline</span>
+                  <span className={`font-medium ${formData.deadline ? "text-foreground" : "text-muted-foreground"}`}>
+                    {formData.deadline ? formatTimelineSummary(formData.deadline) : "Not set"}
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between gap-2 pb-3 border-b border-border/40">
+                  <span className="text-muted-foreground">Location</span>
+                  <span className={`font-medium ${formData.address || formData.zipCode ? "text-foreground" : "text-muted-foreground"}`}>
+                    {formData.address || formData.zipCode ? "Added" : "Not added yet"}
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-muted-foreground">Photos</span>
+                  <span className={`font-medium ${formData.images.length > 0 ? "text-foreground" : "text-muted-foreground"}`}>
+                    {formData.images.length}/{MAX_IMAGES} photos
+                  </span>
                 </div>
               </div>
 
-              <div className="mt-4 h-2 overflow-hidden rounded-full bg-deep-navy-100/80">
-                <div className="h-full rounded-full bg-primary transition-all duration-300" style={{ width: `${validation.completion}%` }} />
+              {/* Progress Bar */}
+              <div className="mt-4 pt-4 border-t border-border/40">
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <span className="text-xs font-semibold text-foreground uppercase">Completion</span>
+                  <span className="text-xs font-bold text-primary">{validation.completion}%</span>
+                </div>
+                <div className="h-2 overflow-hidden rounded-full bg-deep-navy-100/80">
+                  <div className="h-full rounded-full bg-primary transition-all duration-300" style={{ width: `${validation.completion}%` }} />
+                </div>
               </div>
+            </div>
 
-              <div className="mt-4 space-y-2 text-sm">
-                {[
-                  ["Title", validation.title],
-                  ["Category", validation.category],
-                  ["Description", validation.description],
-                  ["Budget", validation.budget],
-                  ["Timeline", validation.timeline],
-                  ["Photos", validation.photos],
-                  ["Location", validation.location],
-                ].map(([label, complete]) => (
-                  <div key={label} className="flex items-center justify-between gap-3">
-                    <span className="text-muted-foreground">{label}</span>
-                    {complete ? <CheckCircle className="h-4 w-4 text-emerald-600" /> : <span className="text-xs text-muted-foreground">Pending</span>}
-                  </div>
-                ))}
+            {/* Why Details Matter Card */}
+            <div className="rounded-xl border border-border/60 bg-white p-5 shadow-sm">
+              <p className="detail-kicker">Why details matter</p>
+              <div className="mt-3 space-y-2 text-sm">
+                <div className="flex gap-2 items-start">
+                  <CheckCircle className="h-4 w-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-muted-foreground">Clear details = better quotes</span>
+                </div>
+                <div className="flex gap-2 items-start">
+                  <CheckCircle className="h-4 w-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-muted-foreground">Photos help save time</span>
+                </div>
+                <div className="flex gap-2 items-start">
+                  <CheckCircle className="h-4 w-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-muted-foreground">Accurate budget gets accurate quotes</span>
+                </div>
+                <div className="flex gap-2 items-start">
+                  <CheckCircle className="h-4 w-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-muted-foreground">Timeline helps pros plan better</span>
+                </div>
               </div>
+            </div>
+
+            {/* Support Card */}
+            <div className="rounded-xl border border-border/60 bg-gradient-to-br from-deep-navy-50 to-deep-navy-25 p-5 shadow-sm">
+              <p className="text-sm font-bold text-foreground">Need help?</p>
+              <p className="text-sm text-muted-foreground mt-1">Our support team is here to help it easy.</p>
+              <Button variant="outline" className="w-full mt-3 rounded-lg border-amber-300 text-amber-700 hover:bg-amber-50 font-semibold">
+                <Headphones className="w-4 h-4 mr-2" />
+                Contact Support
+              </Button>
             </div>
 
             <div className="rounded-xl border border-border/60 bg-white p-5">
@@ -1012,6 +1146,48 @@ export default function PostProject() {
             <div>
               <p className="text-sm font-semibold text-amber-900">Admin approval required before the listing goes live</p>
               <p className="mt-1 text-sm leading-6 text-amber-800">Clear details, realistic timing, and helpful photos usually reduce approval friction and improve quote quality.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Trust Badges Footer */}
+        <div className="mt-8 border-t border-deep-navy-100 pt-8">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+            <div className="text-center">
+              <div className="flex justify-center mb-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100">
+                  <CheckCircle className="h-6 w-6 text-emerald-700" />
+                </div>
+              </div>
+              <p className="text-xs font-bold text-deep-navy-900 uppercase tracking-wide">Verified Professionals</p>
+              <p className="text-xs text-deep-navy-600 mt-2">Background checked</p>
+            </div>
+            <div className="text-center">
+              <div className="flex justify-center mb-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100">
+                  <Lock className="h-6 w-6 text-blue-700" />
+                </div>
+              </div>
+              <p className="text-xs font-bold text-deep-navy-900 uppercase tracking-wide">Secure Payments</p>
+              <p className="text-xs text-deep-navy-600 mt-2">Safe and protected</p>
+            </div>
+            <div className="text-center">
+              <div className="flex justify-center mb-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-amber-100">
+                  <Headphones className="h-6 w-6 text-amber-700" />
+                </div>
+              </div>
+              <p className="text-xs font-bold text-deep-navy-900 uppercase tracking-wide">24/7 Support</p>
+              <p className="text-xs text-deep-navy-600 mt-2">We're here to help</p>
+            </div>
+            <div className="text-center">
+              <div className="flex justify-center mb-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-100">
+                  <TrendingUp className="h-6 w-6 text-purple-700" />
+                </div>
+              </div>
+              <p className="text-xs font-bold text-deep-navy-900 uppercase tracking-wide">Satisfaction Guaranteed</p>
+              <p className="text-xs text-deep-navy-600 mt-2">Quality work, every time</p>
             </div>
           </div>
         </div>
